@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jwoobim – Admin Kode Akses</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script>
+const firebaseConfig={apiKey:"AIzaSyB0JU3i2xuoT0y2Zmmdk9PMFXd-1UsstlA",authDomain:"jwoobim-1a1b5.firebaseapp.com",projectId:"jwoobim-1a1b5",storageBucket:"jwoobim-1a1b5.firebasestorage.app",messagingSenderId:"114663446510",appId:"1:114663446510:web:68ac1a50eff495af53e0ff"};
+firebase.initializeApp(firebaseConfig);
+const db=firebase.firestore();
+const auth=firebase.auth();
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--lav:#c9b8e8;--lav-l:#ede8f7;--lav-m:#9b7ed4;--mint-m:#5bbfa0;--mint-l:#e8f7f2;--peach:#f7d5c0;--peach-m:#e8905a;--yellow:#f7ebb8;--dark:#2d2060;--mid:#5a4a9e;--soft:#9b8ec4;--white:#fff;--bg:#f5f0ff;--correct:#22c55e;--wrong:#ef4444}
+body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh}
+.header{background:var(--dark);color:#fff;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.header h1{font-family:'Playfair Display',serif;font-size:20px}
+.container{max-width:860px;margin:24px auto;padding:0 16px}
+.card{background:var(--white);border-radius:18px;padding:22px;margin-bottom:16px;box-shadow:0 4px 16px rgba(180,160,220,.12)}
+.card h2{font-size:15px;color:var(--dark);font-weight:900;margin-bottom:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-group label{display:block;font-size:11px;font-weight:900;color:var(--mid);letter-spacing:.5px;margin-bottom:5px;text-transform:uppercase}
+.form-group input,.form-group select{width:100%;padding:10px 12px;border-radius:10px;border:2px solid var(--lav-l);font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;color:var(--dark);outline:none;background:var(--bg)}
+.form-group input:focus,.form-group select:focus{border-color:var(--lav-m);background:var(--white)}
+.btn{padding:10px 20px;border-radius:10px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:900;cursor:pointer;border:none;transition:.2s}
+.btn-primary{background:linear-gradient(135deg,var(--lav-m),#7ea8d4);color:#fff}
+.btn-primary:hover{transform:scale(1.02)}
+.btn-sm{padding:6px 12px;font-size:12px;border-radius:8px}
+.btn-activate{background:#dcfce7;color:#166534;border:1.5px solid #86efac}
+.btn-deactivate{background:#fee2e2;color:#991b1b;border:1.5px solid #fca5a5}
+.btn-copy{background:var(--lav-l);color:var(--mid);border:1.5px solid var(--lav)}
+.btn-reset{background:var(--yellow);color:#5a4000;border:1.5px solid #d4a800}
+.btn-delete{background:#fee2e2;color:#991b1b;border:none}
+.kode-result{background:var(--lav-l);border:2px dashed var(--lav-m);border-radius:14px;padding:20px;text-align:center;margin-top:14px;display:none}
+.kode-result.show{display:block}
+.kode-big{font-family:'Playfair Display',serif;font-size:36px;color:var(--dark);font-weight:900;letter-spacing:4px;margin:8px 0}
+.kode-info{font-size:13px;color:var(--soft);font-weight:600}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.stat{background:var(--white);border-radius:12px;padding:14px;text-align:center;border:2px solid var(--lav-l)}
+.stat .num{font-family:'Playfair Display',serif;font-size:26px;color:var(--dark)}
+.stat .lbl{font-size:11px;font-weight:700;color:var(--soft)}
+.kode-row{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:var(--bg);margin-bottom:8px;flex-wrap:wrap}
+.kode-badge{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:var(--dark);letter-spacing:2px;min-width:110px}
+.kode-meta{flex:1;min-width:120px}
+.kode-meta .name{font-size:13px;font-weight:800;color:var(--dark)}
+.kode-meta .detail{font-size:11px;color:var(--soft)}
+.status-badge{font-size:11px;font-weight:800;padding:4px 10px;border-radius:8px}
+.status-aktif{background:#dcfce7;color:#166534}
+.status-nonaktif{background:#fee2e2;color:#991b1b}
+.status-expired{background:#f3f4f6;color:#6b7280}
+.device-bar{display:flex;gap:4px;align-items:center;margin-top:3px}
+.device-dot{width:8px;height:8px;border-radius:50%;background:var(--lav-m)}
+.device-dot.empty{background:var(--lav-l);border:1.5px solid var(--lav)}
+.btn-logout{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif}
+#login-box{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+.login-card{background:var(--white);border-radius:20px;padding:36px;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(180,160,220,.2)}
+.login-card h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--dark);margin-bottom:20px}
+.login-card input{width:100%;padding:11px;border-radius:10px;border:2px solid var(--lav-l);font-family:'Nunito',sans-serif;margin-bottom:10px;font-size:14px;font-weight:600;outline:none;color:var(--dark)}
+.login-card input:focus{border-color:var(--lav-m)}
+.login-card .btn{width:100%;padding:12px}
+#err-login{color:var(--wrong);font-size:12px;margin-top:8px;font-weight:700}
+.paket-pills{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.pill{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:800;cursor:pointer;border:2px solid transparent}
+.pill.p1{background:var(--lav-l);color:var(--mid)}
+.pill.p2{background:var(--mint-l);color:var(--mint-m)}
+.pill.p3{background:var(--yellow);color:#7a5000}
+.pill.selected{border-color:currentColor}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-box">
+  <div class="login-card">
+    <div style="font-size:36px;margin-bottom:10px">🔐</div>
+    <h2>Admin Jwoobim</h2>
+    <input type="email" id="adm-email" placeholder="Email admin">
+    <input type="password" id="adm-pass" placeholder="Password" onkeypress="if(event.key==='Enter')adminLogin()">
+    <button class="btn btn-primary" onclick="adminLogin()">Masuk sebagai Admin</button>
+    <p id="err-login"></p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" style="display:none">
+  <div class="header">
+    <h1>🎓 Admin Kode Akses · Jwoobim</h1>
+    <button class="btn-logout" onclick="auth.signOut().then(()=>location.reload())">Keluar</button>
+  </div>
+
+  <div class="container">
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat"><div class="num" id="s-total">0</div><div class="lbl">Total Kode</div></div>
+      <div class="stat"><div class="num" id="s-aktif">0</div><div class="lbl">Aktif</div></div>
+      <div class="stat"><div class="num" id="s-expired">0</div><div class="lbl">Expired</div></div>
+      <div class="stat"><div class="num" id="s-device">0</div><div class="lbl">Total Device</div></div>
+    </div>
+
+    <!-- GENERATE KODE -->
+    <div class="card">
+      <h2>✨ Generate Kode Baru</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nama Peserta</label>
+          <input type="text" id="new-name" placeholder="Nama lengkap">
+        </div>
+        <div class="form-group">
+          <label>No. WhatsApp</label>
+          <input type="tel" id="new-wa" placeholder="08xxxxxxxxxx">
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:12px">
+        <label>Pilih Paket</label>
+        <div class="paket-pills">
+          <div class="pill p1 selected" onclick="pilihPaket(this,350000,150)" data-harga="350000" data-hari="150">350K · 5 bulan</div>
+          <div class="pill p2" onclick="pilihPaket(this,550000,270)" data-harga="550000" data-hari="270">550K · 9 bulan</div>
+          <div class="pill p3" onclick="pilihPaket(this,850000,365)" data-harga="850000" data-hari="365">850K · 12 bulan</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Max Device</label>
+          <select id="new-maxdev">
+            <option value="1">1 device</option>
+            <option value="2" selected>2 device</option>
+            <option value="3">3 device</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Kode Manual (kosongkan = auto)</label>
+          <input type="text" id="new-kode" placeholder="JWB-XXXXX (otomatis)" maxlength="10" oninput="this.value=this.value.toUpperCase()">
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="generateKode()">✨ Generate Kode</button>
+
+      <div class="kode-result" id="kode-result">
+        <div class="kode-info">Kode akses untuk <span id="kr-name">-</span></div>
+        <div class="kode-big" id="kr-kode">JWB-XXXXX</div>
+        <div class="kode-info" id="kr-info">-</div>
+        <div style="display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap">
+          <button class="btn btn-sm btn-copy" onclick="copyKode()">📋 Copy Kode</button>
+          <button class="btn btn-sm btn-primary" onclick="kirimWA()">💬 Kirim via WA</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAFTAR KODE -->
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">
+        <h2 style="margin:0">📋 Semua Kode Akses</h2>
+        <button class="btn btn-sm btn-primary" onclick="loadKodes()">🔄 Refresh</button>
+      </div>
+      <div id="list-kodes"><p style="color:var(--soft);font-size:13px">Memuat data...</p></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ===== CONFIG =====
+const ADMIN_EMAIL = 'sanjiiych@gmail.com'; // Ganti dengan email admin kamu
+
+let selectedHarga = 350000;
+let selectedHari = 150;
+let lastGeneratedKode = '';
+let lastGeneratedWA = '';
+
+// ===== LOGIN =====
+auth.onAuthStateChanged(user => {
+  if (user && user.email === ADMIN_EMAIL) {
+    document.getElementById('login-box').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    loadKodes();
+  }
+});
+
+async function adminLogin() {
+  const email = document.getElementById('adm-email').value;
+  const pass = document.getElementById('adm-pass').value;
+  try {
+    const result = await auth.signInWithEmailAndPassword(email, pass);
+    if (result.user.email !== ADMIN_EMAIL) {
+      await auth.signOut();
+      document.getElementById('err-login').textContent = 'Bukan akun admin.';
+    }
+  } catch(e) {
+    document.getElementById('err-login').textContent = 'Gagal: ' + e.message;
+  }
+}
+
+// ===== PILIH PAKET =====
+function pilihPaket(el, harga, hari) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedHarga = harga;
+  selectedHari = hari;
+}
+
+// ===== GENERATE KODE =====
+function buatKodeRandom() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let kode = 'JWB-';
+  for (let i = 0; i < 5; i++) kode += chars[Math.floor(Math.random() * chars.length)];
+  return kode;
+}
+
+async function generateKode() {
+  const name = document.getElementById('new-name').value.trim();
+  const wa = document.getElementById('new-wa').value.trim();
+  const maxdev = parseInt(document.getElementById('new-maxdev').value);
+  const kodeManual = document.getElementById('new-kode').value.trim();
+
+  if (!name || !wa) { alert('Nama dan WA harus diisi!'); return; }
+
+  const kode = kodeManual || buatKodeRandom();
+
+  // Hitung expiry
+  const expiry = new Date();
+  expiry.setDate(expiry.getDate() + selectedHari);
+
+  try {
+    await db.collection('kodes').doc(kode).set({
+      kode,
+      name,
+      wa,
+      harga: selectedHarga,
+      hari: selectedHari,
+      maxDevice: maxdev,
+      devices: [],
+      aktif: true,
+      expiryDate: expiry.toISOString(),
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    // Tampilkan hasil
+    lastGeneratedKode = kode;
+    lastGeneratedWA = wa;
+    document.getElementById('kr-kode').textContent = kode;
+    document.getElementById('kr-name').textContent = name;
+    document.getElementById('kr-info').textContent =
+      'Paket Rp ' + selectedHarga.toLocaleString('id-ID') + ' · Aktif ' + selectedHari + ' hari · Exp: ' + expiry.toLocaleDateString('id-ID');
+    document.getElementById('kode-result').classList.add('show');
+
+    // Reset form
+    document.getElementById('new-name').value = '';
+    document.getElementById('new-wa').value = '';
+    document.getElementById('new-kode').value = '';
+
+    loadKodes();
+  } catch(e) {
+    alert('Gagal generate: ' + e.message);
+  }
+}
+
+function copyKode() {
+  navigator.clipboard.writeText(lastGeneratedKode)
+    .then(() => alert('✅ Kode ' + lastGeneratedKode + ' berhasil dicopy!'));
+}
+
+function kirimWA() {
+  const wa = lastGeneratedWA.replace(/\D/g, '');
+  const kode = lastGeneratedKode;
+  const msg = `Halo! Terima kasih sudah bergabung di Jwoobim 🎓\n\nKode akses bimbel PAPS UGM kamu:\n\n*${kode}*\n\nCara pakai:\n1. Buka link belajar\n2. Masukkan kode di atas\n3. Berlaku untuk 2 device\n\nSelamat belajar! 💪`;
+  window.open('https://wa.me/' + wa + '?text=' + encodeURIComponent(msg), '_blank');
+}
+
+// ===== LOAD KODES =====
+async function loadKodes() {
+  try {
+    const snap = await db.collection('kodes').orderBy('createdAt','desc').get();
+    let total=0, aktif=0, expired=0, totalDevice=0;
+    let html = '';
+
+    snap.forEach(doc => {
+      const d = doc.data();
+      total++;
+      const devices = d.devices || [];
+      totalDevice += devices.length;
+      const now = new Date();
+      const isExpired = d.expiryDate && new Date(d.expiryDate) < now;
+      const isAktif = d.aktif && !isExpired;
+
+      if (isAktif) aktif++;
+      if (isExpired) expired++;
+
+      const expDate = d.expiryDate ? new Date(d.expiryDate).toLocaleDateString('id-ID') : '-';
+      const sisaHari = d.expiryDate ? Math.ceil((new Date(d.expiryDate)-now)/(1000*60*60*24)) : 0;
+
+      const deviceDots = Array(d.maxDevice||2).fill(0).map((_,i) =>
+        `<div class="device-dot ${i < devices.length ? '' : 'empty'}"></div>`
+      ).join('');
+
+      html += `
+        <div class="kode-row">
+          <div class="kode-badge">${d.kode}</div>
+          <div class="kode-meta">
+            <div class="name">${d.name || '-'} · WA: ${d.wa || '-'}</div>
+            <div class="detail">Rp ${(d.harga||0).toLocaleString('id')} · Exp: ${expDate} ${isAktif ? '('+sisaHari+' hari lagi)' : ''}</div>
+            <div class="device-bar">${deviceDots}<span style="font-size:10px;color:var(--soft);margin-left:4px">${devices.length}/${d.maxDevice||2} device</span></div>
+          </div>
+          <span class="status-badge ${isExpired?'status-expired':d.aktif?'status-aktif':'status-nonaktif'}">${isExpired?'Expired':d.aktif?'✅ Aktif':'❌ Nonaktif'}</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="btn btn-sm btn-copy" onclick="copyText('${d.kode}')">Copy</button>
+            <button class="btn btn-sm btn-copy" onclick="kirimWAKode('${d.kode}','${d.wa||''}','${d.name||''}')">WA</button>
+            <button class="btn btn-sm btn-reset" onclick="resetDevice('${d.kode}')">Reset Device</button>
+            ${d.aktif ? `<button class="btn btn-sm btn-deactivate" onclick="toggleAktif('${d.kode}',false)">Nonaktif</button>`
+                      : `<button class="btn btn-sm btn-activate" onclick="toggleAktif('${d.kode}',true)">Aktifkan</button>`}
+            <button class="btn btn-sm btn-delete" onclick="hapusKode('${d.kode}')">🗑️</button>
+          </div>
+        </div>`;
+    });
+
+    document.getElementById('s-total').textContent = total;
+    document.getElementById('s-aktif').textContent = aktif;
+    document.getElementById('s-expired').textContent = expired;
+    document.getElementById('s-device').textContent = totalDevice;
+    document.getElementById('list-kodes').innerHTML = html || '<p style="color:var(--soft);font-size:13px">Belum ada kode.</p>';
+  } catch(e) {
+    document.getElementById('list-kodes').innerHTML = '<p style="color:red;font-size:13px">Error: ' + e.message + '</p>';
+  }
+}
+
+async function toggleAktif(kode, val) {
+  await db.collection('kodes').doc(kode).update({ aktif: val });
+  loadKodes();
+}
+
+async function resetDevice(kode) {
+  if (!confirm('Reset device untuk kode ' + kode + '? Peserta harus login ulang di semua device.')) return;
+  await db.collection('kodes').doc(kode).update({ devices: [] });
+  alert('✅ Device berhasil direset!');
+  loadKodes();
+}
+
+async function hapusKode(kode) {
+  if (!confirm('Hapus kode ' + kode + '? Tidak bisa dikembalikan!')) return;
+  await db.collection('kodes').doc(kode).delete();
+  loadKodes();
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => alert('Disalin: ' + text));
+}
+
+function kirimWAKode(kode, wa, name) {
+  const waNum = wa.replace(/\D/g,'');
+  const msg = `Halo ${name}! 🎓\n\nKode akses Jwoobim kamu:\n\n*${kode}*\n\nBisa dipakai di 2 device. Selamat belajar! 💪`;
+  window.open('https://wa.me/' + waNum + '?text=' + encodeURIComponent(msg), '_blank');
+}
+</script>
+</body>
+</html>

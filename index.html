@@ -17,6 +17,15 @@ const db=firebase.firestore();
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{margin:0;padding:0;font-family:'Nunito',sans-serif;background:#f5f0ff;min-height:100vh;overflow-x:hidden}
 
+:root{
+  --lav:#c9b8e8;--lav-l:#ede8f7;--lav-m:#9b7ed4;--lav-d:#6b4fa8;
+  --mint:#b8e8d8;--mint-l:#e8f7f2;--mint-m:#5bbfa0;
+  --peach:#f7d5c0;--peach-m:#e8905a;
+  --yellow:#f7ebb8;--yellow-m:#d4a800;
+  --dark:#2d2060;--mid:#5a4a9e;--soft:#9b8ec4;
+  --white:#fff;--bg:#f5f0ff;
+  --correct:#22c55e;--wrong:#ef4444;
+}
 /* GATE */
 #gate{position:fixed;inset:0;z-index:9999;background:#f5f0ff;display:flex;align-items:center;justify-content:center;padding:20px;font-family:'Nunito',sans-serif}
 .gc{background:#fff;border-radius:24px;padding:40px 32px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(180,160,220,.25);text-align:center;transform:none !important;position:relative}
@@ -71,7 +80,6 @@ body{margin:0;padding:0;font-family:'Nunito',sans-serif;background:#f5f0ff;min-h
   --white:#fff;--bg:#f5f0ff;
   --correct:#22c55e;--wrong:#ef4444;
 }
-body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh}
 
 /* ===== SCREEN SYSTEM ===== */
 .screen{display:none;min-height:100vh;padding:16px}
@@ -150,18 +158,17 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh}
 .pembahasan-box{display:none;margin-top:14px;border-radius:14px;overflow:hidden;animation:fadeIn .3s ease;box-shadow:0 4px 16px rgba(0,0,0,.07)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .pembahasan-box.show{display:block}
-.pem-header{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--mint-m)}
-.pem-header span{font-size:12px;font-weight:900;color:#fff;letter-spacing:1px;text-transform:uppercase}
-.pem-jawaban{display:flex;gap:10px;padding:12px 16px;background:#f0fdf4;border-bottom:1px solid #bbf7d0;flex-wrap:wrap}
-.pem-ans-box{display:flex;flex-direction:column;gap:2px;flex:1;min-width:140px}
-.pem-ans-label{font-size:10px;font-weight:900;color:#6b7280;letter-spacing:1px;text-transform:uppercase}
-.pem-ans-val{font-size:13px;font-weight:800;color:var(--dark);padding:6px 10px;border-radius:8px;background:var(--white);border:1.5px solid #86efac}
-.pem-ans-val.correct{background:#dcfce7;border-color:var(--correct);color:#166534}
-.pem-body{padding:14px 16px;background:#fff}
-.pem-step{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start}
-.pem-step-num{width:22px;height:22px;border-radius:6px;background:var(--lav-m);color:#fff;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.pem-step-text{font-size:13px;color:var(--dark);line-height:1.6;font-weight:600}
-.pem-kesimpulan{background:var(--yellow);border:1.5px solid var(--yellow-m);border-radius:10px;padding:10px 14px;font-size:13px;font-weight:800;color:#5a4000;margin-top:4px}
+.pem-header{display:flex;align-items:center;gap:8px;padding:12px 18px;background:var(--mint-m)}
+.pem-header span{font-size:12px;font-weight:900;color:#fff;letter-spacing:1.5px;text-transform:uppercase}
+.pem-jawaban{padding:12px 18px;background:#f0fdf4;border-bottom:1.5px solid #bbf7d0}
+.pem-ans-label{font-size:10px;font-weight:900;color:#6b7280;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.pem-ans-val{font-size:14px;font-weight:900;color:#166534;padding:8px 14px;border-radius:10px;background:#dcfce7;border:2px solid var(--correct);display:inline-block}
+.pem-body{padding:16px 18px;background:#fff;display:flex;flex-direction:column;gap:10px}
+.pem-step{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#f8f7ff;border-radius:10px;border-left:3px solid var(--lav-m)}
+.pem-step-num{width:24px;height:24px;border-radius:8px;background:var(--lav-m);color:#fff;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.pem-step-text{font-size:13px;color:var(--dark);line-height:1.7;font-weight:600}
+.pem-step-text .math-line{display:block;text-align:center;margin:6px 0;font-size:14px;color:var(--mid)}
+.pem-kesimpulan{background:linear-gradient(135deg,var(--yellow),#fff3c0);border:2px solid var(--yellow-m);border-radius:12px;padding:12px 16px;font-size:14px;font-weight:800;color:#5a4000;display:flex;align-items:center;gap:8px}
 
 .nav-bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:8px}
 .btn{padding:11px 22px;border-radius:12px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:.2s;border:none}
@@ -224,6 +231,11 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh}
   .progress-overview{grid-template-columns:1fr 1fr}
 }
 </style>
+<!-- KaTeX untuk rumus matematika -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
 </head>
 <body>
 <!-- LOADING SCREEN -->
@@ -267,6 +279,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh}
       <div class="gpkt-item"><div class="pr">550K</div><div class="dr">9 bulan</div></div>
       <div class="gpkt-item"><div class="pr">850K</div><div class="dr">12 bulan</div></div>
     </div>
+    <div style="font-size:11px;color:#c4b8d4;margin-bottom:12px">Kode berlaku sesuai paket yang dipilih</div>
     <div class="gfoot">Belum punya kode? <a href="https://wa.me/6281770458148?text=Halo%20Jwoobim%2C%20saya%20mau%20daftar%20bimbel%20PAPS%20UGM" target="_blank">Daftar via WA ›</a></div>
   </div>
 </div>
@@ -276,8 +289,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh}
   <div class="topbar">
     <div class="tb-logo">Jwoo<span>Bim</span></div>
     <div class="tb-right">
-      <div class="tb-chip" id="tb-kode">Kode: -</div>
-      <div class="tb-exp" id="tb-exp">Aktif</div>
+      <div class="tb-exp" id="tb-exp">✅ Aktif</div>
       <button class="tb-out" onclick="keluar()">Keluar</button>
     </div>
   </div>
@@ -287,7 +299,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh}
 
 
 <!-- ==================== HOME ==================== -->
-<div class="screen active" id="screen-home">
+<div class="screen active" id="screen-home" style="padding:16px;max-width:800px;margin:0 auto;width:100%">
   <div style="max-width:700px;margin:0 auto;padding:16px">
     <div class="hero">
       <div class="hero-badge">🏛️ Jwoobim × UGM</div>
@@ -311,7 +323,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh}
       </div>
     </div>
 
-    <div class="sesi-grid" id="sesi-grid"></div>
+    <div class="sesi-grid" id="sesi-grid" style="max-width:700px;margin:0 auto"></div>
 
     <div style="background:var(--white);border-radius:16px;padding:18px;border:2px solid var(--lav-l);margin-bottom:16px">
       <div style="font-weight:900;color:var(--dark);margin-bottom:10px">💡 Struktur Program</div>
@@ -469,11 +481,11 @@ const soalKuantitatif = [
   {tipe:'Deret Angka',soal:'Pada barisan 5, 11, 23, 47, 95, … suku ke-8 adalah …',p:['191','383','767','379','381'],j:2,
    pem:'Pola: setiap suku = suku sebelumnya × 2 + 1. Cek: 11=5×2+1 ✓, 23=11×2+1 ✓, 47=23×2+1 ✓.||u6=95×2+1=191. u7=191×2+1=383. u8=383×2+1=767.||Jawaban: C. 767'},
   {tipe:'Deret Angka',soal:'Suatu barisan aritmatika memiliki suku ke-5 = 23 dan suku ke-12 = 51. Jumlah 20 suku pertama adalah …',p:['860','880','900','920','940'],j:2,
-   pem:'Dari u5=a+4d=23 dan u12=a+11d=51, selisih: 7d=28 → d=4.||Dari u5: a=23-16=7. Cek u12: 7+11(4)=51 ✓.||S20 = (20/2)(2×7+(20-1)×4) = 10(14+76) = 10×90 = 900.||Jawaban: C. 900'},
+   pem:'Dari u₅=a+4d=23 dan u₁₂=a+11d=51 → kurangkan: 7d=28 → **d=4**||Substitusi d=4 ke u₅: a+4(4)=23 → a+16=23 → **a=7** ✓||S₂₀ = (20/2)(2×7+(20-1)×4) = 10(14+76) = 10×90 = **900**||**Jawaban: C. 900**'},
   {tipe:'Aritmatika',soal:'Sebuah pekerjaan diselesaikan A dalam 12 hari, B dalam 18 hari, C dalam 24 hari. Setelah 3 hari bekerja bersama, C berhenti. Berapa hari lagi A dan B menyelesaikan sisa pekerjaan?',p:['2 hari','2,5 hari','3 hari','3,5 hari','4 hari'],j:2,
    pem:'Kapasitas: A=1/12, B=1/18, C=1/24 per hari. Bersama: 1/12+1/18+1/24 = 6/72+4/72+3/72 = 13/72/hari.||Setelah 3 hari: pekerjaan selesai = 3×13/72 = 39/72. Sisa = 1-39/72 = 33/72 = 11/24.||A+B per hari = 1/12+1/18 = 3/36+2/36 = 5/36. Waktu = (11/24)÷(5/36) = (11/24)×(36/5) = 396/120 = 3,3 hari ≈ 3 hari lebih. Jawaban paling dekat: C.||Jawaban: C. 3 hari'},
   {tipe:'Aritmatika',soal:'Pak Rudi menginvestasikan Rp12.000.000 dengan bunga majemuk 10% per tahun. Nilai investasi setelah 3 tahun adalah …',p:['Rp 14.520.000','Rp 15.000.000','Rp 15.972.000','Rp 16.500.000','Rp 17.280.000'],j:2,
-   pem:'Rumus bunga majemuk: A = P(1+r)ⁿ. P=12.000.000, r=0,1, n=3.||Hitung: (1,1)³ = 1,1×1,1×1,1 = 1,21×1,1 = 1,331.||A = 12.000.000 × 1,331 = 15.972.000.||Jawaban: C. Rp 15.972.000'},
+   pem:'Rumus bunga majemuk: **A = P(1+r)ⁿ** → P=12.000.000, r=0,1, n=3||Hitung (1,1)³: 1,1×1,1=1,21 → 1,21×1,1=**1,331**||A = 12.000.000 × 1,331 = **Rp 15.972.000**||**Jawaban: C. Rp 15.972.000**'},
   {tipe:'Aritmatika',soal:'Toko A: diskon 25% lalu 20%. Toko B: diskon 40%. Jika harga awal sama, perbandingan harga akhir di kedua toko adalah …',p:['Toko A lebih murah','Harga sama','Toko B lebih murah 2%','Toko B lebih murah 5%','Toko A lebih murah 5%'],j:1,
    pem:'Toko A: harga akhir = H × (1-0,25) × (1-0,20) = H × 0,75 × 0,80 = 0,60H.||Toko B: harga akhir = H × (1-0,40) = 0,60H.||Kedua toko memberikan harga akhir yang persis SAMA = 60% dari harga awal.||Jawaban: B. Harga sama'},
   {tipe:'Aritmatika',soal:'Harga naik 20%, turun 15%, naik lagi 10%. Perubahan total dari harga awal adalah …',p:['Naik 11,4%','Naik 12,2%','Naik 14,2%','Naik 15%','Turun 5%'],j:1,
@@ -481,15 +493,15 @@ const soalKuantitatif = [
   {tipe:'Aritmatika',soal:'Rata-rata nilai 40 siswa adalah 72. Jika 10 siswa dengan nilai rata-rata 60 dikeluarkan, rata-rata sisanya adalah …',p:['75','76','77','78','79'],j:1,
    pem:'Total nilai 40 siswa = 40 × 72 = 2.880.||Total nilai 10 siswa dikeluarkan = 10 × 60 = 600.||Total 30 siswa tersisa = 2.880-600 = 2.280. Rata-rata = 2.280÷30 = 76.||Jawaban: B. 76'},
   {tipe:'Aritmatika',soal:'Campuran 20 liter berisi 30% alkohol. Berapa liter air murni harus ditambahkan agar konsentrasi alkohol menjadi 20%?',p:['5 liter','8 liter','10 liter','12 liter','15 liter'],j:2,
-   pem:'Alkohol awal = 30% × 20 = 6 liter (tetap, yang ditambah air murni).||Persamaan: 6/(20+x) = 0,20.||6 = 0,20(20+x) → 6 = 4+0,2x → x = 10 liter.||Jawaban: C. 10 liter'},
+   pem:'Alkohol awal = 30% × 20 = **6 liter** (tetap, hanya air yang ditambah)||Buat persamaan: 6/(20+x) = 0,20||Selesaikan: 6 = 0,20(20+x) → 6=4+0,2x → 0,2x=2 → **x=10 liter**||**Jawaban: C. 10 liter**'},
   {tipe:'Logika Matematika',soal:'Jika x² - 5x + 6 = 0, maka nilai x³ - 6x² + 11x - 6 = …',p:['0','1','2','3','6'],j:0,
-   pem:'Faktorkan: x²-5x+6 = (x-2)(x-3) = 0 → x=2 atau x=3.||Faktorkan ekspresi target: x³-6x²+11x-6 = (x-1)(x-2)(x-3).||Jika x=2: (1)(0)(-1) = 0. Jika x=3: (2)(1)(0) = 0. Keduanya menghasilkan 0.||Jawaban: A. 0'},
+   pem:'Faktorkan: x²-5x+6 = (x-2)(x-3)=0 → **x=2** atau **x=3**||Faktorkan target: x³-6x²+11x-6 = **(x-1)(x-2)(x-3)**||Substitusi x=2: (1)(0)(−1)=**0** ✓ Substitusi x=3: (2)(1)(0)=**0** ✓||**Jawaban: A. 0** — selalu nol untuk semua nilai x yang memenuhi'},
   {tipe:'Logika Matematika',soal:'Diketahui p dan q bilangan real positif dengan p+q=1. Pernyataan yang PASTI benar adalah …',p:['p²+q² ≥ 1/2','pq ≥ 1/4','p²+q² ≤ 1/2','p²+q² = 1/2','pq = 1/4'],j:0,
    pem:'Dari (p+q)²=1: p²+2pq+q²=1 → p²+q²=1-2pq.||Karena p,q>0 dan p+q=1: dengan AM-GM, pq ≤ (p+q)²/4 = 1/4. Jadi 2pq ≤ 1/2.||Maka p²+q² = 1-2pq ≥ 1-1/2 = 1/2. Pernyataan p²+q² ≥ 1/2 SELALU BENAR.||Jawaban: A. p²+q² ≥ 1/2'},
   {tipe:'Aritmatika',soal:'Dalam ujian: benar +4, salah -1, tidak dijawab 0. Andi menjawab 50 dari 60 soal dan mendapat nilai 122. Berapa soal yang benar?',p:['28','30','32','34','36'],j:3,
    pem:'Misalkan benar=b, salah=s. Persamaan: b+s=50 dan 4b-s=122.||Tambahkan: 5b=172 → b=34,4? Tidak bulat. Coba: b+s=50, 4b-s=122 → tambahkan: 5b=172 → hmm. Cek b=34: 4(34)-s=122 → 136-s=122 → s=14. b+s=34+14=48≠50. Cek b=32: 4(32)-s=122 → 128-s=122 → s=6. b+s=38≠50. Jika 50 dijawab semua: b+s=50, 4b-s=122 → 5b=172 → b=34,4. Ambil b=34 (jawaban D).||Jawaban: D. 34'},
   {tipe:'Logika Matematika',soal:'Diketahui log₁₀ 2 = a dan log₁₀ 3 = b. Nilai log₁₀ 72 = …',p:['2a+b','a+2b','3a+b','2a+2b','3a+2b'],j:4,
-   pem:'Faktorkan 72 = 2³ × 3² = 8 × 9.||log₁₀ 72 = log₁₀(2³ × 3²) = 3·log₁₀2 + 2·log₁₀3 = 3a + 2b.||Verifikasi: 3(0,301)+2(0,477) = 0,903+0,954 = 1,857. log₁₀72 ≈ 1,857 ✓.||Jawaban: E. 3a + 2b'},
+   pem:'Faktorkan 72: **72 = 2³ × 3²**||Gunakan sifat log: log(2³×3²) = 3·log2 + 2·log3 = **3a + 2b**||Verifikasi: 3(0,301)+2(0,477) = 0,903+0,954 = 1,857 ≈ log₁₀72 ✓||**Jawaban: E. 3a + 2b**'},
   {tipe:'Aritmatika',soal:'Rasio siswa L:P = 3:5. Jika 6L dan 2P pindah, rasio menjadi 3:7. Total siswa awal adalah …',p:['32','40','48','56','64'],j:2,
    pem:'Misalkan L=3k, P=5k. Setelah pindah: (3k-6):(5k-2) = 3:7.||Cross multiply: 7(3k-6) = 3(5k-2) → 21k-42 = 15k-6 → 6k=36 → k=6.||Total awal = 3(6)+5(6) = 18+30 = 48. Verifikasi: (18-6):(30-2)=12:28=3:7 ✓.||Jawaban: C. 48'},
   {tipe:'Aritmatika',soal:'Sebuah kereta dari A (06.00, 80 km/j) dan kereta lain dari B berlawanan arah (06.30, 100 km/j). Jarak A-B = 540 km. Pukul berapa berpapasan?',p:['08.30','09.00','09.30','10.00','10.30'],j:2,
@@ -505,7 +517,7 @@ const soalKuantitatif = [
   {tipe:'Aritmatika',soal:'Sebuah kolam renang dapat diisi oleh pipa A dalam 6 jam dan dikosongkan oleh pipa B dalam 8 jam. Jika keduanya dibuka bersamaan saat kolam kosong, berapa jam kolam penuh?',p:['12 jam','18 jam','20 jam','24 jam','36 jam'],j:3,
    pem:'Laju pengisian bersih = laju A - laju B = 1/6 - 1/8 = 4/24 - 3/24 = 1/24 per jam.||Pipa A mengisi, pipa B menguras. Laju bersih = 1/24 kolam per jam.||Waktu kolam penuh = 1 ÷ (1/24) = 24 jam.||Jawaban: D. 24 jam'},
   {tipe:'Logika Matematika',soal:'Jika 3^(x+1) = 9^(x-1), maka nilai x = …',p:['1','2','3','4','5'],j:2,
-   pem:'Ubah 9 = 3². Maka: 3^(x+1) = (3²)^(x-1) = 3^(2x-2).||Karena basisnya sama: x+1 = 2x-2.||Selesaikan: 1+2 = 2x-x → x = 3.||Jawaban: C. 3'},
+   pem:'Ubah 9=3², maka: 3^(x+1) = (3²)^(x-1) = **3^(2x-2)**||Basis sama → pangkat sama: x+1 = 2x-2||Selesaikan: x+1=2x-2 → **x=3**||**Jawaban: C. 3**'},
 ];
 
 
@@ -596,20 +608,48 @@ function saveProgress() {
 // ============================================================
 function renderPembahasan(pem) {
   const steps = pem.split('||').map(s => s.trim()).filter(s => s);
-  const icons = ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣'];
+  const nums = ['1','2','3','4','5'];
   let html = '';
   steps.forEach((step, i) => {
     const isLast = i === steps.length - 1;
     if(isLast) {
-      html += `<div class="pem-kesimpulan">🎯 ${step}</div>`;
+      html += `<div class="pem-kesimpulan">🎯 <span>${step}</span></div>`;
     } else {
+      // Format rumus matematika: teks yang mengandung = → + → × → dibuat lebih terlihat
+      let formatted = step
+        .replace(/→/g, '<span style="color:var(--lav-m);font-weight:900">→</span>')
+        .replace(/✓/g, '<span style="color:var(--correct);font-weight:900">✓</span>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      
+      // Deteksi baris yang murni rumus (mengandung = dan angka/variabel)
+      // Split per kalimat dan cek rumus
+      const lines = formatted.split('. ');
+      let formattedLines = lines.map(line => {
+        // Kalau pendek dan mengandung =, kemungkinan rumus
+        if(line.length < 60 && /[a-z0-9]\s*[=+×÷\-]\s*[a-z0-9]/i.test(line) && !/[A-Z]{3,}/.test(line)) {
+          return `<span class="math-line">${line}</span>`;
+        }
+        return line;
+      });
+      formatted = formattedLines.join('. ');
+      
       html += `<div class="pem-step">
-        <div class="pem-step-num">${icons[i]||'▶'}</div>
-        <div class="pem-step-text">${step}</div>
+        <div class="pem-step-num">${nums[i]||i+1}</div>
+        <div class="pem-step-text">${formatted}</div>
       </div>`;
     }
   });
   return html;
+}
+
+// Re-render KaTeX setelah pembahasan tampil
+function triggerKaTeX() {
+  if(window.renderMathInElement) {
+    setTimeout(() => renderMathInElement(document.body, {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError: false
+    }), 100);
+  }
 }
 
 
@@ -795,7 +835,7 @@ function jawabLatihan(pilihanIdx) {
     if(j === soal.j) { btn.classList.add('correct'); btn.querySelector('.p-huruf').textContent='✓'; }
     if(j === pilihanIdx && j !== soal.j) { btn.classList.add('wrong'); btn.querySelector('.p-huruf').textContent='✗'; }
   });
-  document.getElementById('pem-box').classList.add('show');
+  document.getElementById('pem-box').classList.add('show'); triggerKaTeX();
   document.getElementById('lat-next-btn').disabled = false;
 }
 
@@ -1212,11 +1252,11 @@ const soalKuantitatif = [
   {tipe:'Deret Angka',soal:'Pada barisan 5, 11, 23, 47, 95, … suku ke-8 adalah …',p:['191','383','767','379','381'],j:2,
    pem:'Pola: setiap suku = suku sebelumnya × 2 + 1. Cek: 11=5×2+1 ✓, 23=11×2+1 ✓, 47=23×2+1 ✓.||u6=95×2+1=191. u7=191×2+1=383. u8=383×2+1=767.||Jawaban: C. 767'},
   {tipe:'Deret Angka',soal:'Suatu barisan aritmatika memiliki suku ke-5 = 23 dan suku ke-12 = 51. Jumlah 20 suku pertama adalah …',p:['860','880','900','920','940'],j:2,
-   pem:'Dari u5=a+4d=23 dan u12=a+11d=51, selisih: 7d=28 → d=4.||Dari u5: a=23-16=7. Cek u12: 7+11(4)=51 ✓.||S20 = (20/2)(2×7+(20-1)×4) = 10(14+76) = 10×90 = 900.||Jawaban: C. 900'},
+   pem:'Dari u₅=a+4d=23 dan u₁₂=a+11d=51 → kurangkan: 7d=28 → **d=4**||Substitusi d=4 ke u₅: a+4(4)=23 → a+16=23 → **a=7** ✓||S₂₀ = (20/2)(2×7+(20-1)×4) = 10(14+76) = 10×90 = **900**||**Jawaban: C. 900**'},
   {tipe:'Aritmatika',soal:'Sebuah pekerjaan diselesaikan A dalam 12 hari, B dalam 18 hari, C dalam 24 hari. Setelah 3 hari bekerja bersama, C berhenti. Berapa hari lagi A dan B menyelesaikan sisa pekerjaan?',p:['2 hari','2,5 hari','3 hari','3,5 hari','4 hari'],j:2,
    pem:'Kapasitas: A=1/12, B=1/18, C=1/24 per hari. Bersama: 1/12+1/18+1/24 = 6/72+4/72+3/72 = 13/72/hari.||Setelah 3 hari: pekerjaan selesai = 3×13/72 = 39/72. Sisa = 1-39/72 = 33/72 = 11/24.||A+B per hari = 1/12+1/18 = 3/36+2/36 = 5/36. Waktu = (11/24)÷(5/36) = (11/24)×(36/5) = 396/120 = 3,3 hari ≈ 3 hari lebih. Jawaban paling dekat: C.||Jawaban: C. 3 hari'},
   {tipe:'Aritmatika',soal:'Pak Rudi menginvestasikan Rp12.000.000 dengan bunga majemuk 10% per tahun. Nilai investasi setelah 3 tahun adalah …',p:['Rp 14.520.000','Rp 15.000.000','Rp 15.972.000','Rp 16.500.000','Rp 17.280.000'],j:2,
-   pem:'Rumus bunga majemuk: A = P(1+r)ⁿ. P=12.000.000, r=0,1, n=3.||Hitung: (1,1)³ = 1,1×1,1×1,1 = 1,21×1,1 = 1,331.||A = 12.000.000 × 1,331 = 15.972.000.||Jawaban: C. Rp 15.972.000'},
+   pem:'Rumus bunga majemuk: **A = P(1+r)ⁿ** → P=12.000.000, r=0,1, n=3||Hitung (1,1)³: 1,1×1,1=1,21 → 1,21×1,1=**1,331**||A = 12.000.000 × 1,331 = **Rp 15.972.000**||**Jawaban: C. Rp 15.972.000**'},
   {tipe:'Aritmatika',soal:'Toko A: diskon 25% lalu 20%. Toko B: diskon 40%. Jika harga awal sama, perbandingan harga akhir di kedua toko adalah …',p:['Toko A lebih murah','Harga sama','Toko B lebih murah 2%','Toko B lebih murah 5%','Toko A lebih murah 5%'],j:1,
    pem:'Toko A: harga akhir = H × (1-0,25) × (1-0,20) = H × 0,75 × 0,80 = 0,60H.||Toko B: harga akhir = H × (1-0,40) = 0,60H.||Kedua toko memberikan harga akhir yang persis SAMA = 60% dari harga awal.||Jawaban: B. Harga sama'},
   {tipe:'Aritmatika',soal:'Harga naik 20%, turun 15%, naik lagi 10%. Perubahan total dari harga awal adalah …',p:['Naik 11,4%','Naik 12,2%','Naik 14,2%','Naik 15%','Turun 5%'],j:1,
@@ -1224,15 +1264,15 @@ const soalKuantitatif = [
   {tipe:'Aritmatika',soal:'Rata-rata nilai 40 siswa adalah 72. Jika 10 siswa dengan nilai rata-rata 60 dikeluarkan, rata-rata sisanya adalah …',p:['75','76','77','78','79'],j:1,
    pem:'Total nilai 40 siswa = 40 × 72 = 2.880.||Total nilai 10 siswa dikeluarkan = 10 × 60 = 600.||Total 30 siswa tersisa = 2.880-600 = 2.280. Rata-rata = 2.280÷30 = 76.||Jawaban: B. 76'},
   {tipe:'Aritmatika',soal:'Campuran 20 liter berisi 30% alkohol. Berapa liter air murni harus ditambahkan agar konsentrasi alkohol menjadi 20%?',p:['5 liter','8 liter','10 liter','12 liter','15 liter'],j:2,
-   pem:'Alkohol awal = 30% × 20 = 6 liter (tetap, yang ditambah air murni).||Persamaan: 6/(20+x) = 0,20.||6 = 0,20(20+x) → 6 = 4+0,2x → x = 10 liter.||Jawaban: C. 10 liter'},
+   pem:'Alkohol awal = 30% × 20 = **6 liter** (tetap, hanya air yang ditambah)||Buat persamaan: 6/(20+x) = 0,20||Selesaikan: 6 = 0,20(20+x) → 6=4+0,2x → 0,2x=2 → **x=10 liter**||**Jawaban: C. 10 liter**'},
   {tipe:'Logika Matematika',soal:'Jika x² - 5x + 6 = 0, maka nilai x³ - 6x² + 11x - 6 = …',p:['0','1','2','3','6'],j:0,
-   pem:'Faktorkan: x²-5x+6 = (x-2)(x-3) = 0 → x=2 atau x=3.||Faktorkan ekspresi target: x³-6x²+11x-6 = (x-1)(x-2)(x-3).||Jika x=2: (1)(0)(-1) = 0. Jika x=3: (2)(1)(0) = 0. Keduanya menghasilkan 0.||Jawaban: A. 0'},
+   pem:'Faktorkan: x²-5x+6 = (x-2)(x-3)=0 → **x=2** atau **x=3**||Faktorkan target: x³-6x²+11x-6 = **(x-1)(x-2)(x-3)**||Substitusi x=2: (1)(0)(−1)=**0** ✓ Substitusi x=3: (2)(1)(0)=**0** ✓||**Jawaban: A. 0** — selalu nol untuk semua nilai x yang memenuhi'},
   {tipe:'Logika Matematika',soal:'Diketahui p dan q bilangan real positif dengan p+q=1. Pernyataan yang PASTI benar adalah …',p:['p²+q² ≥ 1/2','pq ≥ 1/4','p²+q² ≤ 1/2','p²+q² = 1/2','pq = 1/4'],j:0,
    pem:'Dari (p+q)²=1: p²+2pq+q²=1 → p²+q²=1-2pq.||Karena p,q>0 dan p+q=1: dengan AM-GM, pq ≤ (p+q)²/4 = 1/4. Jadi 2pq ≤ 1/2.||Maka p²+q² = 1-2pq ≥ 1-1/2 = 1/2. Pernyataan p²+q² ≥ 1/2 SELALU BENAR.||Jawaban: A. p²+q² ≥ 1/2'},
   {tipe:'Aritmatika',soal:'Dalam ujian: benar +4, salah -1, tidak dijawab 0. Andi menjawab 50 dari 60 soal dan mendapat nilai 122. Berapa soal yang benar?',p:['28','30','32','34','36'],j:3,
    pem:'Misalkan benar=b, salah=s. Persamaan: b+s=50 dan 4b-s=122.||Tambahkan: 5b=172 → b=34,4? Tidak bulat. Coba: b+s=50, 4b-s=122 → tambahkan: 5b=172 → hmm. Cek b=34: 4(34)-s=122 → 136-s=122 → s=14. b+s=34+14=48≠50. Cek b=32: 4(32)-s=122 → 128-s=122 → s=6. b+s=38≠50. Jika 50 dijawab semua: b+s=50, 4b-s=122 → 5b=172 → b=34,4. Ambil b=34 (jawaban D).||Jawaban: D. 34'},
   {tipe:'Logika Matematika',soal:'Diketahui log₁₀ 2 = a dan log₁₀ 3 = b. Nilai log₁₀ 72 = …',p:['2a+b','a+2b','3a+b','2a+2b','3a+2b'],j:4,
-   pem:'Faktorkan 72 = 2³ × 3² = 8 × 9.||log₁₀ 72 = log₁₀(2³ × 3²) = 3·log₁₀2 + 2·log₁₀3 = 3a + 2b.||Verifikasi: 3(0,301)+2(0,477) = 0,903+0,954 = 1,857. log₁₀72 ≈ 1,857 ✓.||Jawaban: E. 3a + 2b'},
+   pem:'Faktorkan 72: **72 = 2³ × 3²**||Gunakan sifat log: log(2³×3²) = 3·log2 + 2·log3 = **3a + 2b**||Verifikasi: 3(0,301)+2(0,477) = 0,903+0,954 = 1,857 ≈ log₁₀72 ✓||**Jawaban: E. 3a + 2b**'},
   {tipe:'Aritmatika',soal:'Rasio siswa L:P = 3:5. Jika 6L dan 2P pindah, rasio menjadi 3:7. Total siswa awal adalah …',p:['32','40','48','56','64'],j:2,
    pem:'Misalkan L=3k, P=5k. Setelah pindah: (3k-6):(5k-2) = 3:7.||Cross multiply: 7(3k-6) = 3(5k-2) → 21k-42 = 15k-6 → 6k=36 → k=6.||Total awal = 3(6)+5(6) = 18+30 = 48. Verifikasi: (18-6):(30-2)=12:28=3:7 ✓.||Jawaban: C. 48'},
   {tipe:'Aritmatika',soal:'Sebuah kereta dari A (06.00, 80 km/j) dan kereta lain dari B berlawanan arah (06.30, 100 km/j). Jarak A-B = 540 km. Pukul berapa berpapasan?',p:['08.30','09.00','09.30','10.00','10.30'],j:2,
@@ -1248,7 +1288,7 @@ const soalKuantitatif = [
   {tipe:'Aritmatika',soal:'Sebuah kolam renang dapat diisi oleh pipa A dalam 6 jam dan dikosongkan oleh pipa B dalam 8 jam. Jika keduanya dibuka bersamaan saat kolam kosong, berapa jam kolam penuh?',p:['12 jam','18 jam','20 jam','24 jam','36 jam'],j:3,
    pem:'Laju pengisian bersih = laju A - laju B = 1/6 - 1/8 = 4/24 - 3/24 = 1/24 per jam.||Pipa A mengisi, pipa B menguras. Laju bersih = 1/24 kolam per jam.||Waktu kolam penuh = 1 ÷ (1/24) = 24 jam.||Jawaban: D. 24 jam'},
   {tipe:'Logika Matematika',soal:'Jika 3^(x+1) = 9^(x-1), maka nilai x = …',p:['1','2','3','4','5'],j:2,
-   pem:'Ubah 9 = 3². Maka: 3^(x+1) = (3²)^(x-1) = 3^(2x-2).||Karena basisnya sama: x+1 = 2x-2.||Selesaikan: 1+2 = 2x-x → x = 3.||Jawaban: C. 3'},
+   pem:'Ubah 9=3², maka: 3^(x+1) = (3²)^(x-1) = **3^(2x-2)**||Basis sama → pangkat sama: x+1 = 2x-2||Selesaikan: x+1=2x-2 → **x=3**||**Jawaban: C. 3**'},
 ];
 
 
@@ -1339,20 +1379,48 @@ function saveProgress() {
 // ============================================================
 function renderPembahasan(pem) {
   const steps = pem.split('||').map(s => s.trim()).filter(s => s);
-  const icons = ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣'];
+  const nums = ['1','2','3','4','5'];
   let html = '';
   steps.forEach((step, i) => {
     const isLast = i === steps.length - 1;
     if(isLast) {
-      html += `<div class="pem-kesimpulan">🎯 ${step}</div>`;
+      html += `<div class="pem-kesimpulan">🎯 <span>${step}</span></div>`;
     } else {
+      // Format rumus matematika: teks yang mengandung = → + → × → dibuat lebih terlihat
+      let formatted = step
+        .replace(/→/g, '<span style="color:var(--lav-m);font-weight:900">→</span>')
+        .replace(/✓/g, '<span style="color:var(--correct);font-weight:900">✓</span>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      
+      // Deteksi baris yang murni rumus (mengandung = dan angka/variabel)
+      // Split per kalimat dan cek rumus
+      const lines = formatted.split('. ');
+      let formattedLines = lines.map(line => {
+        // Kalau pendek dan mengandung =, kemungkinan rumus
+        if(line.length < 60 && /[a-z0-9]\s*[=+×÷\-]\s*[a-z0-9]/i.test(line) && !/[A-Z]{3,}/.test(line)) {
+          return `<span class="math-line">${line}</span>`;
+        }
+        return line;
+      });
+      formatted = formattedLines.join('. ');
+      
       html += `<div class="pem-step">
-        <div class="pem-step-num">${icons[i]||'▶'}</div>
-        <div class="pem-step-text">${step}</div>
+        <div class="pem-step-num">${nums[i]||i+1}</div>
+        <div class="pem-step-text">${formatted}</div>
       </div>`;
     }
   });
   return html;
+}
+
+// Re-render KaTeX setelah pembahasan tampil
+function triggerKaTeX() {
+  if(window.renderMathInElement) {
+    setTimeout(() => renderMathInElement(document.body, {
+      delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+      throwOnError: false
+    }), 100);
+  }
 }
 
 
@@ -1538,7 +1606,7 @@ function jawabLatihan(pilihanIdx) {
     if(j === soal.j) { btn.classList.add('correct'); btn.querySelector('.p-huruf').textContent='✓'; }
     if(j === pilihanIdx && j !== soal.j) { btn.classList.add('wrong'); btn.querySelector('.p-huruf').textContent='✗'; }
   });
-  document.getElementById('pem-box').classList.add('show');
+  document.getElementById('pem-box').classList.add('show'); triggerKaTeX();
   document.getElementById('lat-next-btn').disabled = false;
 }
 

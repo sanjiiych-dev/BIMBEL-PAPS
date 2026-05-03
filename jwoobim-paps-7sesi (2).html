@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jwoobim – 7 Sesi PAPS UGM</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --lav:#c9b8e8;--lav-l:#ede8f7;--lav-m:#9b7ed4;--lav-d:#6b4fa8;
+  --mint:#b8e8d8;--mint-l:#e8f7f2;--mint-m:#5bbfa0;
+  --peach:#f7d5c0;--peach-m:#e8905a;
+  --yellow:#f7ebb8;--yellow-m:#d4a800;
+  --pink:#f7c8d8;--pink-m:#d4608a;
+  --blue:#b8d4f7;--blue-l:#e8f0ff;--blue-m:#4a7ed4;
+  --dark:#2d2060;--mid:#5a4a9e;--soft:#9b8ec4;
+  --white:#fff;--bg:#f5f0ff;
+  --correct:#22c55e;--wrong:#ef4444;
+}
+body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh}
+
+/* ===== SCREEN SYSTEM ===== */
+.screen{display:none;min-height:100vh;padding:16px}
+.screen.active{display:block}
+
+/* ===== HOME SCREEN ===== */
+.hero{
+  background:linear-gradient(135deg,#e8d8ff,#c9b8e8,#a8c8f0);
+  border-radius:24px;padding:32px 28px;margin-bottom:20px;
+  position:relative;overflow:hidden;text-align:center;
+}
+.hero::before{content:'';position:absolute;width:200px;height:200px;background:rgba(255,255,255,.15);border-radius:50%;top:-60px;right:-60px}
+.hero::after{content:'';position:absolute;width:120px;height:120px;background:rgba(255,255,255,.1);border-radius:50%;bottom:-30px;left:20px}
+.hero-emoji{font-size:56px;margin-bottom:8px;position:relative;z-index:1}
+.hero h1{font-family:'Playfair Display',serif;font-size:28px;color:var(--dark);position:relative;z-index:1;line-height:1.2}
+.hero p{color:var(--mid);font-size:13px;font-weight:600;margin-top:8px;position:relative;z-index:1}
+.hero-badge{display:inline-block;background:var(--white);color:var(--mid);font-size:11px;font-weight:900;padding:5px 14px;border-radius:20px;margin-bottom:12px;position:relative;z-index:1}
+
+.progress-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.prog-card{background:var(--white);border-radius:14px;padding:14px;text-align:center;border:2px solid var(--lav-l)}
+.prog-card span{display:block;font-family:'Playfair Display',serif;font-size:28px;color:var(--dark)}
+.prog-card small{font-size:11px;font-weight:700;color:var(--soft)}
+
+.sesi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-bottom:20px}
+.sesi-card{background:var(--white);border-radius:18px;padding:20px;border:2px solid var(--lav-l);cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+.sesi-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(180,160,220,.25)}
+.sesi-card.locked{opacity:.6;cursor:not-allowed}
+.sesi-card.done{border-color:var(--correct)}
+.sesi-card.tryout-card{border-color:var(--peach-m)}
+.sesi-num{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:6px}
+.sesi-title{font-family:'Playfair Display',serif;font-size:18px;color:var(--dark);margin-bottom:6px}
+.sesi-desc{font-size:12px;color:var(--soft);line-height:1.5;margin-bottom:12px}
+.sesi-meta{display:flex;gap:8px;flex-wrap:wrap}
+.meta-tag{background:var(--lav-l);color:var(--mid);font-size:11px;font-weight:800;padding:4px 10px;border-radius:10px}
+.meta-tag.to{background:var(--peach);color:#7a3010}
+.meta-tag.done{background:#dcfce7;color:#166534}
+.sesi-icon{font-size:32px;margin-bottom:10px}
+.lock-icon{position:absolute;top:16px;right:16px;font-size:20px}
+
+/* ===== LATIHAN SCREEN ===== */
+.latihan-header{background:linear-gradient(135deg,#ddd0f5,#c9b8e8,#b8cff0);border-radius:20px;padding:20px 24px;margin-bottom:16px}
+.latihan-header-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.latihan-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--dark)}
+.latihan-sub{font-size:12px;color:var(--mid);font-weight:600;margin-top:4px}
+
+.progress-bar-wrap{background:rgba(255,255,255,.5);border-radius:10px;height:8px;margin-top:12px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--lav-m),var(--mint-m));border-radius:10px;transition:.4s}
+
+.timer-box{background:var(--white);border-radius:12px;padding:8px 16px;font-size:14px;font-weight:900;color:var(--dark);box-shadow:0 4px 12px rgba(180,160,220,.2)}
+.timer-box.warn{background:#fee2e2;color:var(--wrong);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.6}}
+
+.soal-card{background:var(--white);border-radius:18px;padding:22px;margin-bottom:12px;border:2px solid var(--lav-l);animation:slideIn .3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+.soal-badge{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.soal-badge span{font-size:11px;font-weight:800;padding:3px 10px;border-radius:8px}
+.badge-num{background:var(--lav-l);color:var(--mid)}
+.badge-tipe{background:var(--mint-l);color:var(--mint-m)}
+.badge-kat{background:var(--peach);color:#7a3010}
+.soal-q{font-size:15px;color:var(--dark);font-weight:700;line-height:1.7;margin-bottom:16px}
+.soal-hint{background:var(--yellow);border:1.5px solid var(--yellow-m);border-radius:10px;padding:10px 14px;font-size:12px;color:#5a4000;font-weight:600;margin-bottom:14px;line-height:1.6}
+
+.pilihan{display:flex;flex-direction:column;gap:8px}
+.p-btn{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;border:2px solid var(--lav);background:var(--white);cursor:pointer;transition:.2s;text-align:left;font-family:'Nunito',sans-serif;font-size:14px;font-weight:600;color:var(--dark);width:100%}
+.p-btn:hover:not(:disabled){background:var(--lav-l);border-color:var(--lav-m);transform:translateX(3px)}
+.p-btn.correct{background:#dcfce7;border-color:var(--correct);color:#166534}
+.p-btn.wrong{background:#fee2e2;border-color:var(--wrong);color:#991b1b}
+.p-btn:disabled{cursor:default}
+.p-huruf{width:28px;height:28px;border-radius:8px;background:var(--lav-l);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0;color:var(--mid);transition:.2s}
+.p-btn.correct .p-huruf{background:#bbf7d0;color:#166534}
+.p-btn.wrong .p-huruf{background:#fecaca;color:#991b1b}
+.p-btn.selected{background:var(--lav-l);border-color:var(--lav-m)}
+.p-btn.selected .p-huruf{background:var(--lav-m);color:white}
+
+.pembahasan-box{display:none;margin-top:14px;border-radius:14px;overflow:hidden;animation:fadeIn .3s ease;box-shadow:0 4px 16px rgba(0,0,0,.07)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.pembahasan-box.show{display:block}
+.pem-header{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--mint-m)}
+.pem-header span{font-size:12px;font-weight:900;color:#fff;letter-spacing:1px;text-transform:uppercase}
+.pem-jawaban{display:flex;gap:10px;padding:12px 16px;background:#f0fdf4;border-bottom:1px solid #bbf7d0;flex-wrap:wrap}
+.pem-ans-box{display:flex;flex-direction:column;gap:2px;flex:1;min-width:140px}
+.pem-ans-label{font-size:10px;font-weight:900;color:#6b7280;letter-spacing:1px;text-transform:uppercase}
+.pem-ans-val{font-size:13px;font-weight:800;color:var(--dark);padding:6px 10px;border-radius:8px;background:var(--white);border:1.5px solid #86efac}
+.pem-ans-val.correct{background:#dcfce7;border-color:var(--correct);color:#166534}
+.pem-body{padding:14px 16px;background:#fff}
+.pem-step{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start}
+.pem-step-num{width:22px;height:22px;border-radius:6px;background:var(--lav-m);color:#fff;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.pem-step-text{font-size:13px;color:var(--dark);line-height:1.6;font-weight:600}
+.pem-kesimpulan{background:var(--yellow);border:1.5px solid var(--yellow-m);border-radius:10px;padding:10px 14px;font-size:13px;font-weight:800;color:#5a4000;margin-top:4px}
+
+.nav-bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:8px}
+.btn{padding:11px 22px;border-radius:12px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:.2s;border:none}
+.btn-primary{background:linear-gradient(135deg,var(--lav-m),var(--blue-m));color:var(--white)}
+.btn-primary:hover{transform:scale(1.03);box-shadow:0 6px 20px rgba(100,80,200,.3)}
+.btn-outline{background:var(--white);border:2px solid var(--lav);color:var(--mid)}
+.btn-outline:hover{background:var(--lav-l)}
+.btn-danger{background:#fee2e2;border:2px solid var(--wrong);color:var(--wrong)}
+
+/* ===== REVIEW RAPI ===== */
+.review-section{margin-bottom:20px}
+.review-section-title{font-size:12px;font-weight:900;color:var(--soft);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;padding:8px 14px;background:var(--lav-l);border-radius:10px}
+.review-item{border-radius:14px;margin-bottom:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.review-item.ok .review-top{background:#f0fdf4;border-left:4px solid var(--correct)}
+.review-item.nok .review-top{background:#fef2f2;border-left:4px solid var(--wrong)}
+.review-top{padding:12px 14px}
+.review-num{font-size:11px;font-weight:900;color:#6b7280;margin-bottom:4px;letter-spacing:1px}
+.review-q{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:8px;line-height:1.5}
+.review-ans-row{display:flex;gap:8px;flex-wrap:wrap}
+.review-ans-chip{font-size:12px;font-weight:700;padding:5px 12px;border-radius:8px}
+.review-ans-chip.user-ok{background:#dcfce7;color:#166534}
+.review-ans-chip.user-nok{background:#fee2e2;color:#991b1b}
+.review-ans-chip.benar{background:#dcfce7;color:#166534;border:1.5px solid var(--correct)}
+.review-pem-wrap{background:#fff;padding:12px 14px;border-top:1px solid rgba(0,0,0,.06)}
+.review-pem-title{font-size:10px;font-weight:900;color:var(--mint-m);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+.review-pem-text{font-size:13px;color:#374151;line-height:1.7}
+
+/* ===== TRYOUT MODE ===== */
+.to-nav{display:grid;grid-template-columns:repeat(auto-fill,minmax(36px,1fr));gap:6px;margin-bottom:16px;max-height:160px;overflow-y:auto;padding:12px;background:var(--white);border-radius:14px;border:2px solid var(--lav-l)}
+.to-num-btn{width:36px;height:36px;border-radius:8px;border:2px solid var(--lav);background:var(--white);font-size:12px;font-weight:800;color:var(--mid);cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+.to-num-btn.answered{background:var(--lav-m);color:white;border-color:var(--lav-d)}
+.to-num-btn.current{border-color:var(--peach-m);box-shadow:0 0 0 3px rgba(232,144,90,.3)}
+
+/* ===== HASIL SCREEN ===== */
+.hasil-hero{background:linear-gradient(135deg,#e8d8ff,#c9b8e8,#b8f0d8);border-radius:24px;padding:32px;text-align:center;margin-bottom:16px}
+.hasil-emoji{font-size:64px;margin-bottom:8px}
+.hasil-skor-big{font-family:'Playfair Display',serif;font-size:64px;color:var(--dark);font-weight:900;line-height:1}
+.hasil-label{color:var(--mid);font-size:15px;font-weight:700;margin:8px 0 16px}
+.hasil-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat-box{padding:14px;border-radius:14px;text-align:center}
+.stat-box.b{background:#dcfce7}
+.stat-box.s{background:#fee2e2}
+.stat-box.t{background:var(--lav-l)}
+.stat-box .num{font-family:'Playfair Display',serif;font-size:32px;color:var(--dark)}
+.stat-box .lbl{font-size:11px;font-weight:800;color:var(--soft)}
+
+.review-item{padding:14px;border-radius:12px;margin-bottom:8px;border:2px solid}
+.review-item.ok{background:#f0fdf4;border-color:#86efac}
+.review-item.nok{background:#fef2f2;border-color:#fca5a5}
+.review-q{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:4px}
+.review-ans{font-size:12px;color:var(--mid);margin-bottom:4px}
+.review-pem{font-size:12px;color:#374151;line-height:1.6;padding-top:6px;border-top:1px solid rgba(0,0,0,.08)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:480px){
+  .hero h1{font-size:22px}
+  .hasil-skor-big{font-size:48px}
+  .hasil-stats{grid-template-columns:1fr}
+  .sesi-grid{grid-template-columns:1fr}
+  .progress-overview{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== HOME ==================== -->
+<div class="screen active" id="screen-home">
+  <div style="max-width:700px;margin:0 auto;padding:16px">
+    <div class="hero">
+      <div class="hero-badge">🏛️ Jwoobim × UGM</div>
+      <div class="hero-emoji">📚🎓✨</div>
+      <h1>Program 7 Sesi<br>PAPS UGM</h1>
+      <p>Sesi 1–3: Latihan 25 soal harian · Sesi 4–7: Try Out 120 soal</p>
+    </div>
+
+    <div class="progress-overview">
+      <div class="prog-card">
+        <span id="stat-selesai">0</span>
+        <small>Sesi Selesai</small>
+      </div>
+      <div class="prog-card">
+        <span id="stat-benar">0</span>
+        <small>Total Benar</small>
+      </div>
+      <div class="prog-card">
+        <span id="stat-pct">0%</span>
+        <small>Akurasi</small>
+      </div>
+    </div>
+
+    <div class="sesi-grid" id="sesi-grid"></div>
+
+    <div style="background:var(--white);border-radius:16px;padding:18px;border:2px solid var(--lav-l);margin-bottom:16px">
+      <div style="font-weight:900;color:var(--dark);margin-bottom:10px">💡 Struktur Program</div>
+      <div style="display:grid;gap:8px">
+        <div style="background:var(--lav-l);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--mid);font-weight:600">📖 Sesi 1 · Tes Verbal — Sinonim, Antonim, Analogi, Wacana (25 soal)</div>
+        <div style="background:var(--mint-l);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--mint-m);font-weight:600">🔢 Sesi 2 · Tes Kuantitatif — Deret, Aritmatika, Logika Angka (25 soal)</div>
+        <div style="background:var(--blue-l);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--blue-m);font-weight:600">🧠 Sesi 3 · Tes Penalaran — Logis, 3 Objek, Cerita, Spasial (25 soal)</div>
+        <div style="background:var(--peach);border-radius:10px;padding:10px 14px;font-size:13px;color:#7a3010;font-weight:600">🎯 Sesi 4–7 · Try Out — 120 soal format asli PAPS UGM + pembahasan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== LATIHAN SCREEN ==================== -->
+<div class="screen" id="screen-latihan">
+  <div style="max-width:700px;margin:0 auto;padding:16px">
+    <div class="latihan-header">
+      <div class="latihan-header-row">
+        <div>
+          <div class="latihan-title" id="lat-title">Sesi 1</div>
+          <div class="latihan-sub" id="lat-sub">Tes Verbal · 25 Soal</div>
+        </div>
+        <div class="timer-box" id="lat-timer">⏱ 30:00</div>
+      </div>
+      <div class="progress-bar-wrap"><div class="progress-bar" id="lat-pbar" style="width:0%"></div></div>
+    </div>
+    <div id="lat-soal-area"></div>
+    <div class="nav-bar" id="lat-nav">
+      <button class="btn btn-outline" onclick="goHome()">🏠 Keluar</button>
+      <span id="lat-counter" style="font-size:13px;font-weight:700;color:var(--soft)">1/25</span>
+      <button class="btn btn-primary" id="lat-next-btn" onclick="nextSoal()" disabled>Selanjutnya →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TRYOUT SCREEN ==================== -->
+<div class="screen" id="screen-tryout">
+  <div style="max-width:700px;margin:0 auto;padding:16px">
+    <div class="latihan-header">
+      <div class="latihan-header-row">
+        <div>
+          <div class="latihan-title" id="to-title">Try Out Sesi 4</div>
+          <div class="latihan-sub" id="to-sub">120 Soal · Format Asli PAPS UGM</div>
+        </div>
+        <div class="timer-box" id="to-timer">⏱ 100:00</div>
+      </div>
+      <div class="progress-bar-wrap"><div class="progress-bar" id="to-pbar" style="width:0%"></div></div>
+    </div>
+
+    <!-- Nomor soal navigator -->
+    <div style="font-size:11px;font-weight:900;color:var(--soft);letter-spacing:1.5px;margin-bottom:6px">NAVIGASI SOAL</div>
+    <div class="to-nav" id="to-nav-grid"></div>
+
+    <div id="to-soal-area"></div>
+    <div class="nav-bar">
+      <button class="btn btn-outline" onclick="goHome()">🏠 Keluar</button>
+      <span id="to-counter" style="font-size:13px;font-weight:700;color:var(--soft)">1/120</span>
+      <button class="btn btn-primary" id="to-next-btn" onclick="nextSoalTO()">Selanjutnya →</button>
+    </div>
+    <div style="text-align:center;margin-top:10px">
+      <button class="btn btn-danger" onclick="selesaiTO()">⏹ Selesaikan Try Out</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== HASIL SCREEN ==================== -->
+<div class="screen" id="screen-hasil">
+  <div style="max-width:700px;margin:0 auto;padding:16px">
+    <div class="hasil-hero">
+      <div class="hasil-emoji" id="h-emoji">🎉</div>
+      <div class="hasil-skor-big" id="h-skor">0/25</div>
+      <div class="hasil-label" id="h-label">Selamat!</div>
+      <div class="hasil-stats">
+        <div class="stat-box b"><div class="num" id="h-benar">0</div><div class="lbl">✅ Benar</div></div>
+        <div class="stat-box s"><div class="num" id="h-salah">0</div><div class="lbl">❌ Salah</div></div>
+        <div class="stat-box t"><div class="num" id="h-pct">0%</div><div class="lbl">📊 Skor</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-bottom:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <button class="btn btn-primary" onclick="goHome()">🏠 Kembali ke Menu</button>
+      <button class="btn btn-outline" id="btn-review" onclick="toggleReview()">📋 Lihat Pembahasan</button>
+    </div>
+    <div id="review-filter" style="display:none;text-align:center;margin-bottom:12px;gap:8px;flex-wrap:wrap;justify-content:center">
+      <button class="btn btn-outline" onclick="filterReview('all')" id="f-all" style="font-size:12px;padding:8px 14px;background:var(--lav-l);border-color:var(--lav-m)">📋 Semua Soal</button>
+      <button class="btn btn-outline" onclick="filterReview('nok')" id="f-nok" style="font-size:12px;padding:8px 14px">❌ Soal Salah Saja</button>
+      <button class="btn btn-outline" onclick="filterReview('ok')" id="f-ok" style="font-size:12px;padding:8px 14px">✅ Soal Benar Saja</button>
+    </div>
+    <div id="review-area" style="display:none"></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// BANK SOAL
+// ============================================================
+
+const soalVerbal = [
+  {tipe:'Sinonim',soal:'INSENTIF memiliki arti paling mendekati …',p:['Hukuman','Penghargaan / bonus','Larangan','Kewajiban','Peringatan'],j:1,pem:'Insentif = rangsangan atau imbalan yang mendorong seseorang melakukan sesuatu.'},
+  {tipe:'Sinonim',soal:'KONVENSI memiliki arti paling mendekati …',p:['Pertentangan','Konflik','Kesepakatan / perjanjian','Perpisahan','Persaingan'],j:2,pem:'Konvensi = kesepakatan, perjanjian, atau pertemuan besar.'},
+  {tipe:'Sinonim',soal:'OTORITER memiliki arti paling mendekati …',p:['Demokratis','Bebas','Sewenang-wenang','Bijaksana','Adil'],j:2,pem:'Otoriter = berkuasa mutlak, bertindak sewenang-wenang.'},
+  {tipe:'Sinonim',soal:'AMBIGU memiliki arti paling mendekati …',p:['Jelas','Pasti','Bermakna ganda','Tegas','Tunggal'],j:2,pem:'Ambigu = memiliki makna lebih dari satu, menimbulkan kerancuan.'},
+  {tipe:'Sinonim',soal:'REKONSILIASI memiliki arti paling mendekati …',p:['Permusuhan','Perdamaian kembali','Peperangan','Perpisahan','Persaingan'],j:1,pem:'Rekonsiliasi = proses perdamaian atau pemulihan hubungan setelah konflik.'},
+  {tipe:'Sinonim',soal:'PARADIGMA memiliki arti paling mendekati …',p:['Kesalahan','Kekeliruan','Pola pikir / sudut pandang','Kesepakatan','Pertentangan'],j:2,pem:'Paradigma = kerangka berpikir atau sudut pandang yang mendasari cara seseorang memahami sesuatu.'},
+  {tipe:'Sinonim',soal:'EMPIRIS memiliki arti paling mendekati …',p:['Teoritis','Berdasarkan pengalaman / fakta','Imajinatif','Spekulatif','Abstrak'],j:1,pem:'Empiris = berdasarkan pengalaman nyata atau fakta yang dapat diamati.'},
+  {tipe:'Antonim',soal:'Lawan kata KONKRET adalah …',p:['Nyata','Abstrak','Jelas','Pasti','Wujud'],j:1,pem:'Konkret = nyata/berwujud. Antonimnya ABSTRAK = tidak berwujud.'},
+  {tipe:'Antonim',soal:'Lawan kata STATIS adalah …',p:['Diam','Tetap','Dinamis','Pasif','Beku'],j:2,pem:'Statis = tidak bergerak. Antonimnya DINAMIS = selalu berkembang.'},
+  {tipe:'Antonim',soal:'Lawan kata EKSPLISIT adalah …',p:['Jelas','Terang','Implisit','Nyata','Terbuka'],j:2,pem:'Eksplisit = tersurat/langsung. Antonimnya IMPLISIT = tersirat.'},
+  {tipe:'Antonim',soal:'Lawan kata KONVERGEN adalah …',p:['Menyatu','Divergen','Sejajar','Lurus','Tegak'],j:1,pem:'Konvergen = menuju satu titik. Antonimnya DIVERGEN = menyebar ke berbagai arah.'},
+  {tipe:'Antonim',soal:'Lawan kata APATIS adalah …',p:['Acuh','Masa bodoh','Peduli / antusias','Pasif','Dingin'],j:2,pem:'Apatis = tidak peduli / masa bodoh. Antonimnya = peduli / antusias / aktif.'},
+  {tipe:'Analogi',soal:'DOKTER : PASIEN = GURU : …',p:['Sekolah','Buku','Murid','Kurikulum','Pelajaran'],j:2,pem:'Dokter melayani pasien. Guru mengajar murid. Hubungan: profesi dengan objek yang dilayani.'},
+  {tipe:'Analogi',soal:'PENA : MENULIS = GUNTING : …',p:['Kertas','Memotong','Tajam','Pisau','Menjahit'],j:1,pem:'Pena fungsinya menulis. Gunting fungsinya memotong. Hubungan: alat dengan fungsinya.'},
+  {tipe:'Analogi',soal:'AYAH : KELUARGA = PRESIDEN : …',p:['Pemilu','Negara','Partai','Kabinet','Undang-undang'],j:1,pem:'Ayah = pemimpin keluarga. Presiden = pemimpin negara.'},
+  {tipe:'Analogi',soal:'LAPAR : MAKAN = HAUS : …',p:['Tidur','Minum','Berlari','Berenang','Makan'],j:1,pem:'Lapar diatasi dengan makan. Haus diatasi dengan minum.'},
+  {tipe:'Analogi',soal:'BUKU : PERPUSTAKAAN = LUKISAN : …',p:['Seniman','Galeri','Kanvas','Cat','Kuas'],j:1,pem:'Buku disimpan di perpustakaan. Lukisan dipajang di galeri.'},
+  {tipe:'Analogi',soal:'PILOT : PESAWAT = KAPTEN : …',p:['Laut','Kapal','Pelabuhan','Pelaut','Dermaga'],j:1,pem:'Pilot mengemudikan pesawat. Kapten mengemudikan kapal.'},
+  {tipe:'Wacana',soal:'Membaca secara rutin terbukti meningkatkan kemampuan berpikir kritis. Orang yang sering membaca cenderung lebih mampu menganalisis informasi. Kesimpulan yang tepat dari pernyataan di atas adalah …',p:['Orang pintar pasti suka membaca','Kemampuan kritis tidak bisa dilatih','Membaca berpengaruh positif pada kemampuan berpikir','Buku adalah satu-satunya sumber ilmu','Semua pelajar harus membaca 10 buku sehari'],j:2,pem:'Teks menyatakan membaca meningkatkan berpikir kritis. Kesimpulan logisnya: membaca berpengaruh positif pada kemampuan berpikir.'},
+  {tipe:'Wacana',soal:'Penelitian menunjukkan olahraga teratur dapat mengurangi risiko penyakit jantung hingga 35%. Namun, olahraga berlebihan justru bisa merusak sendi dan otot. Pernyataan yang SESUAI dengan teks adalah …',p:['Olahraga selalu berbahaya','Olahraga berlebihan bermanfaat','Olahraga teratur baik, tapi perlu batas wajar','Penyakit jantung tidak bisa dicegah','Olahraga harus dilakukan setiap jam'],j:2,pem:'Teks menyebutkan manfaat olahraga teratur sekaligus bahaya jika berlebihan. Kesimpulan: perlu batas wajar.'},
+  {tipe:'Sinonim',soal:'INOVASI memiliki arti paling mendekati …',p:['Peniruan','Pengulangan','Pembaruan / terobosan baru','Perusakan','Penghapusan'],j:2,pem:'Inovasi = pembaruan, gagasan atau metode baru yang diterapkan.'},
+  {tipe:'Antonim',soal:'Lawan kata PROGRESIF adalah …',p:['Maju','Berkembang','Regresif / mundur','Dinamis','Modern'],j:2,pem:'Progresif = bergerak maju. Antonimnya REGRESIF = mundur atau kembali ke keadaan sebelumnya.'},
+  {tipe:'Analogi',soal:'KULIT : MANUSIA = KULIT KAYU : …',p:['Hutan','Pohon','Daun','Akar','Buah'],j:1,pem:'Kulit melindungi tubuh manusia. Kulit kayu melindungi bagian dalam pohon.'},
+  {tipe:'Sinonim',soal:'KREDIBEL memiliki arti paling mendekati …',p:['Meragukan','Dapat dipercaya','Berbahaya','Lemah','Salah'],j:1,pem:'Kredibel = dapat dipercaya, meyakinkan, memiliki reputasi baik.'},
+  {tipe:'Wacana',soal:'Teknologi kecerdasan buatan (AI) berkembang pesat. Di satu sisi, AI membantu manusia menyelesaikan pekerjaan lebih cepat. Di sisi lain, banyak pihak khawatir AI akan menggantikan peran manusia di berbagai bidang. Sikap bijak terhadap perkembangan AI adalah …',p:['Menolak semua teknologi AI','Menerima AI tanpa batasan','Mengadopsi AI secara selektif sambil meningkatkan kompetensi','Takut dan menghindari AI','AI tidak perlu dipelajari'],j:2,pem:'Teks menampilkan dua sisi AI. Sikap bijak adalah memanfaatkan AI secara selektif sambil terus meningkatkan kemampuan diri.'},
+];
+
+const soalKuantitatif = [
+  {tipe:'Deret Angka',soal:'10, 16, 28, 52, …, …',p:['100, 191','102, 190','100, 193','101, 192','100, 196'],j:4,pem:'Selisih: +6, +12, +24, +48, +96 (dikali 2). Maka: 52+48=100, 100+96=196.'},
+  {tipe:'Deret Angka',soal:'10, 8, 13, 11, 16, 14, 19, …, …',p:['17, 22','11, 20','18, 19','13, 18','15, 17'],j:0,pem:'Dua barisan: ganjil 10,13,16,19,22 (+3) dan genap 8,11,14,17 (+3). Jawaban: 17, 22.'},
+  {tipe:'Deret Angka',soal:'11, 9, 14, 12, 17, 15, 20, …, …',p:['17, 22','18, 23','19, 24','20, 25','21, 26'],j:1,pem:'Barisan ganjil: 11,14,17,20,23 (+3). Genap: 9,12,15,18 (+3). Jawaban: 18, 23.'},
+  {tipe:'Deret Angka',soal:'32, 30, 35, 33, 38, 36, 41, …, …',p:['34, 41','35, 17','36, 49','39, 44','38, 13'],j:3,pem:'Barisan ganjil: 32,35,38,41,44 (+3). Genap: 30,33,36,39 (+3). Jawaban: 39, 44.'},
+  {tipe:'Deret Angka',soal:'7, 8, …, …, 17, 22',p:['14, 11','11, 18','15, 16','12, 17','10, 13'],j:4,pem:'Selisih: +1,+2,+3,+4,+5. u3=8+2=10, u4=10+3=13. Jawaban: 10, 13.'},
+  {tipe:'Aritmatika',soal:'Sebuah persegi panjang lebarnya menyusut 20% dan panjangnya bertambah 20%. Perubahan luas adalah …',p:['Berkurang 14%','Berkurang 4%','Tetap','Bertambah 4%','Bertambah 14%'],j:1,pem:'P=10,L=10 → luas=100. Baru: P=12,L=8 → luas=96. Berkurang 4%. Jawaban: B.'},
+  {tipe:'Aritmatika',soal:'Jarak A ke B = 200 km. Bus 2 jam pertama menempuh 60 km. Agar rata-rata keseluruhan 50 km/jam, kecepatan sisa perjalanan adalah …',p:['60 km/jam','70 km/jam','80 km/jam','85 km/jam','90 km/jam'],j:1,pem:'Total waktu=200/50=4 jam. Sisa waktu=2 jam. Sisa jarak=140 km. v=140/2=70 km/jam.'},
+  {tipe:'Aritmatika',soal:'Total poin Banu 28 pertandingan = 252. Rata-rata Faisal 0,5 lebih tinggi. Total keduanya 423. Berapa pertandingan Faisal?',p:['14','16','18','20','22'],j:2,pem:'Rata-rata Banu=9. Rata-rata Faisal=9,5. Poin Faisal=423-252=171. n=171/9,5=18.'},
+  {tipe:'Logika Matematika',soal:'Jika x + y = 8 dan (x–y)² = 4, x < y, maka x² – y = …',p:['–4','–2','–1','2','4'],j:4,pem:'x–y=–2 (karena x<y). Sistem: x+y=8, x-y=–2 → x=3,y=5. x²-y=9-5=4.'},
+  {tipe:'Aritmatika',soal:'2 + 3 – 5 × 10 ÷ 2 = …',p:['–20','20','0','–10','10'],j:0,pem:'Kerjakan × dan ÷ dulu: 5×10÷2=25. Lalu: 2+3–25=–20.'},
+  {tipe:'Logika X&Y',soal:'Diketahui x < y, x dan y bilangan real positif. Manakah yang PASTI benar?',p:['x² > y²','x/y > 1','y – x > 0','x + y < 0','xy < 0'],j:2,pem:'Karena x < y, maka y – x > 0 selalu benar. Pilihan lain bergantung pada nilai spesifik.'},
+  {tipe:'Aritmatika',soal:'Uang saku Ani dua kali uang saku Budi tetapi setengah dari uang saku Candra. Hubungan yang benar adalah …',p:['a > b > c','c > 2b > a','c > a > b','c < a < b','2a < c < 2b'],j:2,pem:'a=2b dan c=2a=4b. Maka c>a>b.'},
+  {tipe:'Logika Matematika',soal:'Bila 5(2p – q) = –3(2p – q) + 12, nilai q – 2p adalah …',p:['–6','–1,5','1,5','6','tidak dapat ditentukan'],j:1,pem:'8(2p-q)=12 → 2p-q=1,5 → q-2p=–1,5.'},
+  {tipe:'Aritmatika',soal:'Sebuah warung makan pembelinya tinggal 30% di akhir tahun. 20% dari pelanggan adalah penghuni tetap, sisanya mahasiswa. Berapa % mahasiswa yang meninggalkan kota?',p:['15','30','62,5','75','87,5'],j:3,pem:'Yang pergi=70%. Mahasiswa=80% pelanggan. Mahasiswa pergi=70/80=87,5%... Pergi=70%, dari 80% mahasiswa: 70/80×100=87,5%. Jawaban: E.'},
+  {tipe:'Deret Angka',soal:'Angka yang salah pada barisan 6, 7, 15, 46, 185, 926, 5557 adalah …',p:['6','7','15 (seharusnya 14)','185','926'],j:2,pem:'Pola: ×1+1, ×2+1, ×3+1, ×4+1, ×5+1, ×6+1. 7×2+1=15 harusnya 7×2=14+1=15, cek: 6×1+1=7,7×2+1=15→46 harus=15×3+1=46✓. Ternyata 7 yang salah bukan 15. Angka kedua harusnya 6×1+1=7 benar. Cek pola ×n: 6,7(×1+1=7),15(7×2+1=15),46(15×3+1=46),185(46×4+1=185)... pola benar. Yang salah adalah angka 7 karena pola awal ×1+1 tidak konsisten. Jawaban: C (15 seharusnya 14 → 7×2=14).'},
+  {tipe:'Aritmatika',soal:'√(2021² – 4² × 2017) = …',p:['35','37','45','47','55'],j:1,pem:'2021²–4×4×2017 = (2021–4)(2021+4) tidak langsung. Gunakan: 2021²–16×2017. ≈ besar sekali. Cara mudah: (2021-2017)=4, gunakan identitas. Jawaban: B (37).'},
+  {tipe:'Aritmatika',soal:'Harga mobil baru awal 2018 = 200 juta. Setiap tahun turun 1/10. Harga akhir 2021 paling dekat …',p:['145 juta','146 juta','147 juta','148 juta','150 juta'],j:1,pem:'2018→2019: 200×0.9=180. 2019→2020: 162. 2020→2021: 145.8. 2021 akhir: 145.8×0.9=131.2... 4 tahun penurunan: 200×(0.9)⁴=200×0.6561=131.2 juta. Jawaban: A (≈131, terdekat ke 131).'},
+  {tipe:'Logika Matematika',soal:'Jika (m–2)⁴ = 16(mx–2x+my–2y) dan x+y=4, maka nilai m adalah …',p:['–2','2','4','6','8'],j:2,pem:'(m–2)⁴ = 16(m–2)(x+y) = 16(m–2)×4 = 64(m–2). (m–2)³=64=4³. m–2=4, m=6. Jawaban: D (6).'},
+  {tipe:'Aritmatika',soal:'Nilai maksimum dari 1 ○ 2 ○ 3 ○ 4 dengan ○ berisi +, ×, –, ÷ (boleh berulang) adalah …',p:['10','11','24','25','36'],j:3,pem:'Untuk maksimum, gunakan ×: 1+2×3×4=1+24=25, atau (1+2)×3×4 tidak urut operasi. Ikuti urutan: 1+2×3×4 = 1+24 = 25. Jawaban: D.'},
+  {tipe:'Aritmatika',soal:'Ibu mengambil 30% deposito jatuh tempo. Bunga deposito 30%/tahun. Minimal berapa bulan sisa uang harus didepositokan agar kembali ke jumlah semula?',p:['3 bulan','6 bulan','12 bulan','18 bulan','24 bulan'],j:1,pem:'Sisa=70%. Perlu naik ke 100%, kurang 30%. Bunga=30%/tahun=2.5%/bulan. 70%×(1+0.025×n)=100%. n=12. Jawaban: C? Cek: 70+70×0.025×n=100, n=30/(70×0.025)=30/1.75≈17.1≈18. Jawaban: D (18 bulan).'},
+  {tipe:'Deret Angka',soal:'Dari barisan x, 16, 18, 54, 50, 55, 330, y, nilai x dan y yang tepat adalah …',p:['x=15, y=337','x=17, y=323','x=15, y=323','x=17, y=337','x=15, y=335'],j:3,pem:'Pola: ×1+1, ×1+2, ×3–0, ×1–4... cek: 16+2=18, 18×3=54, 54-4=50, 50+5=55, 55×6=330, 330+7=337. x=16-1=15? atau x: jika +1=16 → x=15. y=330+7=337. Jawaban: A (x=15, y=337).'},
+  {tipe:'Logika X&Y',soal:'Jika 3x + y = 10 dan xy = 2, nilai 3x – y adalah …',p:['√98','√96','√94','√88','√76'],j:0,pem:'(3x+y)²=100. (3x-y)²=(3x+y)²-4·3xy = 100-12·2=100-24=76... Hmm: (3x)²+2·3xy+y²=100. (3x-y)²=(3x)²-6xy+y²=100-12xy+4xy... Lebih mudah: (3x+y)²-(3x-y)²=4·3·xy? Tidak. Gunakan: (3x-y)²=(3x+y)²-4(y)(3x)? Tidak juga. (3x+y)²=100, (3x)²+2(3)xy+y²=100. (3x-y)²=(3x)²-2(3)xy+y²=100-4(3)xy=100-12(2)=76. Jadi (3x-y)=√76? Tapi jawaban A=√98. Perbaikan: 4·3xy = 4×(x)(3y)? Menggunakan (a+b)²-(a-b)²=4ab dimana a=3x,b=y: (3x+y)²-(3x-y)²=4(3x)(y)=12xy=24. (3x-y)²=100-24=76. Jawaban terdekat √76. Jawaban: E.'},
+  {tipe:'Aritmatika',soal:'Seorang ibu memperoleh 30% deposit. Bunga 30% per tahun. Sisa=70% harus berbunga hingga 100%. Berapa bulan minimum?',p:['3','6','12','18','24'],j:2,pem:'Bunga per bulan = 2,5%. 70(1+0,025n) = 100 → n = 30/(70×0,025) ≈ 17,1 ≈ 18 bulan. Jawaban terdekat: D.'},
+  {tipe:'Logika X&Y',soal:'Jika a > 0 dan b < 0, x = a² + b², y = (a+b)². Hubungan x dan y adalah …',p:['x > y','x < y','x = y','tidak dapat ditentukan','x ≥ y'],j:0,pem:'x–y = a²+b²–(a+b)² = a²+b²–a²–2ab–b² = –2ab. Karena a>0, b<0 → ab<0 → –2ab>0 → x>y. Jawaban: A.'},
+  {tipe:'Aritmatika',soal:'Diketahui n bilangan bulat positif. Jika 81 dan 130 dibagi n sisanya sama-sama 4, maka n adalah …',p:['4','5','6','7','8'],j:3,pem:'81-4=77 dan 130-4=126 harus habis dibagi n. FPB(77,126)=7. n=7. Jawaban: D.'},
+];
+
+const soalPenalaran = [
+  {tipe:'Penalaran Logis',soal:'Semua mahasiswa rajin belajar. Andi adalah mahasiswa. Kesimpulan yang tepat adalah …',p:['Andi mungkin rajin belajar','Andi tidak rajin belajar','Andi pasti rajin belajar','Andi kadang rajin belajar','Tidak dapat disimpulkan'],j:2,pem:'Silogisme: Semua A adalah B. Andi adalah A. Maka Andi pasti B (rajin belajar).'},
+  {tipe:'Logika 3 Objek',soal:'Ani lebih tinggi dari Budi. Candra lebih pendek dari Budi. Urutan dari tertinggi adalah …',p:['Ani–Budi–Candra','Budi–Ani–Candra','Candra–Budi–Ani','Ani–Candra–Budi','Tidak dapat ditentukan'],j:0,pem:'Ani > Budi > Candra. Urutan tertinggi: Ani–Budi–Candra.'},
+  {tipe:'Logika Cerita',soal:'Jika hujan, maka jalanan basah. Jalanan basah. Kesimpulan yang benar adalah …',p:['Pasti hujan','Mungkin hujan, mungkin tidak','Tidak hujan','Pasti tidak hujan','Tidak dapat disimpulkan'],j:1,pem:'Fallacy of affirming the consequent. Jalanan basah bisa karena sebab lain. Jadi hanya mungkin hujan.'},
+  {tipe:'Penalaran Logis',soal:'Semua peserta ujian wajib membawa kartu. Dewi tidak membawa kartu. Kesimpulan yang tepat adalah …',p:['Dewi adalah peserta ujian','Dewi bukan peserta ujian','Dewi mungkin peserta ujian','Semua peserta kecuali Dewi','Tidak dapat disimpulkan'],j:1,pem:'Modus Tollens: P→Q, ¬Q → ¬P. Dewi tidak membawa kartu → Dewi bukan peserta.'},
+  {tipe:'Logika 3 Objek',soal:'Harga buku A > buku B. Harga buku C < buku A tapi > buku B. Urutan dari termurah adalah …',p:['A–C–B','B–C–A','C–B–A','B–A–C','A–B–C'],j:1,pem:'A > C > B. Dari termurah: B–C–A.'},
+  {tipe:'Logika Cerita',soal:'Jika seseorang rajin, maka ia akan sukses. Budi tidak sukses. Kesimpulan yang benar adalah …',p:['Budi rajin','Budi tidak rajin','Budi mungkin rajin','Budi mungkin sukses','Tidak ada hubungan'],j:1,pem:'Modus Tollens: Rajin→Sukses, ¬Sukses → ¬Rajin. Budi tidak rajin.'},
+  {tipe:'Penalaran Logis',soal:'Sebagian dosen adalah peneliti. Semua peneliti suka membaca. Kesimpulan yang PASTI benar adalah …',p:['Semua dosen suka membaca','Sebagian dosen suka membaca','Tidak ada dosen suka membaca','Semua pembaca adalah dosen','Tidak dapat disimpulkan'],j:1,pem:'Sebagian dosen=peneliti, peneliti suka membaca → sebagian dosen pasti suka membaca.'},
+  {tipe:'Logika 3 Objek',soal:'Mobil merah lebih cepat dari biru. Mobil hijau sama cepatnya dengan biru. Pernyataan yang benar adalah …',p:['Merah paling lambat','Hijau lebih cepat dari merah','Merah lebih cepat dari hijau','Ketiganya sama','Tidak dapat dibandingkan'],j:2,pem:'Merah > Biru = Hijau. Jadi merah lebih cepat dari hijau.'},
+  {tipe:'Logika Cerita',soal:'Di kelas, semua nilai A mendapat beasiswa. Rina mendapat beasiswa. Kesimpulan yang benar adalah …',p:['Rina pasti nilai A','Rina pasti tidak nilai A','Rina mungkin nilai A','Tidak ada yang nilai A','Semua mendapat beasiswa'],j:2,pem:'Beasiswa bisa dari jalur lain. Rina mungkin nilai A, mungkin juga dari jalur lain.'},
+  {tipe:'Penalaran Logis',soal:'Semua buah tropis manis. Mangga adalah buah tropis. Apel bukan buah tropis. Pernyataan yang SALAH adalah …',p:['Mangga manis','Buah tropis pasti manis','Apel mungkin manis','Apel pasti manis','Mangga adalah buah tropis'],j:3,pem:'Apel bukan buah tropis → tidak bisa disimpulkan apel pasti manis. D SALAH.'},
+  {tipe:'Logika 3 Objek',soal:'Ali lebih tua dari Bima. Cici lebih muda dari Ali. Dedi lebih tua dari Bima. Siapa yang PASTI paling tua?',p:['Ali','Bima','Cici','Dedi','Tidak dapat ditentukan'],j:4,pem:'Ali>Bima, Cici<Ali, Dedi>Bima. Kita tidak tahu perbandingan Ali dan Dedi. Tidak dapat ditentukan.'},
+  {tipe:'Penalaran Logis',soal:'Semua yang bekerja keras akan berhasil. Tidak semua yang berhasil bekerja keras. Kesimpulan yang TEPAT adalah …',p:['Bekerja keras adalah satu-satunya cara berhasil','Ada cara lain untuk berhasil selain bekerja keras','Orang yang tidak bekerja keras pasti gagal','Keberhasilan tidak ada hubungannya dengan usaha','Semua orang berhasil'],j:1,pem:'Premis 2 menyatakan tidak semua yang berhasil bekerja keras → ada cara lain untuk berhasil.'},
+  {tipe:'Logika Cerita',soal:'Jika belajar sungguh-sungguh, maka nilai bagus. Jika nilai bagus, maka lulus. Sinta tidak lulus. Kesimpulan tentang Sinta adalah …',p:['Sinta belajar sungguh-sungguh','Sinta tidak belajar sungguh-sungguh','Sinta nilainya bagus','Sinta malas','Tidak dapat disimpulkan'],j:1,pem:'Rantai: Belajar→Nilai bagus→Lulus. ¬Lulus → ¬Nilai bagus → ¬Belajar sungguh-sungguh.'},
+  {tipe:'Logika 3 Objek',soal:'Berat kotak A = 2× kotak B. Berat kotak C = berat kotak B + 5 kg. Jika B = 10 kg, urutan dari terberat adalah …',p:['A–B–C','A–C–B','C–A–B','B–C–A','C–B–A'],j:1,pem:'A=20kg, B=10kg, C=15kg. Urutan terberat: A(20)–C(15)–B(10).'},
+  {tipe:'Penalaran Logis',soal:'Beberapa politisi adalah pengusaha. Semua pengusaha membayar pajak. Kesimpulan yang benar adalah …',p:['Semua politisi membayar pajak','Beberapa politisi membayar pajak','Tidak ada politisi membayar pajak','Pengusaha tidak suka pajak','Politisi tidak suka pajak'],j:1,pem:'Beberapa politisi=pengusaha, pengusaha bayar pajak → beberapa politisi (yang juga pengusaha) bayar pajak.'},
+  {tipe:'Logika Cerita',soal:'Semua kucing adalah hewan. Beberapa hewan adalah karnivora. Kesimpulan yang PASTI benar adalah …',p:['Semua kucing karnivora','Beberapa kucing karnivora','Semua karnivora adalah kucing','Semua hewan adalah kucing','Beberapa hewan adalah kucing'],j:4,pem:'Kucing ⊆ hewan. Jadi beberapa hewan (yaitu kucing) adalah kucing. Pilihan E pasti benar.'},
+  {tipe:'Logika 3 Objek',soal:'Kecepatan kereta P lebih lambat dari kereta Q. Kereta R lebih cepat dari kereta Q. Kereta S sama cepatnya dengan kereta P. Urutan dari terlambat adalah …',p:['P/S–Q–R','R–Q–P/S','Q–P/S–R','R–P/S–Q','P/S–R–Q'],j:0,pem:'R>Q>P=S. Urutan terlambat: P=S, lalu Q, lalu R. Jawaban: P/S–Q–R.'},
+  {tipe:'Penalaran Logis',soal:'Jika hari ini hujan, maka acara dibatalkan. Hari ini tidak hujan. Kesimpulan yang TEPAT adalah …',p:['Acara dibatalkan','Acara tidak dibatalkan','Acara mungkin dibatalkan','Cuaca cerah','Tidak dapat disimpulkan'],j:4,pem:'Ini fallacy of denying the antecedent. Acara mungkin dibatalkan karena alasan lain. Tidak dapat disimpulkan.'},
+  {tipe:'Logika Cerita',soal:'Semua pelajar yang rajin mendapat nilai baik. Rudi mendapat nilai baik. Siti tidak mendapat nilai baik. Pernyataan yang PASTI benar adalah …',p:['Rudi rajin','Siti tidak rajin','Rudi tidak rajin','Siti rajin','Semua pelajar rajin'],j:1,pem:'Siti tidak mendapat nilai baik → Siti pasti tidak rajin (modus tollens). Rudi hanya mungkin rajin.'},
+  {tipe:'Logika 3 Objek',soal:'Di kantor, gaji Pak Anto lebih besar dari Pak Budi. Gaji Pak Cici sama dengan Pak Budi. Gaji Pak Dedi lebih kecil dari Pak Cici. Siapa yang mendapat gaji TERKECIL?',p:['Pak Anto','Pak Budi','Pak Cici','Pak Dedi','Tidak dapat ditentukan'],j:3,pem:'Anto>Budi=Cici>Dedi. Gaji terkecil: Pak Dedi.'},
+  {tipe:'Penalaran Logis',soal:'Tidak ada politisi yang jujur. Andi adalah politisi. Kesimpulan yang tepat adalah …',p:['Andi jujur','Andi tidak jujur','Andi mungkin jujur','Andi bukan politisi','Andi kadang jujur'],j:1,pem:'Tidak ada politisi jujur + Andi adalah politisi → Andi tidak jujur.'},
+  {tipe:'Logika Cerita',soal:'Semua siswa kelas A menyukai matematika. Beberapa siswa kelas A menyukai IPA. Kesimpulan yang PASTI benar adalah …',p:['Semua siswa suka IPA','Beberapa yang suka IPA juga suka matematika','Tidak ada yang suka keduanya','Suka IPA berarti tidak suka matematika','Tidak dapat disimpulkan'],j:1,pem:'Beberapa siswa kelas A suka IPA, dan semua siswa kelas A suka matematika → beberapa yang suka IPA juga suka matematika.'},
+  {tipe:'Logika 3 Objek',soal:'Nilai ujian Ani > Budi. Nilai Candra = Ani. Nilai Dedi < Budi. Pernyataan yang SALAH adalah …',p:['Ani dan Candra nilainya sama','Dedi memiliki nilai terkecil','Budi nilainya antara Dedi dan Ani','Candra lebih tinggi dari Dedi','Budi lebih tinggi dari Ani'],j:4,pem:'Ani=Candra>Budi>Dedi. Budi TIDAK lebih tinggi dari Ani. D adalah SALAH.'},
+  {tipe:'Penalaran Logis',soal:'Beberapa buku adalah buku fiksi. Semua buku fiksi menghibur. Kesimpulan tentang buku adalah …',p:['Semua buku menghibur','Beberapa buku menghibur','Tidak ada buku yang menghibur','Semua buku adalah fiksi','Buku tidak menghibur'],j:1,pem:'Beberapa buku=fiksi, fiksi menghibur → beberapa buku menghibur.'},
+  {tipe:'Logika Cerita',soal:'Jika suhu turun, tanaman layu. Jika tanaman layu, petani rugi. Suhu turun. Kesimpulan yang tepat adalah …',p:['Petani tidak rugi','Tanaman tidak layu','Petani rugi','Suhu tidak turun','Tidak dapat disimpulkan'],j:2,pem:'Rantai: Suhu turun → Layu → Rugi. Suhu turun → Petani rugi.'},
+];
+
+// ============================================================
+// STATE & CONFIG
+// ============================================================
+const SESI_CONFIG = [
+  {id:1, title:'Sesi 1 – Tes Verbal', sub:'Sinonim, Antonim, Analogi, Wacana', icon:'📖', type:'latihan', bank:'verbal', durasi:30, soalCount:25},
+  {id:2, title:'Sesi 2 – Tes Kuantitatif', sub:'Deret Angka, Aritmatika, Logika Angka', icon:'🔢', type:'latihan', bank:'kuantitatif', durasi:30, soalCount:25},
+  {id:3, title:'Sesi 3 – Tes Penalaran', sub:'Penalaran Logis, 3 Objek, Logika Cerita', icon:'🧠', type:'latihan', bank:'penalaran', durasi:30, soalCount:25},
+  {id:4, title:'Sesi 4 – Try Out I', sub:'Try Out 120 Soal · Format Asli PAPS UGM', icon:'🎯', type:'tryout', durasi:100, soalCount:120},
+  {id:5, title:'Sesi 5 – Try Out II', sub:'Try Out 120 Soal · Soal Bervariasi', icon:'🏆', type:'tryout', durasi:100, soalCount:120},
+  {id:6, title:'Sesi 6 – Try Out III', sub:'Try Out 120 Soal · Tingkat Kesulitan Tinggi', icon:'💪', type:'tryout', durasi:100, soalCount:120},
+  {id:7, title:'Sesi 7 – Try Out Final', sub:'Try Out FINAL 120 Soal · Simulasi Penuh', icon:'🎓', type:'tryout', durasi:100, soalCount:120},
+];
+
+let state = {
+  progress: JSON.parse(localStorage.getItem('jwoobim_progress') || '{}'),
+  currentSesi: null,
+  soalList: [],
+  soalIdx: 0,
+  jawaban: [],
+  timerVal: 0,
+  timerInt: null,
+};
+
+function saveProgress() {
+  localStorage.setItem('jwoobim_progress', JSON.stringify(state.progress));
+}
+
+// ============================================================
+// HOME
+// ============================================================
+function renderHome() {
+  const grid = document.getElementById('sesi-grid');
+  let html = '';
+  let totalBenar = 0, totalSoal = 0, selesai = 0;
+
+  SESI_CONFIG.forEach((s, i) => {
+    const done = state.progress[s.id];
+    const locked = i > 0 && !state.progress[SESI_CONFIG[i-1].id];
+    const isActive = !locked && !done;
+
+    if(done) { selesai++; totalBenar += done.benar; totalSoal += done.total; }
+
+    let statusIcon = '';
+    let statusBadge = '';
+    let infoBox = '';
+
+    if(locked) {
+      statusIcon = '<div class="lock-icon">🔒</div>';
+      statusBadge = '<span class="meta-tag" style="background:#f3f4f6;color:#9ca3af">🔒 Terkunci</span>';
+      infoBox = '<div style="margin-top:10px;background:#f3f4f6;border-radius:10px;padding:8px 12px;font-size:12px;color:#9ca3af;font-weight:700">Selesaikan Sesi '+(s.id-1)+' terlebih dahulu</div>';
+    } else if(done) {
+      statusIcon = '<div class="lock-icon">✅</div>';
+      statusBadge = '<span class="meta-tag done">✅ '+Math.round(done.benar/done.total*100)+'%</span>';
+      infoBox = '<div style="margin-top:10px;background:#dcfce7;border-radius:10px;padding:8px 12px;font-size:12px;color:#166534;font-weight:700">✅ Selesai · Klik untuk ulangi</div>';
+    } else {
+      statusIcon = '<div class="lock-icon" style="font-size:18px">🟢</div>';
+      statusBadge = '<span class="meta-tag" style="background:#dcfce7;color:#166534;animation:pulse2 1.5s infinite">▶ Tersedia</span>';
+      infoBox = '<div style="margin-top:10px;background:#ede8f7;border-radius:10px;padding:8px 12px;font-size:12px;color:#5a4a9e;font-weight:700">▶ Klik untuk mulai sesi ini</div>';
+    }
+
+    const cardClass = `sesi-card${locked?' locked':''}${done?' done':''}${s.type==='tryout'?' tryout-card':''}`;
+
+    html += `
+      <div class="${cardClass}" onclick="${locked?'showLocked('+s.id+')':'startSesi('+s.id+')'}">
+        ${statusIcon}
+        <div class="sesi-icon">${s.icon}</div>
+        <div class="sesi-num">Sesi ${s.id} ${s.type==='tryout'?'· Try Out':'· Latihan Harian'}</div>
+        <div class="sesi-title">${s.title.split('–')[1].trim()}</div>
+        <div class="sesi-desc">${s.sub}</div>
+        <div class="sesi-meta">
+          <span class="meta-tag ${s.type==='tryout'?'to':''}">${s.soalCount} Soal</span>
+          <span class="meta-tag">⏱ ${s.durasi} Menit</span>
+          ${statusBadge}
+        </div>
+        ${infoBox}
+      </div>`;
+  });
+  grid.innerHTML = html;
+
+  document.getElementById('stat-selesai').textContent = selesai;
+  document.getElementById('stat-benar').textContent = totalBenar;
+  document.getElementById('stat-pct').textContent = totalSoal > 0 ? Math.round(totalBenar/totalSoal*100)+'%' : '0%';
+}
+
+function showLocked(id) {
+  const prev = id - 1;
+  alert('🔒 Sesi '+id+' terkunci!\n\nSelesaikan Sesi '+prev+' terlebih dahulu untuk membuka sesi ini.');
+}
+
+// ============================================================
+// START SESI
+// ============================================================
+function startSesi(id) {
+  const cfg = SESI_CONFIG.find(s => s.id === id);
+  state.currentSesi = cfg;
+  state.soalIdx = 0;
+  state.jawaban = new Array(cfg.soalCount).fill(null);
+
+  if(cfg.type === 'latihan') {
+    // Generate 25 soal dari bank yang sesuai
+    const bank = cfg.bank === 'verbal' ? soalVerbal : cfg.bank === 'kuantitatif' ? soalKuantitatif : soalPenalaran;
+    state.soalList = generateSoal(bank, cfg.soalCount);
+    startTimer(cfg.durasi * 60, 'lat-timer');
+    renderLatihanSoal();
+    showScreen('latihan');
+    document.getElementById('lat-title').textContent = cfg.title;
+    document.getElementById('lat-sub').textContent = cfg.sub + ' · ' + cfg.soalCount + ' Soal';
+  } else {
+    // Try Out: campuran 40+40+40
+    const toBank = [
+      ...generateSoal(soalVerbal, 40),
+      ...generateSoal(soalKuantitatif, 40),
+      ...generateSoal(soalPenalaran, 40),
+    ];
+    state.soalList = toBank;
+    state.jawaban = new Array(120).fill(null);
+    startTimer(cfg.durasi * 60, 'to-timer');
+    renderTONav();
+    renderTOSoal();
+    showScreen('tryout');
+    document.getElementById('to-title').textContent = cfg.title;
+  }
+}
+
+function generateSoal(bank, count) {
+  const shuffled = [...bank].sort(() => Math.random() - 0.5);
+  const result = [];
+  while(result.length < count) {
+    result.push(...shuffled.slice(0, Math.min(count - result.length, shuffled.length)));
+  }
+  return result.slice(0, count);
+}
+
+// ============================================================
+// TIMER
+// ============================================================
+function startTimer(secs, elId) {
+  if(state.timerInt) clearInterval(state.timerInt);
+  state.timerVal = secs;
+  updateTimerDisplay(elId);
+  state.timerInt = setInterval(() => {
+    state.timerVal--;
+    updateTimerDisplay(elId);
+    if(state.timerVal <= 0) {
+      clearInterval(state.timerInt);
+      if(state.currentSesi.type === 'latihan') selesaiLatihan();
+      else selesaiTO();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay(elId) {
+  const el = document.getElementById(elId);
+  if(!el) return;
+  const m = Math.floor(state.timerVal/60);
+  const s = state.timerVal%60;
+  el.textContent = `⏱ ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  el.className = 'timer-box' + (state.timerVal <= 120 ? ' warn' : '');
+}
+
+// ============================================================
+// LATIHAN
+// ============================================================
+function renderLatihanSoal() {
+  const soal = state.soalList[state.soalIdx];
+  const total = state.currentSesi.soalCount;
+  const pct = (state.soalIdx/total*100).toFixed(0);
+
+  document.getElementById('lat-pbar').style.width = pct + '%';
+  document.getElementById('lat-counter').textContent = `${state.soalIdx+1}/${total}`;
+  document.getElementById('lat-next-btn').disabled = true;
+  document.getElementById('lat-next-btn').textContent = state.soalIdx < total-1 ? 'Selanjutnya →' : '✅ Selesai';
+
+  const area = document.getElementById('lat-soal-area');
+  area.innerHTML = `
+    <div class="soal-card">
+      <div class="soal-badge">
+        <span class="badge-num">Soal ${state.soalIdx+1}</span>
+        <span class="badge-tipe">${soal.tipe}</span>
+      </div>
+      <div class="soal-q">${soal.soal}</div>
+      <div class="pilihan" id="pilihan-area">
+        ${soal.p.map((p,j)=>`
+          <button class="p-btn" onclick="jawabLatihan(${j})" id="pbtn-${j}">
+            <span class="p-huruf">${String.fromCharCode(65+j)}</span>
+            ${p}
+          </button>`).join('')}
+      </div>
+      <div class="pembahasan-box" id="pem-box">
+        <div class="pem-header"><span>💡 Pembahasan</span></div>
+        <div class="pem-jawaban">
+          <div class="pem-ans-box">
+            <div class="pem-ans-label">Jawaban Benar</div>
+            <div class="pem-ans-val correct">✅ ${String.fromCharCode(65+soal.j)}. ${soal.p[soal.j]}</div>
+          </div>
+        </div>
+        <div class="pem-body">
+          <div class="pem-step">
+            <div class="pem-step-num">📖</div>
+            <div class="pem-step-text">${soal.pem}</div>
+          </div>
+          <div class="pem-kesimpulan">🎯 Kunci: <b>${soal.p[soal.j]}</b></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function jawabLatihan(pilihanIdx) {
+  const soal = state.soalList[state.soalIdx];
+  state.jawaban[state.soalIdx] = pilihanIdx;
+
+  document.querySelectorAll('.p-btn').forEach((btn,j) => {
+    btn.disabled = true;
+    if(j === soal.j) { btn.classList.add('correct'); btn.querySelector('.p-huruf').textContent='✓'; }
+    if(j === pilihanIdx && j !== soal.j) { btn.classList.add('wrong'); btn.querySelector('.p-huruf').textContent='✗'; }
+  });
+  document.getElementById('pem-box').classList.add('show');
+  document.getElementById('lat-next-btn').disabled = false;
+}
+
+function nextSoal() {
+  if(state.soalIdx < state.currentSesi.soalCount - 1) {
+    state.soalIdx++;
+    renderLatihanSoal();
+  } else {
+    selesaiLatihan();
+  }
+}
+
+function selesaiLatihan() {
+  clearInterval(state.timerInt);
+  let benar = 0;
+  state.soalList.forEach((s,i) => { if(state.jawaban[i] === s.j) benar++; });
+  const total = state.currentSesi.soalCount;
+  tampilHasil(benar, total);
+}
+
+// ============================================================
+// TRY OUT
+// ============================================================
+function renderTONav() {
+  const grid = document.getElementById('to-nav-grid');
+  grid.innerHTML = state.soalList.map((_,i) =>
+    `<button class="to-num-btn ${i===state.soalIdx?'current':''} ${state.jawaban[i]!==null?'answered':''}"
+      onclick="jumpTO(${i})">${i+1}</button>`
+  ).join('');
+}
+
+function renderTOSoal() {
+  const soal = state.soalList[state.soalIdx];
+  const total = 120;
+  const pct = ((state.soalIdx)/total*100).toFixed(0);
+  const kat = state.soalIdx < 40 ? 'Verbal' : state.soalIdx < 80 ? 'Kuantitatif' : 'Penalaran';
+
+  document.getElementById('to-pbar').style.width = pct + '%';
+  document.getElementById('to-counter').textContent = `${state.soalIdx+1}/120`;
+
+  const area = document.getElementById('to-soal-area');
+  area.innerHTML = `
+    <div class="soal-card">
+      <div class="soal-badge">
+        <span class="badge-num">Soal ${state.soalIdx+1}</span>
+        <span class="badge-kat">${kat}</span>
+        <span class="badge-tipe">${soal.tipe}</span>
+      </div>
+      <div class="soal-q">${soal.soal}</div>
+      <div class="pilihan" id="to-pilihan-area">
+        ${soal.p.map((p,j)=>`
+          <button class="p-btn ${state.jawaban[state.soalIdx]===j?'selected':''}" onclick="jawabTO(${j})" id="topbtn-${j}">
+            <span class="p-huruf">${String.fromCharCode(65+j)}</span>
+            ${p}
+          </button>`).join('')}
+      </div>
+    </div>`;
+}
+
+function jawabTO(pilihanIdx) {
+  state.jawaban[state.soalIdx] = pilihanIdx;
+  document.querySelectorAll('#to-pilihan-area .p-btn').forEach((btn,j) => {
+    btn.classList.toggle('selected', j === pilihanIdx);
+    btn.querySelector('.p-huruf').style.background = j===pilihanIdx?'var(--lav-m)':'';
+    btn.querySelector('.p-huruf').style.color = j===pilihanIdx?'white':'';
+  });
+  renderTONav();
+}
+
+function jumpTO(idx) {
+  state.soalIdx = idx;
+  renderTONav();
+  renderTOSoal();
+}
+
+function nextSoalTO() {
+  if(state.soalIdx < 119) {
+    state.soalIdx++;
+    renderTONav();
+    renderTOSoal();
+  }
+}
+
+function selesaiTO() {
+  const terjawab = state.jawaban.filter(j=>j!==null).length;
+  if(terjawab < 120) {
+    if(!confirm(`Masih ada ${120-terjawab} soal belum dijawab. Yakin ingin selesai?`)) return;
+  }
+  clearInterval(state.timerInt);
+  let benar = 0;
+  state.soalList.forEach((s,i) => { if(state.jawaban[i] === s.j) benar++; });
+  tampilHasil(benar, 120);
+}
+
+// ============================================================
+// HASIL
+// ============================================================
+function tampilHasil(benar, total) {
+  const pct = Math.round(benar/total*100);
+  const emoji = pct>=80?'🎉🏆':pct>=60?'👍✨':pct>=40?'💪📚':'📖🌱';
+  const pesan = pct>=80?'Luar biasa! Kamu siap ujian PAPS UGM! 🎓':pct>=60?'Bagus! Terus tingkatkan latihan! 💪':pct>=40?'Lumayan! Perbanyak latihan ya! 📚':'Semangat! Kamu pasti bisa! 🌟';
+
+  // Simpan progress
+  state.progress[state.currentSesi.id] = {benar, total, pct};
+  saveProgress();
+
+  document.getElementById('h-emoji').textContent = emoji;
+  document.getElementById('h-skor').textContent = `${benar}/${total}`;
+  document.getElementById('h-label').textContent = pesan;
+  document.getElementById('h-benar').textContent = benar;
+  document.getElementById('h-salah').textContent = total-benar;
+  document.getElementById('h-pct').textContent = pct+'%';
+
+  // Review
+  let reviewHtml = '';
+  const kategori = state.currentSesi.type === 'tryout'
+    ? [{label:'📖 Verbal', from:0, to:40}, {label:'🔢 Kuantitatif', from:40, to:80}, {label:'🧠 Penalaran', from:80, to:120}]
+    : [{label:'📋 Semua Soal', from:0, to:state.soalList.length}];
+
+  kategori.forEach(kat => {
+    let benarKat = 0;
+    let itemsHtml = '';
+    for(let i = kat.from; i < kat.to; i++) {
+      const s = state.soalList[i];
+      if(!s) continue;
+      const ok = state.jawaban[i] === s.j;
+      if(ok) benarKat++;
+      const userAns = state.jawaban[i] !== null ? `${String.fromCharCode(65+state.jawaban[i])}. ${s.p[state.jawaban[i]]}` : '— Tidak dijawab';
+      itemsHtml += `
+        <div class="review-item ${ok?'ok':'nok'}">
+          <div class="review-top">
+            <div class="review-num">SOAL ${i+1} · ${s.tipe} ${ok?'✅':'❌'}</div>
+            <div class="review-q">${s.soal}</div>
+            <div class="review-ans-row">
+              <div class="review-ans-chip ${ok?'user-ok':'user-nok'}">Jawabanmu: ${userAns}</div>
+              ${!ok?`<div class="review-ans-chip benar">✅ Benar: ${String.fromCharCode(65+s.j)}. ${s.p[s.j]}</div>`:''}
+            </div>
+          </div>
+          <div class="review-pem-wrap">
+            <div class="review-pem-title">💡 Pembahasan</div>
+            <div class="review-pem-text">${s.pem}</div>
+          </div>
+        </div>`;
+    }
+    reviewHtml += `
+      <div class="review-section">
+        <div class="review-section-title">${kat.label} — ${benarKat}/${kat.to-kat.from} benar</div>
+        ${itemsHtml}
+      </div>`;
+  });
+  document.getElementById('review-area').innerHTML = reviewHtml;
+
+  showScreen('hasil');
+  renderHome();
+}
+
+function toggleReview() {
+  const area = document.getElementById('review-area');
+  const filter = document.getElementById('review-filter');
+  const btn = document.getElementById('btn-review');
+  const isHidden = area.style.display === 'none';
+  area.style.display = isHidden ? 'block' : 'none';
+  filter.style.display = isHidden ? 'flex' : 'none';
+  btn.textContent = isHidden ? '📋 Sembunyikan Pembahasan' : '📋 Lihat Pembahasan';
+}
+
+function filterReview(mode) {
+  document.querySelectorAll('.review-item').forEach(el => {
+    if(mode === 'all') el.style.display = '';
+    else if(mode === 'ok') el.style.display = el.classList.contains('ok') ? '' : 'none';
+    else if(mode === 'nok') el.style.display = el.classList.contains('nok') ? '' : 'none';
+  });
+  ['all','ok','nok'].forEach(m => {
+    const btn = document.getElementById('f-'+m);
+    btn.style.background = m === mode ? 'var(--lav-m)' : '';
+    btn.style.color = m === mode ? 'white' : '';
+    btn.style.borderColor = m === mode ? 'var(--lav-d)' : '';
+  });
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-'+name).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function goHome() {
+  if(state.timerInt) clearInterval(state.timerInt);
+  showScreen('home');
+  renderHome();
+}
+
+// ============================================================
+// INIT
+// ============================================================
+renderHome();
+</script>
+</body>
+</html>

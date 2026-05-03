@@ -444,6 +444,12 @@ body{margin:0;padding:0;font-family:'Nunito',sans-serif;background:#f5f0ff;min-h
 </div>
 
 <script>
+// Global error handler
+window.onerror = function(msg, src, line, col, err) {
+  const el = document.getElementById('g-alert');
+  if(el) { el.className='galert err show'; el.textContent='Error JS: '+msg+' (baris '+line+')'; }
+  console.error('JS Error:', msg, 'line:', line, err);
+};
 
 // ===== DEVICE FINGERPRINT (sederhana) =====
 function getDeviceId() {
@@ -671,30 +677,15 @@ const soalKuantB = [
   {tipe:'Aritmetika',soal:'Bambang menjual barang seharga Rp 80.000 dan mendapat laba 25% dari harga beli. Harga beli barang tersebut adalah …',p:['Rp 100.000','Rp 64.000','Rp 120.000','Rp 20.000','Rp 60.000'],j:1,
    pem:'Rumus:||Harga jual = Harga beli × (1 + laba%)||||80.000 = HB × 1,25||HB = 80.000 ÷ 1,25 = **Rp 64.000**||**Jawaban: B. Rp 64.000**'},
   // PERBANDINGAN KUANTITATIF dari PDF
-  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x = 1/16 dan y = 16%.
-
-X = x
-Y = y',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:1,
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x = 1/16 dan y = 16%. X = x Y = y',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:1,
    pem:'Konversi ke bentuk desimal:||x = 1/16 = **0,0625**||y = 16% = 16/100 = **0,16**||Bandingkan:||0,0625 < 0,16 → X < Y||**Jawaban: B. X < Y**'},
-  {tipe:'Perbandingan Kuantitatif',soal:'Jika p sembarang bilangan positif, x = 3p + 5 dan y = 2p + 4.
-
-X = x
-Y = y',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+  {tipe:'Perbandingan Kuantitatif',soal:'Jika p sembarang bilangan positif, x = 3p + 5 dan y = 2p + 4. X = x Y = y',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
    pem:'Hitung X − Y:||X − Y = (3p+5) − (2p+4) = p + 1||Karena p > 0: p + 1 > 1 > 0||Jadi X − Y > 0 → **X > Y** untuk semua p positif||**Jawaban: A. X > Y**'},
-  {tipe:'Perbandingan Kuantitatif',soal:'A = −(2⁴) dan B = (−2)⁴.
-
-X = A
-Y = B',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X = −Y'],j:1,
+  {tipe:'Perbandingan Kuantitatif',soal:'A = −(2⁴) dan B = (−2)⁴. X = A Y = B',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X = −Y'],j:1,
    pem:'Hitung masing-masing:||A = −(2⁴) = −(16) = **−16**||B = (−2)⁴ = 16 (pangkat genap selalu positif) = **+16**||Bandingkan: −16 vs +16 → X < Y||**Jawaban: B. X < Y**'},
-  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x = a + b dan y = a − b, dengan a > b dan keduanya bilangan bulat positif.
-
-X = x
-Y = y',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x = a + b dan y = a − b, dengan a > b dan keduanya bilangan bulat positif. X = x Y = y',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
    pem:'Analisis:||X = a + b dan Y = a − b||X − Y = (a+b) − (a−b) = 2b||Karena b > 0: 2b > 0 → X > Y||**Jawaban: A. X > Y**'},
-  {tipe:'Perbandingan Kuantitatif',soal:'Jika 5 < A < 9 dan 8 < B < 12.
-
-X = A
-Y = B',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:3,
+  {tipe:'Perbandingan Kuantitatif',soal:'Jika 5 < A < 9 dan 8 < B < 12. X = A Y = B',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:3,
    pem:'Analisis rentang:||A bisa: 5,1 sampai 8,9||B bisa: 8,1 sampai 11,9||Ada kemungkinan A=8,9 dan B=8,1 → A > B||Ada kemungkinan A=5,1 dan B=11,9 → A < B||Tidak bisa ditentukan secara pasti||**Jawaban: D. Hubungan tidak dapat ditentukan**'},
   // GEOMETRIKA
   {tipe:'Geometrika',soal:'Sebuah kolam renang panjang 20 m, lebar 12 m, volume 336.000 liter. Kedalaman kolam adalah …',p:['120 cm','140 cm','150 cm','180 cm','200 cm'],j:1,
@@ -709,34 +700,17 @@ Y = B',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j
 
 const soalPenalaranB = [
   // LOGIKA SIMBOLIK
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui a > 0, b > 0, dan a > b.
-
-X = a + b
-Y = a − b',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui a > 0, b > 0, dan a > b. X = a + b Y = a − b',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
    pem:'Hitung X − Y:||X − Y = (a+b) − (a−b) = 2b||Karena b > 0: 2b > 0 → X > Y||**Jawaban: A. X > Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui 1/a + 1/b = 7 dan 1/a − 1/b = 3.
-
-X = 1/a²
-Y = 1/b²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui 1/a + 1/b = 7 dan 1/a − 1/b = 3. X = 1/a² Y = 1/b²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
    pem:'Dari sistem persamaan:||1/a + 1/b = 7 dan 1/a − 1/b = 3||Jumlahkan: 2/a = 10 → 1/a = 5||Kurangi: 2/b = 4 → 1/b = 2||X = (1/a)² = 25, Y = (1/b)² = 4||25 > 4 → **X > Y**||**Jawaban: A. X > Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x = 5y, y = 4z, dan x + y + z = 100.
-
-X = z
-Y = 5',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:2,
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x = 5y, y = 4z, dan x + y + z = 100. X = z Y = 5',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:2,
    pem:'Substitusi berurutan:||y = 4z → x = 5y = 5(4z) = 20z||Jumlahkan: x + y + z = 20z + 4z + z = 25z||Persamaan:||25z = 100 → **z = 4**||Bandingkan X = z = 4 dan Y = 5:||4 < 5 → **X < Y**||**Jawaban: B. X < Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'A = 1/9 − 1/15 dan B = 1/11 − 1/13.
-
-X = A
-Y = B',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:0,
+  {tipe:'Logika Simbolik X&Y',soal:'A = 1/9 − 1/15 dan B = 1/11 − 1/13. X = A Y = B',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:0,
    pem:'Hitung masing-masing:||A = 1/9 − 1/15 = 5/45 − 3/45 = **2/45**||B = 1/11 − 1/13 = 13/143 − 11/143 = **2/143**||Bandingkan: 2/45 vs 2/143||Karena 45 < 143: 2/45 > 2/143 → **X > Y**||**Jawaban: A. X > Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Jika 7 < X < 9 dan 1 < Y < 3.
-
-Bandingkan 3Y dan X.',p:['3Y > X selalu','3Y < X selalu','3Y = X selalu','Hubungan tidak dapat ditentukan','3Y > 2X selalu'],j:3,
+  {tipe:'Logika Simbolik X&Y',soal:'Jika 7 < X < 9 dan 1 < Y < 3. Bandingkan 3Y dan X.',p:['3Y > X selalu','3Y < X selalu','3Y = X selalu','Hubungan tidak dapat ditentukan','3Y > 2X selalu'],j:3,
    pem:'Analisis rentang:||3Y: 3×1=3 sampai 3×3=9 → 3 < 3Y < 9||X: 7 < X < 9||Kemungkinan 3Y=8,9 dan X=7,1 → 3Y > X||Kemungkinan 3Y=3,1 dan X=8,9 → 3Y < X||Tidak dapat ditentukan secara pasti||**Jawaban: D. Hubungan tidak dapat ditentukan**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x > 0, y > 0, x > y, dan z ≠ 0.
-
-X = xz²
-Y = yz²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x > 0, y > 0, x > y, dan z ≠ 0. X = xz² Y = yz²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
    pem:'Analisis:||Karena x > y dan z ≠ 0: z² > 0 selalu||Maka xz² > yz² (karena z² positif)||X = xz² > yz² = Y||**Jawaban: A. X > Y**'},
   // SILOGISME
   {tipe:'Penalaran Logis',soal:'Jika belajar sungguh-sungguh maka nilai bagus. Jika nilai bagus maka lulus. Budi tidak lulus. Kesimpulan tentang Budi adalah …',p:['Budi belajar sungguh-sungguh','Budi tidak belajar sungguh-sungguh','Budi nilainya bagus','Budi malas belajar','Tidak dapat disimpulkan'],j:1,
@@ -849,40 +823,19 @@ const soalKuantitatif = [
   {tipe:'Aritmetika',soal:'Sebuah pekerjaan diselesaikan A dalam 12 hari, B dalam 18 hari, C dalam 24 hari. Setelah 3 hari bekerja bersama, C berhenti. Berapa hari lagi A dan B menyelesaikan sisa pekerjaan?',p:['2 hari','2,5 hari','3 hari','3,5 hari','4 hari'],j:2,
    pem:'Kapasitas per hari:||A=1/12, B=1/18, C=1/24||Bersama: 6/72+4/72+3/72 = **13/72** per hari||Setelah 3 hari: pekerjaan = 3 × 13/72 = 39/72||Sisa = 1 − 39/72 = **33/72**||A+B = 1/12+1/18 = **5/36** per hari||Waktu sisa = (33/72) ÷ (5/36) = 33/72 × 36/5 = **3,3 hari ≈ 3 hari**||**Jawaban: C. 3 hari**'},
   // ===== PERBANDINGAN KUANTITATIF (X & Y) =====
-  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x² + y² = 25 dan xy = 12.
-
-X = x + y
-Y = x − y',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:3,
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x² + y² = 25 dan xy = 12. X = x + y Y = x − y',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:3,
    pem:'Analisis:||Dari x²+y² = 25 dan xy = 12:||X = x+y → X² = x²+2xy+y² = 25+24 = 49 → X = ±7||Y = x−y → Y² = x²−2xy+y² = 25−24 = 1 → Y = ±1||Kemungkinan: (X,Y) = (7,1), (7,−1), (−7,1), (−7,−1)||Karena X dan Y bisa positif/negatif, hubungan tidak bisa dipastikan||**Jawaban: D. Hubungan tidak dapat ditentukan**'},
-  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui a > 0, b > 0, dan a + b = 10.
-
-X = ab
-Y = 25',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:1,
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui a > 0, b > 0, dan a + b = 10. X = ab Y = 25',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:1,
    pem:'Analisis menggunakan AM-GM:||Untuk a+b = 10 dengan a,b > 0:||Maksimum ab terjadi saat a=b=5 → ab_max = 25||Jika a ≠ b (misal a=3, b=7): ab = 21 < 25||Jadi ab ≤ 25, dengan kesetaraan hanya saat a=b=5||Karena soal tidak menentukan a=b, secara umum X ≤ Y||**Jawaban: B. X < Y** (atau sama jika a=b)'},
-  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui 0 < p < 1.
-
-X = p²
-Y = p³',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≤ Y'],j:0,
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui 0 < p < 1. X = p² Y = p³',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≤ Y'],j:0,
    pem:'Analisis:||Karena 0 < p < 1, maka p adalah pecahan positif kurang dari 1||p² vs p³: bagi kedua ruas dengan p² (positif): perlu cek p vs 1||Karena p < 1 maka p³ = p² × p < p² × 1 = p²||Jadi p² > p³ untuk semua 0 < p < 1||**Jawaban: A. X > Y**'},
-  {tipe:'Perbandingan Kuantitatif',soal:'Sebuah persegi memiliki sisi s. Lingkaran memiliki jari-jari r = s.
-
-X = Luas persegi
-Y = Luas lingkaran',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:1,
+  {tipe:'Perbandingan Kuantitatif',soal:'Sebuah persegi memiliki sisi s. Lingkaran memiliki jari-jari r = s. X = Luas persegi Y = Luas lingkaran',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:1,
    pem:'Hitung masing-masing:||Luas persegi = s²||Luas lingkaran = πr² = πs² (karena r = s)||Bandingkan:||X = s² dan Y = πs²||Karena π ≈ 3,14 > 1, maka πs² > s²||Jadi X < Y||**Jawaban: B. X < Y**'},
-  {tipe:'Perbandingan Kuantitatif',soal:'n adalah bilangan bulat positif.
-
-X = n² + n
-Y = n(n + 1)',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≠ Y'],j:2,
+  {tipe:'Perbandingan Kuantitatif',soal:'n adalah bilangan bulat positif. X = n² + n Y = n(n + 1)',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≠ Y'],j:2,
    pem:'Analisis aljabar:||X = n² + n = n(n + 1)||Y = n(n + 1)||X = Y untuk semua nilai n bilangan bulat positif||Ini adalah identitas aljabar — keduanya sama||**Jawaban: C. X = Y**'},
-  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x > 2.
-
-X = x² − 4
-Y = 2(x − 2)',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≤ Y'],j:0,
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x > 2. X = x² − 4 Y = 2(x − 2)',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≤ Y'],j:0,
    pem:'Faktorkan:||X = x²−4 = (x+2)(x−2)||Y = 2(x−2)||Bagi kedua sisi dengan (x−2) yang positif (karena x>2):||X/(x−2) = x+2 vs Y/(x−2) = 2||Karena x > 2 maka x+2 > 4 > 2||Jadi X > Y||**Jawaban: A. X > Y**'},
-  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui p dan q adalah bilangan real dengan p + q = 1 dan p, q > 0.
-
-X = p² + q²
-Y = 1/2',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:0,
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui p dan q adalah bilangan real dengan p + q = 1 dan p, q > 0. X = p² + q² Y = 1/2',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:0,
    pem:'Analisis:||Dari (p+q)² = 1: p²+2pq+q² = 1 → p²+q² = 1−2pq||Karena p,q > 0: dengan AM-GM, pq ≤ (p+q)²/4 = 1/4||Jadi 2pq ≤ 1/2 → p²+q² = 1−2pq ≥ 1−1/2 = 1/2||p²+q² ≥ 1/2, dengan kesetaraan hanya saat p=q=1/2||Umumnya X ≥ Y||**Jawaban: A. X > Y** (atau sama jika p=q=1/2)'},
   // ===== ALJABAR & GEOMETRIKA =====
   {tipe:'Aljabar',soal:'Jika x² − 5x + 6 = 0, maka nilai x³ − 6x² + 11x − 6 = …',p:['0','1','2','3','6'],j:0,
@@ -901,35 +854,17 @@ Y = 1/2',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X
 
 const soalPenalaran = [
   // ===== LOGIKA SIMBOLIK X & Y =====
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x < y, kedua bilangan real positif.
-
-X = x/y
-Y = y/x',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:1,
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x < y, kedua bilangan real positif. X = x/y Y = y/x',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:1,
    pem:'Premis: x < y dan x,y > 0||Analisis X = x/y vs Y = y/x:||Karena x < y: x/y < 1 dan y/x > 1||Jadi X = x/y < 1 < y/x = Y → X < Y||**Jawaban: B. X < Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui a > 0 dan b < 0.
-
-X = a² + b²
-Y = (a + b)²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui a > 0 dan b < 0. X = a² + b² Y = (a + b)²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
    pem:'Hitung X − Y:||X − Y = (a²+b²) − (a+b)²||= a²+b² − a²−2ab−b² = **−2ab**||Karena a > 0 dan b < 0: ab < 0 → −2ab > 0||Sehingga X − Y > 0 → **X > Y**||**Jawaban: A. X > Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'n adalah bilangan bulat positif lebih dari 1.
-
-X = n/(n+1)
-Y = (n+1)/(n+2)',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:1,
+  {tipe:'Logika Simbolik X&Y',soal:'n adalah bilangan bulat positif lebih dari 1. X = n/(n+1) Y = (n+1)/(n+2)',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:1,
    pem:'Bandingkan dengan cross-multiply:||X vs Y: n(n+2) vs (n+1)²||n(n+2) = n²+2n||(n+1)² = n²+2n+1||Jelas n²+2n < n²+2n+1 untuk semua n||Jadi X < Y||**Jawaban: B. X < Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui log₁₀ 2 = a dan log₁₀ 3 = b.
-
-X = log₁₀ 72
-Y = 3a + 2b',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:2,
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui log₁₀ 2 = a dan log₁₀ 3 = b. X = log₁₀ 72 Y = 3a + 2b',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:2,
    pem:'Faktorkan 72:||72 = 2³ × 3² = 8 × 9||log₁₀ 72 = log₁₀(2³ × 3²) = 3 log₁₀ 2 + 2 log₁₀ 3 = **3a + 2b**||Jadi X = 3a + 2b = Y||**Jawaban: C. X = Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui 0 < x < 1.
-
-X = x
-Y = x²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≤ Y'],j:0,
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui 0 < x < 1. X = x Y = x²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≤ Y'],j:0,
    pem:'Analisis:||Karena 0 < x < 1: x adalah pecahan positif||x² = x × x, dan karena x < 1: x × x < x × 1 = x||Jadi x² < x → Y < X → **X > Y**||Contoh: x=0,5 → X=0,5, Y=0,25 → X > Y ✓||**Jawaban: A. X > Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'p dan q adalah akar-akar dari x² − 7x + 10 = 0.
-
-X = p + q
-Y = p × q',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:0,
+  {tipe:'Logika Simbolik X&Y',soal:'p dan q adalah akar-akar dari x² − 7x + 10 = 0. X = p + q Y = p × q',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:0,
    pem:'Gunakan hubungan Vieta:||Untuk ax²+bx+c=0: jumlah akar = −b/a, hasil kali = c/a||X = p+q = −(−7)/1 = **7**||Y = p×q = 10/1 = **10**||Bandingkan: 7 vs 10 → X < Y... cek lagi||p+q=7 dan pq=10 → (p=2,q=5) atau (p=5,q=2)||X=7, Y=10 → **X < Y**||**Jawaban: B. X < Y**'},
   // ===== PENALARAN LOGIS (Silogisme) =====
   {tipe:'Penalaran Logis',soal:'Semua mahasiswa rajin belajar. Andi adalah mahasiswa. Kesimpulan yang tepat adalah …',p:['Andi mungkin rajin','Andi tidak rajin','Andi pasti rajin','Andi kadang rajin','Tidak dapat disimpulkan'],j:2,
@@ -953,11 +888,7 @@ Y = p × q',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ 
    pem:'Hitung kemenangan masing-masing:||P menang lawan: Q, R → **2 menang**||Q menang lawan: R, S → **2 menang**||S menang lawan: P, R → **2 menang**||R menang lawan: tidak ada yang disebutkan → **0 menang**||P, Q, S masing-masing 2 menang → perlu pembeda||Head-to-head: Q menang lawan S ✓; S menang lawan P ✓; P menang lawan Q ✓ (siklus)||Gunakan selisih gol/poin atau alphabetical: Q > P > S secara konvensi||**Jawaban: C. Q, S, P, R**'},
   {tipe:'Penalaran Analitis',soal:'Sebuah perusahaan punya 3 divisi: Marketing (M), Finance (F), IT. Setiap karyawan bekerja tepat di satu divisi. Diketahui: total karyawan = 60. M memiliki 2× karyawan F. IT memiliki 5 orang lebih sedikit dari F. Berapa karyawan di divisi IT?',p:['10 orang','13 orang','15 orang','18 orang','20 orang'],j:1,
    pem:'Misalkan F = x orang||M = 2x, IT = x − 5||Total: 2x + x + (x−5) = 60||4x − 5 = 60 → 4x = 65 → x = **16,25**||Hmm, tidak bulat. Coba: IT = F − 5||2x + x + (x−5) = 60 → 4x = 65 tidak bulat||Kemungkinan: M = 2x lebih sedikit dari F, atau IT = F+5||Coba: M=2F, IT=F−5, total=60: 2F+F+(F-5)=60 → 4F=65 ✗||Coba IT=F−5 dan M=2×IT: M=2(F-5), total: 2(F-5)+F+(F-5)=60 → 4F-15=60 → F=18,75 ✗||Kemungkinan: F=13: M=26, IT=8, total=47 ✗. Jika IT=13: M=36, F=11, total=60 ✓||**Jawaban: B. 13 orang**'},
-  {tipe:'Penalaran Analitis',soal:'Dari pernyataan berikut, manakah yang HARUS BENAR jika: "Semua kucing adalah hewan berbulu" dan "Ada hewan berbulu yang bisa terbang"?
-
-(1) Ada kucing yang bisa terbang
-(2) Semua hewan berbulu adalah kucing
-(3) Ada hewan berbulu yang bukan kucing',p:['Hanya (1)','Hanya (2)','Hanya (3)','(1) dan (3)','Ketiganya benar'],j:2,
+  {tipe:'Penalaran Analitis',soal:'Dari pernyataan berikut, manakah yang HARUS BENAR jika: "Semua kucing adalah hewan berbulu" dan "Ada hewan berbulu yang bisa terbang"? (1) Ada kucing yang bisa terbang (2) Semua hewan berbulu adalah kucing (3) Ada hewan berbulu yang bukan kucing',p:['Hanya (1)','Hanya (2)','Hanya (3)','(1) dan (3)','Ketiganya benar'],j:2,
    pem:'Analisis tiap pernyataan:||Premis A: Semua kucing → hewan berbulu||Premis B: Ada hewan berbulu → bisa terbang||(1) Ada kucing bisa terbang: TIDAK HARUS benar (hewan berbulu yang terbang bisa bukan kucing)|||(2) Semua hewan berbulu adalah kucing: SALAH (terlalu luas, tidak didukung premis)|||(3) Ada hewan berbulu yang bukan kucing: HARUS BENAR karena ada hewan berbulu yang terbang, sementara tidak semua kucing terbang, maka pasti ada hewan berbulu di luar himpunan kucing||**Jawaban: C. Hanya (3)**'},
   {tipe:'Penalaran Analitis',soal:'Tiga kardus A, B, C berisi kelereng merah (M), biru (B), hijau (H). Label tiap kardus SALAH semua. Label A: Merah. Label B: Biru. Label C: Hijau. Jika kamu membuka kardus berlabel Biru dan menemukan kelereng Hijau, isi kardus berlabel Merah adalah …',p:['Merah','Biru','Hijau','Merah atau Biru','Tidak dapat ditentukan'],j:1,
    pem:'Analisis:||Semua label salah, jadi:||Kardus label Merah: bukan Merah (isi: Biru atau Hijau)||Kardus label Biru: bukan Biru (isi: Merah atau Hijau)||Kardus label Hijau: bukan Hijau (isi: Merah atau Biru)||Diketahui: kardus label Biru → isi Hijau||Sisa: kardus M dan C harus berisi Merah dan Biru||Kardus label Hijau (C): bukan Hijau → bisa Merah atau Biru||Kardus label Merah (A): bukan Merah → harus Biru (karena Hijau sudah di B)||**Jawaban: B. Biru**'},
@@ -1083,7 +1014,14 @@ function renderHome() {
 
   SESI_CONFIG.forEach((s, i) => {
     const done = state.progress[s.id];
-    const locked = i > 0 && !state.progress[SESI_CONFIG[i-1].id];
+    // Latihan harus urut. Try Out bebas (asal sesi 3 sudah selesai)
+    let locked;
+    if (s.type === 'tryout') {
+      // TO bebas dibuka asal sesi 3 (penalaran) sudah selesai
+      locked = !state.progress[3];
+    } else {
+      locked = i > 0 && !state.progress[SESI_CONFIG[i-1].id];
+    }
     const isActive = !locked && !done;
 
     if(done) { selesai++; totalBenar += done.benar; totalSoal += done.total; }
@@ -1095,7 +1033,8 @@ function renderHome() {
     if(locked) {
       statusIcon = '<div class="lock-icon">🔒</div>';
       statusBadge = '<span class="meta-tag" style="background:#f3f4f6;color:#9ca3af">🔒 Terkunci</span>';
-      infoBox = '<div style="margin-top:10px;background:#f3f4f6;border-radius:10px;padding:8px 12px;font-size:12px;color:#9ca3af;font-weight:700">Selesaikan Sesi '+(s.id-1)+' terlebih dahulu</div>';
+      const msgLock = s.type==='tryout' ? 'Selesaikan Sesi 3 (Penalaran) terlebih dahulu' : 'Selesaikan Sesi '+(s.id-1)+' terlebih dahulu';
+      infoBox = '<div style="margin-top:10px;background:#f3f4f6;border-radius:10px;padding:8px 12px;font-size:12px;color:#9ca3af;font-weight:700">'+msgLock+'</div>';
     } else if(done) {
       statusIcon = '<div class="lock-icon">✅</div>';
       statusBadge = '<span class="meta-tag done">✅ '+Math.round(done.benar/done.total*100)+'%</span>';
@@ -1139,7 +1078,9 @@ function showLocked(id) {
 // START SESI
 // ============================================================
 function startSesi(id) {
+  try {
   const cfg = SESI_CONFIG.find(s => s.id === id);
+  if(!cfg) { alert('Sesi tidak ditemukan: ' + id); return; }
   state.currentSesi = cfg;
   state.soalIdx = 0;
   state.jawaban = new Array(cfg.soalCount).fill(null);
@@ -1171,6 +1112,10 @@ function startSesi(id) {
     renderTOSoal();
     showScreen('tryout');
     document.getElementById('to-title').textContent = cfg.title;
+  }
+  } catch(err) {
+    console.error('startSesi error:', err);
+    alert('Error memulai sesi: ' + err.message);
   }
 }
 

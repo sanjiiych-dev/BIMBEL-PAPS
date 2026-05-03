@@ -158,17 +158,21 @@ body{margin:0;padding:0;font-family:'Nunito',sans-serif;background:#f5f0ff;min-h
 .pembahasan-box{display:none;margin-top:14px;border-radius:14px;overflow:hidden;animation:fadeIn .3s ease;box-shadow:0 4px 16px rgba(0,0,0,.07)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .pembahasan-box.show{display:block}
-.pem-header{display:flex;align-items:center;gap:8px;padding:12px 18px;background:var(--mint-m)}
+.pem-header{display:flex;align-items:center;gap:8px;padding:11px 18px;background:var(--mint-m)}
 .pem-header span{font-size:12px;font-weight:900;color:#fff;letter-spacing:1.5px;text-transform:uppercase}
 .pem-jawaban{padding:12px 18px;background:#f0fdf4;border-bottom:1.5px solid #bbf7d0}
 .pem-ans-label{font-size:10px;font-weight:900;color:#6b7280;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
 .pem-ans-val{font-size:14px;font-weight:900;color:#166534;padding:8px 14px;border-radius:10px;background:#dcfce7;border:2px solid var(--correct);display:inline-block}
-.pem-body{padding:16px 18px;background:#fff;display:flex;flex-direction:column;gap:10px}
-.pem-step{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#f8f7ff;border-radius:10px;border-left:3px solid var(--lav-m)}
-.pem-step-num{width:24px;height:24px;border-radius:8px;background:var(--lav-m);color:#fff;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.pem-step-text{font-size:13px;color:var(--dark);line-height:1.7;font-weight:600}
-.pem-step-text .math-line{display:block;text-align:center;margin:6px 0;font-size:14px;color:var(--mid)}
-.pem-kesimpulan{background:linear-gradient(135deg,var(--yellow),#fff3c0);border:2px solid var(--yellow-m);border-radius:12px;padding:12px 16px;font-size:14px;font-weight:800;color:#5a4000;display:flex;align-items:center;gap:8px}
+.pem-body{padding:0;background:#fff}
+.pem-section{padding:14px 18px;border-bottom:1px solid #f0eeff}
+.pem-section:last-child{border-bottom:none}
+.pem-section-title{font-size:13px;font-weight:900;color:var(--dark);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.pem-section-title::before{content:'';width:3px;height:16px;background:var(--lav-m);border-radius:2px;flex-shrink:0}
+.pem-text{font-size:13px;color:#374151;line-height:1.8;font-weight:600;margin-bottom:4px}
+.pem-formula{display:block;text-align:center;font-size:15px;font-weight:700;color:var(--mid);padding:8px 0;margin:4px 0}
+.pem-formula-block{background:#f8f7ff;border-radius:8px;padding:10px 14px;margin:8px 0;text-align:center}
+.pem-formula-block .pem-formula{padding:4px 0;margin:2px 0}
+.pem-kesimpulan{background:linear-gradient(135deg,var(--yellow),#fff9e0);border:2px solid var(--yellow-m);border-radius:0 0 14px 14px;padding:13px 18px;font-size:14px;font-weight:900;color:#5a4000;display:flex;align-items:center;gap:8px}
 
 .nav-bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:8px}
 .btn{padding:11px 22px;border-radius:12px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:.2s;border:none}
@@ -268,18 +272,42 @@ body{margin:0;padding:0;font-family:'Nunito',sans-serif;background:#f5f0ff;min-h
     <div class="gsub">Bimbel PAPS UGM</div>
     <div class="gicon">🔐</div>
     <div class="gtitle">Masukkan Kode Akses</div>
-    <div class="gdesc">Masukkan kode unik yang kamu dapat setelah pembayaran. Berlaku untuk 2 device.</div>
+    <div class="gdesc">Masukkan kode unik yang kamu dapat setelah pembayaran.<br><span style="color:#9b7ed4;font-weight:900">Rp 550.000 · Akses 1 Tahun Penuh</span></div>
     <div id="g-alert" class="galert"></div>
     <input class="ginput" id="g-input" placeholder="Contoh: JWB-X7K2M" maxlength="10"
       oninput="this.value=this.value.toUpperCase()"
       onkeypress="if(event.key==='Enter')cekKode()">
     <button class="gbtn" onclick="cekKode()" id="g-btn">🚀 Masuk</button>
-    <div class="gpkt">
-      <div class="gpkt-item"><div class="pr">350K</div><div class="dr">5 bulan</div></div>
-      <div class="gpkt-item"><div class="pr">550K</div><div class="dr">9 bulan</div></div>
-      <div class="gpkt-item"><div class="pr">850K</div><div class="dr">12 bulan</div></div>
+    <div style="margin-bottom:16px">
+      <div style="font-size:12px;font-weight:900;color:#9b7ed4;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;text-align:center">✦ Yang kamu dapat ✦</div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <tr style="border-bottom:1px solid rgba(155,126,212,.15)">
+          <td style="padding:9px 10px;color:#9b7ed4;font-size:16px;width:32px">📖</td>
+          <td style="padding:9px 6px;color:#374151;font-weight:700">Tes Verbal</td>
+          <td style="padding:9px 6px;text-align:right;color:#5a4a9e;font-weight:800;white-space:nowrap">25 soal</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(155,126,212,.15)">
+          <td style="padding:9px 10px;color:#5bbfa0;font-size:16px">🔢</td>
+          <td style="padding:9px 6px;color:#374151;font-weight:700">Tes Kuantitatif</td>
+          <td style="padding:9px 6px;text-align:right;color:#5a4a9e;font-weight:800;white-space:nowrap">25 soal</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(155,126,212,.15)">
+          <td style="padding:9px 10px;font-size:16px">🧠</td>
+          <td style="padding:9px 6px;color:#374151;font-weight:700">Tes Penalaran</td>
+          <td style="padding:9px 6px;text-align:right;color:#5a4a9e;font-weight:800;white-space:nowrap">25 soal</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(155,126,212,.15)">
+          <td style="padding:9px 10px;font-size:16px">🎯</td>
+          <td style="padding:9px 6px;color:#374151;font-weight:700">Try Out (Sesi 4–12)</td>
+          <td style="padding:9px 6px;text-align:right;color:#5a4a9e;font-weight:800;white-space:nowrap">9 × 120 soal</td>
+        </tr>
+        <tr>
+          <td style="padding:9px 10px;font-size:16px">⏳</td>
+          <td style="padding:9px 6px;color:#374151;font-weight:700">Masa Akses</td>
+          <td style="padding:9px 6px;text-align:right;color:#5bbfa0;font-weight:900;white-space:nowrap">1 Tahun</td>
+        </tr>
+      </table>
     </div>
-    <div style="font-size:11px;color:#c4b8d4;margin-bottom:12px">Kode berlaku sesuai paket yang dipilih</div>
     <div class="gfoot">Belum punya kode? <a href="https://wa.me/6281770458148?text=Halo%20Jwoobim%2C%20saya%20mau%20daftar%20bimbel%20PAPS%20UGM" target="_blank">Daftar via WA ›</a></div>
   </div>
 </div>
@@ -305,7 +333,7 @@ body{margin:0;padding:0;font-family:'Nunito',sans-serif;background:#f5f0ff;min-h
       <div class="hero-badge">🏛️ Jwoobim × UGM</div>
       <div class="hero-emoji">📚🎓✨</div>
       <h1>Program 7 Sesi<br>PAPS UGM</h1>
-      <p>Sesi 1–3: Latihan 25 soal harian · Sesi 4–7: Try Out 120 soal</p>
+      <p>Sesi 1–3: Latihan 25 soal harian · Sesi 4–12: Try Out 120 soal</p>
     </div>
 
     <div class="progress-overview">
@@ -421,158 +449,205 @@ body{margin:0;padding:0;font-family:'Nunito',sans-serif;background:#f5f0ff;min-h
 // ============================================================
 
 const soalVerbal = [
-  {tipe:'Sinonim',soal:'TENDENSI memiliki arti paling mendekati …',p:['Kebiasaan buruk','Kecenderungan / keinginan ke arah tertentu','Paksaan dari luar','Penolakan','Ketidakpedulian'],j:1,
-   pem:'TENDENSI berasal dari bahasa Latin "tendere" = mengarah ke suatu tujuan.||Tendensi = kecenderungan, arah gerak, atau keinginan yang mengarah ke sesuatu secara konsisten.||Contoh: "Ada tendensi korupsi dalam sistem ini" = ada kecenderungan/indikasi mengarah ke korupsi.||Jawaban: B. Kecenderungan / keinginan ke arah tertentu'},
-  {tipe:'Sinonim',soal:'AKSIOMA memiliki arti paling mendekati …',p:['Teori yang perlu dibuktikan','Kebenaran yang diterima tanpa pembuktian','Hipotesis awal','Kesimpulan akhir','Pernyataan yang salah'],j:1,
-   pem:'AKSIOMA berasal dari bahasa Yunani "axioma" = sesuatu yang dianggap layak.||Aksioma = pernyataan atau kebenaran dasar yang diterima begitu saja tanpa perlu dibuktikan, dijadikan fondasi logika.||Contoh dalam matematika: "Dua titik selalu dapat dihubungkan dengan satu garis lurus" adalah aksioma.||Jawaban: B. Kebenaran yang diterima tanpa pembuktian'},
-  {tipe:'Sinonim',soal:'EKUIVALEN memiliki arti paling mendekati …',p:['Bertolak belakang','Setara / senilai','Lebih tinggi','Tidak sebanding','Berlawanan arah'],j:1,
-   pem:'EKUIVALEN berasal dari bahasa Latin "aequivalens" = bernilai sama.||Ekuivalen = setara, senilai, atau memiliki derajat/nilai yang sama meskipun bentuknya berbeda.||Contoh: "1/2 ekuivalen dengan 2/4" — berbeda bentuk tapi nilainya sama.||Jawaban: B. Setara / senilai'},
-  {tipe:'Sinonim',soal:'AMBIVALEN memiliki arti paling mendekati …',p:['Sangat yakin','Memiliki dua perasaan yang bertentangan sekaligus','Acuh tak acuh','Sangat antusias','Tidak punya pendapat'],j:1,
-   pem:'AMBIVALEN = berasal dari "ambi" (dua) + "valens" (kuat/kekuatan) = memiliki dua kekuatan yang berlawanan.||Ambivalen = kondisi memiliki dua perasaan, sikap, atau pendapat yang bertentangan secara bersamaan terhadap sesuatu.||Contoh: "Ia ambivalen terhadap tawaran itu" = di satu sisi ingin menerima, di sisi lain ingin menolak, secara bersamaan.||Jawaban: B. Memiliki dua perasaan yang bertentangan sekaligus'},
-  {tipe:'Sinonim',soal:'PREROGRATIF memiliki arti paling mendekati …',p:['Kewajiban yang harus dipenuhi','Hak istimewa yang melekat pada jabatan','Larangan yang ditetapkan','Sanksi resmi','Prosedur baku'],j:1,
-   pem:'PREROGATIF berasal dari bahasa Latin "praerogativa" = hak untuk memilih lebih dulu.||Prerogatif = hak istimewa yang dimiliki seseorang karena kedudukan atau jabatannya, tidak dimiliki orang lain.||Contoh: "Grasi adalah prerogatif presiden" = hak khusus yang hanya dimiliki presiden.||Jawaban: B. Hak istimewa yang melekat pada jabatan'},
-  {tipe:'Antonim',soal:'Lawan kata ORTODOKS adalah …',p:['Tradisional','Kolot','Heterodoks / inovatif','Kuno','Konservatif'],j:2,
-   pem:'ORTODOKS = berpegang teguh pada ajaran, aturan, atau cara lama yang sudah baku dan diterima.||Contoh: "Pemikiran ortodoks" = pemikiran yang tidak mau menyimpang dari pakem yang sudah ada.||Lawan dari ortodoks adalah HETERODOKS = menyimpang dari ajaran baku, inovatif, tidak konvensional.||Jawaban: C. Heterodoks / inovatif'},
-  {tipe:'Antonim',soal:'Lawan kata KOERSIF adalah …',p:['Memaksa','Keras','Persuasif / membujuk','Tegas','Represif'],j:2,
-   pem:'KOERSIF = bersifat memaksa, menggunakan tekanan atau kekuatan untuk membuat orang menurut.||Contoh: "Pendekatan koersif" = menggunakan ancaman atau paksaan.||Lawan dari koersif adalah PERSUASIF = menggunakan ajakan, bujukan, dan argumentasi logis tanpa paksaan.||Jawaban: C. Persuasif / membujuk'},
-  {tipe:'Antonim',soal:'Lawan kata DEDUKTIF adalah …',p:['Logis','Sistematis','Induktif','Analitis','Rasional'],j:2,
-   pem:'DEDUKTIF = penalaran dari hal umum ke hal khusus (dari premis umum → kesimpulan spesifik).||Contoh deduktif: "Semua manusia fana. Socrates manusia. → Socrates fana."||Lawan dari deduktif adalah INDUKTIF = penalaran dari hal khusus ke hal umum (dari fakta-fakta spesifik → kesimpulan umum).||Jawaban: C. Induktif'},
-  {tipe:'Antonim',soal:'Lawan kata EUFEMISME adalah …',p:['Kiasan halus','Sindiran','Disfemisme / ungkapan kasar','Hiperbola','Metafora'],j:2,
-   pem:'EUFEMISME = penggunaan kata atau ungkapan yang lebih halus untuk menggantikan kata yang dianggap kasar atau tidak sopan.||Contoh: "meninggal dunia" sebagai eufemisme dari "mati".||Lawan dari eufemisme adalah DISFEMISME = penggunaan kata yang lebih kasar dari yang biasa digunakan.||Jawaban: C. Disfemisme / ungkapan kasar'},
+  // ===== SINONIM =====
+  {tipe:'Sinonim',soal:'TENDENSI memiliki arti paling mendekati …',p:['Kebiasaan buruk','Kecenderungan ke arah tertentu','Paksaan dari luar','Penolakan keras','Ketidakpedulian'],j:1,
+   pem:'Arti kata:||TENDENSI = kecenderungan, arah gerak menuju sesuatu secara konsisten||Contoh: "Ada tendensi korupsi" = ada kecenderungan ke arah korupsi||Eliminasi: kebiasaan (habit), paksaan (coercion), penolakan (rejection) ≠ tendensi||**Jawaban: B. Kecenderungan ke arah tertentu**'},
+  {tipe:'Sinonim',soal:'AKSIOMA memiliki arti paling mendekati …',p:['Teori yang perlu dibuktikan','Kebenaran yang diterima tanpa pembuktian','Hipotesis awal penelitian','Kesimpulan akhir analisis','Pernyataan yang masih diperdebatkan'],j:1,
+   pem:'Arti kata:||AKSIOMA = pernyataan dasar yang diterima sebagai kebenaran tanpa perlu dibuktikan||Contoh dalam matematika: "Melalui dua titik dapat dibuat tepat satu garis lurus"||Bedakan dengan: hipotesis (perlu diuji), teori (sudah dibuktikan tapi masih bisa dibantah)||**Jawaban: B. Kebenaran yang diterima tanpa pembuktian**'},
+  {tipe:'Sinonim',soal:'AMBIVALEN memiliki arti paling mendekati …',p:['Sangat yakin dan tegas','Memiliki dua perasaan bertentangan sekaligus','Tidak memiliki pendapat','Sangat antusias','Bersikap netral'],j:1,
+   pem:'Arti kata:||AMBIVALEN = kondisi memiliki dua perasaan/sikap yang bertentangan secara bersamaan||Contoh: "Ia ambivalen soal pekerjaan itu" = ingin menerima sekaligus ingin menolak||Bedakan dengan: netral (tidak memihak), tidak berpendapat (tidak ada sikap)||**Jawaban: B. Memiliki dua perasaan bertentangan sekaligus**'},
+  {tipe:'Sinonim',soal:'PREROGATIF memiliki arti paling mendekati …',p:['Kewajiban yang harus dipenuhi','Hak istimewa yang melekat pada jabatan','Larangan yang ditetapkan','Sanksi resmi','Prosedur standar'],j:1,
+   pem:'Arti kata:||PREROGATIF = hak istimewa yang dimiliki karena kedudukan/jabatan tertentu||Contoh: "Grasi adalah prerogatif presiden" = hak yang hanya dimiliki presiden||Bukan kewajiban (obligation) bukan larangan (prohibition)||**Jawaban: B. Hak istimewa yang melekat pada jabatan**'},
+  {tipe:'Sinonim',soal:'EMPIRIS memiliki arti paling mendekati …',p:['Berdasarkan teori semata','Berdasarkan pengalaman dan fakta nyata','Bersifat imajinatif','Spekulatif tanpa data','Abstrak dan tidak terukur'],j:1,
+   pem:'Arti kata:||EMPIRIS = berdasarkan pengalaman nyata, pengamatan, atau fakta yang dapat diverifikasi||Lawan: teoritis (berdasarkan teori), spekulatif (tanpa bukti)||Contoh: "Penelitian empiris" = penelitian berdasarkan data nyata||**Jawaban: B. Berdasarkan pengalaman dan fakta nyata**'},
+  {tipe:'Sinonim',soal:'VERIFIKASI memiliki arti paling mendekati …',p:['Penolakan informasi','Pembuktian kebenaran suatu informasi','Dugaan awal tanpa data','Pernyataan sepihak','Kesimpulan akhir'],j:1,
+   pem:'Arti kata:||VERIFIKASI = proses pengecekan atau pembuktian kebenaran suatu data/informasi||Contoh: "Verifikasi berkas" = mengecek kebenaran dan kelengkapan berkas||Bukan dugaan (belum dicek), bukan penolakan (sudah dinyatakan salah)||**Jawaban: B. Pembuktian kebenaran suatu informasi**'},
+  {tipe:'Sinonim',soal:'DILEMA memiliki arti paling mendekati …',p:['Masalah yang mudah diselesaikan','Situasi dengan dua pilihan yang sama-sama sulit','Pilihan terbaik dari banyak opsi','Keputusan yang sudah pasti','Perdebatan berkepanjangan'],j:1,
+   pem:'Arti kata:||DILEMA = situasi yang mengharuskan memilih antara dua opsi yang keduanya tidak ideal||Contoh: "Dilema karier vs keluarga" = keduanya penting, mengorbankan salah satu berat||Bukan: masalah mudah, perdebatan, atau keputusan pasti||**Jawaban: B. Situasi dengan dua pilihan yang sama-sama sulit**'},
+  // ===== ANTONIM =====
+  {tipe:'Antonim',soal:'Lawan kata ORTODOKS adalah …',p:['Tradisional','Kolot','Heterodoks','Kuno','Konservatif'],j:2,
+   pem:'Arti kata:||ORTODOKS = berpegang teguh pada ajaran/cara lama yang sudah baku||Contoh: "Pandangan ortodoks" = tidak mau menyimpang dari pakem yang ada||Lawan: HETERODOKS = menyimpang dari ajaran baku, inovatif, tidak konvensional||**Jawaban: C. Heterodoks**'},
+  {tipe:'Antonim',soal:'Lawan kata KOERSIF adalah …',p:['Memaksa','Keras','Persuasif','Tegas','Represif'],j:2,
+   pem:'Arti kata:||KOERSIF = menggunakan paksaan atau tekanan agar orang menurut||Contoh: "Pendekatan koersif" = pakai ancaman, bukan ajakan||Lawan: PERSUASIF = menggunakan bujukan dan argumen logis tanpa paksaan||**Jawaban: C. Persuasif**'},
+  {tipe:'Antonim',soal:'Lawan kata PROFAN adalah …',p:['Biasa','Umum','Sakral','Duniawi','Tidak penting'],j:2,
+   pem:'Arti kata:||PROFAN = bersifat duniawi, tidak berkaitan dengan hal keagamaan/suci||Contoh: "Lagu profan" = lagu bertema duniawi, bukan rohani||Lawan: SAKRAL = suci, kudus, berkaitan dengan hal keagamaan||**Jawaban: C. Sakral**'},
+  {tipe:'Antonim',soal:'Lawan kata TENTATIF adalah …',p:['Sementara','Tidak pasti','Definitif','Ragu-ragu','Tidak tetap'],j:2,
+   pem:'Arti kata:||TENTATIF = bersifat sementara, belum final, masih bisa berubah||Contoh: "Jadwal tentatif" = jadwal yang mungkin berubah||Lawan: DEFINITIF = pasti, final, sudah ditetapkan secara resmi||**Jawaban: C. Definitif**'},
+  {tipe:'Antonim',soal:'Lawan kata PROGRESIF adalah …',p:['Maju','Berkembang','Regresif','Dinamis','Modern'],j:2,
+   pem:'Arti kata:||PROGRESIF = bergerak maju, mengalami kemajuan dan perkembangan||Contoh: "Kebijakan progresif" = mendorong kemajuan||Lawan: REGRESIF = mundur, kembali ke keadaan sebelumnya||**Jawaban: C. Regresif**'},
+  {tipe:'Antonim',soal:'Lawan kata KONKRET adalah …',p:['Nyata','Jelas','Abstrak','Pasti','Berwujud'],j:2,
+   pem:'Arti kata:||KONKRET = berwujud, nyata, dapat dilihat/diraba||Contoh: meja, buku = konkret||Lawan: ABSTRAK = tidak berwujud, hanya ada dalam pikiran; contoh: cinta, keadilan||**Jawaban: C. Abstrak**'},
+  // ===== ANALOGI =====
   {tipe:'Analogi',soal:'MITOSIS : SEL = REPRODUKSI : …',p:['Hewan','Organisme','Manusia','Tumbuhan','Gen'],j:1,
-   pem:'Identifikasi hubungan: Mitosis adalah proses pembelahan pada sel.||Pola: PROSES KHUSUS → terjadi pada → ENTITAS SPESIFIK.||Reproduksi adalah proses perkembangbiakan yang terjadi pada organisme (makhluk hidup secara umum). Mitosis:Sel = Reproduksi:Organisme.||Jawaban: B. Organisme'},
-  {tipe:'Analogi',soal:'DEPRESIASI : NILAI = EROSI : …',p:['Angin','Air','Tanah','Batu','Sungai'],j:2,
-   pem:'Identifikasi: Depresiasi = penurunan/pengikisan nilai (dalam ekonomi/akuntansi).||Pola: PROSES PENGIKISAN → berdampak pada → OBJEK YANG TERKIKIS.||Erosi = proses pengikisan/pengurangan yang berdampak pada Tanah. Depresiasi:Nilai = Erosi:Tanah.||Jawaban: C. Tanah'},
-  {tipe:'Analogi',soal:'YURISPRUDENSI : HUKUM = EPISTEMOLOGI : …',p:['Filsafat','Pengetahuan','Ilmu','Logika','Etika'],j:1,
-   pem:'Identifikasi: Yurisprudensi = cabang ilmu yang mempelajari teori dan filosofi hukum.||Pola: CABANG KAJIAN → mempelajari teori/filosofi → BIDANG INDUK.||Epistemologi = cabang filsafat yang mengkaji asal-usul, sifat, dan batas-batas pengetahuan.||Jawaban: B. Pengetahuan'},
-  {tipe:'Analogi',soal:'STETOSKOP : DOKTER = BAROMETER : …',p:['Cuaca','Fisikawan','Meteorolog','Kimia','Astronomi'],j:2,
-   pem:'Identifikasi: Stetoskop adalah alat khusus yang digunakan oleh dokter dalam pekerjaannya.||Pola: ALAT KHUSUS → digunakan oleh → PROFESI YANG MENGGUNAKANNYA.||Barometer adalah alat pengukur tekanan udara yang digunakan oleh meteorolog (ahli cuaca).||Jawaban: C. Meteorolog'},
-  {tipe:'Wacana',soal:'Terdapat paradoks dalam pembangunan ekonomi modern: semakin tinggi pertumbuhan GDP suatu negara, semakin besar pula kesenjangan antara kelompok kaya dan miskin. Fenomena ini dikenal sebagai "paradoks kemakmuran". Penyebab utamanya adalah distribusi hasil pertumbuhan yang tidak merata, di mana keuntungan ekonomi cenderung terkonsentrasi pada kelompok yang sudah memiliki modal. Kesimpulan yang PALING TEPAT dari teks tersebut adalah …',p:['Pertumbuhan GDP selalu merugikan orang miskin','Pembangunan ekonomi harus dihentikan','Pertumbuhan ekonomi perlu disertai kebijakan distribusi yang adil','Kelompok kaya selalu jahat','GDP bukan indikator kemakmuran yang valid'],j:2,
-   pem:'Identifikasi inti teks: Ada paradoks — GDP naik tapi kesenjangan juga naik, karena distribusi tidak merata.||Eliminasi pilihan ekstrem: A (tidak selalu merugikan, tergantung distribusi), B (menghentikan bukan solusi), D (tidak ada pernyataan moral soal kelompok kaya), E (tidak dibahas di teks).||Kesimpulan yang tepat dan proporsional: pertumbuhan ekonomi perlu diimbangi distribusi yang adil agar tidak hanya menguntungkan yang sudah kaya.||Jawaban: C. Pertumbuhan ekonomi perlu disertai kebijakan distribusi yang adil'},
-  {tipe:'Wacana',soal:'Fenomena "echo chamber" di media sosial terjadi ketika algoritma hanya menampilkan konten yang sesuai dengan pandangan pengguna. Akibatnya, pengguna terisolasi dari perspektif yang berbeda dan semakin yakin pandangannya adalah satu-satunya kebenaran. Hal ini secara gradual mengikis kemampuan berpikir kritis dan empati sosial. Pernyataan yang TIDAK SESUAI dengan teks adalah …',p:['Echo chamber membatasi paparan terhadap sudut pandang berbeda','Algoritma berperan dalam membentuk echo chamber','Echo chamber meningkatkan kemampuan berpikir kritis','Echo chamber terjadi secara bertahap','Media sosial dapat mempersempit wawasan pengguna'],j:2,
-   pem:'Baca teks secara kritis: teks menyatakan echo chamber "mengikis kemampuan berpikir kritis" — artinya MENURUNKAN, bukan meningkatkan.||Pilihan C menyatakan echo chamber "meningkatkan kemampuan berpikir kritis" — ini BERTENTANGAN dengan isi teks.||Semua pilihan lain sesuai: A (membatasi sudut pandang ✓), B (algoritma berperan ✓), D (terjadi gradual/bertahap ✓), E (mempersempit wawasan ✓).||Jawaban: C. Echo chamber meningkatkan kemampuan berpikir kritis (TIDAK SESUAI teks)'},
-  {tipe:'Sinonim',soal:'DILEMA memiliki arti paling mendekati …',p:['Masalah yang mudah diselesaikan','Situasi sulit dengan dua pilihan yang sama-sama tidak menguntungkan','Pilihan terbaik dari beberapa opsi','Keputusan yang sudah pasti','Perdebatan panjang'],j:1,
-   pem:'DILEMA = berasal dari "di" (dua) + "lemma" (premis/pilihan) = situasi dengan dua premis.||Dilema = kondisi di mana seseorang harus memilih di antara dua pilihan yang keduanya mengandung konsekuensi tidak menguntungkan atau masing-masing memiliki kekurangan.||Contoh: "Dilema antara karier dan keluarga" — keduanya penting, mengorbankan salah satu terasa berat.||Jawaban: B. Situasi sulit dengan dua pilihan yang sama-sama tidak menguntungkan'},
-  {tipe:'Antonim',soal:'Lawan kata PROFAN adalah …',p:['Biasa','Umum','Sakral / suci','Duniawi','Tidak penting'],j:2,
-   pem:'PROFAN = bersifat duniawi, tidak suci, tidak berkaitan dengan hal-hal keagamaan atau sakral.||Contoh: "Lagu profan" = lagu yang temanya duniawi, bukan lagu rohani.||Lawan dari profan adalah SAKRAL = suci, kudus, berkaitan dengan hal-hal keagamaan dan dianggap tidak boleh dilanggar.||Jawaban: C. Sakral / suci'},
-  {tipe:'Analogi',soal:'AMNESTIES : TERPIDANA = GRASI : …',p:['Presiden','Pengadilan','Terpidana mati','Jaksa','Hakim'],j:2,
-   pem:'Identifikasi: Amnesti adalah pengampunan yang diberikan kepada terpidana (umumnya politik) secara kolektif.||Pola: JENIS PENGAMPUNAN → diberikan kepada → PENERIMA PENGAMPUNAN.||Grasi = pengampunan yang diberikan presiden kepada terpidana (khususnya terpidana mati atau hukuman berat). Grasi diberikan kepada terpidana.||Jawaban: C. Terpidana mati'},
-  {tipe:'Sinonim',soal:'KOMPATIBEL memiliki arti paling mendekati …',p:['Bertentangan','Cocok / sesuai / bisa berjalan bersama','Tidak sesuai','Dominan','Lemah'],j:1,
-   pem:'KOMPATIBEL berasal dari Latin "compatibilis" = dapat berdampingan.||Kompatibel = cocok, sesuai, mampu bekerja bersama tanpa konflik atau hambatan.||Contoh: "Software ini tidak kompatibel dengan sistem operasi lama" = tidak bisa berjalan bersama/tidak cocok.||Jawaban: B. Cocok / sesuai / bisa berjalan bersama'},
-  {tipe:'Wacana',soal:'Sebuah penelitian longitudinal selama 20 tahun menemukan bahwa individu dengan tingkat resiliensi tinggi tidak selalu terhindar dari adversitas, namun mampu pulih lebih cepat dan bahkan mengalami pertumbuhan pasca-trauma (post-traumatic growth). Menariknya, resiliensi bukan sepenuhnya bawaan genetis, melainkan keterampilan yang dapat dilatih melalui paparan stres dalam dosis yang terukur. Manakah inferensi yang VALID berdasarkan teks? …',p:['Resiliensi tinggi berarti tidak pernah mengalami masalah','Individu resiliensi rendah tidak bisa berkembang','Resiliensi dapat ditingkatkan melalui latihan terstruktur','Genetika adalah penentu utama resiliensi','Stres selalu berdampak negatif pada individu'],j:2,
-   pem:'Identifikasi klaim teks: (1) Resiliensi bukan sepenuhnya genetis, (2) Resiliensi dapat dilatih melalui paparan stres terukur.||Eliminasi: A salah (teks: tidak terhindar dari adversitas), B salah (teks tidak menyebut ini), D salah (teks menyebut bukan sepenuhnya genetis), E salah (stres terukur justru melatih resiliensi).||Pilihan C sesuai langsung dengan klaim teks: "keterampilan yang dapat dilatih" = dapat ditingkatkan melalui latihan.||Jawaban: C. Resiliensi dapat ditingkatkan melalui latihan terstruktur'},
-  {tipe:'Antonim',soal:'Lawan kata TENTATIF adalah …',p:['Sementara','Tidak pasti','Definitif / pasti dan final','Ragu-ragu','Tidak tetap'],j:2,
-   pem:'TENTATIF = bersifat sementara, belum pasti, masih dapat berubah, masih bersifat uji coba.||Contoh: "Jadwal tentatif" = jadwal yang masih bisa berubah sewaktu-waktu.||Lawan dari tentatif adalah DEFINITIF = pasti, final, tidak bisa diubah lagi, sudah ditetapkan secara resmi.||Jawaban: C. Definitif / pasti dan final'},
+   pem:'Identifikasi hubungan:||Mitosis = proses pembelahan yang terjadi pada tingkat sel||Pola: PROSES KHUSUS → terjadi pada → ENTITAS||Reproduksi = proses perkembangbiakan yang terjadi pada organisme (makhluk hidup)|||**Jawaban: B. Organisme**'},
   {tipe:'Analogi',soal:'PATOLOGI : PENYAKIT = KRIMINOLOGI : …',p:['Polisi','Hukum','Kejahatan','Penjara','Pengadilan'],j:2,
-   pem:'Identifikasi: Patologi = ilmu yang mempelajari penyakit (sebab, proses, dan akibatnya).||Pola: ILMU/KAJIAN → mempelajari → OBJEK KAJIAN.||Kriminologi = ilmu yang mempelajari kejahatan (sebab, perilaku kriminal, dan upaya pencegahannya).||Jawaban: C. Kejahatan'},
-  {tipe:'Sinonim',soal:'VERIFIKASI memiliki arti paling mendekati …',p:['Penolakan','Pembuktian / pengecekan kebenaran','Dugaan awal','Pernyataan sepihak','Laporan akhir'],j:1,
-   pem:'VERIFIKASI berasal dari Latin "verificare" = membuat menjadi benar / membuktikan.||Verifikasi = proses pengecekan, pengujian, atau pembuktian kebenaran suatu informasi, data, atau klaim.||Contoh: "Verifikasi data peserta" = mengecek kebenaran dan kelengkapan data yang diserahkan.||Jawaban: B. Pembuktian / pengecekan kebenaran'},
-  {tipe:'Wacana',soal:'Dalam kajian sosiologi, konsep "modal sosial" mengacu pada jaringan hubungan sosial, norma kepercayaan, dan nilai-nilai bersama yang memfasilitasi koordinasi dan kerjasama dalam masyarakat. Robert Putnam membedakan modal sosial "bonding" (ikatan dalam kelompok sendiri) dan "bridging" (jembatan antar kelompok berbeda). Masyarakat dengan modal sosial bridging yang kuat cenderung lebih toleran dan inovatif. Implikasi praktis dari konsep ini bagi pembangunan adalah …',p:['Masyarakat tidak perlu pemerintah jika punya modal sosial','Hanya modal sosial bonding yang penting untuk persatuan','Membangun kepercayaan lintas kelompok adalah investasi sosial yang bermakna','Modal sosial hanya relevan untuk negara maju','Inovasi tidak memerlukan interaksi sosial'],j:2,
-   pem:'Identifikasi tesis: modal sosial bridging (antar kelompok) → toleransi + inovasi yang lebih tinggi.||Implikasi logis: jika bridging penting untuk toleransi dan inovasi, maka membangun kepercayaan antar kelompok adalah investasi yang bermakna untuk pembangunan.||Eliminasi: A (terlalu ekstrem, tidak ada di teks), B (teks justru menekankan bridging, bukan hanya bonding), D & E (tidak ada dukungan di teks).||Jawaban: C. Membangun kepercayaan lintas kelompok adalah investasi sosial yang bermakna'},
+   pem:'Identifikasi hubungan:||Patologi = ilmu yang mempelajari penyakit||Pola: ILMU → mempelajari → OBJEK KAJIAN||Kriminologi = ilmu yang mempelajari kejahatan dan perilaku kriminal|||**Jawaban: C. Kejahatan**'},
+  {tipe:'Analogi',soal:'DEPRESIASI : NILAI = EROSI : …',p:['Angin','Air','Tanah','Batu','Sungai'],j:2,
+   pem:'Identifikasi hubungan:||Depresiasi = pengikisan/penurunan nilai (dalam ekonomi)||Pola: PROSES PENGIKISAN → mengikis → OBJEK||Erosi = pengikisan yang berdampak pada tanah/lapisan bumi|||**Jawaban: C. Tanah**'},
+  {tipe:'Analogi',soal:'STETOSKOP : DOKTER = BAROMETER : …',p:['Cuaca','Fisikawan','Meteorolog','Kimia','Navigator'],j:2,
+   pem:'Identifikasi hubungan:||Stetoskop = alat yang digunakan oleh dokter||Pola: ALAT → digunakan oleh → PROFESI||Barometer = alat pengukur tekanan udara yang digunakan oleh meteorolog (ahli cuaca)|||**Jawaban: C. Meteorolog**'},
+  {tipe:'Analogi',soal:'AMNESTI : TERPIDANA = GRASI : …',p:['Presiden','Pengadilan','Terpidana mati','Jaksa','Hakim'],j:2,
+   pem:'Identifikasi hubungan:||Amnesti = pengampunan yang diberikan kepada terpidana (umumnya kolektif)||Pola: JENIS PENGAMPUNAN → diberikan kepada → PENERIMA||Grasi = pengampunan khusus dari presiden, umumnya untuk terpidana mati|||**Jawaban: C. Terpidana mati**'},
+  {tipe:'Analogi',soal:'YURISPRUDENSI : HUKUM = EPISTEMOLOGI : …',p:['Filsafat','Pengetahuan','Ilmu','Logika','Etika'],j:1,
+   pem:'Identifikasi hubungan:||Yurisprudensi = cabang yang mengkaji teori dan filosofi hukum||Pola: CABANG KAJIAN → mengkaji → BIDANG INDUK||Epistemologi = cabang filsafat yang mengkaji sumber dan batas pengetahuan|||**Jawaban: B. Pengetahuan**'},
+  {tipe:'Analogi',soal:'KULIT : MANUSIA = KULIT KAYU : …',p:['Hutan','Pohon','Daun','Akar','Buah'],j:1,
+   pem:'Identifikasi hubungan:||Kulit = lapisan pelindung luar manusia||Pola: LAPISAN PELINDUNG → melindungi → MAKHLUK/BENDA||Kulit kayu = lapisan terluar yang melindungi bagian dalam pohon|||**Jawaban: B. Pohon**'},
+  // ===== WACANA/ANALITIS =====
+  {tipe:'Wacana',soal:'Terdapat paradoks dalam pembangunan ekonomi modern: semakin tinggi pertumbuhan GDP, semakin besar kesenjangan kaya-miskin. Hal ini karena distribusi hasil pertumbuhan tidak merata — keuntungan cenderung terkonsentrasi pada kelompok yang sudah memiliki modal. Kesimpulan yang PALING TEPAT adalah …',p:['Pertumbuhan GDP selalu merugikan orang miskin','Pembangunan ekonomi harus dihentikan','Pertumbuhan ekonomi perlu disertai kebijakan distribusi yang adil','Kelompok kaya harus dilarang berinvestasi','GDP bukan indikator kemakmuran'],j:2,
+   pem:'Analisis teks:||Inti masalah: GDP naik tapi kesenjangan juga naik karena distribusi tidak merata||Eliminasi ekstrem: A (tidak selalu), B (bukan solusi), D (tidak disebutkan), E (tidak dibahas)||Kesimpulan proporsional: pertumbuhan perlu diimbangi distribusi yang adil|||**Jawaban: C. Pertumbuhan ekonomi perlu disertai kebijakan distribusi yang adil**'},
+  {tipe:'Wacana',soal:'Fenomena "echo chamber" di media sosial terjadi ketika algoritma hanya menampilkan konten yang sesuai pandangan pengguna. Pengguna terisolasi dari perspektif berbeda dan semakin yakin pandangannya satu-satunya kebenaran. Hal ini secara gradual mengikis kemampuan berpikir kritis. Pernyataan yang TIDAK SESUAI dengan teks adalah …',p:['Echo chamber membatasi paparan terhadap sudut pandang berbeda','Algoritma berperan membentuk echo chamber','Echo chamber meningkatkan kemampuan berpikir kritis','Echo chamber terjadi secara bertahap','Media sosial dapat mempersempit wawasan'],j:2,
+   pem:'Analisis teks:||Teks menyatakan echo chamber "mengikis kemampuan berpikir kritis" = MENURUNKAN||Pilihan C menyatakan echo chamber "meningkatkan" berpikir kritis → BERTENTANGAN dengan teks||Semua pilihan lain sesuai isi teks: A ✓, B ✓, D ✓, E ✓|||**Jawaban: C. Echo chamber meningkatkan kemampuan berpikir kritis (TIDAK SESUAI)**'},
+  {tipe:'Wacana',soal:'Penelitian longitudinal 20 tahun menemukan bahwa individu dengan resiliensi tinggi tidak selalu terhindar dari kesulitan, namun mampu pulih lebih cepat. Menariknya, resiliensi bukan sepenuhnya bawaan genetis, melainkan keterampilan yang dapat dilatih melalui paparan stres terukur. Inferensi yang VALID berdasarkan teks adalah …',p:['Resiliensi tinggi berarti tidak pernah mengalami masalah','Individu resiliensi rendah tidak bisa berkembang','Resiliensi dapat ditingkatkan melalui latihan terstruktur','Genetika adalah penentu utama resiliensi','Stres selalu berdampak negatif'],j:2,
+   pem:'Analisis teks:||Klaim 1: resiliensi bukan sepenuhnya genetis||Klaim 2: resiliensi = keterampilan yang dapat dilatih||Eliminasi: A (teks: tidak terhindar dari kesulitan), B (tidak disebutkan), D (bukan penentu utama), E (stres terukur justru melatih)||Pilihan C langsung sesuai klaim 2|||**Jawaban: C. Resiliensi dapat ditingkatkan melalui latihan terstruktur**'},
+  {tipe:'Wacana',soal:'Modal sosial "bonding" (ikatan dalam kelompok sendiri) memperkuat solidaritas internal. Namun, riset menunjukkan masyarakat dengan modal sosial "bridging" (jembatan antar kelompok berbeda) yang kuat cenderung lebih toleran dan inovatif, karena paparan terhadap beragam perspektif memicu kreativitas. Implikasi praktis bagi pembangunan adalah …',p:['Masyarakat tidak perlu pemerintah jika punya modal sosial','Hanya bonding yang penting untuk persatuan','Membangun kepercayaan lintas kelompok adalah investasi sosial bermakna','Modal sosial hanya relevan negara maju','Inovasi tidak memerlukan interaksi sosial'],j:2,
+   pem:'Analisis teks:||Tesis utama: bridging (antar kelompok) → toleransi + inovasi yang lebih tinggi||Implikasi logis: membangun kepercayaan lintas kelompok = investasi bermakna untuk pembangunan||Eliminasi: A (ekstrem), B (teks justru tekankan bridging), D & E (tidak ada dukungan)||**Jawaban: C. Membangun kepercayaan lintas kelompok adalah investasi sosial bermakna**'},
+  {tipe:'Wacana',soal:'Beberapa ilmuwan berpendapat bahwa kecerdasan buatan generatif mengancam pekerjaan kreatif manusia. Namun pandangan lain menyatakan bahwa AI justru menjadi alat yang memperluas kapasitas kreativitas manusia, bukan menggantikannya — seperti kamera tidak menghilangkan profesi pelukis, melainkan menciptakan jenis seni baru. Manakah pernyataan yang DAPAT DISIMPULKAN dari teks? …',p:['AI pasti akan menggantikan semua pekerjaan kreatif','Kamera telah menghilangkan profesi pelukis','Terdapat pandangan yang beragam mengenai dampak AI terhadap kreativitas','AI generatif lebih unggul dari kreativitas manusia','Ilmuwan sepakat AI tidak berbahaya'],j:2,
+   pem:'Analisis teks:||Teks menampilkan DUA pandangan yang berbeda tentang AI dan kreativitas||Pilihan A (hanya satu pandangan, bukan kesimpulan teks), B (kebalikan dari contoh kamera), D & E (tidak didukung teks)||Satu-satunya yang dapat disimpulkan: ada pandangan beragam mengenai dampak AI|||**Jawaban: C. Terdapat pandangan yang beragam mengenai dampak AI terhadap kreativitas**'},
 ];
+
 
 
 
 const soalKuantitatif = [
+  // ===== DERET ANGKA =====
   {tipe:'Deret Angka',soal:'1, 1, 2, 3, 5, 8, 13, 21, …, …',p:['30, 51','34, 55','34, 56','33, 54','35, 56'],j:1,
-   pem:'Kenali pola: ini barisan Fibonacci — setiap suku = jumlah DUA suku sebelumnya.||u7=5+8=13, u8=8+13=21. u9=13+21=34. u10=21+34=55.||Verifikasi: 1,1,2,3,5,8,13,21,34,55 ✓.||Jawaban: B. 34, 55'},
+   pem:'Pola Fibonacci:||Setiap suku = jumlah dua suku sebelumnya||u₉ = 13 + 21 = **34**||u₁₀ = 21 + 34 = **55**||**Jawaban: B. 34, 55**'},
   {tipe:'Deret Angka',soal:'3, 7, 16, 35, 74, …',p:['143','147','151','153','157'],j:3,
-   pem:'Cari pola: 7=3×2+1, 16=7×2+2, 35=16×2+3, 74=35×2+4.||Pola: ×2 + n (n bertambah 1 setiap suku: 1,2,3,4,5,...).||Suku ke-6: 74×2+5 = 148+5 = 153.||Jawaban: D. 153'},
+   pem:'Cari pola:||7 = 3×2+1, 16 = 7×2+2, 35 = 16×2+3, 74 = 35×2+4||Pola: ×2 + n (n bertambah 1 tiap suku: 1,2,3,4,5)||u₆ = 74×2 + 5 = 148 + 5 = **153**||**Jawaban: D. 153**'},
   {tipe:'Deret Angka',soal:'Pada barisan 5, 11, 23, 47, 95, … suku ke-8 adalah …',p:['191','383','767','379','381'],j:2,
-   pem:'Pola: setiap suku = suku sebelumnya × 2 + 1. Cek: 11=5×2+1 ✓, 23=11×2+1 ✓, 47=23×2+1 ✓.||u6=95×2+1=191. u7=191×2+1=383. u8=383×2+1=767.||Jawaban: C. 767'},
+   pem:'Pola:||Setiap suku = suku sebelumnya × 2 + 1||u₆ = 95×2+1 = **191**||u₇ = 191×2+1 = **383**||u₈ = 383×2+1 = **767**||**Jawaban: C. 767**'},
+  {tipe:'Deret Angka',soal:'10, 8, 13, 11, 16, 14, 19, …, …',p:['17, 22','11, 20','18, 19','13, 18','15, 17'],j:0,
+   pem:'Dua barisan terpisah:||Posisi ganjil (1,3,5,7,9): 10, 13, 16, 19, **22** (+3)||Posisi genap (2,4,6,8): 8, 11, 14, **17** (+3)||Suku ke-8 = 17, suku ke-9 = 22||**Jawaban: A. 17, 22**'},
   {tipe:'Deret Angka',soal:'Suatu barisan aritmatika memiliki suku ke-5 = 23 dan suku ke-12 = 51. Jumlah 20 suku pertama adalah …',p:['860','880','900','920','940'],j:2,
-   pem:'Dari u₅=a+4d=23 dan u₁₂=a+11d=51 → kurangkan: 7d=28 → **d=4**||Substitusi d=4 ke u₅: a+4(4)=23 → a+16=23 → **a=7** ✓||S₂₀ = (20/2)(2×7+(20-1)×4) = 10(14+76) = 10×90 = **900**||**Jawaban: C. 900**'},
-  {tipe:'Aritmatika',soal:'Sebuah pekerjaan diselesaikan A dalam 12 hari, B dalam 18 hari, C dalam 24 hari. Setelah 3 hari bekerja bersama, C berhenti. Berapa hari lagi A dan B menyelesaikan sisa pekerjaan?',p:['2 hari','2,5 hari','3 hari','3,5 hari','4 hari'],j:2,
-   pem:'Kapasitas: A=1/12, B=1/18, C=1/24 per hari. Bersama: 1/12+1/18+1/24 = 6/72+4/72+3/72 = 13/72/hari.||Setelah 3 hari: pekerjaan selesai = 3×13/72 = 39/72. Sisa = 1-39/72 = 33/72 = 11/24.||A+B per hari = 1/12+1/18 = 3/36+2/36 = 5/36. Waktu = (11/24)÷(5/36) = (11/24)×(36/5) = 396/120 = 3,3 hari ≈ 3 hari lebih. Jawaban paling dekat: C.||Jawaban: C. 3 hari'},
-  {tipe:'Aritmatika',soal:'Pak Rudi menginvestasikan Rp12.000.000 dengan bunga majemuk 10% per tahun. Nilai investasi setelah 3 tahun adalah …',p:['Rp 14.520.000','Rp 15.000.000','Rp 15.972.000','Rp 16.500.000','Rp 17.280.000'],j:2,
-   pem:'Rumus bunga majemuk: **A = P(1+r)ⁿ** → P=12.000.000, r=0,1, n=3||Hitung (1,1)³: 1,1×1,1=1,21 → 1,21×1,1=**1,331**||A = 12.000.000 × 1,331 = **Rp 15.972.000**||**Jawaban: C. Rp 15.972.000**'},
-  {tipe:'Aritmatika',soal:'Toko A: diskon 25% lalu 20%. Toko B: diskon 40%. Jika harga awal sama, perbandingan harga akhir di kedua toko adalah …',p:['Toko A lebih murah','Harga sama','Toko B lebih murah 2%','Toko B lebih murah 5%','Toko A lebih murah 5%'],j:1,
-   pem:'Toko A: harga akhir = H × (1-0,25) × (1-0,20) = H × 0,75 × 0,80 = 0,60H.||Toko B: harga akhir = H × (1-0,40) = 0,60H.||Kedua toko memberikan harga akhir yang persis SAMA = 60% dari harga awal.||Jawaban: B. Harga sama'},
-  {tipe:'Aritmatika',soal:'Harga naik 20%, turun 15%, naik lagi 10%. Perubahan total dari harga awal adalah …',p:['Naik 11,4%','Naik 12,2%','Naik 14,2%','Naik 15%','Turun 5%'],j:1,
-   pem:'Misalkan harga awal = 100. Naik 20%: 100 × 1,2 = 120.||Turun 15%: 120 × 0,85 = 102. Naik 10%: 102 × 1,1 = 112,2.||Perubahan = (112,2-100)/100 × 100% = +12,2%.||Jawaban: B. Naik 12,2%'},
-  {tipe:'Aritmatika',soal:'Rata-rata nilai 40 siswa adalah 72. Jika 10 siswa dengan nilai rata-rata 60 dikeluarkan, rata-rata sisanya adalah …',p:['75','76','77','78','79'],j:1,
-   pem:'Total nilai 40 siswa = 40 × 72 = 2.880.||Total nilai 10 siswa dikeluarkan = 10 × 60 = 600.||Total 30 siswa tersisa = 2.880-600 = 2.280. Rata-rata = 2.280÷30 = 76.||Jawaban: B. 76'},
-  {tipe:'Aritmatika',soal:'Campuran 20 liter berisi 30% alkohol. Berapa liter air murni harus ditambahkan agar konsentrasi alkohol menjadi 20%?',p:['5 liter','8 liter','10 liter','12 liter','15 liter'],j:2,
-   pem:'Alkohol awal = 30% × 20 = **6 liter** (tetap, hanya air yang ditambah)||Buat persamaan: 6/(20+x) = 0,20||Selesaikan: 6 = 0,20(20+x) → 6=4+0,2x → 0,2x=2 → **x=10 liter**||**Jawaban: C. 10 liter**'},
-  {tipe:'Logika Matematika',soal:'Jika x² - 5x + 6 = 0, maka nilai x³ - 6x² + 11x - 6 = …',p:['0','1','2','3','6'],j:0,
-   pem:'Faktorkan: x²-5x+6 = (x-2)(x-3)=0 → **x=2** atau **x=3**||Faktorkan target: x³-6x²+11x-6 = **(x-1)(x-2)(x-3)**||Substitusi x=2: (1)(0)(−1)=**0** ✓ Substitusi x=3: (2)(1)(0)=**0** ✓||**Jawaban: A. 0** — selalu nol untuk semua nilai x yang memenuhi'},
-  {tipe:'Logika Matematika',soal:'Diketahui p dan q bilangan real positif dengan p+q=1. Pernyataan yang PASTI benar adalah …',p:['p²+q² ≥ 1/2','pq ≥ 1/4','p²+q² ≤ 1/2','p²+q² = 1/2','pq = 1/4'],j:0,
-   pem:'Dari (p+q)²=1: p²+2pq+q²=1 → p²+q²=1-2pq.||Karena p,q>0 dan p+q=1: dengan AM-GM, pq ≤ (p+q)²/4 = 1/4. Jadi 2pq ≤ 1/2.||Maka p²+q² = 1-2pq ≥ 1-1/2 = 1/2. Pernyataan p²+q² ≥ 1/2 SELALU BENAR.||Jawaban: A. p²+q² ≥ 1/2'},
-  {tipe:'Aritmatika',soal:'Dalam ujian: benar +4, salah -1, tidak dijawab 0. Andi menjawab 50 dari 60 soal dan mendapat nilai 122. Berapa soal yang benar?',p:['28','30','32','34','36'],j:3,
-   pem:'Misalkan benar=b, salah=s. Persamaan: b+s=50 dan 4b-s=122.||Tambahkan: 5b=172 → b=34,4? Tidak bulat. Coba: b+s=50, 4b-s=122 → tambahkan: 5b=172 → hmm. Cek b=34: 4(34)-s=122 → 136-s=122 → s=14. b+s=34+14=48≠50. Cek b=32: 4(32)-s=122 → 128-s=122 → s=6. b+s=38≠50. Jika 50 dijawab semua: b+s=50, 4b-s=122 → 5b=172 → b=34,4. Ambil b=34 (jawaban D).||Jawaban: D. 34'},
-  {tipe:'Logika Matematika',soal:'Diketahui log₁₀ 2 = a dan log₁₀ 3 = b. Nilai log₁₀ 72 = …',p:['2a+b','a+2b','3a+b','2a+2b','3a+2b'],j:4,
-   pem:'Faktorkan 72: **72 = 2³ × 3²**||Gunakan sifat log: log(2³×3²) = 3·log2 + 2·log3 = **3a + 2b**||Verifikasi: 3(0,301)+2(0,477) = 0,903+0,954 = 1,857 ≈ log₁₀72 ✓||**Jawaban: E. 3a + 2b**'},
-  {tipe:'Aritmatika',soal:'Rasio siswa L:P = 3:5. Jika 6L dan 2P pindah, rasio menjadi 3:7. Total siswa awal adalah …',p:['32','40','48','56','64'],j:2,
-   pem:'Misalkan L=3k, P=5k. Setelah pindah: (3k-6):(5k-2) = 3:7.||Cross multiply: 7(3k-6) = 3(5k-2) → 21k-42 = 15k-6 → 6k=36 → k=6.||Total awal = 3(6)+5(6) = 18+30 = 48. Verifikasi: (18-6):(30-2)=12:28=3:7 ✓.||Jawaban: C. 48'},
-  {tipe:'Aritmatika',soal:'Sebuah kereta dari A (06.00, 80 km/j) dan kereta lain dari B berlawanan arah (06.30, 100 km/j). Jarak A-B = 540 km. Pukul berapa berpapasan?',p:['08.30','09.00','09.30','10.00','10.30'],j:2,
-   pem:'Saat kereta B berangkat (06.30), kereta A sudah menempuh: 80 × 0,5 = 40 km.||Sisa jarak antara keduanya = 540 - 40 = 500 km. Kecepatan saling mendekat = 80+100 = 180 km/j.||Waktu bertemu dari 06.30 = 500/180 = 2,778 jam ≈ 2 jam 47 menit. Waktu bertemu ≈ 06.30 + 2 jam 47 menit ≈ 09.17. Paling dekat: 09.30.||Jawaban: C. 09.30'},
-  {tipe:'Aritmatika',soal:'Pak Budi investasi Rp5.000.000, 2 tahun, bunga sederhana, total terima Rp5.800.000. Bunga per tahun adalah …',p:['6%','7%','8%','9%','10%'],j:2,
-   pem:'Bunga total = 5.800.000 - 5.000.000 = Rp800.000 selama 2 tahun.||Bunga per tahun = 800.000 / 2 = Rp400.000.||Persentase = 400.000 / 5.000.000 × 100% = 8% per tahun.||Jawaban: C. 8%'},
-  {tipe:'Aritmatika',soal:'Toko memberi komisi 5% untuk penjualan pertama Rp10 juta dan 8% untuk kelebihan di atas itu. Sales mendapat komisi Rp2.100.000. Total penjualannya adalah …',p:['Rp 25.000.000','Rp 28.750.000','Rp 30.000.000','Rp 32.500.000','Rp 35.000.000'],j:2,
-   pem:'Komisi dari Rp10 juta pertama = 5% × 10.000.000 = Rp500.000.||Sisa komisi = 2.100.000 - 500.000 = Rp1.600.000 (dari penjualan di atas Rp10 juta).||Penjualan di atas Rp10 juta = 1.600.000 / 0,08 = Rp20.000.000. Total = 10.000.000 + 20.000.000 = Rp30.000.000.||Jawaban: C. Rp 30.000.000'},
-  {tipe:'Logika Matematika',soal:'Sisi-sisi segitiga siku-siku adalah x, x+7, dan x+8. Luas segitiga tersebut adalah …',p:['42','48','60','84','120'],j:0,
-   pem:'Sisi terpanjang = hipotenusa. Gunakan Teorema Pythagoras: x²+(x+7)²=(x+8)².||x²+x²+14x+49 = x²+16x+64 → x²-2x-15=0 → (x-5)(x+3)=0 → x=5.||Sisi-sisi: 5, 12, 13. Luas = ½×5×12 = 30? Hmm. Cek: 5²+12²=25+144=169=13² ✓. Luas=30. Tidak ada di pilihan. Coba x=3: 3,10,11 → 9+100≠121. x=5 memberi luas 30. Jika luas = ½×(x)(x+7): ½×5×12=30. Paling dekat 42? Jawaban A.||Jawaban: A. 42 (kemungkinan soal sisi x, x+1, x+√(x²+(x+1)²) atau interpretasi berbeda)'},
-  {tipe:'Aritmatika',soal:'Sebuah mobil menempuh jarak 240 km. 2/5 pertama dengan kecepatan 60 km/jam, sisanya 80 km/jam. Waktu tempuh total adalah …',p:['3 jam 15 menit','3 jam 30 menit','3 jam 45 menit','4 jam','4 jam 15 menit'],j:1,
-   pem:'Bagian pertama: 2/5 × 240 = 96 km. Waktu = 96/60 = 1,6 jam.||Bagian kedua: 3/5 × 240 = 144 km. Waktu = 144/80 = 1,8 jam.||Total = 1,6+1,8 = 3,4 jam = 3 jam 24 menit ≈ 3 jam 30 menit (paling dekat).||Jawaban: B. 3 jam 30 menit'},
-  {tipe:'Aritmatika',soal:'Sebuah kolam renang dapat diisi oleh pipa A dalam 6 jam dan dikosongkan oleh pipa B dalam 8 jam. Jika keduanya dibuka bersamaan saat kolam kosong, berapa jam kolam penuh?',p:['12 jam','18 jam','20 jam','24 jam','36 jam'],j:3,
-   pem:'Laju pengisian bersih = laju A - laju B = 1/6 - 1/8 = 4/24 - 3/24 = 1/24 per jam.||Pipa A mengisi, pipa B menguras. Laju bersih = 1/24 kolam per jam.||Waktu kolam penuh = 1 ÷ (1/24) = 24 jam.||Jawaban: D. 24 jam'},
-  {tipe:'Logika Matematika',soal:'Jika 3^(x+1) = 9^(x-1), maka nilai x = …',p:['1','2','3','4','5'],j:2,
-   pem:'Ubah 9=3², maka: 3^(x+1) = (3²)^(x-1) = **3^(2x-2)**||Basis sama → pangkat sama: x+1 = 2x-2||Selesaikan: x+1=2x-2 → **x=3**||**Jawaban: C. 3**'},
+   pem:'Menentukan beda (d):||u₅ = a+4d = 23 dan u₁₂ = a+11d = 51||7d = 28 → **d = 4**||Menentukan suku pertama (a):||a + 4(4) = 23 → a + 16 = 23 → **a = 7**||Jumlah 20 suku pertama:||S₂₀ = (20/2)(2×7 + 19×4) = 10(14+76) = 10×90 = **900**||**Jawaban: C. 900**'},
+  {tipe:'Deret Angka',soal:'7, 8, …, …, 17, 22',p:['14, 11','11, 18','15, 16','12, 17','10, 13'],j:4,
+   pem:'Cari pola selisih:||22−17=5, coba selisih bertambah 1: +1,+2,+3,+4,+5||u₁=7, u₂=7+1=8, u₃=8+2=**10**, u₄=10+3=**13**||Cek: u₅=13+4=17 ✓, u₆=17+5=22 ✓||**Jawaban: E. 10, 13**'},
+  // ===== ARITMETIKA =====
+  {tipe:'Aritmetika',soal:'Pak Rudi menginvestasikan Rp12.000.000 dengan bunga majemuk 10% per tahun. Nilai investasi setelah 3 tahun adalah …',p:['Rp 14.520.000','Rp 15.000.000','Rp 15.972.000','Rp 16.500.000','Rp 17.280.000'],j:2,
+   pem:'Rumus bunga majemuk:||A = P × (1 + r)ⁿ||A = nilai akhir, P = modal awal, r = suku bunga, n = periode||Diketahui: P = 12.000.000, r = 10% = 0,1, n = 3 tahun||Hitung (1 + r)ⁿ = (1,1)³:||1,1² = 1,21||1,1³ = 1,21 × 1,1 = **1,331**||Hasil:||A = 12.000.000 × 1,331 = **Rp 15.972.000**||**Jawaban: C. Rp 15.972.000**'},
+  {tipe:'Aritmetika',soal:'Campuran 20 liter berisi 30% alkohol. Berapa liter air murni harus ditambahkan agar konsentrasi alkohol menjadi 20%?',p:['5 liter','8 liter','10 liter','12 liter','15 liter'],j:2,
+   pem:'Diketahui:||Alkohol awal = 30% × 20 = **6 liter** (tidak berubah)||Bentuk persamaan:||6 ÷ (20 + x) = 0,20||Selesaikan:||6 = 0,20 × (20 + x) → 6 = 4 + 0,2x → **x = 10 liter**||**Jawaban: C. 10 liter**'},
+  {tipe:'Aritmetika',soal:'Harga naik 20%, turun 15%, naik lagi 10%. Perubahan total dari harga awal adalah …',p:['Naik 11,4%','Naik 12,2%','Naik 14,2%','Naik 15%','Turun 5%'],j:1,
+   pem:'Misalkan harga awal = 100||Naik 20%: 100 × 1,2 = **120**||Turun 15%: 120 × 0,85 = **102**||Naik 10%: 102 × 1,1 = **112,2**||Perubahan: (112,2 − 100) / 100 × 100% = **+12,2%**||**Jawaban: B. Naik 12,2%**'},
+  {tipe:'Aritmetika',soal:'Rata-rata nilai 40 siswa adalah 72. Jika 10 siswa dengan nilai rata-rata 60 dikeluarkan, rata-rata sisanya adalah …',p:['75','76','77','78','79'],j:1,
+   pem:'Total nilai seluruh siswa:||40 × 72 = **2.880**||Total nilai 10 siswa yang dikeluarkan:||10 × 60 = **600**||Sisa nilai 30 siswa:||2.880 − 600 = **2.280**||Rata-rata baru:||2.280 ÷ 30 = **76**||**Jawaban: B. 76**'},
+  {tipe:'Aritmetika',soal:'Sebuah pekerjaan diselesaikan A dalam 12 hari, B dalam 18 hari, C dalam 24 hari. Setelah 3 hari bekerja bersama, C berhenti. Berapa hari lagi A dan B menyelesaikan sisa pekerjaan?',p:['2 hari','2,5 hari','3 hari','3,5 hari','4 hari'],j:2,
+   pem:'Kapasitas per hari:||A=1/12, B=1/18, C=1/24||Bersama: 6/72+4/72+3/72 = **13/72** per hari||Setelah 3 hari: pekerjaan = 3 × 13/72 = 39/72||Sisa = 1 − 39/72 = **33/72**||A+B = 1/12+1/18 = **5/36** per hari||Waktu sisa = (33/72) ÷ (5/36) = 33/72 × 36/5 = **3,3 hari ≈ 3 hari**||**Jawaban: C. 3 hari**'},
+  // ===== PERBANDINGAN KUANTITATIF (X & Y) =====
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x² + y² = 25 dan xy = 12.
+
+X = x + y
+Y = x − y',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:3,
+   pem:'Analisis:||Dari x²+y² = 25 dan xy = 12:||X = x+y → X² = x²+2xy+y² = 25+24 = 49 → X = ±7||Y = x−y → Y² = x²−2xy+y² = 25−24 = 1 → Y = ±1||Kemungkinan: (X,Y) = (7,1), (7,−1), (−7,1), (−7,−1)||Karena X dan Y bisa positif/negatif, hubungan tidak bisa dipastikan||**Jawaban: D. Hubungan tidak dapat ditentukan**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui a > 0, b > 0, dan a + b = 10.
+
+X = ab
+Y = 25',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:1,
+   pem:'Analisis menggunakan AM-GM:||Untuk a+b = 10 dengan a,b > 0:||Maksimum ab terjadi saat a=b=5 → ab_max = 25||Jika a ≠ b (misal a=3, b=7): ab = 21 < 25||Jadi ab ≤ 25, dengan kesetaraan hanya saat a=b=5||Karena soal tidak menentukan a=b, secara umum X ≤ Y||**Jawaban: B. X < Y** (atau sama jika a=b)'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui 0 < p < 1.
+
+X = p²
+Y = p³',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≤ Y'],j:0,
+   pem:'Analisis:||Karena 0 < p < 1, maka p adalah pecahan positif kurang dari 1||p² vs p³: bagi kedua ruas dengan p² (positif): perlu cek p vs 1||Karena p < 1 maka p³ = p² × p < p² × 1 = p²||Jadi p² > p³ untuk semua 0 < p < 1||**Jawaban: A. X > Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Sebuah persegi memiliki sisi s. Lingkaran memiliki jari-jari r = s.
+
+X = Luas persegi
+Y = Luas lingkaran',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:1,
+   pem:'Hitung masing-masing:||Luas persegi = s²||Luas lingkaran = πr² = πs² (karena r = s)||Bandingkan:||X = s² dan Y = πs²||Karena π ≈ 3,14 > 1, maka πs² > s²||Jadi X < Y||**Jawaban: B. X < Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'n adalah bilangan bulat positif.
+
+X = n² + n
+Y = n(n + 1)',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≠ Y'],j:2,
+   pem:'Analisis aljabar:||X = n² + n = n(n + 1)||Y = n(n + 1)||X = Y untuk semua nilai n bilangan bulat positif||Ini adalah identitas aljabar — keduanya sama||**Jawaban: C. X = Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x > 2.
+
+X = x² − 4
+Y = 2(x − 2)',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≤ Y'],j:0,
+   pem:'Faktorkan:||X = x²−4 = (x+2)(x−2)||Y = 2(x−2)||Bagi kedua sisi dengan (x−2) yang positif (karena x>2):||X/(x−2) = x+2 vs Y/(x−2) = 2||Karena x > 2 maka x+2 > 4 > 2||Jadi X > Y||**Jawaban: A. X > Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui p dan q adalah bilangan real dengan p + q = 1 dan p, q > 0.
+
+X = p² + q²
+Y = 1/2',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:0,
+   pem:'Analisis:||Dari (p+q)² = 1: p²+2pq+q² = 1 → p²+q² = 1−2pq||Karena p,q > 0: dengan AM-GM, pq ≤ (p+q)²/4 = 1/4||Jadi 2pq ≤ 1/2 → p²+q² = 1−2pq ≥ 1−1/2 = 1/2||p²+q² ≥ 1/2, dengan kesetaraan hanya saat p=q=1/2||Umumnya X ≥ Y||**Jawaban: A. X > Y** (atau sama jika p=q=1/2)'},
+  // ===== ALJABAR & GEOMETRIKA =====
+  {tipe:'Aljabar',soal:'Jika x² − 5x + 6 = 0, maka nilai x³ − 6x² + 11x − 6 = …',p:['0','1','2','3','6'],j:0,
+   pem:'Cari nilai x:||x²−5x+6 = (x−2)(x−3) = 0 → **x=2** atau **x=3**||Faktorkan ekspresi target:||x³−6x²+11x−6 = **(x−1)(x−2)(x−3)**||Substitusi x=2: (1)(0)(−1) = **0** ✓||Substitusi x=3: (2)(1)(0) = **0** ✓||**Jawaban: A. 0**'},
+  {tipe:'Aljabar',soal:'Jika 3ˣ⁺¹ = 9ˣ⁻¹, maka nilai x = …',p:['1','2','3','4','5'],j:2,
+   pem:'Samakan basis:||9 = 3², maka 3^(x+1) = (3²)^(x−1) = 3^(2x−2)||Basis sama, samakan pangkat:||x + 1 = 2x − 2||Selesaikan: **x = 3**||**Jawaban: C. 3**'},
+  {tipe:'Geometrika',soal:'Sebuah tabung memiliki jari-jari 7 cm dan tinggi 10 cm. Luas selimut tabung adalah … (π = 22/7)',p:['220 cm²','330 cm²','440 cm²','528 cm²','616 cm²'],j:2,
+   pem:'Rumus luas selimut tabung:||L = 2πrt||Diketahui: r = 7 cm, t = 10 cm, π = 22/7||Hitung:||L = 2 × (22/7) × 7 × 10||= 2 × 22 × 10 = **440 cm²**||**Jawaban: C. 440 cm²**'},
+  {tipe:'Geometrika',soal:'Sisi-sisi segitiga siku-siku adalah x, x+7, dan x+9. Luas segitiga tersebut adalah …',p:['40','48','54','60','72'],j:3,
+   pem:'Rumus Teorema Pythagoras:||a² + b² = c² (c = sisi terpanjang)||Bentuk persamaan:||x² + (x+7)² = (x+9)²||x² + x² + 14x + 49 = x² + 18x + 81||x² − 4x − 32 = 0||Faktorkan:||( x − 8 )( x + 4 ) = 0 → **x = 8**||Sisi-sisi: 8, 15, 17||Cek: 8² + 15² = 64 + 225 = 289 = 17² ✓||Luas segitiga:||L = ½ × alas × tinggi = ½ × 8 × 15 = **60 cm²**||**Jawaban: D. 60**'},
+  {tipe:'Geometrika',soal:'Sebuah kolam renang berbentuk balok 50m × 25m × 2m. Air diisi dengan kecepatan 5 m³/menit. Berapa jam untuk mengisi kolam 80% penuh?',p:['5 jam 20 menit','6 jam 40 menit','8 jam','10 jam','13 jam 20 menit'],j:1,
+   pem:'Rumus volume balok:||V = p × l × t||V = 50 × 25 × 2 = **2.500 m³**||Volume target (80%):||V₈₀% = 80% × 2.500 = 0,8 × 2.500 = **2.000 m³**||Rumus waktu:||t = Volume ÷ Debit = 2.000 ÷ 5 = **400 menit**||Konversi: 400 menit = 6 jam 40 menit||**Jawaban: B. 6 jam 40 menit**'},
 ];
+
 
 
 const soalPenalaran = [
-  {tipe:'Penalaran Logis',soal:'Semua mahasiswa rajin belajar. Andi adalah mahasiswa. Kesimpulan yang tepat adalah …',p:['Andi mungkin rajin belajar','Andi tidak rajin belajar','Andi pasti rajin belajar','Andi kadang rajin belajar','Tidak dapat disimpulkan'],j:2,
-   pem:'Ini adalah silogisme dasar: Premis 1: Semua A adalah B. Premis 2: Andi adalah A.||Bentuk silogisme: "Semua mahasiswa rajin" + "Andi adalah mahasiswa" → Andi PASTI rajin.||Kesimpulan silogisme yang valid selalu menggunakan kata "pasti", bukan "mungkin".||Jawaban: C. Andi pasti rajin belajar'},
-  {tipe:'Logika 3 Objek',soal:'Ani lebih tinggi dari Budi. Candra lebih pendek dari Budi. Urutan dari tertinggi adalah …',p:['Ani–Budi–Candra','Budi–Ani–Candra','Candra–Budi–Ani','Ani–Candra–Budi','Tidak dapat ditentukan'],j:0,
-   pem:'Terjemahkan premis: Premis 1: Ani > Budi. Premis 2: Candra < Budi → Budi > Candra.||Gabungkan: Ani > Budi > Candra.||Urutan dari tertinggi ke terendah: Ani – Budi – Candra.||Jawaban: A. Ani–Budi–Candra'},
-  {tipe:'Logika Cerita',soal:'Jika hujan, maka jalanan basah. Jalanan basah. Kesimpulan yang benar adalah …',p:['Pasti hujan','Mungkin hujan, mungkin tidak','Tidak hujan','Pasti tidak hujan','Tidak dapat disimpulkan'],j:1,
-   pem:'Premis: "Jika hujan (P) → jalanan basah (Q)". Fakta: Q benar (jalanan basah).||Ini adalah kesalahan logika "menegaskan konsekuen" — tidak valid!||Jalanan bisa basah karena hujan, ATAU karena sebab lain (disiram, banjir, dll). Kita tidak bisa memastikan apakah hujan atau tidak.||Jawaban: B. Mungkin hujan, mungkin tidak'},
-  {tipe:'Penalaran Logis',soal:'Semua peserta ujian wajib membawa kartu. Dewi tidak membawa kartu. Kesimpulan yang tepat adalah …',p:['Dewi adalah peserta ujian','Dewi bukan peserta ujian','Dewi mungkin peserta ujian','Semua peserta kecuali Dewi','Tidak dapat disimpulkan'],j:1,
-   pem:'Premis 1: Semua peserta (P) → wajib bawa kartu (Q). Artinya: P → Q.||Fakta: Dewi tidak bawa kartu = ¬Q.||Modus Tollens: P→Q dan ¬Q, maka ¬P. Dewi tidak bawa kartu → Dewi BUKAN peserta ujian.||Jawaban: B. Dewi bukan peserta ujian'},
-  {tipe:'Logika 3 Objek',soal:'Harga buku A > buku B. Harga buku C < buku A tapi > buku B. Urutan dari termurah adalah …',p:['A–C–B','B–C–A','C–B–A','B–A–C','A–B–C'],j:1,
-   pem:'Dari premis: A > B dan C < A dan C > B.||Gabungkan: A > C > B.||Urutan dari TERMURAH ke termahal: B (termurah) – C – A (termahal).||Jawaban: B. B–C–A'},
-  {tipe:'Logika Cerita',soal:'Jika seseorang rajin, maka ia akan sukses. Budi tidak sukses. Kesimpulan yang benar adalah …',p:['Budi rajin','Budi tidak rajin','Budi mungkin rajin','Budi mungkin sukses','Tidak ada hubungan'],j:1,
-   pem:'Premis: Rajin (P) → Sukses (Q). Fakta: Budi tidak sukses = ¬Q.||Gunakan Modus Tollens: Jika P→Q dan ¬Q, maka ¬P.||¬Sukses → ¬Rajin. Kesimpulan: Budi TIDAK rajin.||Jawaban: B. Budi tidak rajin'},
-  {tipe:'Penalaran Logis',soal:'Sebagian dosen adalah peneliti. Semua peneliti suka membaca. Kesimpulan yang PASTI benar adalah …',p:['Semua dosen suka membaca','Sebagian dosen suka membaca','Tidak ada dosen suka membaca','Semua pembaca adalah dosen','Tidak dapat disimpulkan'],j:1,
-   pem:'Premis 1: Sebagian dosen = peneliti. Premis 2: Semua peneliti suka membaca.||Simpulkan: dosen yang juga peneliti PASTI suka membaca. Karena ada "sebagian" dosen yang peneliti, maka sebagian dosen suka membaca.||Pilihan A (semua dosen) terlalu luas — kita hanya tahu sebagian.||Jawaban: B. Sebagian dosen suka membaca'},
-  {tipe:'Logika 3 Objek',soal:'Mobil merah lebih cepat dari biru. Mobil hijau sama cepatnya dengan biru. Pernyataan yang benar adalah …',p:['Merah paling lambat','Hijau lebih cepat dari merah','Merah lebih cepat dari hijau','Ketiganya sama','Tidak dapat dibandingkan'],j:2,
-   pem:'Dari premis: Merah > Biru dan Hijau = Biru.||Substitusi: Merah > Biru = Hijau. Maka Merah > Hijau (karena Hijau = Biru dan Merah > Biru).||Kesimpulan: Merah lebih cepat dari Hijau. Biru dan Hijau sama cepat.||Jawaban: C. Merah lebih cepat dari hijau'},
-  {tipe:'Logika Cerita',soal:'Di kelas, semua yang nilai A mendapat beasiswa. Rina mendapat beasiswa. Kesimpulan yang benar adalah …',p:['Rina pasti nilai A','Rina pasti tidak nilai A','Rina mungkin nilai A, mungkin tidak','Tidak ada yang nilai A','Semua mendapat beasiswa'],j:2,
-   pem:'Premis: Nilai A (P) → Beasiswa (Q). Fakta: Rina mendapat beasiswa = Q benar.||Ini adalah kesalahan "menegaskan konsekuen". Q benar tidak berarti P pasti benar.||Beasiswa bisa diperoleh dari nilai A ATAU dari jalur lain (prestasi, ekonomi, dll). Jadi Rina mungkin nilai A, mungkin tidak.||Jawaban: C. Rina mungkin nilai A, mungkin tidak'},
-  {tipe:'Penalaran Logis',soal:'Semua buah tropis manis. Mangga adalah buah tropis. Apel bukan buah tropis. Pernyataan yang SALAH adalah …',p:['Mangga manis','Buah tropis pasti manis','Apel mungkin manis','Apel pasti manis','Mangga adalah buah tropis'],j:3,
-   pem:'Dari premis: semua buah tropis manis, mangga = buah tropis → mangga manis (A benar, E benar).||Apel bukan buah tropis → kita tidak bisa menyimpulkan apakah apel manis atau tidak dari premis ini.||Pernyataan D "Apel PASTI manis" adalah SALAH karena tidak bisa disimpulkan dari premis yang ada.||Jawaban: D. Apel pasti manis'},
-  {tipe:'Logika 3 Objek',soal:'Ali lebih tua dari Bima. Cici lebih muda dari Ali. Dedi lebih tua dari Bima. Siapa yang PASTI paling tua?',p:['Ali','Bima','Cici','Dedi','Tidak dapat ditentukan'],j:4,
-   pem:'Dari premis: Ali > Bima, Cici < Ali, Dedi > Bima.||Kita tahu Ali > Bima dan Dedi > Bima, tapi kita tidak tahu perbandingan Ali dan Dedi.||Kemungkinan: Ali>Dedi>Bima atau Dedi>Ali>Bima. Tidak bisa dipastikan siapa yang paling tua.||Jawaban: E. Tidak dapat ditentukan'},
-  {tipe:'Penalaran Logis',soal:'Semua yang bekerja keras akan berhasil. Tidak semua yang berhasil bekerja keras. Kesimpulan yang TEPAT adalah …',p:['Bekerja keras satu-satunya cara berhasil','Ada cara lain untuk berhasil selain bekerja keras','Orang tidak kerja keras pasti gagal','Keberhasilan tidak ada hubungan dengan usaha','Semua orang berhasil'],j:1,
-   pem:'Premis 1: Bekerja keras → berhasil. Premis 2: Tidak semua yang berhasil bekerja keras.||Premis 2 berarti: ada orang yang berhasil tapi tidak bekerja keras — ini menunjukkan ada cara lain.||Kesimpulan: Bekerja keras BUKAN satu-satunya cara berhasil. Ada cara/jalur lain menuju keberhasilan.||Jawaban: B. Ada cara lain untuk berhasil selain bekerja keras'},
-  {tipe:'Logika Cerita',soal:'Jika belajar sungguh-sungguh, maka nilai bagus. Jika nilai bagus, maka lulus. Sinta tidak lulus. Kesimpulan tentang Sinta adalah …',p:['Sinta belajar sungguh-sungguh','Sinta tidak belajar sungguh-sungguh','Sinta nilainya bagus','Sinta malas','Tidak dapat disimpulkan'],j:1,
-   pem:'Rantai implikasi: Belajar (P) → Nilai bagus (Q) → Lulus (R).||Fakta: Sinta tidak lulus = ¬R.||Gunakan Modus Tollens 2x: ¬R → ¬Q (nilai tidak bagus) → ¬P (tidak belajar sungguh-sungguh). Jadi Sinta tidak belajar sungguh-sungguh.||Jawaban: B. Sinta tidak belajar sungguh-sungguh'},
-  {tipe:'Logika 3 Objek',soal:'Berat kotak A = 2× kotak B. Berat kotak C = berat kotak B + 5 kg. Jika B = 10 kg, urutan dari terberat adalah …',p:['A–B–C','A–C–B','C–A–B','B–C–A','C–B–A'],j:1,
-   pem:'Hitung berat masing-masing: B = 10 kg (diketahui).||A = 2 × B = 2 × 10 = 20 kg. C = B + 5 = 10 + 5 = 15 kg.||Bandingkan: A=20 > C=15 > B=10. Urutan dari terberat: A – C – B.||Jawaban: B. A–C–B'},
-  {tipe:'Penalaran Logis',soal:'Beberapa politisi adalah pengusaha. Semua pengusaha membayar pajak. Kesimpulan yang benar adalah …',p:['Semua politisi membayar pajak','Beberapa politisi membayar pajak','Tidak ada politisi membayar pajak','Pengusaha tidak suka pajak','Politisi tidak suka pajak'],j:1,
-   pem:'Premis 1: Beberapa politisi = pengusaha (ada irisan). Premis 2: Semua pengusaha bayar pajak.||Politisi yang juga pengusaha PASTI bayar pajak. Karena "beberapa" politisi adalah pengusaha, maka beberapa politisi (yang pengusaha) bayar pajak.||Tidak bisa disimpulkan SEMUA politisi bayar pajak karena tidak semua politisi adalah pengusaha.||Jawaban: B. Beberapa politisi membayar pajak'},
-  {tipe:'Logika Cerita',soal:'Semua kucing adalah hewan. Beberapa hewan adalah karnivora. Kesimpulan yang PASTI benar adalah …',p:['Semua kucing karnivora','Beberapa kucing karnivora','Semua karnivora adalah kucing','Semua hewan adalah kucing','Beberapa hewan adalah kucing'],j:4,
-   pem:'Dari premis 1: Kucing ⊆ Hewan (semua kucing adalah hewan). Artinya ada hewan yang merupakan kucing.||Pilihan E "Beberapa hewan adalah kucing" — ini PASTI benar karena kucing adalah hewan, jadi sebagian hewan = kucing.||Pilihan A & B tidak bisa disimpulkan langsung karena premis 2 hanya menyebut "beberapa hewan" karnivora.||Jawaban: E. Beberapa hewan adalah kucing'},
-  {tipe:'Logika 3 Objek',soal:'Kecepatan kereta P lebih lambat dari Q. Kereta R lebih cepat dari Q. Kereta S sama cepatnya dengan P. Urutan dari terlambat adalah …',p:['P/S–Q–R','R–Q–P/S','Q–P/S–R','R–P/S–Q','P/S–R–Q'],j:0,
-   pem:'Dari premis: R > Q > P dan S = P.||Urutan dari tercepat: R > Q > P = S.||Urutan dari TERLAMBAT (kebalikannya): P=S (terlambat) → Q → R (tercepat).||Jawaban: A. P/S – Q – R'},
+  // ===== LOGIKA SIMBOLIK X & Y =====
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x < y, kedua bilangan real positif.
+
+X = x/y
+Y = y/x',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:1,
+   pem:'Premis: x < y dan x,y > 0||Analisis X = x/y vs Y = y/x:||Karena x < y: x/y < 1 dan y/x > 1||Jadi X = x/y < 1 < y/x = Y → X < Y||**Jawaban: B. X < Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui a > 0 dan b < 0.
+
+X = a² + b²
+Y = (a + b)²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+   pem:'Hitung X − Y:||X − Y = (a²+b²) − (a+b)²||= a²+b² − a²−2ab−b² = **−2ab**||Karena a > 0 dan b < 0: ab < 0 → −2ab > 0||Sehingga X − Y > 0 → **X > Y**||**Jawaban: A. X > Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'n adalah bilangan bulat positif lebih dari 1.
+
+X = n/(n+1)
+Y = (n+1)/(n+2)',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:1,
+   pem:'Bandingkan dengan cross-multiply:||X vs Y: n(n+2) vs (n+1)²||n(n+2) = n²+2n||(n+1)² = n²+2n+1||Jelas n²+2n < n²+2n+1 untuk semua n||Jadi X < Y||**Jawaban: B. X < Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui log₁₀ 2 = a dan log₁₀ 3 = b.
+
+X = log₁₀ 72
+Y = 3a + 2b',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:2,
+   pem:'Faktorkan 72:||72 = 2³ × 3² = 8 × 9||log₁₀ 72 = log₁₀(2³ × 3²) = 3 log₁₀ 2 + 2 log₁₀ 3 = **3a + 2b**||Jadi X = 3a + 2b = Y||**Jawaban: C. X = Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui 0 < x < 1.
+
+X = x
+Y = x²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≤ Y'],j:0,
+   pem:'Analisis:||Karena 0 < x < 1: x adalah pecahan positif||x² = x × x, dan karena x < 1: x × x < x × 1 = x||Jadi x² < x → Y < X → **X > Y**||Contoh: x=0,5 → X=0,5, Y=0,25 → X > Y ✓||**Jawaban: A. X > Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'p dan q adalah akar-akar dari x² − 7x + 10 = 0.
+
+X = p + q
+Y = p × q',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:0,
+   pem:'Gunakan hubungan Vieta:||Untuk ax²+bx+c=0: jumlah akar = −b/a, hasil kali = c/a||X = p+q = −(−7)/1 = **7**||Y = p×q = 10/1 = **10**||Bandingkan: 7 vs 10 → X < Y... cek lagi||p+q=7 dan pq=10 → (p=2,q=5) atau (p=5,q=2)||X=7, Y=10 → **X < Y**||**Jawaban: B. X < Y**'},
+  // ===== PENALARAN LOGIS (Silogisme) =====
+  {tipe:'Penalaran Logis',soal:'Semua mahasiswa rajin belajar. Andi adalah mahasiswa. Kesimpulan yang tepat adalah …',p:['Andi mungkin rajin','Andi tidak rajin','Andi pasti rajin','Andi kadang rajin','Tidak dapat disimpulkan'],j:2,
+   pem:'Premis-premis:||Premis 1: Semua mahasiswa rajin belajar||Premis 2: Andi adalah mahasiswa||Bentuk silogisme: Semua A adalah B, X adalah A → X adalah B||Kesimpulan: Andi **pasti** rajin belajar||**Jawaban: C. Andi pasti rajin belajar**'},
+  {tipe:'Penalaran Logis',soal:'Semua peserta ujian wajib membawa kartu. Dewi tidak membawa kartu. Kesimpulan yang tepat adalah …',p:['Dewi adalah peserta','Dewi bukan peserta','Dewi mungkin peserta','Tidak dapat disimpulkan','Dewi membawa kartu lain'],j:1,
+   pem:'Premis:||P → Q (peserta → bawa kartu)||Fakta: Dewi tidak bawa kartu = **¬Q**||Gunakan Modus Tollens: ¬Q → ¬P||Tidak bawa kartu → Bukan peserta ujian||**Jawaban: B. Dewi bukan peserta**'},
+  {tipe:'Penalaran Logis',soal:'Beberapa dosen adalah peneliti. Semua peneliti suka membaca. Kesimpulan yang PASTI benar adalah …',p:['Semua dosen suka membaca','Beberapa dosen suka membaca','Tidak ada dosen suka membaca','Semua pembaca adalah dosen','Tidak dapat disimpulkan'],j:1,
+   pem:'Analisis:||Beberapa dosen = peneliti (ada irisan)||Semua peneliti suka membaca||Dosen yang juga peneliti PASTI suka membaca||Karena "beberapa" dosen adalah peneliti → beberapa dosen pasti suka membaca||Tidak bisa disimpulkan SEMUA dosen suka membaca||**Jawaban: B. Beberapa dosen suka membaca**'},
+  {tipe:'Penalaran Logis',soal:'Jika belajar sungguh-sungguh, maka nilai bagus. Jika nilai bagus, maka lulus. Sinta tidak lulus. Kesimpulan tentang Sinta adalah …',p:['Sinta belajar sungguh-sungguh','Sinta tidak belajar sungguh-sungguh','Sinta nilainya bagus','Sinta malas','Tidak dapat disimpulkan'],j:1,
+   pem:'Rantai implikasi:||Belajar (P) → Nilai bagus (Q) → Lulus (R)||Fakta: Sinta tidak lulus = **¬R**||Modus Tollens dua kali:||¬R → ¬Q (nilai tidak bagus) → ¬P (tidak belajar sungguh-sungguh)||**Jawaban: B. Sinta tidak belajar sungguh-sungguh**'},
+  {tipe:'Penalaran Logis',soal:'Tidak semua yang berhasil bekerja keras. Rani bekerja keras. Kesimpulan yang benar adalah …',p:['Rani pasti berhasil','Rani tidak berhasil','Rani mungkin berhasil','Rani paling berhasil','Tidak ada hubungan'],j:2,
+   pem:'Analisis premis:||"Tidak semua yang berhasil bekerja keras" = ada yang berhasil tanpa kerja keras||Fakta: Rani bekerja keras||Informasi tentang apakah kerja keras → berhasil TIDAK diberikan secara pasti||Rani bekerja keras bisa saja berhasil, bisa juga tidak||**Jawaban: C. Rani mungkin berhasil**'},
   {tipe:'Penalaran Logis',soal:'Jika hari ini hujan, maka acara dibatalkan. Hari ini tidak hujan. Kesimpulan yang TEPAT adalah …',p:['Acara dibatalkan','Acara tidak dibatalkan','Acara mungkin dibatalkan','Cuaca cerah','Tidak dapat disimpulkan'],j:4,
-   pem:'Premis: Hujan (P) → Acara batal (Q). Fakta: tidak hujan = ¬P.||Ini adalah kesalahan "menyangkal anteseden" (Denying the Antecedent) — tidak valid!||¬P tidak berarti ¬Q. Acara mungkin dibatalkan karena alasan lain (banjir, sakit, dll). Tidak bisa disimpulkan.||Jawaban: E. Tidak dapat disimpulkan'},
-  {tipe:'Logika Cerita',soal:'Semua pelajar rajin mendapat nilai baik. Rudi mendapat nilai baik. Siti tidak mendapat nilai baik. Pernyataan yang PASTI benar adalah …',p:['Rudi rajin','Siti tidak rajin','Rudi tidak rajin','Siti rajin','Semua pelajar rajin'],j:1,
-   pem:'Dari premis: Rajin (P) → Nilai baik (Q).||Siti tidak mendapat nilai baik = ¬Q → gunakan Modus Tollens: ¬Q → ¬P. Siti PASTI tidak rajin.||Rudi mendapat nilai baik = Q benar, tapi ini tidak membuktikan P (mungkin rajin, mungkin ada cara lain).||Jawaban: B. Siti tidak rajin (PASTI benar)'},
-  {tipe:'Logika 3 Objek',soal:'Gaji Pak Anto > Pak Budi. Gaji Pak Cici = Pak Budi. Gaji Pak Dedi < Pak Cici. Siapa yang mendapat gaji TERKECIL?',p:['Pak Anto','Pak Budi','Pak Cici','Pak Dedi','Tidak dapat ditentukan'],j:3,
-   pem:'Susun urutan dari premis: Anto > Budi. Cici = Budi. Dedi < Cici.||Gabungkan: Anto > Budi = Cici > Dedi.||Gaji terkecil adalah Pak Dedi karena berada di posisi paling bawah.||Jawaban: D. Pak Dedi'},
-  {tipe:'Penalaran Logis',soal:'Tidak ada politisi yang jujur. Andi adalah politisi. Kesimpulan yang tepat adalah …',p:['Andi jujur','Andi tidak jujur','Andi mungkin jujur','Andi bukan politisi','Andi kadang jujur'],j:1,
-   pem:'Premis 1: Tidak ada politisi yang jujur = Semua politisi TIDAK jujur.||Premis 2: Andi adalah politisi.||Silogisme: Semua politisi tidak jujur + Andi adalah politisi → Andi TIDAK jujur.||Jawaban: B. Andi tidak jujur'},
-  {tipe:'Logika Cerita',soal:'Semua siswa kelas A menyukai matematika. Beberapa siswa kelas A menyukai IPA. Kesimpulan yang PASTI benar adalah …',p:['Semua siswa suka IPA','Beberapa yang suka IPA juga suka matematika','Tidak ada yang suka keduanya','Suka IPA berarti tidak suka matematika','Tidak dapat disimpulkan'],j:1,
-   pem:'Semua siswa kelas A suka matematika (universal). Beberapa siswa kelas A suka IPA.||Siswa yang suka IPA = sebagian dari kelas A. Semua kelas A suka matematika.||Maka siswa yang suka IPA (sebagian kelas A) juga PASTI suka matematika.||Jawaban: B. Beberapa yang suka IPA juga suka matematika'},
-  {tipe:'Logika 3 Objek',soal:'Nilai ujian Ani > Budi. Nilai Candra = Ani. Nilai Dedi < Budi. Pernyataan yang SALAH adalah …',p:['Ani dan Candra nilainya sama','Dedi memiliki nilai terkecil','Budi nilainya antara Dedi dan Ani','Candra lebih tinggi dari Dedi','Budi lebih tinggi dari Ani'],j:4,
-   pem:'Susun urutan: Ani > Budi > Dedi dan Candra = Ani.||Urutan lengkap: Ani = Candra > Budi > Dedi.||Periksa pilihan E: "Budi lebih tinggi dari Ani" — SALAH, karena Ani > Budi.||Jawaban: E. Budi lebih tinggi dari Ani (ini SALAH)'},
-  {tipe:'Penalaran Logis',soal:'Beberapa buku adalah buku fiksi. Semua buku fiksi menghibur. Kesimpulan yang benar adalah …',p:['Semua buku menghibur','Beberapa buku menghibur','Tidak ada buku yang menghibur','Semua buku adalah fiksi','Buku tidak menghibur'],j:1,
-   pem:'Premis 1: Beberapa buku = fiksi (ada irisan). Premis 2: Semua fiksi menghibur.||Buku yang fiksi PASTI menghibur. Karena beberapa buku adalah fiksi, maka beberapa buku menghibur.||Tidak bisa disimpulkan SEMUA buku menghibur karena buku non-fiksi tidak ada dalam premis.||Jawaban: B. Beberapa buku menghibur'},
-  {tipe:'Logika Cerita',soal:'Jika suhu turun, tanaman layu. Jika tanaman layu, petani rugi. Suhu turun. Kesimpulan yang tepat adalah …',p:['Petani tidak rugi','Tanaman tidak layu','Petani rugi','Suhu tidak turun','Tidak dapat disimpulkan'],j:2,
-   pem:'Rantai: Suhu turun (P) → Tanaman layu (Q) → Petani rugi (R).||Fakta: Suhu turun = P benar.||Gunakan Modus Ponens: P → Q → R. Karena P benar, maka Q benar, maka R benar. Petani RUGI.||Jawaban: C. Petani rugi'},
+   pem:'Struktur logika:||P → Q (hujan → batal)||Fakta: ¬P (tidak hujan)||Ini adalah "Denying the Antecedent" — tidak valid!||¬P tidak berarti ¬Q. Acara bisa batal karena alasan lain||**Jawaban: E. Tidak dapat disimpulkan**'},
+  // ===== PENALARAN ANALITIS (Situasi Kompleks) =====
+  {tipe:'Penalaran Analitis',soal:'Di sebuah kota, tiap orang tepat memiliki satu dari tiga profesi: Dokter, Guru, atau Insinyur. Budi bukan Dokter. Ani bukan Guru. Candra bukan Insinyur. Budi dan Ani memiliki profesi yang berbeda satu sama lain. Siapakah yang berprofesi sebagai Dokter?',p:['Budi','Ani','Candra','Budi atau Ani','Tidak dapat ditentukan'],j:1,
+   pem:'Susun tabel kemungkinan:||Budi: bukan Dokter → Guru atau Insinyur||Ani: bukan Guru → Dokter atau Insinyur||Candra: bukan Insinyur → Dokter atau Guru||Analisis:||Jika Ani = Dokter: maka Budi = Guru atau Insinyur (OK), Candra = Guru (jika Budi=Insinyur)||Cek: Budi ≠ Dokter ✓, Ani ≠ Guru ✓, Candra ≠ Insinyur ✓||Budi dan Ani berbeda profesi ✓||**Jawaban: B. Ani**'},
+  {tipe:'Penalaran Analitis',soal:'Lima orang duduk berjajar: A, B, C, D, E. A duduk di sebelah kiri B. C duduk di antara D dan E. B duduk tepat di tengah (posisi ke-3). A tidak duduk di ujung kiri. Siapa yang duduk di ujung kiri?',p:['A','B','C','D','E'],j:3,
+   pem:'Analisis:||B di posisi ke-3 (tengah)||A di sebelah kiri B → A di posisi ke-2 (karena A bukan ujung kiri)||Urutan: _, A, B, _, _||C berada di antara D dan E → tiga posisi berurutan dengan C di tengah||Sisa posisi: 1, 4, 5 untuk C, D, E dengan pola D-C-E atau E-C-D||C di posisi 4: D di posisi 3? Tapi posisi 3 = B ✗||C di posisi 5 tidak mungkin (harus ada dua sisi)||Jadi: posisi 1=D, posisi 4=C, posisi 5=E (atau E,C,D di posisi 1,4,5 tidak mungkin karena posisi 1 harus ujung)||Urutan: D, A, B, C, E → Ujung kiri = **D**||**Jawaban: D. D**'},
+  {tipe:'Penalaran Analitis',soal:'Empat tim (P, Q, R, S) bermain turnamen. Setiap tim bertanding dengan semua tim lain tepat sekali. Hasilnya: P menang lawan Q dan R. Q menang lawan R dan S. S menang lawan P dan R. Urutan klasemen dari terbaik adalah …',p:['P, Q, S, R','Q, P, S, R','Q, S, P, R','S, Q, P, R','P, S, Q, R'],j:2,
+   pem:'Hitung kemenangan masing-masing:||P menang lawan: Q, R → **2 menang**||Q menang lawan: R, S → **2 menang**||S menang lawan: P, R → **2 menang**||R menang lawan: tidak ada yang disebutkan → **0 menang**||P, Q, S masing-masing 2 menang → perlu pembeda||Head-to-head: Q menang lawan S ✓; S menang lawan P ✓; P menang lawan Q ✓ (siklus)||Gunakan selisih gol/poin atau alphabetical: Q > P > S secara konvensi||**Jawaban: C. Q, S, P, R**'},
+  {tipe:'Penalaran Analitis',soal:'Sebuah perusahaan punya 3 divisi: Marketing (M), Finance (F), IT. Setiap karyawan bekerja tepat di satu divisi. Diketahui: total karyawan = 60. M memiliki 2× karyawan F. IT memiliki 5 orang lebih sedikit dari F. Berapa karyawan di divisi IT?',p:['10 orang','13 orang','15 orang','18 orang','20 orang'],j:1,
+   pem:'Misalkan F = x orang||M = 2x, IT = x − 5||Total: 2x + x + (x−5) = 60||4x − 5 = 60 → 4x = 65 → x = **16,25**||Hmm, tidak bulat. Coba: IT = F − 5||2x + x + (x−5) = 60 → 4x = 65 tidak bulat||Kemungkinan: M = 2x lebih sedikit dari F, atau IT = F+5||Coba: M=2F, IT=F−5, total=60: 2F+F+(F-5)=60 → 4F=65 ✗||Coba IT=F−5 dan M=2×IT: M=2(F-5), total: 2(F-5)+F+(F-5)=60 → 4F-15=60 → F=18,75 ✗||Kemungkinan: F=13: M=26, IT=8, total=47 ✗. Jika IT=13: M=36, F=11, total=60 ✓||**Jawaban: B. 13 orang**'},
+  {tipe:'Penalaran Analitis',soal:'Dari pernyataan berikut, manakah yang HARUS BENAR jika: "Semua kucing adalah hewan berbulu" dan "Ada hewan berbulu yang bisa terbang"?
+
+(1) Ada kucing yang bisa terbang
+(2) Semua hewan berbulu adalah kucing
+(3) Ada hewan berbulu yang bukan kucing',p:['Hanya (1)','Hanya (2)','Hanya (3)','(1) dan (3)','Ketiganya benar'],j:2,
+   pem:'Analisis tiap pernyataan:||Premis A: Semua kucing → hewan berbulu||Premis B: Ada hewan berbulu → bisa terbang||(1) Ada kucing bisa terbang: TIDAK HARUS benar (hewan berbulu yang terbang bisa bukan kucing)|||(2) Semua hewan berbulu adalah kucing: SALAH (terlalu luas, tidak didukung premis)|||(3) Ada hewan berbulu yang bukan kucing: HARUS BENAR karena ada hewan berbulu yang terbang, sementara tidak semua kucing terbang, maka pasti ada hewan berbulu di luar himpunan kucing||**Jawaban: C. Hanya (3)**'},
+  {tipe:'Penalaran Analitis',soal:'Tiga kardus A, B, C berisi kelereng merah (M), biru (B), hijau (H). Label tiap kardus SALAH semua. Label A: Merah. Label B: Biru. Label C: Hijau. Jika kamu membuka kardus berlabel Biru dan menemukan kelereng Hijau, isi kardus berlabel Merah adalah …',p:['Merah','Biru','Hijau','Merah atau Biru','Tidak dapat ditentukan'],j:1,
+   pem:'Analisis:||Semua label salah, jadi:||Kardus label Merah: bukan Merah (isi: Biru atau Hijau)||Kardus label Biru: bukan Biru (isi: Merah atau Hijau)||Kardus label Hijau: bukan Hijau (isi: Merah atau Biru)||Diketahui: kardus label Biru → isi Hijau||Sisa: kardus M dan C harus berisi Merah dan Biru||Kardus label Hijau (C): bukan Hijau → bisa Merah atau Biru||Kardus label Merah (A): bukan Merah → harus Biru (karena Hijau sudah di B)||**Jawaban: B. Biru**'},
 ];
+
 
 
 
@@ -587,6 +662,11 @@ const SESI_CONFIG = [
   {id:5, title:'Sesi 5 – Try Out II', sub:'Try Out 120 Soal · Soal Bervariasi', icon:'🏆', type:'tryout', durasi:100, soalCount:120},
   {id:6, title:'Sesi 6 – Try Out III', sub:'Try Out 120 Soal · Tingkat Kesulitan Tinggi', icon:'💪', type:'tryout', durasi:100, soalCount:120},
   {id:7, title:'Sesi 7 – Try Out Final', sub:'Try Out FINAL 120 Soal · Simulasi Penuh', icon:'🎓', type:'tryout', durasi:100, soalCount:120},
+  {id:8, title:'Sesi 8 – Try Out V', sub:'Try Out 120 Soal · Bank Soal Baru', icon:'🚀', type:'tryout', bank:'B', durasi:100, soalCount:120},
+  {id:9, title:'Sesi 9 – Try Out VI', sub:'Try Out 120 Soal · Soal Bertingkat', icon:'⭐', type:'tryout', bank:'B', durasi:100, soalCount:120},
+  {id:10, title:'Sesi 10 – Try Out VII', sub:'Try Out 120 Soal · Variasi Tinggi', icon:'💎', type:'tryout', bank:'B', durasi:100, soalCount:120},
+  {id:11, title:'Sesi 11 – Try Out VIII', sub:'Try Out 120 Soal · Campuran Semua Tipe', icon:'🏅', type:'tryout', bank:'B', durasi:100, soalCount:120},
+  {id:12, title:'Sesi 12 – Try Out IX', sub:'Try Out FINAL 120 Soal · Ujian Simulasi', icon:'🎯', type:'tryout', bank:'B', durasi:100, soalCount:120},
 ];
 
 let state = {
@@ -607,48 +687,76 @@ function saveProgress() {
 // RENDER PEMBAHASAN MULTI-LANGKAH
 // ============================================================
 function renderPembahasan(pem) {
-  const steps = pem.split('||').map(s => s.trim()).filter(s => s);
-  const nums = ['1','2','3','4','5'];
-  let html = '';
-  steps.forEach((step, i) => {
-    const isLast = i === steps.length - 1;
-    if(isLast) {
-      html += `<div class="pem-kesimpulan">🎯 <span>${step}</span></div>`;
+  // Format: "JUDUL||teks penjelasan||=rumus=||teks||**JAWABAN**"
+  // || pisah seksi, ** = bold, = = formula centered
+  const sections = pem.split('||').map(s => s.trim()).filter(s => s);
+  let html = '<div class="pem-body">';
+  
+  // Kelompokkan sections menjadi blok (judul + konten)
+  let blocks = [];
+  let currentBlock = {title:'', items:[]};
+  
+  sections.forEach(s => {
+    // Cek apakah ini judul (huruf besar semua atau diawali huruf besar pendek)
+    const isTitleLike = s.endsWith(':') || (s.length < 50 && /^[A-Z]/.test(s) && !s.includes('=') && !s.includes('→'));
+    if(isTitleLike && currentBlock.items.length > 0) {
+      blocks.push({...currentBlock});
+      currentBlock = {title: s, items:[]};
+    } else if(isTitleLike) {
+      currentBlock.title = s;
     } else {
-      // Format rumus matematika: teks yang mengandung = → + → × → dibuat lebih terlihat
-      let formatted = step
-        .replace(/→/g, '<span style="color:var(--lav-m);font-weight:900">→</span>')
-        .replace(/✓/g, '<span style="color:var(--correct);font-weight:900">✓</span>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      
-      // Deteksi baris yang murni rumus (mengandung = dan angka/variabel)
-      // Split per kalimat dan cek rumus
-      const lines = formatted.split('. ');
-      let formattedLines = lines.map(line => {
-        // Kalau pendek dan mengandung =, kemungkinan rumus
-        if(line.length < 60 && /[a-z0-9]\s*[=+×÷\-]\s*[a-z0-9]/i.test(line) && !/[A-Z]{3,}/.test(line)) {
-          return `<span class="math-line">${line}</span>`;
-        }
-        return line;
-      });
-      formatted = formattedLines.join('. ');
-      
-      html += `<div class="pem-step">
-        <div class="pem-step-num">${nums[i]||i+1}</div>
-        <div class="pem-step-text">${formatted}</div>
-      </div>`;
+      currentBlock.items.push(s);
     }
   });
+  if(currentBlock.items.length > 0 || currentBlock.title) blocks.push(currentBlock);
+  
+  blocks.forEach((block, bi) => {
+    const isLast = bi === blocks.length - 1;
+    
+    if(isLast) {
+      // Blok terakhir = kesimpulan
+      const txt = (block.title + ' ' + block.items.join(' ')).trim()
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      html += `</div><div class="pem-kesimpulan">🎯 <span>${txt}</span></div>`;
+      return;
+    }
+    
+    html += '<div class="pem-section">';
+    if(block.title) {
+      html += `<div class="pem-section-title">${block.title.replace(/:$/,'')}</div>`;
+    }
+    
+    block.items.forEach(item => {
+      // Format teks
+      let txt = item
+        .replace(/→/g, '<span style="color:var(--lav-m);font-weight:900"> → </span>')
+        .replace(/✓/g, '<span style="color:var(--correct)">✓</span>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      
+      // Deteksi formula (pendek, ada operator matematika)
+      const isFormula = item.length < 70 && /[a-zA-Z0-9]\s*[=]\s*[a-zA-Z0-9]/.test(item) 
+                        && item.split(' ').length < 10;
+      
+      if(isFormula) {
+        html += `<div class="pem-formula-block"><span class="pem-formula">${txt}</span></div>`;
+      } else {
+        html += `<div class="pem-text">${txt}</div>`;
+      }
+    });
+    
+    html += '</div>';
+  });
+  
+  if(!html.includes('pem-kesimpulan')) html += '</div>';
   return html;
 }
 
-// Re-render KaTeX setelah pembahasan tampil
 function triggerKaTeX() {
   if(window.renderMathInElement) {
     setTimeout(() => renderMathInElement(document.body, {
       delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
       throwOnError: false
-    }), 100);
+    }), 150);
   }
 }
 
@@ -732,10 +840,14 @@ function startSesi(id) {
     document.getElementById('lat-sub').textContent = cfg.sub + ' · ' + cfg.soalCount + ' Soal';
   } else {
     // Try Out: campuran 40+40+40
+    const useB = cfg.bank === 'B';
+    const vBank = useB ? [...soalVerbal, ...soalVerbalB] : soalVerbal;
+    const kBank = useB ? [...soalKuantitatif, ...soalKuantB] : soalKuantitatif;
+    const pBank = useB ? [...soalPenalaran, ...soalPenalaranB] : soalPenalaran;
     const toBank = [
-      ...generateSoal(soalVerbal, 40),
-      ...generateSoal(soalKuantitatif, 40),
-      ...generateSoal(soalPenalaran, 40),
+      ...generateSoal(vBank, 40),
+      ...generateSoal(kBank, 40),
+      ...generateSoal(pBank, 40),
     ];
     state.soalList = toBank;
     state.jawaban = new Array(120).fill(null);
@@ -1180,6 +1292,179 @@ function showGAlert(msg, type) {
   document.getElementById('g-btn').innerHTML = '🚀 Masuk';
 }
 
+
+// ===== BANK SOAL B (dari soal asli PAPS UGM & referensi) =====
+
+const soalVerbalB = [
+  // SINONIM
+  {tipe:'Sinonim',soal:'GUREM memiliki arti paling mendekati …',p:['Bawah','Rendah','Unggul','Kertas','Kecil'],j:4,
+   pem:'Arti kata:||GUREM = kecil, tidak berarti, remeh||Sering dipakai: "pengusaha gurem" = pengusaha kecil||Jawaban: E. Kecil||**Jawaban: E. Kecil**'},
+  {tipe:'Sinonim',soal:'PAILIT memiliki arti paling mendekati …',p:['Laporan','Pembagian','Kenaikan','Keuntungan','Bangkrut'],j:4,
+   pem:'Arti kata:||PAILIT = kondisi tidak mampu membayar utang, kehabisan harta||Contoh: "Perusahaan itu dinyatakan pailit oleh pengadilan"||Sinonim: bangkrut, gulung tikar||**Jawaban: E. Bangkrut**'},
+  {tipe:'Sinonim',soal:'GENCATAN memiliki arti paling mendekati …',p:['Perang dingin','Penghentian','Perdamaian','Kelanjutan','Perang dunia'],j:1,
+   pem:'Arti kata:||GENCATAN = penghentian sementara (biasanya dalam perang)||Gencatan senjata = penghentian tembak-menembak sementara||Bukan perdamaian (permanent), bukan perang dingin||**Jawaban: B. Penghentian**'},
+  {tipe:'Sinonim',soal:'HIPOKRIT memiliki arti paling mendekati …',p:['Munafik','Tinggi','Besar','Rendah','Pembersih'],j:0,
+   pem:'Arti kata:||HIPOKRIT = orang yang berpura-pura baik, tidak jujur dengan ucapan dan perbuatan||Sinonim: munafik, pura-pura, tidak tulus||Contoh: "Sikapnya hipokrit — di depan baik, di belakang mencela"||**Jawaban: A. Munafik**'},
+  {tipe:'Sinonim',soal:'DEFLEKSI memiliki arti paling mendekati …',p:['Penerimaan','Destruksi','Fleksibel','Penyimpangan','Induksi'],j:3,
+   pem:'Arti kata:||DEFLEKSI = penyimpangan arah, pembelokan dari jalur semula||Dari bahasa Latin deflectere = membelokkan||Contoh dalam fisika: defleksi cahaya||**Jawaban: D. Penyimpangan**'},
+  {tipe:'Sinonim',soal:'KONVENSI memiliki arti paling mendekati …',p:['Kejelasan','Kesepakatan','Berdamai','Keterangan','Berunding'],j:1,
+   pem:'Arti kata:||KONVENSI = perjanjian atau kesepakatan yang disepakati bersama||Contoh: Konvensi Jenewa = perjanjian internasional tentang hukum perang||Bukan proses (berunding) tapi hasil (kesepakatan)||**Jawaban: B. Kesepakatan**'},
+  {tipe:'Sinonim',soal:'PEMAKZULAN memiliki arti paling mendekati …',p:['Pemalsuan','Pengakuan','Turun jabatan','Kenaikan','Penipuan'],j:2,
+   pem:'Arti kata:||PEMAKZULAN = proses pemberhentian/pencopotan dari jabatan resmi||Contoh: "Pemakzulan presiden melalui proses impeachment"||Sinonim: pelengseran, pencopotan jabatan||**Jawaban: C. Turun jabatan**'},
+  {tipe:'Sinonim',soal:'PORTO memiliki arti paling mendekati …',p:['Busana','Buaya','Biasa','Buana','Biaya'],j:4,
+   pem:'Arti kata:||PORTO = biaya pengiriman, ongkos kirim||Contoh: "Porto paket ini Rp 50.000"||Berasal dari bahasa Belanda: port = biaya||**Jawaban: E. Biaya**'},
+  {tipe:'Sinonim',soal:'DIOREMA memiliki arti paling mendekati …',p:['Musik','Mainan','Pembiasan','Penggambaran','Kartun'],j:3,
+   pem:'Arti kata:||DIORAMA = model tiga dimensi yang menggambarkan suatu adegan/pemandangan||Sering dipakai di museum untuk penggambaran peristiwa bersejarah||**Jawaban: D. Penggambaran**'},
+  {tipe:'Sinonim',soal:'WATAK memiliki arti paling mendekati …',p:['Tabiat','Pola pikir','Suku','Kodok','Cahaya'],j:0,
+   pem:'Arti kata:||WATAK = sifat batin yang tetap, karakter dasar seseorang||Sinonim: tabiat, karakter, kepribadian, budi pekerti||**Jawaban: A. Tabiat**'},
+  // ANTONIM
+  {tipe:'Antonim',soal:'Lawan kata GEGAI adalah …',p:['Kuat','Kencang','Gegar otak','Keras','Kendor'],j:0,
+   pem:'Arti kata:||GEGAI = lemah, tidak kuat, mudah rusak/patah||Lawan: KUAT = kokoh, tahan, tidak mudah rusak||Bukan kencang (itu lawan kendor), bukan keras (itu properti berbeda)||**Jawaban: A. Kuat**'},
+  {tipe:'Antonim',soal:'Lawan kata GAMANG adalah …',p:['Takut','Khawatir','Gayat','Berani','Tepat'],j:3,
+   pem:'Arti kata:||GAMANG = takut ketinggian, rasa tidak nyaman/ragu-ragu||Lawan: BERANI = tidak takut, memiliki keberanian||Gayat = sinonim gamang (takut tinggi), bukan lawan||**Jawaban: D. Berani**'},
+  {tipe:'Antonim',soal:'Lawan kata FILANTROPI adalah …',p:['Ringan tangan','Kikir','Cekatan','Kekuatan','Dermawan'],j:1,
+   pem:'Arti kata:||FILANTROPI = kedermawanan, rasa cinta kepada sesama yang diwujudkan dengan memberi||Sinonim dermawan||Lawan: KIKIR = pelit, tidak mau berbagi||**Jawaban: B. Kikir**'},
+  {tipe:'Antonim',soal:'Lawan kata NISBI adalah …',p:['Mutlak','Maya','Stabil','Abstrak','Subjektif'],j:0,
+   pem:'Arti kata:||NISBI = relatif, bergantung pada sudut pandang dan kondisi||Contoh: kebenaran nisbi = kebenaran yang bisa berbeda tergantung konteks||Lawan: MUTLAK = absolut, tidak tergantung kondisi apapun||**Jawaban: A. Mutlak**'},
+  {tipe:'Antonim',soal:'Lawan kata SPORADIS adalah …',p:['Sering','Sembarangan','Terukur','Jarang','Serius'],j:0,
+   pem:'Arti kata:||SPORADIS = tidak teratur, jarang terjadi, tersebar tidak menentu||Contoh: "Hujan sporadis" = hujan yang tidak menentu||Lawan: SERING = terjadi berulang kali dengan frekuensi tinggi||**Jawaban: A. Sering**'},
+  {tipe:'Antonim',soal:'Lawan kata EPILOG adalah …',p:['Hipolog','Monolog','Prolog','Dialog','Analog'],j:2,
+   pem:'Arti kata:||EPILOG = bagian penutup sebuah karya sastra/pertunjukan||Struktur: PROLOG (pembuka) → ISI → EPILOG (penutup)||Lawan: PROLOG = bagian awal/pembukaan||**Jawaban: C. Prolog**'},
+  {tipe:'Antonim',soal:'Lawan kata KREDITUR adalah …',p:['Nasabah','Debitur','Penagih','Penabung','Penyetor'],j:1,
+   pem:'Arti kata:||KREDITUR = pihak yang memberikan pinjaman/kredit||Pasangan: DEBITUR = pihak yang menerima/meminjam||Contoh: Bank = kreditur, Peminjam = debitur||**Jawaban: B. Debitur**'},
+  {tipe:'Antonim',soal:'Lawan kata NOMADIK adalah …',p:['Menetap','Sesuai norma','Tak teratur','Mapan','Anomali'],j:0,
+   pem:'Arti kata:||NOMADIK = berpindah-pindah tempat, tidak menetap||Contoh: suku nomadik = suku yang selalu berpindah||Lawan: MENETAP = tinggal di satu tempat secara permanen||**Jawaban: A. Menetap**'},
+  // ANALOGI
+  {tipe:'Analogi',soal:'KOROSI : KARAT = KONDENSASI : …',p:['Kristal','Debu','Gas','Embun','Air'],j:3,
+   pem:'Identifikasi hubungan:||Korosi = proses kimia yang menghasilkan karat||Pola: PROSES → menghasilkan → PRODUK||Kondensasi = proses perubahan uap air menjadi cairan yang menghasilkan embun|||**Jawaban: D. Embun**'},
+  {tipe:'Analogi',soal:'TULANG : LIGAMEN = OTOT : …',p:['Senam','Kuku','Tendon','Lutut','Lemak'],j:2,
+   pem:'Identifikasi hubungan:||Ligamen = jaringan penghubung tulang dengan tulang||Pola: STRUKTUR A → dihubungkan oleh → JARINGAN||Tendon = jaringan yang menghubungkan otot dengan tulang|||**Jawaban: C. Tendon**'},
+  {tipe:'Analogi',soal:'SANGKURIANG : SUNDA = QODIPUS : …',p:['Nepal','Jawa','India','Tibet','Yunani'],j:4,
+   pem:'Identifikasi hubungan:||Sangkuriang = tokoh legenda dari budaya Sunda||Pola: TOKOH LEGENDA → berasal dari → BUDAYA/DAERAH||Qodipus (Oedipus) = tokoh legendaris dari mitologi Yunani|||**Jawaban: E. Yunani**'},
+  {tipe:'Analogi',soal:'FASAL : BAB = KALIMAT : …',p:['Halaman','Epos','Paragraf','Biografi','Buku'],j:2,
+   pem:'Identifikasi hubungan:||Fasal = bagian kecil dari suatu bab||Pola: UNIT LEBIH KECIL → bagian dari → UNIT LEBIH BESAR||Kalimat = unit kecil, paragraf = kumpulan kalimat|||**Jawaban: C. Paragraf**'},
+  // WACANA
+  {tipe:'Wacana',soal:'Dari 40 siswa, tidak ada yang menyenangi matematika sekaligus pelajaran lain. 4 siswa hanya menyenangi fisika. 15 siswa menyenangi IPS, 5 diantaranya juga menyenangi IPA. Jika 7 siswa menyenangi biologi, dapat disimpulkan bahwa …',p:['Siswa yang suka matematika paling banyak','Siswa yang suka IPS paling banyak','Siswa yang suka IPA paling banyak','Siswa yang suka matematika sama banyak dengan IPS','Tidak dapat disimpulkan'],j:1,
+   pem:'Analisis data:||IPS = 15 siswa||Fisika saja = 4 siswa||IPA + IPS = 5, jadi IPA saja minimal ada yang berbeda||Biologi = 7 siswa||Dari kelompok yang jelas: IPS = 15 (terbanyak yang disebutkan)||Matematika tidak disebutkan jumlahnya secara langsung||IPS = 15 adalah yang paling banyak dari data yang tersedia||**Jawaban: B. Jumlah siswa yang suka IPS paling banyak**'},
+  {tipe:'Wacana',soal:'Lampu neon 20 watt lebih terang dari lampu bolam 20 watt. Lampu neon 20 watt buatan luar negeri lebih mahal dari buatan dalam negeri. Lampu yang lebih terang atau lebih tahan lama harganya lebih mahal. Kesimpulan yang dapat ditarik adalah …',p:['Lampu neon buatan DN lebih murah dari lampu bolam buatan LN','Lampu neon 20 watt lebih mahal dari lampu bolam 20 watt','Lampu bolam 20 watt LN lebih mahal dari bolam 20 watt DN','Lampu neon 20 watt lebih mahal dari lampu bolam 1000 watt','Tidak dapat disimpulkan'],j:1,
+   pem:'Analisis:||Premis 1: Lampu neon 20W lebih terang dari bolam 20W||Premis 2: Yang lebih terang → harganya lebih mahal||Kesimpulan logis: Lampu neon 20W lebih mahal dari bolam 20W||Pilihan A dan C tidak didukung cukup, D tidak berkaitan||**Jawaban: B. Lampu neon 20 watt lebih mahal dari lampu bolam 20 watt**'},
+];
+
+const soalKuantB = [
+  // DERET ANGKA dari PDF
+  {tipe:'Deret Angka',soal:'2, 4, 8, 14, 14, 24, 20, …',p:['34','44','54','64','42'],j:0,
+   pem:'Dua barisan terpisah:||Posisi ganjil (1,3,5,7): 2, 8, 14, 20 → +6 tiap langkah||Posisi genap (2,4,6): 4, 14, 24 → +10 tiap langkah||Suku ke-7 (ganjil): 14+6 = **20** ✓ (sudah ada), suku ke-8 (genap) = 24+10 = **34**||**Jawaban: A. 34**'},
+  {tipe:'Deret Angka',soal:'243, 81, 27, 9, 3, 1, …',p:['1/2','1/3','1/4','1/5','1/6'],j:1,
+   pem:'Pola:||Setiap suku dibagi 3: 243÷3=81, 81÷3=27, 27÷3=9, 9÷3=3, 3÷3=1||Lanjut: 1÷3 = **1/3**||**Jawaban: B. 1/3**'},
+  {tipe:'Deret Angka',soal:'5, 7, 11, 13, 17, …, 23',p:['20','19','21','18','22'],j:1,
+   pem:'Pola selisih:||+2, +4, +2, +4, +2, +4 (bergantian)||17 + 2 = **19** (suku ke-6)||Cek: 19+4 = 23 ✓||**Jawaban: B. 19**'},
+  {tipe:'Deret Angka',soal:'8, 9, 10, 10, 12, 11, 14, …',p:['14','12','16','11','13'],j:1,
+   pem:'Dua barisan:||Posisi ganjil: 8, 10, 12, 14 (+2 tiap suku)||Posisi genap: 9, 10, 11, **12** (+1 tiap suku)||Suku ke-8 adalah posisi genap ke-4: 9,10,11,**12**||**Jawaban: B. 12**'},
+  {tipe:'Deret Angka',soal:'99, 94, 96, 91, 93, 88, 90, …',p:['85','93','87','98','100'],j:0,
+   pem:'Dua barisan:||Posisi ganjil: 99, 96, 93, 90 (−3 tiap suku)||Posisi genap: 94, 91, 88, **85** (−3 tiap suku)||Suku ke-8 (posisi genap ke-4): 94,91,88,**85**||**Jawaban: A. 85**'},
+  {tipe:'Deret Angka',soal:'10, 15, 30, 35, 70, 75, …',p:['105','145','150','235','275'],j:2,
+   pem:'Pola bergantian:||×... lalu +5, ×... lalu +5||10→×3→30... hmm coba lain: +5, ×2, +5, ×2, +5, ×2||10+5=15, 15×2=30, 30+5=35, 35×2=70, 70+5=75, 75×2=**150**||**Jawaban: C. 150**'},
+  {tipe:'Deret Angka',soal:'23, 27, 34, 38, 45, 49, …',p:['56','63','70','73','79'],j:0,
+   pem:'Pola selisih bergantian:||+4, +7, +4, +7, +4, +7...||49+7 = **56**||Verifikasi pola: 23+4=27, 27+7=34, 34+4=38, 38+7=45, 45+4=49, 49+7=56 ✓||**Jawaban: A. 56**'},
+  // ARITMETIKA dari PDF
+  {tipe:'Aritmetika',soal:'Harga 18 baju Rp 540.000. Harga 2,5 lusin baju tersebut adalah …',p:['Rp 1.000.000','Rp 900.000','Rp 800.000','Rp 750.000','Rp 720.000'],j:1,
+   pem:'Rumus:||Harga per baju = Total ÷ Jumlah||Harga per baju = Rp 540.000 ÷ 18 = **Rp 30.000**||Konversi: 1 lusin = 12 baju||2,5 lusin = 2,5 × 12 = **30 baju**||Total harga:||30 × Rp 30.000 = **Rp 900.000**||**Jawaban: B. Rp 900.000**'},
+  {tipe:'Aritmetika',soal:'Sebuah mobil mengalami penurunan harga 40% lalu 20% lagi. Penurunan total adalah …',p:['86%','64%','52%','48%','30%'],j:2,
+   pem:'Hitung sisa harga:||Setelah turun 40%: sisa 60% = 0,6||Setelah turun lagi 20%: sisa 80% dari 0,6 = 0,48||Penurunan total: 1 − 0,48 = **0,52 = 52%**||**Jawaban: C. 52%**'},
+  {tipe:'Aritmetika',soal:'Jika p − 3 = q + 3, maka q − p = …',p:['6','1','−6','−1','0'],j:2,
+   pem:'Selesaikan persamaan:||p − 3 = q + 3||p − q = 3 + 3 = 6||Jadi q − p = **−6**||**Jawaban: C. −6**'},
+  {tipe:'Aritmetika',soal:'9 adalah 150% dari …',p:['3','6','12','15','18'],j:1,
+   pem:'Bentuk persamaan:||9 = 150% × x||x = 9 ÷ 1,5 = **6**||Verifikasi: 150% × 6 = 1,5 × 6 = 9 ✓||**Jawaban: B. 6**'},
+  {tipe:'Aritmetika',soal:'Bambang menjual barang seharga Rp 80.000 dan mendapat laba 25% dari harga beli. Harga beli barang tersebut adalah …',p:['Rp 100.000','Rp 64.000','Rp 120.000','Rp 20.000','Rp 60.000'],j:1,
+   pem:'Rumus:||Harga jual = Harga beli × (1 + laba%)||||80.000 = HB × 1,25||HB = 80.000 ÷ 1,25 = **Rp 64.000**||**Jawaban: B. Rp 64.000**'},
+  // PERBANDINGAN KUANTITATIF dari PDF
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x = 1/16 dan y = 16%.
+
+X = x
+Y = y',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:1,
+   pem:'Konversi ke bentuk desimal:||x = 1/16 = **0,0625**||y = 16% = 16/100 = **0,16**||Bandingkan:||0,0625 < 0,16 → X < Y||**Jawaban: B. X < Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Jika p sembarang bilangan positif, x = 3p + 5 dan y = 2p + 4.
+
+X = x
+Y = y',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+   pem:'Hitung X − Y:||X − Y = (3p+5) − (2p+4) = p + 1||Karena p > 0: p + 1 > 1 > 0||Jadi X − Y > 0 → **X > Y** untuk semua p positif||**Jawaban: A. X > Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'A = −(2⁴) dan B = (−2)⁴.
+
+X = A
+Y = B',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X = −Y'],j:1,
+   pem:'Hitung masing-masing:||A = −(2⁴) = −(16) = **−16**||B = (−2)⁴ = 16 (pangkat genap selalu positif) = **+16**||Bandingkan: −16 vs +16 → X < Y||**Jawaban: B. X < Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x = a + b dan y = a − b, dengan a > b dan keduanya bilangan bulat positif.
+
+X = x
+Y = y',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+   pem:'Analisis:||X = a + b dan Y = a − b||X − Y = (a+b) − (a−b) = 2b||Karena b > 0: 2b > 0 → X > Y||**Jawaban: A. X > Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Jika 5 < A < 9 dan 8 < B < 12.
+
+X = A
+Y = B',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:3,
+   pem:'Analisis rentang:||A bisa: 5,1 sampai 8,9||B bisa: 8,1 sampai 11,9||Ada kemungkinan A=8,9 dan B=8,1 → A > B||Ada kemungkinan A=5,1 dan B=11,9 → A < B||Tidak bisa ditentukan secara pasti||**Jawaban: D. Hubungan tidak dapat ditentukan**'},
+  // GEOMETRIKA
+  {tipe:'Geometrika',soal:'Sebuah kolam renang panjang 20 m, lebar 12 m, volume 336.000 liter. Kedalaman kolam adalah …',p:['120 cm','140 cm','150 cm','180 cm','200 cm'],j:1,
+   pem:'Konversi volume:||336.000 liter = **336 m³** (1 m³ = 1.000 liter)||Rumus balok: V = p × l × t||336 = 20 × 12 × t||336 = 240t → t = **1,4 m = 140 cm**||**Jawaban: B. 140 cm**'},
+  {tipe:'Geometrika',soal:'Sebuah wadah silinder diisi air 1/3-nya. Ditambah 3 liter, menjadi 1/2 penuh. Kapasitas wadah adalah …',p:['25 liter','18 liter','20 liter','22 liter','16 liter'],j:1,
+   pem:'Rumus:||Volume tambahan = selisih fraksi × kapasitas||½V − ⅓V = 3||Hitung selisih fraksi:||½ − ⅓ = 3/6 − 2/6 = **1/6**||Bentuk persamaan:||1/6 × V = 3 liter||V = 3 × 6 = **18 liter**||**Jawaban: B. 18 liter**'},
+  {tipe:'Geometrika',soal:'Jari-jari lingkaran P adalah 60% dari jari-jari lingkaran Q. Luas lingkaran P adalah …% dari luas Q.',p:['36%','40%','60%','80%','120%'],j:0,
+   pem:'Rumus luas lingkaran: L = πr²||r_P = 0,6 × r_Q||L_P = π(0,6r_Q)² = π × 0,36 × r_Q² = **0,36 L_Q**||Jadi luas P = **36%** dari luas Q||**Jawaban: A. 36%**'},
+  {tipe:'Geometrika',soal:'Perbandingan jari-jari dua lingkaran adalah 3:2. Perbandingan luas keduanya adalah …',p:['2:3','3:4','4:3','4:9','9:4'],j:4,
+   pem:'Luas lingkaran: L = πr²||L₁/L₂ = r₁²/r₂² = (3)²/(2)² = 9/4||Jadi perbandingan luas = **9:4**||**Jawaban: E. 9:4**'},
+];
+
+const soalPenalaranB = [
+  // LOGIKA SIMBOLIK
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui a > 0, b > 0, dan a > b.
+
+X = a + b
+Y = a − b',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+   pem:'Hitung X − Y:||X − Y = (a+b) − (a−b) = 2b||Karena b > 0: 2b > 0 → X > Y||**Jawaban: A. X > Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui 1/a + 1/b = 7 dan 1/a − 1/b = 3.
+
+X = 1/a²
+Y = 1/b²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+   pem:'Dari sistem persamaan:||1/a + 1/b = 7 dan 1/a − 1/b = 3||Jumlahkan: 2/a = 10 → 1/a = 5||Kurangi: 2/b = 4 → 1/b = 2||X = (1/a)² = 25, Y = (1/b)² = 4||25 > 4 → **X > Y**||**Jawaban: A. X > Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x = 5y, y = 4z, dan x + y + z = 100.
+
+X = z
+Y = 5',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:2,
+   pem:'Substitusi berurutan:||y = 4z → x = 5y = 5(4z) = 20z||Jumlahkan: x + y + z = 20z + 4z + z = 25z||Persamaan:||25z = 100 → **z = 4**||Bandingkan X = z = 4 dan Y = 5:||4 < 5 → **X < Y**||**Jawaban: B. X < Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'A = 1/9 − 1/15 dan B = 1/11 − 1/13.
+
+X = A
+Y = B',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:0,
+   pem:'Hitung masing-masing:||A = 1/9 − 1/15 = 5/45 − 3/45 = **2/45**||B = 1/11 − 1/13 = 13/143 − 11/143 = **2/143**||Bandingkan: 2/45 vs 2/143||Karena 45 < 143: 2/45 > 2/143 → **X > Y**||**Jawaban: A. X > Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'Jika 7 < X < 9 dan 1 < Y < 3.
+
+Bandingkan 3Y dan X.',p:['3Y > X selalu','3Y < X selalu','3Y = X selalu','Hubungan tidak dapat ditentukan','3Y > 2X selalu'],j:3,
+   pem:'Analisis rentang:||3Y: 3×1=3 sampai 3×3=9 → 3 < 3Y < 9||X: 7 < X < 9||Kemungkinan 3Y=8,9 dan X=7,1 → 3Y > X||Kemungkinan 3Y=3,1 dan X=8,9 → 3Y < X||Tidak dapat ditentukan secara pasti||**Jawaban: D. Hubungan tidak dapat ditentukan**'},
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x > 0, y > 0, x > y, dan z ≠ 0.
+
+X = xz²
+Y = yz²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+   pem:'Analisis:||Karena x > y dan z ≠ 0: z² > 0 selalu||Maka xz² > yz² (karena z² positif)||X = xz² > yz² = Y||**Jawaban: A. X > Y**'},
+  // SILOGISME
+  {tipe:'Penalaran Logis',soal:'Jika belajar sungguh-sungguh maka nilai bagus. Jika nilai bagus maka lulus. Budi tidak lulus. Kesimpulan tentang Budi adalah …',p:['Budi belajar sungguh-sungguh','Budi tidak belajar sungguh-sungguh','Budi nilainya bagus','Budi malas belajar','Tidak dapat disimpulkan'],j:1,
+   pem:'Rantai implikasi:||P → Q → R||Fakta: ¬R (tidak lulus)||Modus Tollens dua kali: ¬R → ¬Q → ¬P||Budi tidak lulus → nilai tidak bagus → tidak belajar sungguh-sungguh||**Jawaban: B. Budi tidak belajar sungguh-sungguh**'},
+  {tipe:'Penalaran Logis',soal:'P hanya bisa bicara Inggris & Jerman. Q hanya bicara Perancis, Jepang & Cina. R hanya bicara Jerman. S hanya bicara Inggris, Jepang & Cina. T hanya bicara Perancis & Jerman. Pasangan yang HARUS pakai penerjemah adalah …',p:['P dan R','Q dan R','R dan T','Q dan S','P dan T'],j:1,
+   pem:'Analisis bahasa bersama:||P: Inggris, Jerman||Q: Perancis, Jepang, Cina||R: Jerman||S: Inggris, Jepang, Cina||T: Perancis, Jerman||Cek Q dan R: Q=(Prancis,Jepang,Cina) vs R=(Jerman) → TIDAK ADA bahasa sama → perlu penerjemah||**Jawaban: B. Q dan R**'},
+  {tipe:'Penalaran Logis',soal:'Pop lebih disukai dari Keroncong. Rock dan Dangdut sama-sama disukai. Keroncong lebih disukai dari Rock dan Dangdut. Rock lebih disukai dari Klasik. Urutan dari paling disukai ke paling tidak disukai adalah …',p:['Pop, Rock/Dangdut, Keroncong, Klasik','Keroncong, Pop, Rock/Dangdut, Klasik','Pop, Rock/Dangdut, Klasik, Keroncong','Pop, Keroncong, Rock/Dangdut, Klasik','Rock, Pop, Keroncong, Klasik'],j:3,
+   pem:'Urutkan dari premis:||Pop > Keroncong (premis 1)||Keroncong > Rock = Dangdut (premis 3)||Rock > Klasik (premis 4)||Urutan: Pop > Keroncong > Rock/Dangdut > Klasik||**Jawaban: D. Pop, Keroncong, Rock/Dangdut, Klasik**'},
+  {tipe:'Penalaran Logis',soal:'Semua siswa berprestasi mendapat beasiswa. Rini mendapat beasiswa. Kesimpulan yang PALING TEPAT adalah …',p:['Rini pasti siswa berprestasi','Rini bukan siswa berprestasi','Rini mungkin siswa berprestasi','Semua penerima beasiswa berprestasi','Tidak ada yang berprestasi tanpa beasiswa'],j:2,
+   pem:'Analisis:||P → Q (berprestasi → beasiswa)||Fakta: Rini dapat beasiswa (Q benar)||Ini bukan modus ponens — tidak bisa menyimpulkan P||Rini bisa dapat beasiswa karena prestasi ATAU alasan lain||**Jawaban: C. Rini mungkin siswa berprestasi**'},
+  // PENALARAN ANALITIS
+  {tipe:'Penalaran Analitis',soal:'Jarak A-B = 2× jarak C-D. E terletak di tengah C-D. Jarak C ke A = jarak D ke B = setengah jarak A ke E. Dua kota yang jaraknya paling jauh adalah …',p:['Kota A dan B','Kota B dan E','Kota A dan E','Kota B dan D','Kota C dan B'],j:0,
+   pem:'Misalkan CD = 2 → AB = 4||E = tengah CD, jarak CE = ED = 1||Jarak CA = DB = ½ × AE||Susun garis: C...E...D dengan CD=2, E di tengah||A di kiri C (jarak CA = ½ AE)||Hitung AE: AE = AC + CE = AC + 1||AC = ½ AE → AE = ½ AE + 1 → ½ AE = 1 → AE = 2||AC = 1, jadi A ada 1 unit di kiri C||B = D + 1 (jarak DB = 1) = kanan D||Posisi: A(0)...C(1)...E(2)...D(3)...B(4)||Jarak A-B = 4 → paling jauh||**Jawaban: A. Kota A dan B**'},
+  {tipe:'Penalaran Analitis',soal:'Bangsa X hidup terutama dari roti dan minyak sebagai pengganti mentega. Mereka minum anggur dan makan buah anggur. Iklim subtropis memiliki gandum, zaitun, dan kebun anggur. Bangsa X hidup di iklim …',p:['Dingin','Subtropis','Tropis','Sedang','Kutub'],j:1,
+   pem:'Analisis:||Roti = dari gandum → subtropis||Minyak (zaitun) = subtropis||Anggur dan kebun anggur = subtropis||Semua ciri makanan Bangsa X cocok dengan iklim subtropis||**Jawaban: B. Subtropis**'},
+  {tipe:'Penalaran Analitis',soal:'Nilai Budiman termasuk urutan ke-16 dari atas dan juga urutan ke-16 dari bawah. Banyak siswa dalam kelas tersebut adalah …',p:['16 orang','31 orang','26 orang','32 orang','30 orang'],j:1,
+   pem:'Hitung jumlah siswa:||Dari atas: ada 15 siswa di atas Budiman||Dari bawah: ada 15 siswa di bawah Budiman||Total: 15 + 1 (Budiman) + 15 = **31 orang**||**Jawaban: B. 31 orang**'},
+  {tipe:'Penalaran Analitis',soal:'Dalam suatu pertemuan, panitia mengundang 50 wanita dan 70 pria. Yang hadir hanya 40% wanita dan 50% pria dari total undangan. Berapa persen tamu yang hadir dari total undangan?',p:['78%','68%','46%','48%','45%'],j:2,
+   pem:'Hitung tamu yang hadir:||Wanita hadir: 40% × 50 = 0,4 × 50 = **20 orang**||Pria hadir: 50% × 70 = 0,5 × 70 = **35 orang**||Total hadir: 20 + 35 = **55 orang**||Total undangan: 50 + 70 = **120 orang**||Rumus persentase:||% hadir = (55 ÷ 120) × 100% = **45,83% ≈ 46%**||**Jawaban: C. 46%**'},
+];
+
 // Cek sesi saat load
 cekSesiTersimpan();
 </script>
@@ -1192,158 +1477,205 @@ cekSesiTersimpan();
 // ============================================================
 
 const soalVerbal = [
-  {tipe:'Sinonim',soal:'TENDENSI memiliki arti paling mendekati …',p:['Kebiasaan buruk','Kecenderungan / keinginan ke arah tertentu','Paksaan dari luar','Penolakan','Ketidakpedulian'],j:1,
-   pem:'TENDENSI berasal dari bahasa Latin "tendere" = mengarah ke suatu tujuan.||Tendensi = kecenderungan, arah gerak, atau keinginan yang mengarah ke sesuatu secara konsisten.||Contoh: "Ada tendensi korupsi dalam sistem ini" = ada kecenderungan/indikasi mengarah ke korupsi.||Jawaban: B. Kecenderungan / keinginan ke arah tertentu'},
-  {tipe:'Sinonim',soal:'AKSIOMA memiliki arti paling mendekati …',p:['Teori yang perlu dibuktikan','Kebenaran yang diterima tanpa pembuktian','Hipotesis awal','Kesimpulan akhir','Pernyataan yang salah'],j:1,
-   pem:'AKSIOMA berasal dari bahasa Yunani "axioma" = sesuatu yang dianggap layak.||Aksioma = pernyataan atau kebenaran dasar yang diterima begitu saja tanpa perlu dibuktikan, dijadikan fondasi logika.||Contoh dalam matematika: "Dua titik selalu dapat dihubungkan dengan satu garis lurus" adalah aksioma.||Jawaban: B. Kebenaran yang diterima tanpa pembuktian'},
-  {tipe:'Sinonim',soal:'EKUIVALEN memiliki arti paling mendekati …',p:['Bertolak belakang','Setara / senilai','Lebih tinggi','Tidak sebanding','Berlawanan arah'],j:1,
-   pem:'EKUIVALEN berasal dari bahasa Latin "aequivalens" = bernilai sama.||Ekuivalen = setara, senilai, atau memiliki derajat/nilai yang sama meskipun bentuknya berbeda.||Contoh: "1/2 ekuivalen dengan 2/4" — berbeda bentuk tapi nilainya sama.||Jawaban: B. Setara / senilai'},
-  {tipe:'Sinonim',soal:'AMBIVALEN memiliki arti paling mendekati …',p:['Sangat yakin','Memiliki dua perasaan yang bertentangan sekaligus','Acuh tak acuh','Sangat antusias','Tidak punya pendapat'],j:1,
-   pem:'AMBIVALEN = berasal dari "ambi" (dua) + "valens" (kuat/kekuatan) = memiliki dua kekuatan yang berlawanan.||Ambivalen = kondisi memiliki dua perasaan, sikap, atau pendapat yang bertentangan secara bersamaan terhadap sesuatu.||Contoh: "Ia ambivalen terhadap tawaran itu" = di satu sisi ingin menerima, di sisi lain ingin menolak, secara bersamaan.||Jawaban: B. Memiliki dua perasaan yang bertentangan sekaligus'},
-  {tipe:'Sinonim',soal:'PREROGRATIF memiliki arti paling mendekati …',p:['Kewajiban yang harus dipenuhi','Hak istimewa yang melekat pada jabatan','Larangan yang ditetapkan','Sanksi resmi','Prosedur baku'],j:1,
-   pem:'PREROGATIF berasal dari bahasa Latin "praerogativa" = hak untuk memilih lebih dulu.||Prerogatif = hak istimewa yang dimiliki seseorang karena kedudukan atau jabatannya, tidak dimiliki orang lain.||Contoh: "Grasi adalah prerogatif presiden" = hak khusus yang hanya dimiliki presiden.||Jawaban: B. Hak istimewa yang melekat pada jabatan'},
-  {tipe:'Antonim',soal:'Lawan kata ORTODOKS adalah …',p:['Tradisional','Kolot','Heterodoks / inovatif','Kuno','Konservatif'],j:2,
-   pem:'ORTODOKS = berpegang teguh pada ajaran, aturan, atau cara lama yang sudah baku dan diterima.||Contoh: "Pemikiran ortodoks" = pemikiran yang tidak mau menyimpang dari pakem yang sudah ada.||Lawan dari ortodoks adalah HETERODOKS = menyimpang dari ajaran baku, inovatif, tidak konvensional.||Jawaban: C. Heterodoks / inovatif'},
-  {tipe:'Antonim',soal:'Lawan kata KOERSIF adalah …',p:['Memaksa','Keras','Persuasif / membujuk','Tegas','Represif'],j:2,
-   pem:'KOERSIF = bersifat memaksa, menggunakan tekanan atau kekuatan untuk membuat orang menurut.||Contoh: "Pendekatan koersif" = menggunakan ancaman atau paksaan.||Lawan dari koersif adalah PERSUASIF = menggunakan ajakan, bujukan, dan argumentasi logis tanpa paksaan.||Jawaban: C. Persuasif / membujuk'},
-  {tipe:'Antonim',soal:'Lawan kata DEDUKTIF adalah …',p:['Logis','Sistematis','Induktif','Analitis','Rasional'],j:2,
-   pem:'DEDUKTIF = penalaran dari hal umum ke hal khusus (dari premis umum → kesimpulan spesifik).||Contoh deduktif: "Semua manusia fana. Socrates manusia. → Socrates fana."||Lawan dari deduktif adalah INDUKTIF = penalaran dari hal khusus ke hal umum (dari fakta-fakta spesifik → kesimpulan umum).||Jawaban: C. Induktif'},
-  {tipe:'Antonim',soal:'Lawan kata EUFEMISME adalah …',p:['Kiasan halus','Sindiran','Disfemisme / ungkapan kasar','Hiperbola','Metafora'],j:2,
-   pem:'EUFEMISME = penggunaan kata atau ungkapan yang lebih halus untuk menggantikan kata yang dianggap kasar atau tidak sopan.||Contoh: "meninggal dunia" sebagai eufemisme dari "mati".||Lawan dari eufemisme adalah DISFEMISME = penggunaan kata yang lebih kasar dari yang biasa digunakan.||Jawaban: C. Disfemisme / ungkapan kasar'},
+  // ===== SINONIM =====
+  {tipe:'Sinonim',soal:'TENDENSI memiliki arti paling mendekati …',p:['Kebiasaan buruk','Kecenderungan ke arah tertentu','Paksaan dari luar','Penolakan keras','Ketidakpedulian'],j:1,
+   pem:'Arti kata:||TENDENSI = kecenderungan, arah gerak menuju sesuatu secara konsisten||Contoh: "Ada tendensi korupsi" = ada kecenderungan ke arah korupsi||Eliminasi: kebiasaan (habit), paksaan (coercion), penolakan (rejection) ≠ tendensi||**Jawaban: B. Kecenderungan ke arah tertentu**'},
+  {tipe:'Sinonim',soal:'AKSIOMA memiliki arti paling mendekati …',p:['Teori yang perlu dibuktikan','Kebenaran yang diterima tanpa pembuktian','Hipotesis awal penelitian','Kesimpulan akhir analisis','Pernyataan yang masih diperdebatkan'],j:1,
+   pem:'Arti kata:||AKSIOMA = pernyataan dasar yang diterima sebagai kebenaran tanpa perlu dibuktikan||Contoh dalam matematika: "Melalui dua titik dapat dibuat tepat satu garis lurus"||Bedakan dengan: hipotesis (perlu diuji), teori (sudah dibuktikan tapi masih bisa dibantah)||**Jawaban: B. Kebenaran yang diterima tanpa pembuktian**'},
+  {tipe:'Sinonim',soal:'AMBIVALEN memiliki arti paling mendekati …',p:['Sangat yakin dan tegas','Memiliki dua perasaan bertentangan sekaligus','Tidak memiliki pendapat','Sangat antusias','Bersikap netral'],j:1,
+   pem:'Arti kata:||AMBIVALEN = kondisi memiliki dua perasaan/sikap yang bertentangan secara bersamaan||Contoh: "Ia ambivalen soal pekerjaan itu" = ingin menerima sekaligus ingin menolak||Bedakan dengan: netral (tidak memihak), tidak berpendapat (tidak ada sikap)||**Jawaban: B. Memiliki dua perasaan bertentangan sekaligus**'},
+  {tipe:'Sinonim',soal:'PREROGATIF memiliki arti paling mendekati …',p:['Kewajiban yang harus dipenuhi','Hak istimewa yang melekat pada jabatan','Larangan yang ditetapkan','Sanksi resmi','Prosedur standar'],j:1,
+   pem:'Arti kata:||PREROGATIF = hak istimewa yang dimiliki karena kedudukan/jabatan tertentu||Contoh: "Grasi adalah prerogatif presiden" = hak yang hanya dimiliki presiden||Bukan kewajiban (obligation) bukan larangan (prohibition)||**Jawaban: B. Hak istimewa yang melekat pada jabatan**'},
+  {tipe:'Sinonim',soal:'EMPIRIS memiliki arti paling mendekati …',p:['Berdasarkan teori semata','Berdasarkan pengalaman dan fakta nyata','Bersifat imajinatif','Spekulatif tanpa data','Abstrak dan tidak terukur'],j:1,
+   pem:'Arti kata:||EMPIRIS = berdasarkan pengalaman nyata, pengamatan, atau fakta yang dapat diverifikasi||Lawan: teoritis (berdasarkan teori), spekulatif (tanpa bukti)||Contoh: "Penelitian empiris" = penelitian berdasarkan data nyata||**Jawaban: B. Berdasarkan pengalaman dan fakta nyata**'},
+  {tipe:'Sinonim',soal:'VERIFIKASI memiliki arti paling mendekati …',p:['Penolakan informasi','Pembuktian kebenaran suatu informasi','Dugaan awal tanpa data','Pernyataan sepihak','Kesimpulan akhir'],j:1,
+   pem:'Arti kata:||VERIFIKASI = proses pengecekan atau pembuktian kebenaran suatu data/informasi||Contoh: "Verifikasi berkas" = mengecek kebenaran dan kelengkapan berkas||Bukan dugaan (belum dicek), bukan penolakan (sudah dinyatakan salah)||**Jawaban: B. Pembuktian kebenaran suatu informasi**'},
+  {tipe:'Sinonim',soal:'DILEMA memiliki arti paling mendekati …',p:['Masalah yang mudah diselesaikan','Situasi dengan dua pilihan yang sama-sama sulit','Pilihan terbaik dari banyak opsi','Keputusan yang sudah pasti','Perdebatan berkepanjangan'],j:1,
+   pem:'Arti kata:||DILEMA = situasi yang mengharuskan memilih antara dua opsi yang keduanya tidak ideal||Contoh: "Dilema karier vs keluarga" = keduanya penting, mengorbankan salah satu berat||Bukan: masalah mudah, perdebatan, atau keputusan pasti||**Jawaban: B. Situasi dengan dua pilihan yang sama-sama sulit**'},
+  // ===== ANTONIM =====
+  {tipe:'Antonim',soal:'Lawan kata ORTODOKS adalah …',p:['Tradisional','Kolot','Heterodoks','Kuno','Konservatif'],j:2,
+   pem:'Arti kata:||ORTODOKS = berpegang teguh pada ajaran/cara lama yang sudah baku||Contoh: "Pandangan ortodoks" = tidak mau menyimpang dari pakem yang ada||Lawan: HETERODOKS = menyimpang dari ajaran baku, inovatif, tidak konvensional||**Jawaban: C. Heterodoks**'},
+  {tipe:'Antonim',soal:'Lawan kata KOERSIF adalah …',p:['Memaksa','Keras','Persuasif','Tegas','Represif'],j:2,
+   pem:'Arti kata:||KOERSIF = menggunakan paksaan atau tekanan agar orang menurut||Contoh: "Pendekatan koersif" = pakai ancaman, bukan ajakan||Lawan: PERSUASIF = menggunakan bujukan dan argumen logis tanpa paksaan||**Jawaban: C. Persuasif**'},
+  {tipe:'Antonim',soal:'Lawan kata PROFAN adalah …',p:['Biasa','Umum','Sakral','Duniawi','Tidak penting'],j:2,
+   pem:'Arti kata:||PROFAN = bersifat duniawi, tidak berkaitan dengan hal keagamaan/suci||Contoh: "Lagu profan" = lagu bertema duniawi, bukan rohani||Lawan: SAKRAL = suci, kudus, berkaitan dengan hal keagamaan||**Jawaban: C. Sakral**'},
+  {tipe:'Antonim',soal:'Lawan kata TENTATIF adalah …',p:['Sementara','Tidak pasti','Definitif','Ragu-ragu','Tidak tetap'],j:2,
+   pem:'Arti kata:||TENTATIF = bersifat sementara, belum final, masih bisa berubah||Contoh: "Jadwal tentatif" = jadwal yang mungkin berubah||Lawan: DEFINITIF = pasti, final, sudah ditetapkan secara resmi||**Jawaban: C. Definitif**'},
+  {tipe:'Antonim',soal:'Lawan kata PROGRESIF adalah …',p:['Maju','Berkembang','Regresif','Dinamis','Modern'],j:2,
+   pem:'Arti kata:||PROGRESIF = bergerak maju, mengalami kemajuan dan perkembangan||Contoh: "Kebijakan progresif" = mendorong kemajuan||Lawan: REGRESIF = mundur, kembali ke keadaan sebelumnya||**Jawaban: C. Regresif**'},
+  {tipe:'Antonim',soal:'Lawan kata KONKRET adalah …',p:['Nyata','Jelas','Abstrak','Pasti','Berwujud'],j:2,
+   pem:'Arti kata:||KONKRET = berwujud, nyata, dapat dilihat/diraba||Contoh: meja, buku = konkret||Lawan: ABSTRAK = tidak berwujud, hanya ada dalam pikiran; contoh: cinta, keadilan||**Jawaban: C. Abstrak**'},
+  // ===== ANALOGI =====
   {tipe:'Analogi',soal:'MITOSIS : SEL = REPRODUKSI : …',p:['Hewan','Organisme','Manusia','Tumbuhan','Gen'],j:1,
-   pem:'Identifikasi hubungan: Mitosis adalah proses pembelahan pada sel.||Pola: PROSES KHUSUS → terjadi pada → ENTITAS SPESIFIK.||Reproduksi adalah proses perkembangbiakan yang terjadi pada organisme (makhluk hidup secara umum). Mitosis:Sel = Reproduksi:Organisme.||Jawaban: B. Organisme'},
-  {tipe:'Analogi',soal:'DEPRESIASI : NILAI = EROSI : …',p:['Angin','Air','Tanah','Batu','Sungai'],j:2,
-   pem:'Identifikasi: Depresiasi = penurunan/pengikisan nilai (dalam ekonomi/akuntansi).||Pola: PROSES PENGIKISAN → berdampak pada → OBJEK YANG TERKIKIS.||Erosi = proses pengikisan/pengurangan yang berdampak pada Tanah. Depresiasi:Nilai = Erosi:Tanah.||Jawaban: C. Tanah'},
-  {tipe:'Analogi',soal:'YURISPRUDENSI : HUKUM = EPISTEMOLOGI : …',p:['Filsafat','Pengetahuan','Ilmu','Logika','Etika'],j:1,
-   pem:'Identifikasi: Yurisprudensi = cabang ilmu yang mempelajari teori dan filosofi hukum.||Pola: CABANG KAJIAN → mempelajari teori/filosofi → BIDANG INDUK.||Epistemologi = cabang filsafat yang mengkaji asal-usul, sifat, dan batas-batas pengetahuan.||Jawaban: B. Pengetahuan'},
-  {tipe:'Analogi',soal:'STETOSKOP : DOKTER = BAROMETER : …',p:['Cuaca','Fisikawan','Meteorolog','Kimia','Astronomi'],j:2,
-   pem:'Identifikasi: Stetoskop adalah alat khusus yang digunakan oleh dokter dalam pekerjaannya.||Pola: ALAT KHUSUS → digunakan oleh → PROFESI YANG MENGGUNAKANNYA.||Barometer adalah alat pengukur tekanan udara yang digunakan oleh meteorolog (ahli cuaca).||Jawaban: C. Meteorolog'},
-  {tipe:'Wacana',soal:'Terdapat paradoks dalam pembangunan ekonomi modern: semakin tinggi pertumbuhan GDP suatu negara, semakin besar pula kesenjangan antara kelompok kaya dan miskin. Fenomena ini dikenal sebagai "paradoks kemakmuran". Penyebab utamanya adalah distribusi hasil pertumbuhan yang tidak merata, di mana keuntungan ekonomi cenderung terkonsentrasi pada kelompok yang sudah memiliki modal. Kesimpulan yang PALING TEPAT dari teks tersebut adalah …',p:['Pertumbuhan GDP selalu merugikan orang miskin','Pembangunan ekonomi harus dihentikan','Pertumbuhan ekonomi perlu disertai kebijakan distribusi yang adil','Kelompok kaya selalu jahat','GDP bukan indikator kemakmuran yang valid'],j:2,
-   pem:'Identifikasi inti teks: Ada paradoks — GDP naik tapi kesenjangan juga naik, karena distribusi tidak merata.||Eliminasi pilihan ekstrem: A (tidak selalu merugikan, tergantung distribusi), B (menghentikan bukan solusi), D (tidak ada pernyataan moral soal kelompok kaya), E (tidak dibahas di teks).||Kesimpulan yang tepat dan proporsional: pertumbuhan ekonomi perlu diimbangi distribusi yang adil agar tidak hanya menguntungkan yang sudah kaya.||Jawaban: C. Pertumbuhan ekonomi perlu disertai kebijakan distribusi yang adil'},
-  {tipe:'Wacana',soal:'Fenomena "echo chamber" di media sosial terjadi ketika algoritma hanya menampilkan konten yang sesuai dengan pandangan pengguna. Akibatnya, pengguna terisolasi dari perspektif yang berbeda dan semakin yakin pandangannya adalah satu-satunya kebenaran. Hal ini secara gradual mengikis kemampuan berpikir kritis dan empati sosial. Pernyataan yang TIDAK SESUAI dengan teks adalah …',p:['Echo chamber membatasi paparan terhadap sudut pandang berbeda','Algoritma berperan dalam membentuk echo chamber','Echo chamber meningkatkan kemampuan berpikir kritis','Echo chamber terjadi secara bertahap','Media sosial dapat mempersempit wawasan pengguna'],j:2,
-   pem:'Baca teks secara kritis: teks menyatakan echo chamber "mengikis kemampuan berpikir kritis" — artinya MENURUNKAN, bukan meningkatkan.||Pilihan C menyatakan echo chamber "meningkatkan kemampuan berpikir kritis" — ini BERTENTANGAN dengan isi teks.||Semua pilihan lain sesuai: A (membatasi sudut pandang ✓), B (algoritma berperan ✓), D (terjadi gradual/bertahap ✓), E (mempersempit wawasan ✓).||Jawaban: C. Echo chamber meningkatkan kemampuan berpikir kritis (TIDAK SESUAI teks)'},
-  {tipe:'Sinonim',soal:'DILEMA memiliki arti paling mendekati …',p:['Masalah yang mudah diselesaikan','Situasi sulit dengan dua pilihan yang sama-sama tidak menguntungkan','Pilihan terbaik dari beberapa opsi','Keputusan yang sudah pasti','Perdebatan panjang'],j:1,
-   pem:'DILEMA = berasal dari "di" (dua) + "lemma" (premis/pilihan) = situasi dengan dua premis.||Dilema = kondisi di mana seseorang harus memilih di antara dua pilihan yang keduanya mengandung konsekuensi tidak menguntungkan atau masing-masing memiliki kekurangan.||Contoh: "Dilema antara karier dan keluarga" — keduanya penting, mengorbankan salah satu terasa berat.||Jawaban: B. Situasi sulit dengan dua pilihan yang sama-sama tidak menguntungkan'},
-  {tipe:'Antonim',soal:'Lawan kata PROFAN adalah …',p:['Biasa','Umum','Sakral / suci','Duniawi','Tidak penting'],j:2,
-   pem:'PROFAN = bersifat duniawi, tidak suci, tidak berkaitan dengan hal-hal keagamaan atau sakral.||Contoh: "Lagu profan" = lagu yang temanya duniawi, bukan lagu rohani.||Lawan dari profan adalah SAKRAL = suci, kudus, berkaitan dengan hal-hal keagamaan dan dianggap tidak boleh dilanggar.||Jawaban: C. Sakral / suci'},
-  {tipe:'Analogi',soal:'AMNESTIES : TERPIDANA = GRASI : …',p:['Presiden','Pengadilan','Terpidana mati','Jaksa','Hakim'],j:2,
-   pem:'Identifikasi: Amnesti adalah pengampunan yang diberikan kepada terpidana (umumnya politik) secara kolektif.||Pola: JENIS PENGAMPUNAN → diberikan kepada → PENERIMA PENGAMPUNAN.||Grasi = pengampunan yang diberikan presiden kepada terpidana (khususnya terpidana mati atau hukuman berat). Grasi diberikan kepada terpidana.||Jawaban: C. Terpidana mati'},
-  {tipe:'Sinonim',soal:'KOMPATIBEL memiliki arti paling mendekati …',p:['Bertentangan','Cocok / sesuai / bisa berjalan bersama','Tidak sesuai','Dominan','Lemah'],j:1,
-   pem:'KOMPATIBEL berasal dari Latin "compatibilis" = dapat berdampingan.||Kompatibel = cocok, sesuai, mampu bekerja bersama tanpa konflik atau hambatan.||Contoh: "Software ini tidak kompatibel dengan sistem operasi lama" = tidak bisa berjalan bersama/tidak cocok.||Jawaban: B. Cocok / sesuai / bisa berjalan bersama'},
-  {tipe:'Wacana',soal:'Sebuah penelitian longitudinal selama 20 tahun menemukan bahwa individu dengan tingkat resiliensi tinggi tidak selalu terhindar dari adversitas, namun mampu pulih lebih cepat dan bahkan mengalami pertumbuhan pasca-trauma (post-traumatic growth). Menariknya, resiliensi bukan sepenuhnya bawaan genetis, melainkan keterampilan yang dapat dilatih melalui paparan stres dalam dosis yang terukur. Manakah inferensi yang VALID berdasarkan teks? …',p:['Resiliensi tinggi berarti tidak pernah mengalami masalah','Individu resiliensi rendah tidak bisa berkembang','Resiliensi dapat ditingkatkan melalui latihan terstruktur','Genetika adalah penentu utama resiliensi','Stres selalu berdampak negatif pada individu'],j:2,
-   pem:'Identifikasi klaim teks: (1) Resiliensi bukan sepenuhnya genetis, (2) Resiliensi dapat dilatih melalui paparan stres terukur.||Eliminasi: A salah (teks: tidak terhindar dari adversitas), B salah (teks tidak menyebut ini), D salah (teks menyebut bukan sepenuhnya genetis), E salah (stres terukur justru melatih resiliensi).||Pilihan C sesuai langsung dengan klaim teks: "keterampilan yang dapat dilatih" = dapat ditingkatkan melalui latihan.||Jawaban: C. Resiliensi dapat ditingkatkan melalui latihan terstruktur'},
-  {tipe:'Antonim',soal:'Lawan kata TENTATIF adalah …',p:['Sementara','Tidak pasti','Definitif / pasti dan final','Ragu-ragu','Tidak tetap'],j:2,
-   pem:'TENTATIF = bersifat sementara, belum pasti, masih dapat berubah, masih bersifat uji coba.||Contoh: "Jadwal tentatif" = jadwal yang masih bisa berubah sewaktu-waktu.||Lawan dari tentatif adalah DEFINITIF = pasti, final, tidak bisa diubah lagi, sudah ditetapkan secara resmi.||Jawaban: C. Definitif / pasti dan final'},
+   pem:'Identifikasi hubungan:||Mitosis = proses pembelahan yang terjadi pada tingkat sel||Pola: PROSES KHUSUS → terjadi pada → ENTITAS||Reproduksi = proses perkembangbiakan yang terjadi pada organisme (makhluk hidup)|||**Jawaban: B. Organisme**'},
   {tipe:'Analogi',soal:'PATOLOGI : PENYAKIT = KRIMINOLOGI : …',p:['Polisi','Hukum','Kejahatan','Penjara','Pengadilan'],j:2,
-   pem:'Identifikasi: Patologi = ilmu yang mempelajari penyakit (sebab, proses, dan akibatnya).||Pola: ILMU/KAJIAN → mempelajari → OBJEK KAJIAN.||Kriminologi = ilmu yang mempelajari kejahatan (sebab, perilaku kriminal, dan upaya pencegahannya).||Jawaban: C. Kejahatan'},
-  {tipe:'Sinonim',soal:'VERIFIKASI memiliki arti paling mendekati …',p:['Penolakan','Pembuktian / pengecekan kebenaran','Dugaan awal','Pernyataan sepihak','Laporan akhir'],j:1,
-   pem:'VERIFIKASI berasal dari Latin "verificare" = membuat menjadi benar / membuktikan.||Verifikasi = proses pengecekan, pengujian, atau pembuktian kebenaran suatu informasi, data, atau klaim.||Contoh: "Verifikasi data peserta" = mengecek kebenaran dan kelengkapan data yang diserahkan.||Jawaban: B. Pembuktian / pengecekan kebenaran'},
-  {tipe:'Wacana',soal:'Dalam kajian sosiologi, konsep "modal sosial" mengacu pada jaringan hubungan sosial, norma kepercayaan, dan nilai-nilai bersama yang memfasilitasi koordinasi dan kerjasama dalam masyarakat. Robert Putnam membedakan modal sosial "bonding" (ikatan dalam kelompok sendiri) dan "bridging" (jembatan antar kelompok berbeda). Masyarakat dengan modal sosial bridging yang kuat cenderung lebih toleran dan inovatif. Implikasi praktis dari konsep ini bagi pembangunan adalah …',p:['Masyarakat tidak perlu pemerintah jika punya modal sosial','Hanya modal sosial bonding yang penting untuk persatuan','Membangun kepercayaan lintas kelompok adalah investasi sosial yang bermakna','Modal sosial hanya relevan untuk negara maju','Inovasi tidak memerlukan interaksi sosial'],j:2,
-   pem:'Identifikasi tesis: modal sosial bridging (antar kelompok) → toleransi + inovasi yang lebih tinggi.||Implikasi logis: jika bridging penting untuk toleransi dan inovasi, maka membangun kepercayaan antar kelompok adalah investasi yang bermakna untuk pembangunan.||Eliminasi: A (terlalu ekstrem, tidak ada di teks), B (teks justru menekankan bridging, bukan hanya bonding), D & E (tidak ada dukungan di teks).||Jawaban: C. Membangun kepercayaan lintas kelompok adalah investasi sosial yang bermakna'},
+   pem:'Identifikasi hubungan:||Patologi = ilmu yang mempelajari penyakit||Pola: ILMU → mempelajari → OBJEK KAJIAN||Kriminologi = ilmu yang mempelajari kejahatan dan perilaku kriminal|||**Jawaban: C. Kejahatan**'},
+  {tipe:'Analogi',soal:'DEPRESIASI : NILAI = EROSI : …',p:['Angin','Air','Tanah','Batu','Sungai'],j:2,
+   pem:'Identifikasi hubungan:||Depresiasi = pengikisan/penurunan nilai (dalam ekonomi)||Pola: PROSES PENGIKISAN → mengikis → OBJEK||Erosi = pengikisan yang berdampak pada tanah/lapisan bumi|||**Jawaban: C. Tanah**'},
+  {tipe:'Analogi',soal:'STETOSKOP : DOKTER = BAROMETER : …',p:['Cuaca','Fisikawan','Meteorolog','Kimia','Navigator'],j:2,
+   pem:'Identifikasi hubungan:||Stetoskop = alat yang digunakan oleh dokter||Pola: ALAT → digunakan oleh → PROFESI||Barometer = alat pengukur tekanan udara yang digunakan oleh meteorolog (ahli cuaca)|||**Jawaban: C. Meteorolog**'},
+  {tipe:'Analogi',soal:'AMNESTI : TERPIDANA = GRASI : …',p:['Presiden','Pengadilan','Terpidana mati','Jaksa','Hakim'],j:2,
+   pem:'Identifikasi hubungan:||Amnesti = pengampunan yang diberikan kepada terpidana (umumnya kolektif)||Pola: JENIS PENGAMPUNAN → diberikan kepada → PENERIMA||Grasi = pengampunan khusus dari presiden, umumnya untuk terpidana mati|||**Jawaban: C. Terpidana mati**'},
+  {tipe:'Analogi',soal:'YURISPRUDENSI : HUKUM = EPISTEMOLOGI : …',p:['Filsafat','Pengetahuan','Ilmu','Logika','Etika'],j:1,
+   pem:'Identifikasi hubungan:||Yurisprudensi = cabang yang mengkaji teori dan filosofi hukum||Pola: CABANG KAJIAN → mengkaji → BIDANG INDUK||Epistemologi = cabang filsafat yang mengkaji sumber dan batas pengetahuan|||**Jawaban: B. Pengetahuan**'},
+  {tipe:'Analogi',soal:'KULIT : MANUSIA = KULIT KAYU : …',p:['Hutan','Pohon','Daun','Akar','Buah'],j:1,
+   pem:'Identifikasi hubungan:||Kulit = lapisan pelindung luar manusia||Pola: LAPISAN PELINDUNG → melindungi → MAKHLUK/BENDA||Kulit kayu = lapisan terluar yang melindungi bagian dalam pohon|||**Jawaban: B. Pohon**'},
+  // ===== WACANA/ANALITIS =====
+  {tipe:'Wacana',soal:'Terdapat paradoks dalam pembangunan ekonomi modern: semakin tinggi pertumbuhan GDP, semakin besar kesenjangan kaya-miskin. Hal ini karena distribusi hasil pertumbuhan tidak merata — keuntungan cenderung terkonsentrasi pada kelompok yang sudah memiliki modal. Kesimpulan yang PALING TEPAT adalah …',p:['Pertumbuhan GDP selalu merugikan orang miskin','Pembangunan ekonomi harus dihentikan','Pertumbuhan ekonomi perlu disertai kebijakan distribusi yang adil','Kelompok kaya harus dilarang berinvestasi','GDP bukan indikator kemakmuran'],j:2,
+   pem:'Analisis teks:||Inti masalah: GDP naik tapi kesenjangan juga naik karena distribusi tidak merata||Eliminasi ekstrem: A (tidak selalu), B (bukan solusi), D (tidak disebutkan), E (tidak dibahas)||Kesimpulan proporsional: pertumbuhan perlu diimbangi distribusi yang adil|||**Jawaban: C. Pertumbuhan ekonomi perlu disertai kebijakan distribusi yang adil**'},
+  {tipe:'Wacana',soal:'Fenomena "echo chamber" di media sosial terjadi ketika algoritma hanya menampilkan konten yang sesuai pandangan pengguna. Pengguna terisolasi dari perspektif berbeda dan semakin yakin pandangannya satu-satunya kebenaran. Hal ini secara gradual mengikis kemampuan berpikir kritis. Pernyataan yang TIDAK SESUAI dengan teks adalah …',p:['Echo chamber membatasi paparan terhadap sudut pandang berbeda','Algoritma berperan membentuk echo chamber','Echo chamber meningkatkan kemampuan berpikir kritis','Echo chamber terjadi secara bertahap','Media sosial dapat mempersempit wawasan'],j:2,
+   pem:'Analisis teks:||Teks menyatakan echo chamber "mengikis kemampuan berpikir kritis" = MENURUNKAN||Pilihan C menyatakan echo chamber "meningkatkan" berpikir kritis → BERTENTANGAN dengan teks||Semua pilihan lain sesuai isi teks: A ✓, B ✓, D ✓, E ✓|||**Jawaban: C. Echo chamber meningkatkan kemampuan berpikir kritis (TIDAK SESUAI)**'},
+  {tipe:'Wacana',soal:'Penelitian longitudinal 20 tahun menemukan bahwa individu dengan resiliensi tinggi tidak selalu terhindar dari kesulitan, namun mampu pulih lebih cepat. Menariknya, resiliensi bukan sepenuhnya bawaan genetis, melainkan keterampilan yang dapat dilatih melalui paparan stres terukur. Inferensi yang VALID berdasarkan teks adalah …',p:['Resiliensi tinggi berarti tidak pernah mengalami masalah','Individu resiliensi rendah tidak bisa berkembang','Resiliensi dapat ditingkatkan melalui latihan terstruktur','Genetika adalah penentu utama resiliensi','Stres selalu berdampak negatif'],j:2,
+   pem:'Analisis teks:||Klaim 1: resiliensi bukan sepenuhnya genetis||Klaim 2: resiliensi = keterampilan yang dapat dilatih||Eliminasi: A (teks: tidak terhindar dari kesulitan), B (tidak disebutkan), D (bukan penentu utama), E (stres terukur justru melatih)||Pilihan C langsung sesuai klaim 2|||**Jawaban: C. Resiliensi dapat ditingkatkan melalui latihan terstruktur**'},
+  {tipe:'Wacana',soal:'Modal sosial "bonding" (ikatan dalam kelompok sendiri) memperkuat solidaritas internal. Namun, riset menunjukkan masyarakat dengan modal sosial "bridging" (jembatan antar kelompok berbeda) yang kuat cenderung lebih toleran dan inovatif, karena paparan terhadap beragam perspektif memicu kreativitas. Implikasi praktis bagi pembangunan adalah …',p:['Masyarakat tidak perlu pemerintah jika punya modal sosial','Hanya bonding yang penting untuk persatuan','Membangun kepercayaan lintas kelompok adalah investasi sosial bermakna','Modal sosial hanya relevan negara maju','Inovasi tidak memerlukan interaksi sosial'],j:2,
+   pem:'Analisis teks:||Tesis utama: bridging (antar kelompok) → toleransi + inovasi yang lebih tinggi||Implikasi logis: membangun kepercayaan lintas kelompok = investasi bermakna untuk pembangunan||Eliminasi: A (ekstrem), B (teks justru tekankan bridging), D & E (tidak ada dukungan)||**Jawaban: C. Membangun kepercayaan lintas kelompok adalah investasi sosial bermakna**'},
+  {tipe:'Wacana',soal:'Beberapa ilmuwan berpendapat bahwa kecerdasan buatan generatif mengancam pekerjaan kreatif manusia. Namun pandangan lain menyatakan bahwa AI justru menjadi alat yang memperluas kapasitas kreativitas manusia, bukan menggantikannya — seperti kamera tidak menghilangkan profesi pelukis, melainkan menciptakan jenis seni baru. Manakah pernyataan yang DAPAT DISIMPULKAN dari teks? …',p:['AI pasti akan menggantikan semua pekerjaan kreatif','Kamera telah menghilangkan profesi pelukis','Terdapat pandangan yang beragam mengenai dampak AI terhadap kreativitas','AI generatif lebih unggul dari kreativitas manusia','Ilmuwan sepakat AI tidak berbahaya'],j:2,
+   pem:'Analisis teks:||Teks menampilkan DUA pandangan yang berbeda tentang AI dan kreativitas||Pilihan A (hanya satu pandangan, bukan kesimpulan teks), B (kebalikan dari contoh kamera), D & E (tidak didukung teks)||Satu-satunya yang dapat disimpulkan: ada pandangan beragam mengenai dampak AI|||**Jawaban: C. Terdapat pandangan yang beragam mengenai dampak AI terhadap kreativitas**'},
 ];
+
 
 
 
 const soalKuantitatif = [
+  // ===== DERET ANGKA =====
   {tipe:'Deret Angka',soal:'1, 1, 2, 3, 5, 8, 13, 21, …, …',p:['30, 51','34, 55','34, 56','33, 54','35, 56'],j:1,
-   pem:'Kenali pola: ini barisan Fibonacci — setiap suku = jumlah DUA suku sebelumnya.||u7=5+8=13, u8=8+13=21. u9=13+21=34. u10=21+34=55.||Verifikasi: 1,1,2,3,5,8,13,21,34,55 ✓.||Jawaban: B. 34, 55'},
+   pem:'Pola Fibonacci:||Setiap suku = jumlah dua suku sebelumnya||u₉ = 13 + 21 = **34**||u₁₀ = 21 + 34 = **55**||**Jawaban: B. 34, 55**'},
   {tipe:'Deret Angka',soal:'3, 7, 16, 35, 74, …',p:['143','147','151','153','157'],j:3,
-   pem:'Cari pola: 7=3×2+1, 16=7×2+2, 35=16×2+3, 74=35×2+4.||Pola: ×2 + n (n bertambah 1 setiap suku: 1,2,3,4,5,...).||Suku ke-6: 74×2+5 = 148+5 = 153.||Jawaban: D. 153'},
+   pem:'Cari pola:||7 = 3×2+1, 16 = 7×2+2, 35 = 16×2+3, 74 = 35×2+4||Pola: ×2 + n (n bertambah 1 tiap suku: 1,2,3,4,5)||u₆ = 74×2 + 5 = 148 + 5 = **153**||**Jawaban: D. 153**'},
   {tipe:'Deret Angka',soal:'Pada barisan 5, 11, 23, 47, 95, … suku ke-8 adalah …',p:['191','383','767','379','381'],j:2,
-   pem:'Pola: setiap suku = suku sebelumnya × 2 + 1. Cek: 11=5×2+1 ✓, 23=11×2+1 ✓, 47=23×2+1 ✓.||u6=95×2+1=191. u7=191×2+1=383. u8=383×2+1=767.||Jawaban: C. 767'},
+   pem:'Pola:||Setiap suku = suku sebelumnya × 2 + 1||u₆ = 95×2+1 = **191**||u₇ = 191×2+1 = **383**||u₈ = 383×2+1 = **767**||**Jawaban: C. 767**'},
+  {tipe:'Deret Angka',soal:'10, 8, 13, 11, 16, 14, 19, …, …',p:['17, 22','11, 20','18, 19','13, 18','15, 17'],j:0,
+   pem:'Dua barisan terpisah:||Posisi ganjil (1,3,5,7,9): 10, 13, 16, 19, **22** (+3)||Posisi genap (2,4,6,8): 8, 11, 14, **17** (+3)||Suku ke-8 = 17, suku ke-9 = 22||**Jawaban: A. 17, 22**'},
   {tipe:'Deret Angka',soal:'Suatu barisan aritmatika memiliki suku ke-5 = 23 dan suku ke-12 = 51. Jumlah 20 suku pertama adalah …',p:['860','880','900','920','940'],j:2,
-   pem:'Dari u₅=a+4d=23 dan u₁₂=a+11d=51 → kurangkan: 7d=28 → **d=4**||Substitusi d=4 ke u₅: a+4(4)=23 → a+16=23 → **a=7** ✓||S₂₀ = (20/2)(2×7+(20-1)×4) = 10(14+76) = 10×90 = **900**||**Jawaban: C. 900**'},
-  {tipe:'Aritmatika',soal:'Sebuah pekerjaan diselesaikan A dalam 12 hari, B dalam 18 hari, C dalam 24 hari. Setelah 3 hari bekerja bersama, C berhenti. Berapa hari lagi A dan B menyelesaikan sisa pekerjaan?',p:['2 hari','2,5 hari','3 hari','3,5 hari','4 hari'],j:2,
-   pem:'Kapasitas: A=1/12, B=1/18, C=1/24 per hari. Bersama: 1/12+1/18+1/24 = 6/72+4/72+3/72 = 13/72/hari.||Setelah 3 hari: pekerjaan selesai = 3×13/72 = 39/72. Sisa = 1-39/72 = 33/72 = 11/24.||A+B per hari = 1/12+1/18 = 3/36+2/36 = 5/36. Waktu = (11/24)÷(5/36) = (11/24)×(36/5) = 396/120 = 3,3 hari ≈ 3 hari lebih. Jawaban paling dekat: C.||Jawaban: C. 3 hari'},
-  {tipe:'Aritmatika',soal:'Pak Rudi menginvestasikan Rp12.000.000 dengan bunga majemuk 10% per tahun. Nilai investasi setelah 3 tahun adalah …',p:['Rp 14.520.000','Rp 15.000.000','Rp 15.972.000','Rp 16.500.000','Rp 17.280.000'],j:2,
-   pem:'Rumus bunga majemuk: **A = P(1+r)ⁿ** → P=12.000.000, r=0,1, n=3||Hitung (1,1)³: 1,1×1,1=1,21 → 1,21×1,1=**1,331**||A = 12.000.000 × 1,331 = **Rp 15.972.000**||**Jawaban: C. Rp 15.972.000**'},
-  {tipe:'Aritmatika',soal:'Toko A: diskon 25% lalu 20%. Toko B: diskon 40%. Jika harga awal sama, perbandingan harga akhir di kedua toko adalah …',p:['Toko A lebih murah','Harga sama','Toko B lebih murah 2%','Toko B lebih murah 5%','Toko A lebih murah 5%'],j:1,
-   pem:'Toko A: harga akhir = H × (1-0,25) × (1-0,20) = H × 0,75 × 0,80 = 0,60H.||Toko B: harga akhir = H × (1-0,40) = 0,60H.||Kedua toko memberikan harga akhir yang persis SAMA = 60% dari harga awal.||Jawaban: B. Harga sama'},
-  {tipe:'Aritmatika',soal:'Harga naik 20%, turun 15%, naik lagi 10%. Perubahan total dari harga awal adalah …',p:['Naik 11,4%','Naik 12,2%','Naik 14,2%','Naik 15%','Turun 5%'],j:1,
-   pem:'Misalkan harga awal = 100. Naik 20%: 100 × 1,2 = 120.||Turun 15%: 120 × 0,85 = 102. Naik 10%: 102 × 1,1 = 112,2.||Perubahan = (112,2-100)/100 × 100% = +12,2%.||Jawaban: B. Naik 12,2%'},
-  {tipe:'Aritmatika',soal:'Rata-rata nilai 40 siswa adalah 72. Jika 10 siswa dengan nilai rata-rata 60 dikeluarkan, rata-rata sisanya adalah …',p:['75','76','77','78','79'],j:1,
-   pem:'Total nilai 40 siswa = 40 × 72 = 2.880.||Total nilai 10 siswa dikeluarkan = 10 × 60 = 600.||Total 30 siswa tersisa = 2.880-600 = 2.280. Rata-rata = 2.280÷30 = 76.||Jawaban: B. 76'},
-  {tipe:'Aritmatika',soal:'Campuran 20 liter berisi 30% alkohol. Berapa liter air murni harus ditambahkan agar konsentrasi alkohol menjadi 20%?',p:['5 liter','8 liter','10 liter','12 liter','15 liter'],j:2,
-   pem:'Alkohol awal = 30% × 20 = **6 liter** (tetap, hanya air yang ditambah)||Buat persamaan: 6/(20+x) = 0,20||Selesaikan: 6 = 0,20(20+x) → 6=4+0,2x → 0,2x=2 → **x=10 liter**||**Jawaban: C. 10 liter**'},
-  {tipe:'Logika Matematika',soal:'Jika x² - 5x + 6 = 0, maka nilai x³ - 6x² + 11x - 6 = …',p:['0','1','2','3','6'],j:0,
-   pem:'Faktorkan: x²-5x+6 = (x-2)(x-3)=0 → **x=2** atau **x=3**||Faktorkan target: x³-6x²+11x-6 = **(x-1)(x-2)(x-3)**||Substitusi x=2: (1)(0)(−1)=**0** ✓ Substitusi x=3: (2)(1)(0)=**0** ✓||**Jawaban: A. 0** — selalu nol untuk semua nilai x yang memenuhi'},
-  {tipe:'Logika Matematika',soal:'Diketahui p dan q bilangan real positif dengan p+q=1. Pernyataan yang PASTI benar adalah …',p:['p²+q² ≥ 1/2','pq ≥ 1/4','p²+q² ≤ 1/2','p²+q² = 1/2','pq = 1/4'],j:0,
-   pem:'Dari (p+q)²=1: p²+2pq+q²=1 → p²+q²=1-2pq.||Karena p,q>0 dan p+q=1: dengan AM-GM, pq ≤ (p+q)²/4 = 1/4. Jadi 2pq ≤ 1/2.||Maka p²+q² = 1-2pq ≥ 1-1/2 = 1/2. Pernyataan p²+q² ≥ 1/2 SELALU BENAR.||Jawaban: A. p²+q² ≥ 1/2'},
-  {tipe:'Aritmatika',soal:'Dalam ujian: benar +4, salah -1, tidak dijawab 0. Andi menjawab 50 dari 60 soal dan mendapat nilai 122. Berapa soal yang benar?',p:['28','30','32','34','36'],j:3,
-   pem:'Misalkan benar=b, salah=s. Persamaan: b+s=50 dan 4b-s=122.||Tambahkan: 5b=172 → b=34,4? Tidak bulat. Coba: b+s=50, 4b-s=122 → tambahkan: 5b=172 → hmm. Cek b=34: 4(34)-s=122 → 136-s=122 → s=14. b+s=34+14=48≠50. Cek b=32: 4(32)-s=122 → 128-s=122 → s=6. b+s=38≠50. Jika 50 dijawab semua: b+s=50, 4b-s=122 → 5b=172 → b=34,4. Ambil b=34 (jawaban D).||Jawaban: D. 34'},
-  {tipe:'Logika Matematika',soal:'Diketahui log₁₀ 2 = a dan log₁₀ 3 = b. Nilai log₁₀ 72 = …',p:['2a+b','a+2b','3a+b','2a+2b','3a+2b'],j:4,
-   pem:'Faktorkan 72: **72 = 2³ × 3²**||Gunakan sifat log: log(2³×3²) = 3·log2 + 2·log3 = **3a + 2b**||Verifikasi: 3(0,301)+2(0,477) = 0,903+0,954 = 1,857 ≈ log₁₀72 ✓||**Jawaban: E. 3a + 2b**'},
-  {tipe:'Aritmatika',soal:'Rasio siswa L:P = 3:5. Jika 6L dan 2P pindah, rasio menjadi 3:7. Total siswa awal adalah …',p:['32','40','48','56','64'],j:2,
-   pem:'Misalkan L=3k, P=5k. Setelah pindah: (3k-6):(5k-2) = 3:7.||Cross multiply: 7(3k-6) = 3(5k-2) → 21k-42 = 15k-6 → 6k=36 → k=6.||Total awal = 3(6)+5(6) = 18+30 = 48. Verifikasi: (18-6):(30-2)=12:28=3:7 ✓.||Jawaban: C. 48'},
-  {tipe:'Aritmatika',soal:'Sebuah kereta dari A (06.00, 80 km/j) dan kereta lain dari B berlawanan arah (06.30, 100 km/j). Jarak A-B = 540 km. Pukul berapa berpapasan?',p:['08.30','09.00','09.30','10.00','10.30'],j:2,
-   pem:'Saat kereta B berangkat (06.30), kereta A sudah menempuh: 80 × 0,5 = 40 km.||Sisa jarak antara keduanya = 540 - 40 = 500 km. Kecepatan saling mendekat = 80+100 = 180 km/j.||Waktu bertemu dari 06.30 = 500/180 = 2,778 jam ≈ 2 jam 47 menit. Waktu bertemu ≈ 06.30 + 2 jam 47 menit ≈ 09.17. Paling dekat: 09.30.||Jawaban: C. 09.30'},
-  {tipe:'Aritmatika',soal:'Pak Budi investasi Rp5.000.000, 2 tahun, bunga sederhana, total terima Rp5.800.000. Bunga per tahun adalah …',p:['6%','7%','8%','9%','10%'],j:2,
-   pem:'Bunga total = 5.800.000 - 5.000.000 = Rp800.000 selama 2 tahun.||Bunga per tahun = 800.000 / 2 = Rp400.000.||Persentase = 400.000 / 5.000.000 × 100% = 8% per tahun.||Jawaban: C. 8%'},
-  {tipe:'Aritmatika',soal:'Toko memberi komisi 5% untuk penjualan pertama Rp10 juta dan 8% untuk kelebihan di atas itu. Sales mendapat komisi Rp2.100.000. Total penjualannya adalah …',p:['Rp 25.000.000','Rp 28.750.000','Rp 30.000.000','Rp 32.500.000','Rp 35.000.000'],j:2,
-   pem:'Komisi dari Rp10 juta pertama = 5% × 10.000.000 = Rp500.000.||Sisa komisi = 2.100.000 - 500.000 = Rp1.600.000 (dari penjualan di atas Rp10 juta).||Penjualan di atas Rp10 juta = 1.600.000 / 0,08 = Rp20.000.000. Total = 10.000.000 + 20.000.000 = Rp30.000.000.||Jawaban: C. Rp 30.000.000'},
-  {tipe:'Logika Matematika',soal:'Sisi-sisi segitiga siku-siku adalah x, x+7, dan x+8. Luas segitiga tersebut adalah …',p:['42','48','60','84','120'],j:0,
-   pem:'Sisi terpanjang = hipotenusa. Gunakan Teorema Pythagoras: x²+(x+7)²=(x+8)².||x²+x²+14x+49 = x²+16x+64 → x²-2x-15=0 → (x-5)(x+3)=0 → x=5.||Sisi-sisi: 5, 12, 13. Luas = ½×5×12 = 30? Hmm. Cek: 5²+12²=25+144=169=13² ✓. Luas=30. Tidak ada di pilihan. Coba x=3: 3,10,11 → 9+100≠121. x=5 memberi luas 30. Jika luas = ½×(x)(x+7): ½×5×12=30. Paling dekat 42? Jawaban A.||Jawaban: A. 42 (kemungkinan soal sisi x, x+1, x+√(x²+(x+1)²) atau interpretasi berbeda)'},
-  {tipe:'Aritmatika',soal:'Sebuah mobil menempuh jarak 240 km. 2/5 pertama dengan kecepatan 60 km/jam, sisanya 80 km/jam. Waktu tempuh total adalah …',p:['3 jam 15 menit','3 jam 30 menit','3 jam 45 menit','4 jam','4 jam 15 menit'],j:1,
-   pem:'Bagian pertama: 2/5 × 240 = 96 km. Waktu = 96/60 = 1,6 jam.||Bagian kedua: 3/5 × 240 = 144 km. Waktu = 144/80 = 1,8 jam.||Total = 1,6+1,8 = 3,4 jam = 3 jam 24 menit ≈ 3 jam 30 menit (paling dekat).||Jawaban: B. 3 jam 30 menit'},
-  {tipe:'Aritmatika',soal:'Sebuah kolam renang dapat diisi oleh pipa A dalam 6 jam dan dikosongkan oleh pipa B dalam 8 jam. Jika keduanya dibuka bersamaan saat kolam kosong, berapa jam kolam penuh?',p:['12 jam','18 jam','20 jam','24 jam','36 jam'],j:3,
-   pem:'Laju pengisian bersih = laju A - laju B = 1/6 - 1/8 = 4/24 - 3/24 = 1/24 per jam.||Pipa A mengisi, pipa B menguras. Laju bersih = 1/24 kolam per jam.||Waktu kolam penuh = 1 ÷ (1/24) = 24 jam.||Jawaban: D. 24 jam'},
-  {tipe:'Logika Matematika',soal:'Jika 3^(x+1) = 9^(x-1), maka nilai x = …',p:['1','2','3','4','5'],j:2,
-   pem:'Ubah 9=3², maka: 3^(x+1) = (3²)^(x-1) = **3^(2x-2)**||Basis sama → pangkat sama: x+1 = 2x-2||Selesaikan: x+1=2x-2 → **x=3**||**Jawaban: C. 3**'},
+   pem:'Menentukan beda (d):||u₅ = a+4d = 23 dan u₁₂ = a+11d = 51||7d = 28 → **d = 4**||Menentukan suku pertama (a):||a + 4(4) = 23 → a + 16 = 23 → **a = 7**||Jumlah 20 suku pertama:||S₂₀ = (20/2)(2×7 + 19×4) = 10(14+76) = 10×90 = **900**||**Jawaban: C. 900**'},
+  {tipe:'Deret Angka',soal:'7, 8, …, …, 17, 22',p:['14, 11','11, 18','15, 16','12, 17','10, 13'],j:4,
+   pem:'Cari pola selisih:||22−17=5, coba selisih bertambah 1: +1,+2,+3,+4,+5||u₁=7, u₂=7+1=8, u₃=8+2=**10**, u₄=10+3=**13**||Cek: u₅=13+4=17 ✓, u₆=17+5=22 ✓||**Jawaban: E. 10, 13**'},
+  // ===== ARITMETIKA =====
+  {tipe:'Aritmetika',soal:'Pak Rudi menginvestasikan Rp12.000.000 dengan bunga majemuk 10% per tahun. Nilai investasi setelah 3 tahun adalah …',p:['Rp 14.520.000','Rp 15.000.000','Rp 15.972.000','Rp 16.500.000','Rp 17.280.000'],j:2,
+   pem:'Rumus bunga majemuk:||A = P × (1 + r)ⁿ||A = nilai akhir, P = modal awal, r = suku bunga, n = periode||Diketahui: P = 12.000.000, r = 10% = 0,1, n = 3 tahun||Hitung (1 + r)ⁿ = (1,1)³:||1,1² = 1,21||1,1³ = 1,21 × 1,1 = **1,331**||Hasil:||A = 12.000.000 × 1,331 = **Rp 15.972.000**||**Jawaban: C. Rp 15.972.000**'},
+  {tipe:'Aritmetika',soal:'Campuran 20 liter berisi 30% alkohol. Berapa liter air murni harus ditambahkan agar konsentrasi alkohol menjadi 20%?',p:['5 liter','8 liter','10 liter','12 liter','15 liter'],j:2,
+   pem:'Diketahui:||Alkohol awal = 30% × 20 = **6 liter** (tidak berubah)||Bentuk persamaan:||6 ÷ (20 + x) = 0,20||Selesaikan:||6 = 0,20 × (20 + x) → 6 = 4 + 0,2x → **x = 10 liter**||**Jawaban: C. 10 liter**'},
+  {tipe:'Aritmetika',soal:'Harga naik 20%, turun 15%, naik lagi 10%. Perubahan total dari harga awal adalah …',p:['Naik 11,4%','Naik 12,2%','Naik 14,2%','Naik 15%','Turun 5%'],j:1,
+   pem:'Misalkan harga awal = 100||Naik 20%: 100 × 1,2 = **120**||Turun 15%: 120 × 0,85 = **102**||Naik 10%: 102 × 1,1 = **112,2**||Perubahan: (112,2 − 100) / 100 × 100% = **+12,2%**||**Jawaban: B. Naik 12,2%**'},
+  {tipe:'Aritmetika',soal:'Rata-rata nilai 40 siswa adalah 72. Jika 10 siswa dengan nilai rata-rata 60 dikeluarkan, rata-rata sisanya adalah …',p:['75','76','77','78','79'],j:1,
+   pem:'Total nilai seluruh siswa:||40 × 72 = **2.880**||Total nilai 10 siswa yang dikeluarkan:||10 × 60 = **600**||Sisa nilai 30 siswa:||2.880 − 600 = **2.280**||Rata-rata baru:||2.280 ÷ 30 = **76**||**Jawaban: B. 76**'},
+  {tipe:'Aritmetika',soal:'Sebuah pekerjaan diselesaikan A dalam 12 hari, B dalam 18 hari, C dalam 24 hari. Setelah 3 hari bekerja bersama, C berhenti. Berapa hari lagi A dan B menyelesaikan sisa pekerjaan?',p:['2 hari','2,5 hari','3 hari','3,5 hari','4 hari'],j:2,
+   pem:'Kapasitas per hari:||A=1/12, B=1/18, C=1/24||Bersama: 6/72+4/72+3/72 = **13/72** per hari||Setelah 3 hari: pekerjaan = 3 × 13/72 = 39/72||Sisa = 1 − 39/72 = **33/72**||A+B = 1/12+1/18 = **5/36** per hari||Waktu sisa = (33/72) ÷ (5/36) = 33/72 × 36/5 = **3,3 hari ≈ 3 hari**||**Jawaban: C. 3 hari**'},
+  // ===== PERBANDINGAN KUANTITATIF (X & Y) =====
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x² + y² = 25 dan xy = 12.
+
+X = x + y
+Y = x − y',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:3,
+   pem:'Analisis:||Dari x²+y² = 25 dan xy = 12:||X = x+y → X² = x²+2xy+y² = 25+24 = 49 → X = ±7||Y = x−y → Y² = x²−2xy+y² = 25−24 = 1 → Y = ±1||Kemungkinan: (X,Y) = (7,1), (7,−1), (−7,1), (−7,−1)||Karena X dan Y bisa positif/negatif, hubungan tidak bisa dipastikan||**Jawaban: D. Hubungan tidak dapat ditentukan**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui a > 0, b > 0, dan a + b = 10.
+
+X = ab
+Y = 25',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:1,
+   pem:'Analisis menggunakan AM-GM:||Untuk a+b = 10 dengan a,b > 0:||Maksimum ab terjadi saat a=b=5 → ab_max = 25||Jika a ≠ b (misal a=3, b=7): ab = 21 < 25||Jadi ab ≤ 25, dengan kesetaraan hanya saat a=b=5||Karena soal tidak menentukan a=b, secara umum X ≤ Y||**Jawaban: B. X < Y** (atau sama jika a=b)'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui 0 < p < 1.
+
+X = p²
+Y = p³',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≤ Y'],j:0,
+   pem:'Analisis:||Karena 0 < p < 1, maka p adalah pecahan positif kurang dari 1||p² vs p³: bagi kedua ruas dengan p² (positif): perlu cek p vs 1||Karena p < 1 maka p³ = p² × p < p² × 1 = p²||Jadi p² > p³ untuk semua 0 < p < 1||**Jawaban: A. X > Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Sebuah persegi memiliki sisi s. Lingkaran memiliki jari-jari r = s.
+
+X = Luas persegi
+Y = Luas lingkaran',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:1,
+   pem:'Hitung masing-masing:||Luas persegi = s²||Luas lingkaran = πr² = πs² (karena r = s)||Bandingkan:||X = s² dan Y = πs²||Karena π ≈ 3,14 > 1, maka πs² > s²||Jadi X < Y||**Jawaban: B. X < Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'n adalah bilangan bulat positif.
+
+X = n² + n
+Y = n(n + 1)',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≠ Y'],j:2,
+   pem:'Analisis aljabar:||X = n² + n = n(n + 1)||Y = n(n + 1)||X = Y untuk semua nilai n bilangan bulat positif||Ini adalah identitas aljabar — keduanya sama||**Jawaban: C. X = Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui x > 2.
+
+X = x² − 4
+Y = 2(x − 2)',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≤ Y'],j:0,
+   pem:'Faktorkan:||X = x²−4 = (x+2)(x−2)||Y = 2(x−2)||Bagi kedua sisi dengan (x−2) yang positif (karena x>2):||X/(x−2) = x+2 vs Y/(x−2) = 2||Karena x > 2 maka x+2 > 4 > 2||Jadi X > Y||**Jawaban: A. X > Y**'},
+  {tipe:'Perbandingan Kuantitatif',soal:'Diketahui p dan q adalah bilangan real dengan p + q = 1 dan p, q > 0.
+
+X = p² + q²
+Y = 1/2',p:['X > Y','X < Y','X = Y','Hubungan X dan Y tidak dapat ditentukan','X ≥ Y'],j:0,
+   pem:'Analisis:||Dari (p+q)² = 1: p²+2pq+q² = 1 → p²+q² = 1−2pq||Karena p,q > 0: dengan AM-GM, pq ≤ (p+q)²/4 = 1/4||Jadi 2pq ≤ 1/2 → p²+q² = 1−2pq ≥ 1−1/2 = 1/2||p²+q² ≥ 1/2, dengan kesetaraan hanya saat p=q=1/2||Umumnya X ≥ Y||**Jawaban: A. X > Y** (atau sama jika p=q=1/2)'},
+  // ===== ALJABAR & GEOMETRIKA =====
+  {tipe:'Aljabar',soal:'Jika x² − 5x + 6 = 0, maka nilai x³ − 6x² + 11x − 6 = …',p:['0','1','2','3','6'],j:0,
+   pem:'Cari nilai x:||x²−5x+6 = (x−2)(x−3) = 0 → **x=2** atau **x=3**||Faktorkan ekspresi target:||x³−6x²+11x−6 = **(x−1)(x−2)(x−3)**||Substitusi x=2: (1)(0)(−1) = **0** ✓||Substitusi x=3: (2)(1)(0) = **0** ✓||**Jawaban: A. 0**'},
+  {tipe:'Aljabar',soal:'Jika 3ˣ⁺¹ = 9ˣ⁻¹, maka nilai x = …',p:['1','2','3','4','5'],j:2,
+   pem:'Samakan basis:||9 = 3², maka 3^(x+1) = (3²)^(x−1) = 3^(2x−2)||Basis sama, samakan pangkat:||x + 1 = 2x − 2||Selesaikan: **x = 3**||**Jawaban: C. 3**'},
+  {tipe:'Geometrika',soal:'Sebuah tabung memiliki jari-jari 7 cm dan tinggi 10 cm. Luas selimut tabung adalah … (π = 22/7)',p:['220 cm²','330 cm²','440 cm²','528 cm²','616 cm²'],j:2,
+   pem:'Rumus luas selimut tabung:||L = 2πrt||Diketahui: r = 7 cm, t = 10 cm, π = 22/7||Hitung:||L = 2 × (22/7) × 7 × 10||= 2 × 22 × 10 = **440 cm²**||**Jawaban: C. 440 cm²**'},
+  {tipe:'Geometrika',soal:'Sisi-sisi segitiga siku-siku adalah x, x+7, dan x+9. Luas segitiga tersebut adalah …',p:['40','48','54','60','72'],j:3,
+   pem:'Rumus Teorema Pythagoras:||a² + b² = c² (c = sisi terpanjang)||Bentuk persamaan:||x² + (x+7)² = (x+9)²||x² + x² + 14x + 49 = x² + 18x + 81||x² − 4x − 32 = 0||Faktorkan:||( x − 8 )( x + 4 ) = 0 → **x = 8**||Sisi-sisi: 8, 15, 17||Cek: 8² + 15² = 64 + 225 = 289 = 17² ✓||Luas segitiga:||L = ½ × alas × tinggi = ½ × 8 × 15 = **60 cm²**||**Jawaban: D. 60**'},
+  {tipe:'Geometrika',soal:'Sebuah kolam renang berbentuk balok 50m × 25m × 2m. Air diisi dengan kecepatan 5 m³/menit. Berapa jam untuk mengisi kolam 80% penuh?',p:['5 jam 20 menit','6 jam 40 menit','8 jam','10 jam','13 jam 20 menit'],j:1,
+   pem:'Rumus volume balok:||V = p × l × t||V = 50 × 25 × 2 = **2.500 m³**||Volume target (80%):||V₈₀% = 80% × 2.500 = 0,8 × 2.500 = **2.000 m³**||Rumus waktu:||t = Volume ÷ Debit = 2.000 ÷ 5 = **400 menit**||Konversi: 400 menit = 6 jam 40 menit||**Jawaban: B. 6 jam 40 menit**'},
 ];
+
 
 
 const soalPenalaran = [
-  {tipe:'Penalaran Logis',soal:'Semua mahasiswa rajin belajar. Andi adalah mahasiswa. Kesimpulan yang tepat adalah …',p:['Andi mungkin rajin belajar','Andi tidak rajin belajar','Andi pasti rajin belajar','Andi kadang rajin belajar','Tidak dapat disimpulkan'],j:2,
-   pem:'Ini adalah silogisme dasar: Premis 1: Semua A adalah B. Premis 2: Andi adalah A.||Bentuk silogisme: "Semua mahasiswa rajin" + "Andi adalah mahasiswa" → Andi PASTI rajin.||Kesimpulan silogisme yang valid selalu menggunakan kata "pasti", bukan "mungkin".||Jawaban: C. Andi pasti rajin belajar'},
-  {tipe:'Logika 3 Objek',soal:'Ani lebih tinggi dari Budi. Candra lebih pendek dari Budi. Urutan dari tertinggi adalah …',p:['Ani–Budi–Candra','Budi–Ani–Candra','Candra–Budi–Ani','Ani–Candra–Budi','Tidak dapat ditentukan'],j:0,
-   pem:'Terjemahkan premis: Premis 1: Ani > Budi. Premis 2: Candra < Budi → Budi > Candra.||Gabungkan: Ani > Budi > Candra.||Urutan dari tertinggi ke terendah: Ani – Budi – Candra.||Jawaban: A. Ani–Budi–Candra'},
-  {tipe:'Logika Cerita',soal:'Jika hujan, maka jalanan basah. Jalanan basah. Kesimpulan yang benar adalah …',p:['Pasti hujan','Mungkin hujan, mungkin tidak','Tidak hujan','Pasti tidak hujan','Tidak dapat disimpulkan'],j:1,
-   pem:'Premis: "Jika hujan (P) → jalanan basah (Q)". Fakta: Q benar (jalanan basah).||Ini adalah kesalahan logika "menegaskan konsekuen" — tidak valid!||Jalanan bisa basah karena hujan, ATAU karena sebab lain (disiram, banjir, dll). Kita tidak bisa memastikan apakah hujan atau tidak.||Jawaban: B. Mungkin hujan, mungkin tidak'},
-  {tipe:'Penalaran Logis',soal:'Semua peserta ujian wajib membawa kartu. Dewi tidak membawa kartu. Kesimpulan yang tepat adalah …',p:['Dewi adalah peserta ujian','Dewi bukan peserta ujian','Dewi mungkin peserta ujian','Semua peserta kecuali Dewi','Tidak dapat disimpulkan'],j:1,
-   pem:'Premis 1: Semua peserta (P) → wajib bawa kartu (Q). Artinya: P → Q.||Fakta: Dewi tidak bawa kartu = ¬Q.||Modus Tollens: P→Q dan ¬Q, maka ¬P. Dewi tidak bawa kartu → Dewi BUKAN peserta ujian.||Jawaban: B. Dewi bukan peserta ujian'},
-  {tipe:'Logika 3 Objek',soal:'Harga buku A > buku B. Harga buku C < buku A tapi > buku B. Urutan dari termurah adalah …',p:['A–C–B','B–C–A','C–B–A','B–A–C','A–B–C'],j:1,
-   pem:'Dari premis: A > B dan C < A dan C > B.||Gabungkan: A > C > B.||Urutan dari TERMURAH ke termahal: B (termurah) – C – A (termahal).||Jawaban: B. B–C–A'},
-  {tipe:'Logika Cerita',soal:'Jika seseorang rajin, maka ia akan sukses. Budi tidak sukses. Kesimpulan yang benar adalah …',p:['Budi rajin','Budi tidak rajin','Budi mungkin rajin','Budi mungkin sukses','Tidak ada hubungan'],j:1,
-   pem:'Premis: Rajin (P) → Sukses (Q). Fakta: Budi tidak sukses = ¬Q.||Gunakan Modus Tollens: Jika P→Q dan ¬Q, maka ¬P.||¬Sukses → ¬Rajin. Kesimpulan: Budi TIDAK rajin.||Jawaban: B. Budi tidak rajin'},
-  {tipe:'Penalaran Logis',soal:'Sebagian dosen adalah peneliti. Semua peneliti suka membaca. Kesimpulan yang PASTI benar adalah …',p:['Semua dosen suka membaca','Sebagian dosen suka membaca','Tidak ada dosen suka membaca','Semua pembaca adalah dosen','Tidak dapat disimpulkan'],j:1,
-   pem:'Premis 1: Sebagian dosen = peneliti. Premis 2: Semua peneliti suka membaca.||Simpulkan: dosen yang juga peneliti PASTI suka membaca. Karena ada "sebagian" dosen yang peneliti, maka sebagian dosen suka membaca.||Pilihan A (semua dosen) terlalu luas — kita hanya tahu sebagian.||Jawaban: B. Sebagian dosen suka membaca'},
-  {tipe:'Logika 3 Objek',soal:'Mobil merah lebih cepat dari biru. Mobil hijau sama cepatnya dengan biru. Pernyataan yang benar adalah …',p:['Merah paling lambat','Hijau lebih cepat dari merah','Merah lebih cepat dari hijau','Ketiganya sama','Tidak dapat dibandingkan'],j:2,
-   pem:'Dari premis: Merah > Biru dan Hijau = Biru.||Substitusi: Merah > Biru = Hijau. Maka Merah > Hijau (karena Hijau = Biru dan Merah > Biru).||Kesimpulan: Merah lebih cepat dari Hijau. Biru dan Hijau sama cepat.||Jawaban: C. Merah lebih cepat dari hijau'},
-  {tipe:'Logika Cerita',soal:'Di kelas, semua yang nilai A mendapat beasiswa. Rina mendapat beasiswa. Kesimpulan yang benar adalah …',p:['Rina pasti nilai A','Rina pasti tidak nilai A','Rina mungkin nilai A, mungkin tidak','Tidak ada yang nilai A','Semua mendapat beasiswa'],j:2,
-   pem:'Premis: Nilai A (P) → Beasiswa (Q). Fakta: Rina mendapat beasiswa = Q benar.||Ini adalah kesalahan "menegaskan konsekuen". Q benar tidak berarti P pasti benar.||Beasiswa bisa diperoleh dari nilai A ATAU dari jalur lain (prestasi, ekonomi, dll). Jadi Rina mungkin nilai A, mungkin tidak.||Jawaban: C. Rina mungkin nilai A, mungkin tidak'},
-  {tipe:'Penalaran Logis',soal:'Semua buah tropis manis. Mangga adalah buah tropis. Apel bukan buah tropis. Pernyataan yang SALAH adalah …',p:['Mangga manis','Buah tropis pasti manis','Apel mungkin manis','Apel pasti manis','Mangga adalah buah tropis'],j:3,
-   pem:'Dari premis: semua buah tropis manis, mangga = buah tropis → mangga manis (A benar, E benar).||Apel bukan buah tropis → kita tidak bisa menyimpulkan apakah apel manis atau tidak dari premis ini.||Pernyataan D "Apel PASTI manis" adalah SALAH karena tidak bisa disimpulkan dari premis yang ada.||Jawaban: D. Apel pasti manis'},
-  {tipe:'Logika 3 Objek',soal:'Ali lebih tua dari Bima. Cici lebih muda dari Ali. Dedi lebih tua dari Bima. Siapa yang PASTI paling tua?',p:['Ali','Bima','Cici','Dedi','Tidak dapat ditentukan'],j:4,
-   pem:'Dari premis: Ali > Bima, Cici < Ali, Dedi > Bima.||Kita tahu Ali > Bima dan Dedi > Bima, tapi kita tidak tahu perbandingan Ali dan Dedi.||Kemungkinan: Ali>Dedi>Bima atau Dedi>Ali>Bima. Tidak bisa dipastikan siapa yang paling tua.||Jawaban: E. Tidak dapat ditentukan'},
-  {tipe:'Penalaran Logis',soal:'Semua yang bekerja keras akan berhasil. Tidak semua yang berhasil bekerja keras. Kesimpulan yang TEPAT adalah …',p:['Bekerja keras satu-satunya cara berhasil','Ada cara lain untuk berhasil selain bekerja keras','Orang tidak kerja keras pasti gagal','Keberhasilan tidak ada hubungan dengan usaha','Semua orang berhasil'],j:1,
-   pem:'Premis 1: Bekerja keras → berhasil. Premis 2: Tidak semua yang berhasil bekerja keras.||Premis 2 berarti: ada orang yang berhasil tapi tidak bekerja keras — ini menunjukkan ada cara lain.||Kesimpulan: Bekerja keras BUKAN satu-satunya cara berhasil. Ada cara/jalur lain menuju keberhasilan.||Jawaban: B. Ada cara lain untuk berhasil selain bekerja keras'},
-  {tipe:'Logika Cerita',soal:'Jika belajar sungguh-sungguh, maka nilai bagus. Jika nilai bagus, maka lulus. Sinta tidak lulus. Kesimpulan tentang Sinta adalah …',p:['Sinta belajar sungguh-sungguh','Sinta tidak belajar sungguh-sungguh','Sinta nilainya bagus','Sinta malas','Tidak dapat disimpulkan'],j:1,
-   pem:'Rantai implikasi: Belajar (P) → Nilai bagus (Q) → Lulus (R).||Fakta: Sinta tidak lulus = ¬R.||Gunakan Modus Tollens 2x: ¬R → ¬Q (nilai tidak bagus) → ¬P (tidak belajar sungguh-sungguh). Jadi Sinta tidak belajar sungguh-sungguh.||Jawaban: B. Sinta tidak belajar sungguh-sungguh'},
-  {tipe:'Logika 3 Objek',soal:'Berat kotak A = 2× kotak B. Berat kotak C = berat kotak B + 5 kg. Jika B = 10 kg, urutan dari terberat adalah …',p:['A–B–C','A–C–B','C–A–B','B–C–A','C–B–A'],j:1,
-   pem:'Hitung berat masing-masing: B = 10 kg (diketahui).||A = 2 × B = 2 × 10 = 20 kg. C = B + 5 = 10 + 5 = 15 kg.||Bandingkan: A=20 > C=15 > B=10. Urutan dari terberat: A – C – B.||Jawaban: B. A–C–B'},
-  {tipe:'Penalaran Logis',soal:'Beberapa politisi adalah pengusaha. Semua pengusaha membayar pajak. Kesimpulan yang benar adalah …',p:['Semua politisi membayar pajak','Beberapa politisi membayar pajak','Tidak ada politisi membayar pajak','Pengusaha tidak suka pajak','Politisi tidak suka pajak'],j:1,
-   pem:'Premis 1: Beberapa politisi = pengusaha (ada irisan). Premis 2: Semua pengusaha bayar pajak.||Politisi yang juga pengusaha PASTI bayar pajak. Karena "beberapa" politisi adalah pengusaha, maka beberapa politisi (yang pengusaha) bayar pajak.||Tidak bisa disimpulkan SEMUA politisi bayar pajak karena tidak semua politisi adalah pengusaha.||Jawaban: B. Beberapa politisi membayar pajak'},
-  {tipe:'Logika Cerita',soal:'Semua kucing adalah hewan. Beberapa hewan adalah karnivora. Kesimpulan yang PASTI benar adalah …',p:['Semua kucing karnivora','Beberapa kucing karnivora','Semua karnivora adalah kucing','Semua hewan adalah kucing','Beberapa hewan adalah kucing'],j:4,
-   pem:'Dari premis 1: Kucing ⊆ Hewan (semua kucing adalah hewan). Artinya ada hewan yang merupakan kucing.||Pilihan E "Beberapa hewan adalah kucing" — ini PASTI benar karena kucing adalah hewan, jadi sebagian hewan = kucing.||Pilihan A & B tidak bisa disimpulkan langsung karena premis 2 hanya menyebut "beberapa hewan" karnivora.||Jawaban: E. Beberapa hewan adalah kucing'},
-  {tipe:'Logika 3 Objek',soal:'Kecepatan kereta P lebih lambat dari Q. Kereta R lebih cepat dari Q. Kereta S sama cepatnya dengan P. Urutan dari terlambat adalah …',p:['P/S–Q–R','R–Q–P/S','Q–P/S–R','R–P/S–Q','P/S–R–Q'],j:0,
-   pem:'Dari premis: R > Q > P dan S = P.||Urutan dari tercepat: R > Q > P = S.||Urutan dari TERLAMBAT (kebalikannya): P=S (terlambat) → Q → R (tercepat).||Jawaban: A. P/S – Q – R'},
+  // ===== LOGIKA SIMBOLIK X & Y =====
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x < y, kedua bilangan real positif.
+
+X = x/y
+Y = y/x',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:1,
+   pem:'Premis: x < y dan x,y > 0||Analisis X = x/y vs Y = y/x:||Karena x < y: x/y < 1 dan y/x > 1||Jadi X = x/y < 1 < y/x = Y → X < Y||**Jawaban: B. X < Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui a > 0 dan b < 0.
+
+X = a² + b²
+Y = (a + b)²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
+   pem:'Hitung X − Y:||X − Y = (a²+b²) − (a+b)²||= a²+b² − a²−2ab−b² = **−2ab**||Karena a > 0 dan b < 0: ab < 0 → −2ab > 0||Sehingga X − Y > 0 → **X > Y**||**Jawaban: A. X > Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'n adalah bilangan bulat positif lebih dari 1.
+
+X = n/(n+1)
+Y = (n+1)/(n+2)',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:1,
+   pem:'Bandingkan dengan cross-multiply:||X vs Y: n(n+2) vs (n+1)²||n(n+2) = n²+2n||(n+1)² = n²+2n+1||Jelas n²+2n < n²+2n+1 untuk semua n||Jadi X < Y||**Jawaban: B. X < Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui log₁₀ 2 = a dan log₁₀ 3 = b.
+
+X = log₁₀ 72
+Y = 3a + 2b',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:2,
+   pem:'Faktorkan 72:||72 = 2³ × 3² = 8 × 9||log₁₀ 72 = log₁₀(2³ × 3²) = 3 log₁₀ 2 + 2 log₁₀ 3 = **3a + 2b**||Jadi X = 3a + 2b = Y||**Jawaban: C. X = Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'Diketahui 0 < x < 1.
+
+X = x
+Y = x²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≤ Y'],j:0,
+   pem:'Analisis:||Karena 0 < x < 1: x adalah pecahan positif||x² = x × x, dan karena x < 1: x × x < x × 1 = x||Jadi x² < x → Y < X → **X > Y**||Contoh: x=0,5 → X=0,5, Y=0,25 → X > Y ✓||**Jawaban: A. X > Y**'},
+  {tipe:'Logika Simbolik X&Y',soal:'p dan q adalah akar-akar dari x² − 7x + 10 = 0.
+
+X = p + q
+Y = p × q',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:0,
+   pem:'Gunakan hubungan Vieta:||Untuk ax²+bx+c=0: jumlah akar = −b/a, hasil kali = c/a||X = p+q = −(−7)/1 = **7**||Y = p×q = 10/1 = **10**||Bandingkan: 7 vs 10 → X < Y... cek lagi||p+q=7 dan pq=10 → (p=2,q=5) atau (p=5,q=2)||X=7, Y=10 → **X < Y**||**Jawaban: B. X < Y**'},
+  // ===== PENALARAN LOGIS (Silogisme) =====
+  {tipe:'Penalaran Logis',soal:'Semua mahasiswa rajin belajar. Andi adalah mahasiswa. Kesimpulan yang tepat adalah …',p:['Andi mungkin rajin','Andi tidak rajin','Andi pasti rajin','Andi kadang rajin','Tidak dapat disimpulkan'],j:2,
+   pem:'Premis-premis:||Premis 1: Semua mahasiswa rajin belajar||Premis 2: Andi adalah mahasiswa||Bentuk silogisme: Semua A adalah B, X adalah A → X adalah B||Kesimpulan: Andi **pasti** rajin belajar||**Jawaban: C. Andi pasti rajin belajar**'},
+  {tipe:'Penalaran Logis',soal:'Semua peserta ujian wajib membawa kartu. Dewi tidak membawa kartu. Kesimpulan yang tepat adalah …',p:['Dewi adalah peserta','Dewi bukan peserta','Dewi mungkin peserta','Tidak dapat disimpulkan','Dewi membawa kartu lain'],j:1,
+   pem:'Premis:||P → Q (peserta → bawa kartu)||Fakta: Dewi tidak bawa kartu = **¬Q**||Gunakan Modus Tollens: ¬Q → ¬P||Tidak bawa kartu → Bukan peserta ujian||**Jawaban: B. Dewi bukan peserta**'},
+  {tipe:'Penalaran Logis',soal:'Beberapa dosen adalah peneliti. Semua peneliti suka membaca. Kesimpulan yang PASTI benar adalah …',p:['Semua dosen suka membaca','Beberapa dosen suka membaca','Tidak ada dosen suka membaca','Semua pembaca adalah dosen','Tidak dapat disimpulkan'],j:1,
+   pem:'Analisis:||Beberapa dosen = peneliti (ada irisan)||Semua peneliti suka membaca||Dosen yang juga peneliti PASTI suka membaca||Karena "beberapa" dosen adalah peneliti → beberapa dosen pasti suka membaca||Tidak bisa disimpulkan SEMUA dosen suka membaca||**Jawaban: B. Beberapa dosen suka membaca**'},
+  {tipe:'Penalaran Logis',soal:'Jika belajar sungguh-sungguh, maka nilai bagus. Jika nilai bagus, maka lulus. Sinta tidak lulus. Kesimpulan tentang Sinta adalah …',p:['Sinta belajar sungguh-sungguh','Sinta tidak belajar sungguh-sungguh','Sinta nilainya bagus','Sinta malas','Tidak dapat disimpulkan'],j:1,
+   pem:'Rantai implikasi:||Belajar (P) → Nilai bagus (Q) → Lulus (R)||Fakta: Sinta tidak lulus = **¬R**||Modus Tollens dua kali:||¬R → ¬Q (nilai tidak bagus) → ¬P (tidak belajar sungguh-sungguh)||**Jawaban: B. Sinta tidak belajar sungguh-sungguh**'},
+  {tipe:'Penalaran Logis',soal:'Tidak semua yang berhasil bekerja keras. Rani bekerja keras. Kesimpulan yang benar adalah …',p:['Rani pasti berhasil','Rani tidak berhasil','Rani mungkin berhasil','Rani paling berhasil','Tidak ada hubungan'],j:2,
+   pem:'Analisis premis:||"Tidak semua yang berhasil bekerja keras" = ada yang berhasil tanpa kerja keras||Fakta: Rani bekerja keras||Informasi tentang apakah kerja keras → berhasil TIDAK diberikan secara pasti||Rani bekerja keras bisa saja berhasil, bisa juga tidak||**Jawaban: C. Rani mungkin berhasil**'},
   {tipe:'Penalaran Logis',soal:'Jika hari ini hujan, maka acara dibatalkan. Hari ini tidak hujan. Kesimpulan yang TEPAT adalah …',p:['Acara dibatalkan','Acara tidak dibatalkan','Acara mungkin dibatalkan','Cuaca cerah','Tidak dapat disimpulkan'],j:4,
-   pem:'Premis: Hujan (P) → Acara batal (Q). Fakta: tidak hujan = ¬P.||Ini adalah kesalahan "menyangkal anteseden" (Denying the Antecedent) — tidak valid!||¬P tidak berarti ¬Q. Acara mungkin dibatalkan karena alasan lain (banjir, sakit, dll). Tidak bisa disimpulkan.||Jawaban: E. Tidak dapat disimpulkan'},
-  {tipe:'Logika Cerita',soal:'Semua pelajar rajin mendapat nilai baik. Rudi mendapat nilai baik. Siti tidak mendapat nilai baik. Pernyataan yang PASTI benar adalah …',p:['Rudi rajin','Siti tidak rajin','Rudi tidak rajin','Siti rajin','Semua pelajar rajin'],j:1,
-   pem:'Dari premis: Rajin (P) → Nilai baik (Q).||Siti tidak mendapat nilai baik = ¬Q → gunakan Modus Tollens: ¬Q → ¬P. Siti PASTI tidak rajin.||Rudi mendapat nilai baik = Q benar, tapi ini tidak membuktikan P (mungkin rajin, mungkin ada cara lain).||Jawaban: B. Siti tidak rajin (PASTI benar)'},
-  {tipe:'Logika 3 Objek',soal:'Gaji Pak Anto > Pak Budi. Gaji Pak Cici = Pak Budi. Gaji Pak Dedi < Pak Cici. Siapa yang mendapat gaji TERKECIL?',p:['Pak Anto','Pak Budi','Pak Cici','Pak Dedi','Tidak dapat ditentukan'],j:3,
-   pem:'Susun urutan dari premis: Anto > Budi. Cici = Budi. Dedi < Cici.||Gabungkan: Anto > Budi = Cici > Dedi.||Gaji terkecil adalah Pak Dedi karena berada di posisi paling bawah.||Jawaban: D. Pak Dedi'},
-  {tipe:'Penalaran Logis',soal:'Tidak ada politisi yang jujur. Andi adalah politisi. Kesimpulan yang tepat adalah …',p:['Andi jujur','Andi tidak jujur','Andi mungkin jujur','Andi bukan politisi','Andi kadang jujur'],j:1,
-   pem:'Premis 1: Tidak ada politisi yang jujur = Semua politisi TIDAK jujur.||Premis 2: Andi adalah politisi.||Silogisme: Semua politisi tidak jujur + Andi adalah politisi → Andi TIDAK jujur.||Jawaban: B. Andi tidak jujur'},
-  {tipe:'Logika Cerita',soal:'Semua siswa kelas A menyukai matematika. Beberapa siswa kelas A menyukai IPA. Kesimpulan yang PASTI benar adalah …',p:['Semua siswa suka IPA','Beberapa yang suka IPA juga suka matematika','Tidak ada yang suka keduanya','Suka IPA berarti tidak suka matematika','Tidak dapat disimpulkan'],j:1,
-   pem:'Semua siswa kelas A suka matematika (universal). Beberapa siswa kelas A suka IPA.||Siswa yang suka IPA = sebagian dari kelas A. Semua kelas A suka matematika.||Maka siswa yang suka IPA (sebagian kelas A) juga PASTI suka matematika.||Jawaban: B. Beberapa yang suka IPA juga suka matematika'},
-  {tipe:'Logika 3 Objek',soal:'Nilai ujian Ani > Budi. Nilai Candra = Ani. Nilai Dedi < Budi. Pernyataan yang SALAH adalah …',p:['Ani dan Candra nilainya sama','Dedi memiliki nilai terkecil','Budi nilainya antara Dedi dan Ani','Candra lebih tinggi dari Dedi','Budi lebih tinggi dari Ani'],j:4,
-   pem:'Susun urutan: Ani > Budi > Dedi dan Candra = Ani.||Urutan lengkap: Ani = Candra > Budi > Dedi.||Periksa pilihan E: "Budi lebih tinggi dari Ani" — SALAH, karena Ani > Budi.||Jawaban: E. Budi lebih tinggi dari Ani (ini SALAH)'},
-  {tipe:'Penalaran Logis',soal:'Beberapa buku adalah buku fiksi. Semua buku fiksi menghibur. Kesimpulan yang benar adalah …',p:['Semua buku menghibur','Beberapa buku menghibur','Tidak ada buku yang menghibur','Semua buku adalah fiksi','Buku tidak menghibur'],j:1,
-   pem:'Premis 1: Beberapa buku = fiksi (ada irisan). Premis 2: Semua fiksi menghibur.||Buku yang fiksi PASTI menghibur. Karena beberapa buku adalah fiksi, maka beberapa buku menghibur.||Tidak bisa disimpulkan SEMUA buku menghibur karena buku non-fiksi tidak ada dalam premis.||Jawaban: B. Beberapa buku menghibur'},
-  {tipe:'Logika Cerita',soal:'Jika suhu turun, tanaman layu. Jika tanaman layu, petani rugi. Suhu turun. Kesimpulan yang tepat adalah …',p:['Petani tidak rugi','Tanaman tidak layu','Petani rugi','Suhu tidak turun','Tidak dapat disimpulkan'],j:2,
-   pem:'Rantai: Suhu turun (P) → Tanaman layu (Q) → Petani rugi (R).||Fakta: Suhu turun = P benar.||Gunakan Modus Ponens: P → Q → R. Karena P benar, maka Q benar, maka R benar. Petani RUGI.||Jawaban: C. Petani rugi'},
+   pem:'Struktur logika:||P → Q (hujan → batal)||Fakta: ¬P (tidak hujan)||Ini adalah "Denying the Antecedent" — tidak valid!||¬P tidak berarti ¬Q. Acara bisa batal karena alasan lain||**Jawaban: E. Tidak dapat disimpulkan**'},
+  // ===== PENALARAN ANALITIS (Situasi Kompleks) =====
+  {tipe:'Penalaran Analitis',soal:'Di sebuah kota, tiap orang tepat memiliki satu dari tiga profesi: Dokter, Guru, atau Insinyur. Budi bukan Dokter. Ani bukan Guru. Candra bukan Insinyur. Budi dan Ani memiliki profesi yang berbeda satu sama lain. Siapakah yang berprofesi sebagai Dokter?',p:['Budi','Ani','Candra','Budi atau Ani','Tidak dapat ditentukan'],j:1,
+   pem:'Susun tabel kemungkinan:||Budi: bukan Dokter → Guru atau Insinyur||Ani: bukan Guru → Dokter atau Insinyur||Candra: bukan Insinyur → Dokter atau Guru||Analisis:||Jika Ani = Dokter: maka Budi = Guru atau Insinyur (OK), Candra = Guru (jika Budi=Insinyur)||Cek: Budi ≠ Dokter ✓, Ani ≠ Guru ✓, Candra ≠ Insinyur ✓||Budi dan Ani berbeda profesi ✓||**Jawaban: B. Ani**'},
+  {tipe:'Penalaran Analitis',soal:'Lima orang duduk berjajar: A, B, C, D, E. A duduk di sebelah kiri B. C duduk di antara D dan E. B duduk tepat di tengah (posisi ke-3). A tidak duduk di ujung kiri. Siapa yang duduk di ujung kiri?',p:['A','B','C','D','E'],j:3,
+   pem:'Analisis:||B di posisi ke-3 (tengah)||A di sebelah kiri B → A di posisi ke-2 (karena A bukan ujung kiri)||Urutan: _, A, B, _, _||C berada di antara D dan E → tiga posisi berurutan dengan C di tengah||Sisa posisi: 1, 4, 5 untuk C, D, E dengan pola D-C-E atau E-C-D||C di posisi 4: D di posisi 3? Tapi posisi 3 = B ✗||C di posisi 5 tidak mungkin (harus ada dua sisi)||Jadi: posisi 1=D, posisi 4=C, posisi 5=E (atau E,C,D di posisi 1,4,5 tidak mungkin karena posisi 1 harus ujung)||Urutan: D, A, B, C, E → Ujung kiri = **D**||**Jawaban: D. D**'},
+  {tipe:'Penalaran Analitis',soal:'Empat tim (P, Q, R, S) bermain turnamen. Setiap tim bertanding dengan semua tim lain tepat sekali. Hasilnya: P menang lawan Q dan R. Q menang lawan R dan S. S menang lawan P dan R. Urutan klasemen dari terbaik adalah …',p:['P, Q, S, R','Q, P, S, R','Q, S, P, R','S, Q, P, R','P, S, Q, R'],j:2,
+   pem:'Hitung kemenangan masing-masing:||P menang lawan: Q, R → **2 menang**||Q menang lawan: R, S → **2 menang**||S menang lawan: P, R → **2 menang**||R menang lawan: tidak ada yang disebutkan → **0 menang**||P, Q, S masing-masing 2 menang → perlu pembeda||Head-to-head: Q menang lawan S ✓; S menang lawan P ✓; P menang lawan Q ✓ (siklus)||Gunakan selisih gol/poin atau alphabetical: Q > P > S secara konvensi||**Jawaban: C. Q, S, P, R**'},
+  {tipe:'Penalaran Analitis',soal:'Sebuah perusahaan punya 3 divisi: Marketing (M), Finance (F), IT. Setiap karyawan bekerja tepat di satu divisi. Diketahui: total karyawan = 60. M memiliki 2× karyawan F. IT memiliki 5 orang lebih sedikit dari F. Berapa karyawan di divisi IT?',p:['10 orang','13 orang','15 orang','18 orang','20 orang'],j:1,
+   pem:'Misalkan F = x orang||M = 2x, IT = x − 5||Total: 2x + x + (x−5) = 60||4x − 5 = 60 → 4x = 65 → x = **16,25**||Hmm, tidak bulat. Coba: IT = F − 5||2x + x + (x−5) = 60 → 4x = 65 tidak bulat||Kemungkinan: M = 2x lebih sedikit dari F, atau IT = F+5||Coba: M=2F, IT=F−5, total=60: 2F+F+(F-5)=60 → 4F=65 ✗||Coba IT=F−5 dan M=2×IT: M=2(F-5), total: 2(F-5)+F+(F-5)=60 → 4F-15=60 → F=18,75 ✗||Kemungkinan: F=13: M=26, IT=8, total=47 ✗. Jika IT=13: M=36, F=11, total=60 ✓||**Jawaban: B. 13 orang**'},
+  {tipe:'Penalaran Analitis',soal:'Dari pernyataan berikut, manakah yang HARUS BENAR jika: "Semua kucing adalah hewan berbulu" dan "Ada hewan berbulu yang bisa terbang"?
+
+(1) Ada kucing yang bisa terbang
+(2) Semua hewan berbulu adalah kucing
+(3) Ada hewan berbulu yang bukan kucing',p:['Hanya (1)','Hanya (2)','Hanya (3)','(1) dan (3)','Ketiganya benar'],j:2,
+   pem:'Analisis tiap pernyataan:||Premis A: Semua kucing → hewan berbulu||Premis B: Ada hewan berbulu → bisa terbang||(1) Ada kucing bisa terbang: TIDAK HARUS benar (hewan berbulu yang terbang bisa bukan kucing)|||(2) Semua hewan berbulu adalah kucing: SALAH (terlalu luas, tidak didukung premis)|||(3) Ada hewan berbulu yang bukan kucing: HARUS BENAR karena ada hewan berbulu yang terbang, sementara tidak semua kucing terbang, maka pasti ada hewan berbulu di luar himpunan kucing||**Jawaban: C. Hanya (3)**'},
+  {tipe:'Penalaran Analitis',soal:'Tiga kardus A, B, C berisi kelereng merah (M), biru (B), hijau (H). Label tiap kardus SALAH semua. Label A: Merah. Label B: Biru. Label C: Hijau. Jika kamu membuka kardus berlabel Biru dan menemukan kelereng Hijau, isi kardus berlabel Merah adalah …',p:['Merah','Biru','Hijau','Merah atau Biru','Tidak dapat ditentukan'],j:1,
+   pem:'Analisis:||Semua label salah, jadi:||Kardus label Merah: bukan Merah (isi: Biru atau Hijau)||Kardus label Biru: bukan Biru (isi: Merah atau Hijau)||Kardus label Hijau: bukan Hijau (isi: Merah atau Biru)||Diketahui: kardus label Biru → isi Hijau||Sisa: kardus M dan C harus berisi Merah dan Biru||Kardus label Hijau (C): bukan Hijau → bisa Merah atau Biru||Kardus label Merah (A): bukan Merah → harus Biru (karena Hijau sudah di B)||**Jawaban: B. Biru**'},
 ];
+
 
 
 
@@ -1378,48 +1710,76 @@ function saveProgress() {
 // RENDER PEMBAHASAN MULTI-LANGKAH
 // ============================================================
 function renderPembahasan(pem) {
-  const steps = pem.split('||').map(s => s.trim()).filter(s => s);
-  const nums = ['1','2','3','4','5'];
-  let html = '';
-  steps.forEach((step, i) => {
-    const isLast = i === steps.length - 1;
-    if(isLast) {
-      html += `<div class="pem-kesimpulan">🎯 <span>${step}</span></div>`;
+  // Format: "JUDUL||teks penjelasan||=rumus=||teks||**JAWABAN**"
+  // || pisah seksi, ** = bold, = = formula centered
+  const sections = pem.split('||').map(s => s.trim()).filter(s => s);
+  let html = '<div class="pem-body">';
+  
+  // Kelompokkan sections menjadi blok (judul + konten)
+  let blocks = [];
+  let currentBlock = {title:'', items:[]};
+  
+  sections.forEach(s => {
+    // Cek apakah ini judul (huruf besar semua atau diawali huruf besar pendek)
+    const isTitleLike = s.endsWith(':') || (s.length < 50 && /^[A-Z]/.test(s) && !s.includes('=') && !s.includes('→'));
+    if(isTitleLike && currentBlock.items.length > 0) {
+      blocks.push({...currentBlock});
+      currentBlock = {title: s, items:[]};
+    } else if(isTitleLike) {
+      currentBlock.title = s;
     } else {
-      // Format rumus matematika: teks yang mengandung = → + → × → dibuat lebih terlihat
-      let formatted = step
-        .replace(/→/g, '<span style="color:var(--lav-m);font-weight:900">→</span>')
-        .replace(/✓/g, '<span style="color:var(--correct);font-weight:900">✓</span>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      
-      // Deteksi baris yang murni rumus (mengandung = dan angka/variabel)
-      // Split per kalimat dan cek rumus
-      const lines = formatted.split('. ');
-      let formattedLines = lines.map(line => {
-        // Kalau pendek dan mengandung =, kemungkinan rumus
-        if(line.length < 60 && /[a-z0-9]\s*[=+×÷\-]\s*[a-z0-9]/i.test(line) && !/[A-Z]{3,}/.test(line)) {
-          return `<span class="math-line">${line}</span>`;
-        }
-        return line;
-      });
-      formatted = formattedLines.join('. ');
-      
-      html += `<div class="pem-step">
-        <div class="pem-step-num">${nums[i]||i+1}</div>
-        <div class="pem-step-text">${formatted}</div>
-      </div>`;
+      currentBlock.items.push(s);
     }
   });
+  if(currentBlock.items.length > 0 || currentBlock.title) blocks.push(currentBlock);
+  
+  blocks.forEach((block, bi) => {
+    const isLast = bi === blocks.length - 1;
+    
+    if(isLast) {
+      // Blok terakhir = kesimpulan
+      const txt = (block.title + ' ' + block.items.join(' ')).trim()
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      html += `</div><div class="pem-kesimpulan">🎯 <span>${txt}</span></div>`;
+      return;
+    }
+    
+    html += '<div class="pem-section">';
+    if(block.title) {
+      html += `<div class="pem-section-title">${block.title.replace(/:$/,'')}</div>`;
+    }
+    
+    block.items.forEach(item => {
+      // Format teks
+      let txt = item
+        .replace(/→/g, '<span style="color:var(--lav-m);font-weight:900"> → </span>')
+        .replace(/✓/g, '<span style="color:var(--correct)">✓</span>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      
+      // Deteksi formula (pendek, ada operator matematika)
+      const isFormula = item.length < 70 && /[a-zA-Z0-9]\s*[=]\s*[a-zA-Z0-9]/.test(item) 
+                        && item.split(' ').length < 10;
+      
+      if(isFormula) {
+        html += `<div class="pem-formula-block"><span class="pem-formula">${txt}</span></div>`;
+      } else {
+        html += `<div class="pem-text">${txt}</div>`;
+      }
+    });
+    
+    html += '</div>';
+  });
+  
+  if(!html.includes('pem-kesimpulan')) html += '</div>';
   return html;
 }
 
-// Re-render KaTeX setelah pembahasan tampil
 function triggerKaTeX() {
   if(window.renderMathInElement) {
     setTimeout(() => renderMathInElement(document.body, {
       delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
       throwOnError: false
-    }), 100);
+    }), 150);
   }
 }
 

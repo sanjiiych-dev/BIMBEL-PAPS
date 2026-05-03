@@ -119,10 +119,9 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh}
       </div>
       <div class="form-group" style="margin-bottom:12px">
         <label>Pilih Paket</label>
-        <div class="paket-pills">
-          <div class="pill p1 selected" onclick="pilihPaket(this,350000,150)" data-harga="350000" data-hari="150">350K · 5 bulan</div>
-          <div class="pill p2" onclick="pilihPaket(this,550000,270)" data-harga="550000" data-hari="270">550K · 9 bulan</div>
-          <div class="pill p3" onclick="pilihPaket(this,850000,365)" data-harga="850000" data-hari="365">850K · 12 bulan</div>
+        <div style="background:#e8f7f2;border-radius:12px;padding:12px 16px;display:inline-block">
+          <span style="font-size:15px;font-weight:900;color:#2d2060;font-family:'Playfair Display',serif">Rp 550.000</span>
+          <span style="font-size:12px;color:#5bbfa0;font-weight:700;margin-left:8px">· Akses 1 Tahun</span>
         </div>
       </div>
       <div class="form-row">
@@ -168,8 +167,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh}
 // ===== CONFIG =====
 const ADMIN_EMAIL = 'sanjiiych@gmail.com'; // Ganti dengan email admin kamu
 
-let selectedHarga = 350000;
-let selectedHari = 150;
+let selectedHarga = 550000;
+let selectedHari = 365;
 let lastGeneratedKode = '';
 let lastGeneratedWA = '';
 
@@ -197,12 +196,7 @@ async function adminLogin() {
 }
 
 // ===== PILIH PAKET =====
-function pilihPaket(el, harga, hari) {
-  document.querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedHarga = harga;
-  selectedHari = hari;
-}
+// Hanya 1 paket: 550K / 1 tahun
 
 // ===== GENERATE KODE =====
 function buatKodeRandom() {

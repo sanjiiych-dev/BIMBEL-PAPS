@@ -164,6 +164,48 @@ body{margin:0;padding:0;font-family:'Nunito',sans-serif;background:#f5f0ff;min-h
 .pem-ans-label{font-size:10px;font-weight:900;color:#6b7280;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
 .pem-ans-val{font-size:14px;font-weight:900;color:#166534;padding:8px 14px;border-radius:10px;background:#dcfce7;border:2px solid var(--correct);display:inline-block}
 .pem-body{padding:0;background:#fff}
+/* Seksi pembahasan */
+.pem-sec{padding:12px 18px;border-bottom:1px solid #f0eeff}
+.pem-sec:last-child{border-bottom:none}
+.pem-sec-title{font-size:12px;font-weight:900;color:var(--mid);letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;padding-bottom:5px;border-bottom:1.5px solid var(--lav-l)}
+/* Text biasa */
+.pem-txt{font-size:13px;color:#374151;line-height:1.8;font-weight:600;margin-bottom:3px}
+/* Bullet poin */
+.pem-bullet{display:flex;gap:8px;font-size:13px;color:#374151;font-weight:600;margin-bottom:4px;line-height:1.7}
+.pem-bullet-dot{color:var(--lav-m);font-weight:900;flex-shrink:0;margin-top:1px}
+/* Formula/rumus di tengah */
+.pem-eq{text-align:center;font-size:15px;font-weight:700;color:var(--mid);padding:8px 16px;margin:6px 0;background:#f5f0ff;border-radius:8px;letter-spacing:.3px}
+/* Arrow/logika */
+.pem-logic{text-align:center;font-size:14px;font-weight:700;color:#374151;padding:5px 0;margin:2px 0}
+/* Kesimpulan */
+.pem-kesimpulan{background:linear-gradient(135deg,var(--yellow),#fff9e0);border:2px solid var(--yellow-m);border-radius:0 0 14px 14px;padding:13px 18px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.pem-kes-label{font-size:10px;font-weight:900;color:#7a5000;letter-spacing:1px;text-transform:uppercase}
+.pem-kes-val{font-size:15px;font-weight:900;color:#5a3000;padding:10px 20px;background:rgba(255,255,255,.6);border:2px solid var(--yellow-m);border-radius:10px;text-align:center}
+/* AI Visual Pembahasan */
+.ai-pem-wrap{padding:0}
+.ai-pem-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;gap:10px}
+.ai-pem-spinner{width:32px;height:32px;border:3px solid var(--lav-l);border-top-color:var(--lav-m);border-radius:50%;animation:spin .8s linear infinite}
+.ai-pem-loading-txt{font-size:12px;font-weight:700;color:var(--soft)}
+.ai-pem-content{padding:0;font-family:'Nunito',sans-serif;font-size:13px;line-height:1.7}
+.ai-pem-content h3{font-size:11px;font-weight:900;color:var(--mid);letter-spacing:.8px;text-transform:uppercase;padding:10px 18px 6px;border-bottom:1.5px solid var(--lav-l);margin:0}
+.ai-pem-content .sec{padding:12px 18px;border-bottom:1px solid #f5f0ff}
+.ai-pem-content .sec:last-child{border-bottom:none}
+.ai-pem-content .bullet{display:flex;gap:8px;margin-bottom:4px;color:#374151;font-weight:600}
+.ai-pem-content .bullet::before{content:'→';color:var(--lav-m);font-weight:900;flex-shrink:0}
+.ai-pem-content .eq{background:#f5f0ff;border-radius:8px;padding:8px 16px;text-align:center;font-size:15px;font-weight:700;color:var(--mid);margin:6px 0}
+.ai-pem-content .kontra{background:#fff5e0;border-radius:8px;padding:8px 16px;text-align:center;font-size:14px;font-weight:700;color:#7a4500;margin:6px 0;border:1.5px dashed #d4a800}
+.ai-pem-content .flow{display:flex;flex-direction:column;gap:4px;align-items:center;margin:8px 0}
+.ai-pem-content .flow-item{background:#f5f0ff;border-radius:8px;padding:6px 16px;font-size:13px;font-weight:700;color:var(--mid)}
+.ai-pem-content .flow-arrow{color:var(--lav-m);font-size:18px;font-weight:900}
+.ai-pem-content .ans-box{background:linear-gradient(135deg,var(--yellow),#fff9e0);border:2px solid var(--yellow-m);border-radius:10px;padding:12px 18px;text-align:center;font-size:15px;font-weight:900;color:#5a3000;margin:12px 18px 0}
+.ai-pem-content .ans-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#7a5000;margin-bottom:4px}
+.ai-pem-content table{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.ai-pem-content th{background:var(--lav-l);color:var(--mid);font-weight:900;padding:6px 10px;text-align:center}
+.ai-pem-content td{padding:6px 10px;border-bottom:1px solid #f0eeff;text-align:center;font-weight:600;color:#374151}
+.ai-pem-content .tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;margin:2px}
+.ai-pem-content .tag-ok{background:#dcfce7;color:#166534}
+.ai-pem-content .tag-err{background:#fee2e2;color:#991b1b}
+/* Section dan formula legacy */
 .pem-section{padding:14px 18px;border-bottom:1px solid #f0eeff}
 .pem-section:last-child{border-bottom:none}
 .pem-section-title{font-size:13px;font-weight:900;color:var(--dark);margin-bottom:8px;display:flex;align-items:center;gap:6px}
@@ -172,7 +214,6 @@ body{margin:0;padding:0;font-family:'Nunito',sans-serif;background:#f5f0ff;min-h
 .pem-formula{display:block;text-align:center;font-size:15px;font-weight:700;color:var(--mid);padding:8px 0;margin:4px 0}
 .pem-formula-block{background:#f8f7ff;border-radius:8px;padding:10px 14px;margin:8px 0;text-align:center}
 .pem-formula-block .pem-formula{padding:4px 0;margin:2px 0}
-.pem-kesimpulan{background:linear-gradient(135deg,var(--yellow),#fff9e0);border:2px solid var(--yellow-m);border-radius:0 0 14px 14px;padding:13px 18px;font-size:14px;font-weight:900;color:#5a4000;display:flex;align-items:center;gap:8px}
 
 .nav-bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:8px}
 .btn{padding:11px 22px;border-radius:12px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:.2s;border:none}
@@ -740,7 +781,7 @@ const soalPenalaranB = [
 const soalVerbal = [
   // ===== SINONIM =====
   {tipe:'Sinonim',soal:'TENDENSI memiliki arti paling mendekati …',p:['Kebiasaan buruk','Kecenderungan ke arah tertentu','Paksaan dari luar','Penolakan keras','Ketidakpedulian'],j:1,
-   pem:'Arti kata:||TENDENSI = kecenderungan, arah gerak menuju sesuatu secara konsisten||Contoh: "Ada tendensi korupsi" = ada kecenderungan ke arah korupsi||Eliminasi: kebiasaan (habit), paksaan (coercion), penolakan (rejection) ≠ tendensi||**Jawaban: B. Kecenderungan ke arah tertentu**'},
+   pem:'Analisis Kata:|TENDENSI berasal dari bahasa Latin tendere (mengarah)|Artinya: kecenderungan atau arah gerak menuju sesuatu||Eliminasi:|• Kebiasaan (habit) = perilaku rutin ≠ tendensi|• Paksaan (coercion) = tekanan paksa ≠ tendensi|• Penolakan (rejection) = tidak ada hubungan||**Jawaban: B. Kecenderungan ke arah tertentu**'},
   {tipe:'Sinonim',soal:'AKSIOMA memiliki arti paling mendekati …',p:['Teori yang perlu dibuktikan','Kebenaran yang diterima tanpa pembuktian','Hipotesis awal penelitian','Kesimpulan akhir analisis','Pernyataan yang masih diperdebatkan'],j:1,
    pem:'Arti kata:||AKSIOMA = pernyataan dasar yang diterima sebagai kebenaran tanpa perlu dibuktikan||Contoh dalam matematika: "Melalui dua titik dapat dibuat tepat satu garis lurus"||Bedakan dengan: hipotesis (perlu diuji), teori (sudah dibuktikan tapi masih bisa dibantah)||**Jawaban: B. Kebenaran yang diterima tanpa pembuktian**'},
   {tipe:'Sinonim',soal:'AMBIVALEN memiliki arti paling mendekati …',p:['Sangat yakin dan tegas','Memiliki dua perasaan bertentangan sekaligus','Tidak memiliki pendapat','Sangat antusias','Bersikap netral'],j:1,
@@ -755,7 +796,7 @@ const soalVerbal = [
    pem:'Arti kata:||DILEMA = situasi yang mengharuskan memilih antara dua opsi yang keduanya tidak ideal||Contoh: "Dilema karier vs keluarga" = keduanya penting, mengorbankan salah satu berat||Bukan: masalah mudah, perdebatan, atau keputusan pasti||**Jawaban: B. Situasi dengan dua pilihan yang sama-sama sulit**'},
   // ===== ANTONIM =====
   {tipe:'Antonim',soal:'Lawan kata ORTODOKS adalah …',p:['Tradisional','Kolot','Heterodoks','Kuno','Konservatif'],j:2,
-   pem:'Arti kata:||ORTODOKS = berpegang teguh pada ajaran/cara lama yang sudah baku||Contoh: "Pandangan ortodoks" = tidak mau menyimpang dari pakem yang ada||Lawan: HETERODOKS = menyimpang dari ajaran baku, inovatif, tidak konvensional||**Jawaban: C. Heterodoks**'},
+   pem:'Analisis Kata:|ORTODOKS = mengikuti ajaran/cara lama yang sudah baku||Cari Lawan Kata:|• Tradisional, Kolot, Kuno → sinonim ortodoks (bukan lawan!)|• HETERODOKS = menyimpang dari pakem, tidak konvensional||=ORTODOKS ↔ HETERODOKS=||**Jawaban: C. Heterodoks**'},
   {tipe:'Antonim',soal:'Lawan kata KOERSIF adalah …',p:['Memaksa','Keras','Persuasif','Tegas','Represif'],j:2,
    pem:'Arti kata:||KOERSIF = menggunakan paksaan atau tekanan agar orang menurut||Contoh: "Pendekatan koersif" = pakai ancaman, bukan ajakan||Lawan: PERSUASIF = menggunakan bujukan dan argumen logis tanpa paksaan||**Jawaban: C. Persuasif**'},
   {tipe:'Antonim',soal:'Lawan kata PROFAN adalah …',p:['Biasa','Umum','Sakral','Duniawi','Tidak penting'],j:2,
@@ -768,7 +809,7 @@ const soalVerbal = [
    pem:'Arti kata:||KONKRET = berwujud, nyata, dapat dilihat/diraba||Contoh: meja, buku = konkret||Lawan: ABSTRAK = tidak berwujud, hanya ada dalam pikiran; contoh: cinta, keadilan||**Jawaban: C. Abstrak**'},
   // ===== ANALOGI =====
   {tipe:'Analogi',soal:'MITOSIS : SEL = REPRODUKSI : …',p:['Hewan','Organisme','Manusia','Tumbuhan','Gen'],j:1,
-   pem:'Identifikasi hubungan:||Mitosis = proses pembelahan yang terjadi pada tingkat sel||Pola: PROSES KHUSUS → terjadi pada → ENTITAS||Reproduksi = proses perkembangbiakan yang terjadi pada organisme (makhluk hidup)|||**Jawaban: B. Organisme**'},
+   pem:'Identifikasi Hubungan:|MITOSIS : SEL = proses yang terjadi pada suatu entitas||Pola Analogi:|• Mitosis = proses yang berlangsung di dalam SEL|• Reproduksi = proses yang berlangsung pada ...?||Terapkan pola yang sama:|=Mitosis : Sel = Reproduksi : Organisme=||**Jawaban: B. Organisme**'},
   {tipe:'Analogi',soal:'PATOLOGI : PENYAKIT = KRIMINOLOGI : …',p:['Polisi','Hukum','Kejahatan','Penjara','Pengadilan'],j:2,
    pem:'Identifikasi hubungan:||Patologi = ilmu yang mempelajari penyakit||Pola: ILMU → mempelajari → OBJEK KAJIAN||Kriminologi = ilmu yang mempelajari kejahatan dan perilaku kriminal|||**Jawaban: C. Kejahatan**'},
   {tipe:'Analogi',soal:'DEPRESIASI : NILAI = EROSI : …',p:['Angin','Air','Tanah','Batu','Sungai'],j:2,
@@ -808,12 +849,12 @@ const soalKuantitatif = [
   {tipe:'Deret Angka',soal:'10, 8, 13, 11, 16, 14, 19, …, …',p:['17, 22','11, 20','18, 19','13, 18','15, 17'],j:0,
    pem:'Dua barisan terpisah:||Posisi ganjil (1,3,5,7,9): 10, 13, 16, 19, **22** (+3)||Posisi genap (2,4,6,8): 8, 11, 14, **17** (+3)||Suku ke-8 = 17, suku ke-9 = 22||**Jawaban: A. 17, 22**'},
   {tipe:'Deret Angka',soal:'Suatu barisan aritmatika memiliki suku ke-5 = 23 dan suku ke-12 = 51. Jumlah 20 suku pertama adalah …',p:['860','880','900','920','940'],j:2,
-   pem:'Menentukan beda (d):||u₅ = a+4d = 23 dan u₁₂ = a+11d = 51||7d = 28 → **d = 4**||Menentukan suku pertama (a):||a + 4(4) = 23 → a + 16 = 23 → **a = 7**||Jumlah 20 suku pertama:||S₂₀ = (20/2)(2×7 + 19×4) = 10(14+76) = 10×90 = **900**||**Jawaban: C. 900**'},
+   pem:'Diketahui:|• u₅ = a + 4d = 23|• u₁₂ = a + 11d = 51||Menentukan beda (d):|Kurangkan kedua persamaan:|=(a + 11d) − (a + 4d) = 51 − 23=|=7d = 28 → d = 4=||Menentukan suku pertama (a):|Substitusi d = 4 ke u₅:|=a + 4(4) = 23 → a = 7=||Jumlah 20 suku pertama:|Rumus: Sₙ = n/2 × (2a + (n−1)d)|=S₂₀ = 10 × (14 + 76) = 10 × 90 = 900=||**Jawaban: C. 900**'},
   {tipe:'Deret Angka',soal:'7, 8, …, …, 17, 22',p:['14, 11','11, 18','15, 16','12, 17','10, 13'],j:4,
    pem:'Cari pola selisih:||22−17=5, coba selisih bertambah 1: +1,+2,+3,+4,+5||u₁=7, u₂=7+1=8, u₃=8+2=**10**, u₄=10+3=**13**||Cek: u₅=13+4=17 ✓, u₆=17+5=22 ✓||**Jawaban: E. 10, 13**'},
   // ===== ARITMETIKA =====
   {tipe:'Aritmetika',soal:'Pak Rudi menginvestasikan Rp12.000.000 dengan bunga majemuk 10% per tahun. Nilai investasi setelah 3 tahun adalah …',p:['Rp 14.520.000','Rp 15.000.000','Rp 15.972.000','Rp 16.500.000','Rp 17.280.000'],j:2,
-   pem:'Rumus bunga majemuk:||A = P × (1 + r)ⁿ||A = nilai akhir, P = modal awal, r = suku bunga, n = periode||Diketahui: P = 12.000.000, r = 10% = 0,1, n = 3 tahun||Hitung (1 + r)ⁿ = (1,1)³:||1,1² = 1,21||1,1³ = 1,21 × 1,1 = **1,331**||Hasil:||A = 12.000.000 × 1,331 = **Rp 15.972.000**||**Jawaban: C. Rp 15.972.000**'},
+   pem:'Diketahui:|• P = Rp 12.000.000 (modal awal)|• r = 10% = 0,1 per tahun|• n = 3 tahun||Rumus Bunga Majemuk:|=A = P × (1 + r)ⁿ=||Hitung (1,1)³:|• 1,1² = 1,21|• 1,1³ = 1,21 × 1,1 = 1,331||Hasil Akhir:|=A = 12.000.000 × 1,331 = Rp 15.972.000=||**Jawaban: C. Rp 15.972.000**'},
   {tipe:'Aritmetika',soal:'Campuran 20 liter berisi 30% alkohol. Berapa liter air murni harus ditambahkan agar konsentrasi alkohol menjadi 20%?',p:['5 liter','8 liter','10 liter','12 liter','15 liter'],j:2,
    pem:'Diketahui:||Alkohol awal = 30% × 20 = **6 liter** (tidak berubah)||Bentuk persamaan:||6 ÷ (20 + x) = 0,20||Selesaikan:||6 = 0,20 × (20 + x) → 6 = 4 + 0,2x → **x = 10 liter**||**Jawaban: C. 10 liter**'},
   {tipe:'Aritmetika',soal:'Harga naik 20%, turun 15%, naik lagi 10%. Perubahan total dari harga awal adalah …',p:['Naik 11,4%','Naik 12,2%','Naik 14,2%','Naik 15%','Turun 5%'],j:1,
@@ -845,7 +886,7 @@ const soalKuantitatif = [
   {tipe:'Geometrika',soal:'Sebuah tabung memiliki jari-jari 7 cm dan tinggi 10 cm. Luas selimut tabung adalah … (π = 22/7)',p:['220 cm²','330 cm²','440 cm²','528 cm²','616 cm²'],j:2,
    pem:'Rumus luas selimut tabung:||L = 2πrt||Diketahui: r = 7 cm, t = 10 cm, π = 22/7||Hitung:||L = 2 × (22/7) × 7 × 10||= 2 × 22 × 10 = **440 cm²**||**Jawaban: C. 440 cm²**'},
   {tipe:'Geometrika',soal:'Sisi-sisi segitiga siku-siku adalah x, x+7, dan x+9. Luas segitiga tersebut adalah …',p:['40','48','54','60','72'],j:3,
-   pem:'Rumus Teorema Pythagoras:||a² + b² = c² (c = sisi terpanjang)||Bentuk persamaan:||x² + (x+7)² = (x+9)²||x² + x² + 14x + 49 = x² + 18x + 81||x² − 4x − 32 = 0||Faktorkan:||( x − 8 )( x + 4 ) = 0 → **x = 8**||Sisi-sisi: 8, 15, 17||Cek: 8² + 15² = 64 + 225 = 289 = 17² ✓||Luas segitiga:||L = ½ × alas × tinggi = ½ × 8 × 15 = **60 cm²**||**Jawaban: D. 60**'},
+   pem:'Diketahui:|• Segitiga siku-siku sisi: x, x+7, x+9|• Sisi terpanjang (x+9) = hipotenusa||Gunakan Teorema Pythagoras:|=a² + b² = c²=|=x² + (x+7)² = (x+9)²=||Sederhanakan:|• x² + x² + 14x + 49 = x² + 18x + 81|• x² − 4x − 32 = 0|=(x − 8)(x + 4) = 0 → x = 8=||Sisi-sisi: 8, 15, 17|Cek: 8² + 15² = 64 + 225 = 289 = 17² ✓||Luas Segitiga:|=L = ½ × 8 × 15 = 60 cm²=||**Jawaban: D. 60 cm²**'},
   {tipe:'Geometrika',soal:'Sebuah kolam renang berbentuk balok 50m × 25m × 2m. Air diisi dengan kecepatan 5 m³/menit. Berapa jam untuk mengisi kolam 80% penuh?',p:['5 jam 20 menit','6 jam 40 menit','8 jam','10 jam','13 jam 20 menit'],j:1,
    pem:'Rumus volume balok:||V = p × l × t||V = 50 × 25 × 2 = **2.500 m³**||Volume target (80%):||V₈₀% = 80% × 2.500 = 0,8 × 2.500 = **2.000 m³**||Rumus waktu:||t = Volume ÷ Debit = 2.000 ÷ 5 = **400 menit**||Konversi: 400 menit = 6 jam 40 menit||**Jawaban: B. 6 jam 40 menit**'},
 ];
@@ -868,9 +909,9 @@ const soalPenalaran = [
    pem:'Gunakan hubungan Vieta:||Untuk ax²+bx+c=0: jumlah akar = −b/a, hasil kali = c/a||X = p+q = −(−7)/1 = **7**||Y = p×q = 10/1 = **10**||Bandingkan: 7 vs 10 → X < Y... cek lagi||p+q=7 dan pq=10 → (p=2,q=5) atau (p=5,q=2)||X=7, Y=10 → **X < Y**||**Jawaban: B. X < Y**'},
   // ===== PENALARAN LOGIS (Silogisme) =====
   {tipe:'Penalaran Logis',soal:'Semua mahasiswa rajin belajar. Andi adalah mahasiswa. Kesimpulan yang tepat adalah …',p:['Andi mungkin rajin','Andi tidak rajin','Andi pasti rajin','Andi kadang rajin','Tidak dapat disimpulkan'],j:2,
-   pem:'Premis-premis:||Premis 1: Semua mahasiswa rajin belajar||Premis 2: Andi adalah mahasiswa||Bentuk silogisme: Semua A adalah B, X adalah A → X adalah B||Kesimpulan: Andi **pasti** rajin belajar||**Jawaban: C. Andi pasti rajin belajar**'},
+   pem:'Diketahui:|• Premis 1: Semua mahasiswa rajin belajar|• Premis 2: Andi adalah mahasiswa||Penalaran:|Gunakan bentuk silogisme:|=Semua A adalah B=|=X adalah A → X adalah B=|Maka:|• Andi (A) adalah mahasiswa|• Semua mahasiswa (B) rajin belajar|=Andi pasti rajin belajar=||**Jawaban: C. Andi pasti rajin belajar**'},
   {tipe:'Penalaran Logis',soal:'Semua peserta ujian wajib membawa kartu. Dewi tidak membawa kartu. Kesimpulan yang tepat adalah …',p:['Dewi adalah peserta','Dewi bukan peserta','Dewi mungkin peserta','Tidak dapat disimpulkan','Dewi membawa kartu lain'],j:1,
-   pem:'Premis:||P → Q (peserta → bawa kartu)||Fakta: Dewi tidak bawa kartu = **¬Q**||Gunakan Modus Tollens: ¬Q → ¬P||Tidak bawa kartu → Bukan peserta ujian||**Jawaban: B. Dewi bukan peserta**'},
+   pem:'Diketahui:|• Semua peserta ujian wajib membawa kartu|• Dewi tidak membawa kartu||Penalaran:|Pernyataan ditulis dalam logika:|=Peserta → Membawa kartu=|Kontraposisi:|=Tidak membawa kartu → Bukan peserta=|Karena:|• Dewi tidak membawa kartu|Maka:|=Dewi bukan peserta ujian=||**Jawaban: B. Dewi bukan peserta**'},
   {tipe:'Penalaran Logis',soal:'Beberapa dosen adalah peneliti. Semua peneliti suka membaca. Kesimpulan yang PASTI benar adalah …',p:['Semua dosen suka membaca','Beberapa dosen suka membaca','Tidak ada dosen suka membaca','Semua pembaca adalah dosen','Tidak dapat disimpulkan'],j:1,
    pem:'Analisis:||Beberapa dosen = peneliti (ada irisan)||Semua peneliti suka membaca||Dosen yang juga peneliti PASTI suka membaca||Karena "beberapa" dosen adalah peneliti → beberapa dosen pasti suka membaca||Tidak bisa disimpulkan SEMUA dosen suka membaca||**Jawaban: B. Beberapa dosen suka membaca**'},
   {tipe:'Penalaran Logis',soal:'Jika belajar sungguh-sungguh, maka nilai bagus. Jika nilai bagus, maka lulus. Sinta tidak lulus. Kesimpulan tentang Sinta adalah …',p:['Sinta belajar sungguh-sungguh','Sinta tidak belajar sungguh-sungguh','Sinta nilainya bagus','Sinta malas','Tidak dapat disimpulkan'],j:1,
@@ -932,69 +973,119 @@ function saveProgress() {
 // ============================================================
 // RENDER PEMBAHASAN MULTI-LANGKAH
 // ============================================================
-function renderPembahasan(pem) {
-  // Format: "JUDUL||teks penjelasan||=rumus=||teks||**JAWABAN**"
-  // || pisah seksi, ** = bold, = = formula centered
-  const sections = pem.split('||').map(s => s.trim()).filter(s => s);
-  let html = '<div class="pem-body">';
-  
-  // Kelompokkan sections menjadi blok (judul + konten)
-  let blocks = [];
-  let currentBlock = {title:'', items:[]};
-  
-  sections.forEach(s => {
-    // Cek apakah ini judul (huruf besar semua atau diawali huruf besar pendek)
-    const isTitleLike = s.endsWith(':') || (s.length < 50 && /^[A-Z]/.test(s) && !s.includes('=') && !s.includes('→'));
-    if(isTitleLike && currentBlock.items.length > 0) {
-      blocks.push({...currentBlock});
-      currentBlock = {title: s, items:[]};
-    } else if(isTitleLike) {
-      currentBlock.title = s;
-    } else {
-      currentBlock.items.push(s);
-    }
-  });
-  if(currentBlock.items.length > 0 || currentBlock.title) blocks.push(currentBlock);
-  
-  blocks.forEach((block, bi) => {
-    const isLast = bi === blocks.length - 1;
-    
-    if(isLast) {
-      // Blok terakhir = kesimpulan
-      const txt = (block.title + ' ' + block.items.join(' ')).trim()
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      html += `</div><div class="pem-kesimpulan">🎯 <span>${txt}</span></div>`;
+// ============================================================
+// AI VISUAL PEMBAHASAN (menggunakan Claude API)
+// ============================================================
+
+async function generateAIPembahasan(soalData, container) {
+  // Tampilkan loading
+  container.innerHTML = `
+    <div class="ai-pem-loading">
+      <div class="ai-pem-spinner"></div>
+      <div class="ai-pem-loading-txt">✨ Membuat penjelasan visual...</div>
+    </div>`;
+
+  const soal = soalData.soal;
+  const pilihan = soalData.p;
+  const jawaban = pilihan[soalData.j];
+  const tipe = soalData.tipe;
+  const pemText = soalData.pem || '';
+
+  const prompt = `Kamu adalah tutor PAPS UGM yang membuat penjelasan visual dalam HTML.
+
+SOAL (${tipe}): ${soal}
+Pilihan: ${pilihan.map((p,i) => String.fromCharCode(65+i)+'. '+p).join(', ')}
+Jawaban benar: ${String.fromCharCode(65+soalData.j)}. ${jawaban}
+Catatan pembahasan: ${pemText.replace(/\|\|/g, ' | ')}
+
+Buat penjelasan visual dalam HTML menggunakan HANYA class CSS berikut yang sudah tersedia:
+- <h3>Judul Seksi</h3>  
+- <div class="sec"> ... </div>  untuk tiap seksi
+- <div class="bullet">teks bullet</div>  untuk poin-poin
+- <div class="eq">rumus/formula</div>  untuk rumus di kotak tengah
+- <div class="kontra">pernyataan</div>  untuk kontraposisi/modus
+- <div class="flow"><div class="flow-item">A</div><div class="flow-arrow">↓</div><div class="flow-item">B</div></div>  untuk diagram alur
+- <div class="ans-box"><div class="ans-label">🎯 Jawaban</div>Teks jawaban</div>  untuk jawaban akhir
+- <table><tr><th>...</th></tr><tr><td>...</td></tr></table>  untuk tabel perbandingan
+- <span class="tag tag-ok">✓ benar</span> atau <span class="tag tag-err">✗ salah</span>
+
+ATURAN KETAT:
+1. JANGAN gunakan <style>, <script>, atau CSS inline apapun
+2. JANGAN gunakan class selain yang disebutkan di atas
+3. Mulai langsung dengan <div class="ai-pem-content"> dan tutup dengan </div>
+4. Buat 3-4 seksi: Diketahui → Penalaran/Langkah → (opsional: Tabel/Diagram) → Jawaban
+5. Untuk soal logika: tampilkan alur logika dengan flow
+6. Untuk soal matematika: tampilkan rumus dengan eq dan langkah perhitungan
+7. Untuk soal analogi/sinonim: tampilkan pola hubungan kata dengan bullet dan eq
+8. Gunakan Bahasa Indonesia yang jelas dan singkat
+9. Jawab hanya dengan HTML, tanpa penjelasan lain`;
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{role: 'user', content: prompt}]
+      })
+    });
+    const data = await resp.json();
+    const html = data.content.map(b => b.text || '').join('');
+
+    // Pastikan hanya HTML yang ditampilkan
+    const clean = html.replace(/```html|```/g, '').trim();
+    container.innerHTML = clean;
+    triggerKaTeX();
+  } catch(err) {
+    // Fallback ke pembahasan teks biasa
+    container.innerHTML = renderPembahasanFallback(pemText);
+    triggerKaTeX();
+  }
+}
+
+function renderPembahasanFallback(pem) {
+  const seksi = pem.split('||').map(s => s.trim()).filter(s => s);
+  let html = '<div class="ai-pem-content">';
+  seksi.forEach((sec, si) => {
+    const isLast = si === seksi.length - 1;
+    const lines = sec.split('|').map(l => l.trim()).filter(l => l);
+    if (isLast) {
+      const txt = lines.join(' ').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      html += `<div class="ans-box"><div class="ans-label">🎯 Kesimpulan</div>${txt}</div>`;
       return;
     }
-    
-    html += '<div class="pem-section">';
-    if(block.title) {
-      html += `<div class="pem-section-title">${block.title.replace(/:$/,'')}</div>`;
-    }
-    
-    block.items.forEach(item => {
-      // Format teks
-      let txt = item
-        .replace(/→/g, '<span style="color:var(--lav-m);font-weight:900"> → </span>')
-        .replace(/✓/g, '<span style="color:var(--correct)">✓</span>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      
-      // Deteksi formula (pendek, ada operator matematika)
-      const isFormula = item.length < 70 && /[a-zA-Z0-9]\s*[=]\s*[a-zA-Z0-9]/.test(item) 
-                        && item.split(' ').length < 10;
-      
-      if(isFormula) {
-        html += `<div class="pem-formula-block"><span class="pem-formula">${txt}</span></div>`;
+    html += '<div class="sec">';
+    lines.forEach(line => {
+      const isTitleLine = line.endsWith(':') && line.length < 40;
+      const isBullet = line.startsWith('•') || line.startsWith('-');
+      const isEq = line.startsWith('=') && line.endsWith('=');
+      if (isTitleLine) {
+        html += `<h3>${line.replace(/:$/, '')}</h3>`;
+      } else if (isBullet) {
+        const t = line.replace(/^[•\-]\s*/, '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        html += `<div class="bullet">${t}</div>`;
+      } else if (isEq) {
+        html += `<div class="eq">${line.replace(/^=|=$/g, '')}</div>`;
       } else {
-        html += `<div class="pem-text">${txt}</div>`;
+        const t = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        html += `<div style="font-size:13px;color:#374151;font-weight:600;margin-bottom:3px">${t}</div>`;
       }
     });
-    
     html += '</div>';
   });
-  
-  if(!html.includes('pem-kesimpulan')) html += '</div>';
+  html += '</div>';
   return html;
+}
+
+// Wrapper - dipanggil dari jawabLatihan
+function renderPembahasan(pem) {
+  // Kembalikan placeholder dulu, AI akan isi async
+  return '<div class="ai-pem-wrap" data-pem="' + encodeURIComponent(pem) + '"><div class="ai-pem-loading"><div class="ai-pem-spinner"></div><div class="ai-pem-loading-txt">✨ Membuat penjelasan visual...</div></div></div>';
+}
+
+function renderPembahasanOld(pem) {
+  return renderPembahasanFallback(pem);
 }
 
 function triggerKaTeX() {
@@ -1207,7 +1298,14 @@ function jawabLatihan(pilihanIdx) {
     if(j === soal.j) { btn.classList.add('correct'); btn.querySelector('.p-huruf').textContent='✓'; }
     if(j === pilihanIdx && j !== soal.j) { btn.classList.add('wrong'); btn.querySelector('.p-huruf').textContent='✗'; }
   });
-  document.getElementById('pem-box').classList.add('show'); triggerKaTeX();
+  document.getElementById('pem-box').classList.add('show');
+  // Trigger AI visual pembahasan
+  const aiWrap = document.querySelector('.ai-pem-wrap');
+  if (aiWrap) {
+    const pemData = decodeURIComponent(aiWrap.dataset.pem || '');
+    generateAIPembahasan(soal, aiWrap);
+  }
+  triggerKaTeX();
   document.getElementById('lat-next-btn').disabled = false;
 }
 

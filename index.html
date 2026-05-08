@@ -740,38 +740,46 @@ const soalKuantB = [
 ];
 
 const soalPenalaranB = [
-  // LOGIKA SIMBOLIK
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui a > 0, b > 0, dan a > b. X = a + b Y = a − b',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
-   pem:'Hitung X − Y:||X − Y = (a+b) − (a−b) = 2b||Karena b > 0: 2b > 0 → X > Y||**Jawaban: A. X > Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui 1/a + 1/b = 7 dan 1/a − 1/b = 3. X = 1/a² Y = 1/b²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
-   pem:'Dari sistem persamaan:||1/a + 1/b = 7 dan 1/a − 1/b = 3||Jumlahkan: 2/a = 10 → 1/a = 5||Kurangi: 2/b = 4 → 1/b = 2||X = (1/a)² = 25, Y = (1/b)² = 4||25 > 4 → **X > Y**||**Jawaban: A. X > Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x = 5y, y = 4z, dan x + y + z = 100. X = z Y = 5',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:2,
-   pem:'Substitusi berurutan:||y = 4z → x = 5y = 5(4z) = 20z||Jumlahkan: x + y + z = 20z + 4z + z = 25z||Persamaan:||25z = 100 → **z = 4**||Bandingkan X = z = 4 dan Y = 5:||4 < 5 → **X < Y**||**Jawaban: B. X < Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'A = 1/9 − 1/15 dan B = 1/11 − 1/13. X = A Y = B',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:0,
-   pem:'Hitung masing-masing:||A = 1/9 − 1/15 = 5/45 − 3/45 = **2/45**||B = 1/11 − 1/13 = 13/143 − 11/143 = **2/143**||Bandingkan: 2/45 vs 2/143||Karena 45 < 143: 2/45 > 2/143 → **X > Y**||**Jawaban: A. X > Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Jika 7 < X < 9 dan 1 < Y < 3. Bandingkan 3Y dan X.',p:['3Y > X selalu','3Y < X selalu','3Y = X selalu','Hubungan tidak dapat ditentukan','3Y > 2X selalu'],j:3,
-   pem:'Analisis rentang:||3Y: 3×1=3 sampai 3×3=9 → 3 < 3Y < 9||X: 7 < X < 9||Kemungkinan 3Y=8,9 dan X=7,1 → 3Y > X||Kemungkinan 3Y=3,1 dan X=8,9 → 3Y < X||Tidak dapat ditentukan secara pasti||**Jawaban: D. Hubungan tidak dapat ditentukan**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x > 0, y > 0, x > y, dan z ≠ 0. X = xz² Y = yz²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
-   pem:'Analisis:||Karena x > y dan z ≠ 0: z² > 0 selalu||Maka xz² > yz² (karena z² positif)||X = xz² > yz² = Y||**Jawaban: A. X > Y**'},
-  // SILOGISME
+
+  // ===== PENALARAN LOGIS =====
   {tipe:'Penalaran Logis',soal:'Jika belajar sungguh-sungguh maka nilai bagus. Jika nilai bagus maka lulus. Budi tidak lulus. Kesimpulan tentang Budi adalah …',p:['Budi belajar sungguh-sungguh','Budi tidak belajar sungguh-sungguh','Budi nilainya bagus','Budi malas belajar','Tidak dapat disimpulkan'],j:1,
-   pem:'Rantai implikasi:||P → Q → R||Fakta: ¬R (tidak lulus)||Modus Tollens dua kali: ¬R → ¬Q → ¬P||Budi tidak lulus → nilai tidak bagus → tidak belajar sungguh-sungguh||**Jawaban: B. Budi tidak belajar sungguh-sungguh**'},
-  {tipe:'Penalaran Logis',soal:'P hanya bisa bicara Inggris & Jerman. Q hanya bicara Perancis, Jepang & Cina. R hanya bicara Jerman. S hanya bicara Inggris, Jepang & Cina. T hanya bicara Perancis & Jerman. Pasangan yang HARUS pakai penerjemah adalah …',p:['P dan R','Q dan R','R dan T','Q dan S','P dan T'],j:1,
-   pem:'Analisis bahasa bersama:||P: Inggris, Jerman||Q: Perancis, Jepang, Cina||R: Jerman||S: Inggris, Jepang, Cina||T: Perancis, Jerman||Cek Q dan R: Q=(Prancis,Jepang,Cina) vs R=(Jerman) → TIDAK ADA bahasa sama → perlu penerjemah||**Jawaban: B. Q dan R**'},
-  {tipe:'Penalaran Logis',soal:'Pop lebih disukai dari Keroncong. Rock dan Dangdut sama-sama disukai. Keroncong lebih disukai dari Rock dan Dangdut. Rock lebih disukai dari Klasik. Urutan dari paling disukai ke paling tidak disukai adalah …',p:['Pop, Rock/Dangdut, Keroncong, Klasik','Keroncong, Pop, Rock/Dangdut, Klasik','Pop, Rock/Dangdut, Klasik, Keroncong','Pop, Keroncong, Rock/Dangdut, Klasik','Rock, Pop, Keroncong, Klasik'],j:3,
-   pem:'Urutkan dari premis:||Pop > Keroncong (premis 1)||Keroncong > Rock = Dangdut (premis 3)||Rock > Klasik (premis 4)||Urutan: Pop > Keroncong > Rock/Dangdut > Klasik||**Jawaban: D. Pop, Keroncong, Rock/Dangdut, Klasik**'},
+   pem:'Diketahui:|• P → Q: Belajar sungguh → Nilai bagus|• Q → R: Nilai bagus → Lulus|• ¬R: Budi tidak lulus||Penalaran (Modus Tollens):|=¬R → ¬Q (Nilai tidak bagus)=|=¬Q → ¬P (Tidak belajar sungguh)=||**Jawaban: B. Budi tidak belajar sungguh-sungguh**'},
+
+  {tipe:'Penalaran Logis',soal:'P hanya bisa bicara Inggris dan Jerman. Q hanya bicara Perancis, Jepang, dan Cina. R hanya bicara Jerman. S hanya bicara Inggris, Jepang, dan Cina. T hanya bicara Perancis dan Jerman. Pasangan yang HARUS menggunakan penerjemah adalah …',p:['P dan R','Q dan R','R dan T','Q dan S','P dan T'],j:1,
+   pem:'Diketahui:|• P: Inggris, Jerman|• Q: Perancis, Jepang, Cina|• R: Jerman|• S: Inggris, Jepang, Cina|• T: Perancis, Jerman||Cek bahasa bersama:|• P & R: Jerman → bisa bicara ✓|• Q & R: tidak ada bahasa sama → PERLU PENERJEMAH|• R & T: Jerman → bisa bicara ✓|• Q & S: Jepang, Cina → bisa bicara ✓||=Q dan R tidak punya bahasa yang sama=||**Jawaban: B. Q dan R**'},
+
+  {tipe:'Penalaran Logis',soal:'Pop lebih disukai dari Keroncong. Rock dan Dangdut sama-sama disukai. Keroncong lebih disukai dari Rock dan Dangdut. Rock lebih disukai dari Klasik. Urutan dari paling disukai ke tidak disukai adalah …',p:['Pop, Rock/Dangdut, Keroncong, Klasik','Keroncong, Pop, Rock/Dangdut, Klasik','Pop, Rock/Dangdut, Klasik, Keroncong','Pop, Keroncong, Rock/Dangdut, Klasik','Rock, Pop, Keroncong, Klasik'],j:3,
+   pem:'Diketahui:|• Pop > Keroncong|• Rock = Dangdut|• Keroncong > Rock dan Dangdut|• Rock > Klasik||Susun urutan:|=Pop > Keroncong > Rock/Dangdut > Klasik=||**Jawaban: D. Pop, Keroncong, Rock/Dangdut, Klasik**'},
+
   {tipe:'Penalaran Logis',soal:'Semua siswa berprestasi mendapat beasiswa. Rini mendapat beasiswa. Kesimpulan yang PALING TEPAT adalah …',p:['Rini pasti siswa berprestasi','Rini bukan siswa berprestasi','Rini mungkin siswa berprestasi','Semua penerima beasiswa berprestasi','Tidak ada yang berprestasi tanpa beasiswa'],j:2,
-   pem:'Analisis:||P → Q (berprestasi → beasiswa)||Fakta: Rini dapat beasiswa (Q benar)||Ini bukan modus ponens — tidak bisa menyimpulkan P||Rini bisa dapat beasiswa karena prestasi ATAU alasan lain||**Jawaban: C. Rini mungkin siswa berprestasi**'},
-  // PENALARAN ANALITIS
-  {tipe:'Penalaran Analitis',soal:'Jarak A-B = 2× jarak C-D. E terletak di tengah C-D. Jarak C ke A = jarak D ke B = setengah jarak A ke E. Dua kota yang jaraknya paling jauh adalah …',p:['Kota A dan B','Kota B dan E','Kota A dan E','Kota B dan D','Kota C dan B'],j:0,
-   pem:'Misalkan CD = 2 → AB = 4||E = tengah CD, jarak CE = ED = 1||Jarak CA = DB = ½ × AE||Susun garis: C...E...D dengan CD=2, E di tengah||A di kiri C (jarak CA = ½ AE)||Hitung AE: AE = AC + CE = AC + 1||AC = ½ AE → AE = ½ AE + 1 → ½ AE = 1 → AE = 2||AC = 1, jadi A ada 1 unit di kiri C||B = D + 1 (jarak DB = 1) = kanan D||Posisi: A(0)...C(1)...E(2)...D(3)...B(4)||Jarak A-B = 4 → paling jauh||**Jawaban: A. Kota A dan B**'},
-  {tipe:'Penalaran Analitis',soal:'Bangsa X hidup terutama dari roti dan minyak sebagai pengganti mentega. Mereka minum anggur dan makan buah anggur. Iklim subtropis memiliki gandum, zaitun, dan kebun anggur. Bangsa X hidup di iklim …',p:['Dingin','Subtropis','Tropis','Sedang','Kutub'],j:1,
-   pem:'Analisis:||Roti = dari gandum → subtropis||Minyak (zaitun) = subtropis||Anggur dan kebun anggur = subtropis||Semua ciri makanan Bangsa X cocok dengan iklim subtropis||**Jawaban: B. Subtropis**'},
-  {tipe:'Penalaran Analitis',soal:'Nilai Budiman termasuk urutan ke-16 dari atas dan juga urutan ke-16 dari bawah. Banyak siswa dalam kelas tersebut adalah …',p:['16 orang','31 orang','26 orang','32 orang','30 orang'],j:1,
-   pem:'Hitung jumlah siswa:||Dari atas: ada 15 siswa di atas Budiman||Dari bawah: ada 15 siswa di bawah Budiman||Total: 15 + 1 (Budiman) + 15 = **31 orang**||**Jawaban: B. 31 orang**'},
+   pem:'Diketahui:|• P → Q: Berprestasi → Beasiswa|• Fakta: Rini mendapat beasiswa (Q)||Penalaran:|Ini bukan Modus Ponens! Kita tahu Q tapi bukan P||=Menegaskan konsekuen (Q) tidak membuktikan P=|Rini bisa dapat beasiswa karena prestasi ATAU alasan lain|Contoh: beasiswa keluarga tidak mampu, dll.||**Jawaban: C. Rini mungkin siswa berprestasi**'},
+
+  {tipe:'Penalaran Logis',soal:'Semua burung bisa terbang. Penguin adalah burung. Penguin tidak bisa terbang. Kesimpulan dari ketiga pernyataan di atas adalah …',p:['Penguin bukan burung','Premis pertama salah','Ada kontradiksi dalam pernyataan-pernyataan ini','Penguin mampu terbang di bawah air','Semua burung seperti penguin'],j:2,
+   pem:'Diketahui:|• Premis 1: Semua burung bisa terbang|• Premis 2: Penguin adalah burung|• Fakta: Penguin tidak bisa terbang||Penalaran:|Dari Premis 1 + 2:|=Penguin seharusnya bisa terbang (silogisme)=|Tapi Fakta menyatakan penguin tidak bisa terbang||Ada pertentangan antara kesimpulan silogisme dengan fakta|=Ketiga pernyataan mengandung kontradiksi=||**Jawaban: C. Ada kontradiksi dalam pernyataan-pernyataan ini**'},
+
+  {tipe:'Penalaran Logis',soal:'Jika Anton rajin, maka Budi malas. Jika Budi malas, maka Citra giat. Citra tidak giat. Kesimpulan yang tepat adalah …',p:['Anton rajin dan Budi malas','Anton tidak rajin','Budi tidak malas dan Anton tidak rajin','Anton rajin','Tidak dapat disimpulkan'],j:2,
+   pem:'Diketahui:|• P → Q: Anton rajin → Budi malas|• Q → R: Budi malas → Citra giat|• ¬R: Citra tidak giat||Penalaran (Modus Tollens):|=¬R → ¬Q (Budi tidak malas)=|=¬Q → ¬P (Anton tidak rajin)=||Jadi:|• Budi tidak malas|• Anton tidak rajin||**Jawaban: C. Budi tidak malas dan Anton tidak rajin**'},
+
+  // ===== PENALARAN ANALITIS =====
+  {tipe:'Penalaran Analitis',soal:'Jarak A ke B = 2× jarak C ke D. E terletak di tengah C dan D. Jarak C ke A = Jarak D ke B = setengah jarak A ke E. Dua kota yang jaraknya paling jauh adalah …',p:['A dan B','B dan E','A dan E','B dan D','C dan A'],j:0,
+   pem:'Diketahui:|• AB = 2 × CD|• E di tengah CD|• CA = DB = ½ × AE||Misalkan CD = 2:|• CE = ED = 1 (E di tengah)|• AE = AC + CE = AC + 1|• AC = ½ × AE → AE = ½AE + 1 → AE = 2|• AC = 1||Susun posisi pada garis:|=A(0) — C(1) — E(2) — D(3) — B(4)=||Cek AB = 4 = 2 × CD = 2 × 2 ✓|Jarak terbesar = AB = 4||**Jawaban: A. A dan B**'},
+
+  {tipe:'Penalaran Analitis',soal:'Bangsa X hidup terutama dari roti dan minyak sebagai pengganti mentega. Mereka minum anggur dan makan buah anggur. Pada iklim dingin tumbuh wortel dan kubis. Pada iklim sedang tumbuh ketela dan jagung. Pada iklim subtropis ada gandum, zaitun, dan kebun anggur. Pada iklim tropis tumbuh kelapa sawit dan padi. Bangsa X hidup di iklim …',p:['Dingin','Sedang','Subtropis','Tropis','Kutub'],j:2,
+   pem:'Diketahui tentang Bangsa X:|• Makan roti → dari gandum|• Minum anggur dan makan buah anggur|• Memakai minyak (zaitun) sebagai pengganti mentega||Cocokkan dengan iklim:|• Gandum → subtropis|• Kebun anggur → subtropis|• Zaitun → subtropis||=Semua ciri makanan Bangsa X cocok dengan iklim SUBTROPIS=||**Jawaban: C. Subtropis**'},
+
+  {tipe:'Penalaran Analitis',soal:'Nilai Budiman termasuk urutan ke-16 dari atas dan juga urutan ke-16 dari bawah dalam kelasnya. Banyak siswa dalam kelas tersebut adalah …',p:['16 orang','31 orang','26 orang','32 orang','30 orang'],j:1,
+   pem:'Diketahui:|• Budiman di urutan ke-16 dari atas|• Budiman di urutan ke-16 dari bawah||Hitung jumlah siswa:|• Di atas Budiman: 16 − 1 = 15 siswa|• Di bawah Budiman: 16 − 1 = 15 siswa|• Budiman sendiri: 1||=Total = 15 + 1 + 15 = 31 siswa=||**Jawaban: B. 31 orang**'},
+
   {tipe:'Penalaran Analitis',soal:'Dalam suatu pertemuan, panitia mengundang 50 wanita dan 70 pria. Yang hadir hanya 40% wanita dan 50% pria dari total undangan. Berapa persen tamu yang hadir dari total undangan?',p:['78%','68%','46%','48%','45%'],j:2,
-   pem:'Hitung tamu yang hadir:||Wanita hadir: 40% × 50 = 0,4 × 50 = **20 orang**||Pria hadir: 50% × 70 = 0,5 × 70 = **35 orang**||Total hadir: 20 + 35 = **55 orang**||Total undangan: 50 + 70 = **120 orang**||Rumus persentase:||% hadir = (55 ÷ 120) × 100% = **45,83% ≈ 46%**||**Jawaban: C. 46%**'},
+   pem:'Diketahui:|• Undangan: 50 wanita + 70 pria = 120 total|• Hadir: 40% wanita dan 50% pria||Hitung tamu hadir:|• Wanita hadir: 40% × 50 = 20 orang|• Pria hadir: 50% × 70 = 35 orang|• Total hadir: 20 + 35 = 55 orang||=% hadir = 55 ÷ 120 × 100% = 45,8% ≈ 46%=||**Jawaban: C. 46%**'},
+
+  {tipe:'Penalaran Analitis',soal:'Enam orang (A, B, C, D, E, F) duduk melingkar. A berhadapan dengan D. B duduk di antara A dan C. E duduk di sebelah kiri D. Siapa yang duduk di sebelah kanan F?',p:['A','B','C','E','Tidak dapat ditentukan'],j:4,
+   pem:'Diketahui:|• 6 orang melingkar|• A berhadapan D (selisih 3 kursi)|• B di antara A dan C|• E di sebelah kiri D||Informasi yang diberikan tidak cukup untuk menentukan posisi F secara pasti||Beberapa kemungkinan susunan masih mungkin terjadi||=Tidak cukup data untuk menentukan siapa di sebelah kanan F=||**Jawaban: E. Tidak dapat ditentukan**'},
+
+  {tipe:'Penalaran Analitis',soal:'Ada 5 kotak warna: Merah, Kuning, Hijau, Biru, Ungu disusun berjajar. Merah di sebelah kiri Kuning. Hijau tidak di ujung. Biru di ujung kanan. Ungu di sebelah kiri Hijau. Urutan dari kiri ke kanan adalah …',p:['Merah, Kuning, Ungu, Hijau, Biru','Ungu, Merah, Hijau, Kuning, Biru','Merah, Ungu, Hijau, Kuning, Biru','Ungu, Hijau, Merah, Kuning, Biru','Merah, Kuning, Hijau, Ungu, Biru'],j:0,
+   pem:'Diketahui:|• Biru di ujung kanan → posisi 5|• Hijau tidak di ujung|• Ungu di sebelah kiri Hijau (Ungu-Hijau berurutan)|• Merah di sebelah kiri Kuning||Susun dari kondisi Biru di pos 5:|Sisa: Merah, Kuning, Hijau, Ungu untuk pos 1-4||Ungu-Hijau pasangan berurutan, Hijau bukan ujung:|• Ungu(3)-Hijau(4) atau Ungu(2)-Hijau(3)||Merah di kiri Kuning, dengan kemungkinan:|• Jika Ungu(3)-Hijau(4): Merah(1)-Kuning(2) ✓||=Merah(1) — Kuning(2) — Ungu(3) — Hijau(4) — Biru(5)=||**Jawaban: A. Merah, Kuning, Ungu, Hijau, Biru**'},
 ];
+
 
 
 // ============================================================
@@ -894,46 +902,46 @@ const soalKuantitatif = [
 
 
 const soalPenalaran = [
-  // ===== LOGIKA SIMBOLIK X & Y =====
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui x < y, kedua bilangan real positif. X = x/y Y = y/x',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:1,
-   pem:'Premis: x < y dan x,y > 0||Analisis X = x/y vs Y = y/x:||Karena x < y: x/y < 1 dan y/x > 1||Jadi X = x/y < 1 < y/x = Y → X < Y||**Jawaban: B. X < Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui a > 0 dan b < 0. X = a² + b² Y = (a + b)²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≥ Y'],j:0,
-   pem:'Hitung X − Y:||X − Y = (a²+b²) − (a+b)²||= a²+b² − a²−2ab−b² = **−2ab**||Karena a > 0 dan b < 0: ab < 0 → −2ab > 0||Sehingga X − Y > 0 → **X > Y**||**Jawaban: A. X > Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'n adalah bilangan bulat positif lebih dari 1. X = n/(n+1) Y = (n+1)/(n+2)',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:1,
-   pem:'Bandingkan dengan cross-multiply:||X vs Y: n(n+2) vs (n+1)²||n(n+2) = n²+2n||(n+1)² = n²+2n+1||Jelas n²+2n < n²+2n+1 untuk semua n||Jadi X < Y||**Jawaban: B. X < Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui log₁₀ 2 = a dan log₁₀ 3 = b. X = log₁₀ 72 Y = 3a + 2b',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:2,
-   pem:'Faktorkan 72:||72 = 2³ × 3² = 8 × 9||log₁₀ 72 = log₁₀(2³ × 3²) = 3 log₁₀ 2 + 2 log₁₀ 3 = **3a + 2b**||Jadi X = 3a + 2b = Y||**Jawaban: C. X = Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'Diketahui 0 < x < 1. X = x Y = x²',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≤ Y'],j:0,
-   pem:'Analisis:||Karena 0 < x < 1: x adalah pecahan positif||x² = x × x, dan karena x < 1: x × x < x × 1 = x||Jadi x² < x → Y < X → **X > Y**||Contoh: x=0,5 → X=0,5, Y=0,25 → X > Y ✓||**Jawaban: A. X > Y**'},
-  {tipe:'Logika Simbolik X&Y',soal:'p dan q adalah akar-akar dari x² − 7x + 10 = 0. X = p + q Y = p × q',p:['X > Y','X < Y','X = Y','Hubungan tidak dapat ditentukan','X ≠ Y'],j:0,
-   pem:'Gunakan hubungan Vieta:||Untuk ax²+bx+c=0: jumlah akar = −b/a, hasil kali = c/a||X = p+q = −(−7)/1 = **7**||Y = p×q = 10/1 = **10**||Bandingkan: 7 vs 10 → X < Y... cek lagi||p+q=7 dan pq=10 → (p=2,q=5) atau (p=5,q=2)||X=7, Y=10 → **X < Y**||**Jawaban: B. X < Y**'},
+
   // ===== PENALARAN LOGIS (Silogisme) =====
   {tipe:'Penalaran Logis',soal:'Semua mahasiswa rajin belajar. Andi adalah mahasiswa. Kesimpulan yang tepat adalah …',p:['Andi mungkin rajin','Andi tidak rajin','Andi pasti rajin','Andi kadang rajin','Tidak dapat disimpulkan'],j:2,
-   pem:'Diketahui:|• Premis 1: Semua mahasiswa rajin belajar|• Premis 2: Andi adalah mahasiswa||Penalaran:|Gunakan bentuk silogisme:|=Semua A adalah B=|=X adalah A → X adalah B=|Maka:|• Andi (A) adalah mahasiswa|• Semua mahasiswa (B) rajin belajar|=Andi pasti rajin belajar=||**Jawaban: C. Andi pasti rajin belajar**'},
+   pem:'Diketahui:|• Premis 1: Semua mahasiswa rajin belajar|• Premis 2: Andi adalah mahasiswa||Penalaran:|Gunakan bentuk silogisme:|=Semua A adalah B=|=X adalah A → X adalah B=|Maka:|• Andi adalah mahasiswa (A)||=Andi pasti rajin belajar (B)=||**Jawaban: C. Andi pasti rajin belajar**'},
+
   {tipe:'Penalaran Logis',soal:'Semua peserta ujian wajib membawa kartu. Dewi tidak membawa kartu. Kesimpulan yang tepat adalah …',p:['Dewi adalah peserta','Dewi bukan peserta','Dewi mungkin peserta','Tidak dapat disimpulkan','Dewi membawa kartu lain'],j:1,
-   pem:'Diketahui:|• Semua peserta ujian wajib membawa kartu|• Dewi tidak membawa kartu||Penalaran:|Pernyataan ditulis dalam logika:|=Peserta → Membawa kartu=|Kontraposisi:|=Tidak membawa kartu → Bukan peserta=|Karena:|• Dewi tidak membawa kartu|Maka:|=Dewi bukan peserta ujian=||**Jawaban: B. Dewi bukan peserta**'},
+   pem:'Diketahui:|• Semua peserta ujian wajib membawa kartu|• Dewi tidak membawa kartu||Penalaran:|Pernyataan dalam logika:|=Peserta → Membawa kartu=|Kontraposisi:|=Tidak membawa kartu → Bukan peserta=|Karena Dewi tidak membawa kartu:|=Dewi bukan peserta ujian=||**Jawaban: B. Dewi bukan peserta ujian**'},
+
   {tipe:'Penalaran Logis',soal:'Beberapa dosen adalah peneliti. Semua peneliti suka membaca. Kesimpulan yang PASTI benar adalah …',p:['Semua dosen suka membaca','Beberapa dosen suka membaca','Tidak ada dosen suka membaca','Semua pembaca adalah dosen','Tidak dapat disimpulkan'],j:1,
-   pem:'Analisis:||Beberapa dosen = peneliti (ada irisan)||Semua peneliti suka membaca||Dosen yang juga peneliti PASTI suka membaca||Karena "beberapa" dosen adalah peneliti → beberapa dosen pasti suka membaca||Tidak bisa disimpulkan SEMUA dosen suka membaca||**Jawaban: B. Beberapa dosen suka membaca**'},
-  {tipe:'Penalaran Logis',soal:'Jika belajar sungguh-sungguh, maka nilai bagus. Jika nilai bagus, maka lulus. Sinta tidak lulus. Kesimpulan tentang Sinta adalah …',p:['Sinta belajar sungguh-sungguh','Sinta tidak belajar sungguh-sungguh','Sinta nilainya bagus','Sinta malas','Tidak dapat disimpulkan'],j:1,
-   pem:'Rantai implikasi:||Belajar (P) → Nilai bagus (Q) → Lulus (R)||Fakta: Sinta tidak lulus = **¬R**||Modus Tollens dua kali:||¬R → ¬Q (nilai tidak bagus) → ¬P (tidak belajar sungguh-sungguh)||**Jawaban: B. Sinta tidak belajar sungguh-sungguh**'},
+   pem:'Diketahui:|• Beberapa dosen = peneliti (ada irisan, tidak semua)|• Semua peneliti suka membaca||Penalaran:|Diagram relasi:|• Peneliti ⊂ Suka membaca (semua peneliti suka membaca)|• Dosen ∩ Peneliti ≠ ∅ (ada beberapa)||=Beberapa dosen (yang juga peneliti) pasti suka membaca=|Tidak bisa simpulkan SEMUA dosen suka membaca!||**Jawaban: B. Beberapa dosen suka membaca**'},
+
+  {tipe:'Penalaran Logis',soal:'Jika belajar sungguh-sungguh, maka nilai bagus. Jika nilai bagus, maka lulus. Sinta tidak lulus. Kesimpulan tentang Sinta adalah …',p:['Sinta belajar sungguh-sungguh','Sinta tidak belajar sungguh-sungguh','Sinta nilainya bagus','Sinta malas belajar','Tidak dapat disimpulkan'],j:1,
+   pem:'Diketahui:|• Belajar sungguh (P) → Nilai bagus (Q)|• Nilai bagus (Q) → Lulus (R)|• Sinta tidak lulus = ¬R||Penalaran:|Terapkan Modus Tollens dua kali:|=¬R → ¬Q (nilai tidak bagus)=|=¬Q → ¬P (tidak belajar sungguh)=||**Jawaban: B. Sinta tidak belajar sungguh-sungguh**'},
+
   {tipe:'Penalaran Logis',soal:'Tidak semua yang berhasil bekerja keras. Rani bekerja keras. Kesimpulan yang benar adalah …',p:['Rani pasti berhasil','Rani tidak berhasil','Rani mungkin berhasil','Rani paling berhasil','Tidak ada hubungan'],j:2,
-   pem:'Analisis premis:||"Tidak semua yang berhasil bekerja keras" = ada yang berhasil tanpa kerja keras||Fakta: Rani bekerja keras||Informasi tentang apakah kerja keras → berhasil TIDAK diberikan secara pasti||Rani bekerja keras bisa saja berhasil, bisa juga tidak||**Jawaban: C. Rani mungkin berhasil**'},
+   pem:'Diketahui:|• "Tidak semua yang berhasil bekerja keras" → ada yang berhasil tanpa kerja keras|• Rani bekerja keras||Penalaran:|• Apakah kerja keras PASTI menghasilkan keberhasilan? Tidak disebutkan!|• Kerja keras bisa berhasil, bisa tidak||=Tidak cukup informasi untuk memastikan Rani berhasil=||**Jawaban: C. Rani mungkin berhasil**'},
+
   {tipe:'Penalaran Logis',soal:'Jika hari ini hujan, maka acara dibatalkan. Hari ini tidak hujan. Kesimpulan yang TEPAT adalah …',p:['Acara dibatalkan','Acara tidak dibatalkan','Acara mungkin dibatalkan','Cuaca cerah','Tidak dapat disimpulkan'],j:4,
-   pem:'Struktur logika:||P → Q (hujan → batal)||Fakta: ¬P (tidak hujan)||Ini adalah "Denying the Antecedent" — tidak valid!||¬P tidak berarti ¬Q. Acara bisa batal karena alasan lain||**Jawaban: E. Tidak dapat disimpulkan**'},
-  // ===== PENALARAN ANALITIS (Situasi Kompleks) =====
-  {tipe:'Penalaran Analitis',soal:'Di sebuah kota, tiap orang tepat memiliki satu dari tiga profesi: Dokter, Guru, atau Insinyur. Budi bukan Dokter. Ani bukan Guru. Candra bukan Insinyur. Budi dan Ani memiliki profesi yang berbeda satu sama lain. Siapakah yang berprofesi sebagai Dokter?',p:['Budi','Ani','Candra','Budi atau Ani','Tidak dapat ditentukan'],j:1,
-   pem:'Susun tabel kemungkinan:||Budi: bukan Dokter → Guru atau Insinyur||Ani: bukan Guru → Dokter atau Insinyur||Candra: bukan Insinyur → Dokter atau Guru||Analisis:||Jika Ani = Dokter: maka Budi = Guru atau Insinyur (OK), Candra = Guru (jika Budi=Insinyur)||Cek: Budi ≠ Dokter ✓, Ani ≠ Guru ✓, Candra ≠ Insinyur ✓||Budi dan Ani berbeda profesi ✓||**Jawaban: B. Ani**'},
-  {tipe:'Penalaran Analitis',soal:'Lima orang duduk berjajar: A, B, C, D, E. A duduk di sebelah kiri B. C duduk di antara D dan E. B duduk tepat di tengah (posisi ke-3). A tidak duduk di ujung kiri. Siapa yang duduk di ujung kiri?',p:['A','B','C','D','E'],j:3,
-   pem:'Analisis:||B di posisi ke-3 (tengah)||A di sebelah kiri B → A di posisi ke-2 (karena A bukan ujung kiri)||Urutan: _, A, B, _, _||C berada di antara D dan E → tiga posisi berurutan dengan C di tengah||Sisa posisi: 1, 4, 5 untuk C, D, E dengan pola D-C-E atau E-C-D||C di posisi 4: D di posisi 3? Tapi posisi 3 = B ✗||C di posisi 5 tidak mungkin (harus ada dua sisi)||Jadi: posisi 1=D, posisi 4=C, posisi 5=E (atau E,C,D di posisi 1,4,5 tidak mungkin karena posisi 1 harus ujung)||Urutan: D, A, B, C, E → Ujung kiri = **D**||**Jawaban: D. D**'},
-  {tipe:'Penalaran Analitis',soal:'Empat tim (P, Q, R, S) bermain turnamen. Setiap tim bertanding dengan semua tim lain tepat sekali. Hasilnya: P menang lawan Q dan R. Q menang lawan R dan S. S menang lawan P dan R. Urutan klasemen dari terbaik adalah …',p:['P, Q, S, R','Q, P, S, R','Q, S, P, R','S, Q, P, R','P, S, Q, R'],j:2,
-   pem:'Hitung kemenangan masing-masing:||P menang lawan: Q, R → **2 menang**||Q menang lawan: R, S → **2 menang**||S menang lawan: P, R → **2 menang**||R menang lawan: tidak ada yang disebutkan → **0 menang**||P, Q, S masing-masing 2 menang → perlu pembeda||Head-to-head: Q menang lawan S ✓; S menang lawan P ✓; P menang lawan Q ✓ (siklus)||Gunakan selisih gol/poin atau alphabetical: Q > P > S secara konvensi||**Jawaban: C. Q, S, P, R**'},
-  {tipe:'Penalaran Analitis',soal:'Sebuah perusahaan punya 3 divisi: Marketing (M), Finance (F), IT. Setiap karyawan bekerja tepat di satu divisi. Diketahui: total karyawan = 60. M memiliki 2× karyawan F. IT memiliki 5 orang lebih sedikit dari F. Berapa karyawan di divisi IT?',p:['10 orang','13 orang','15 orang','18 orang','20 orang'],j:1,
-   pem:'Misalkan F = x orang||M = 2x, IT = x − 5||Total: 2x + x + (x−5) = 60||4x − 5 = 60 → 4x = 65 → x = **16,25**||Hmm, tidak bulat. Coba: IT = F − 5||2x + x + (x−5) = 60 → 4x = 65 tidak bulat||Kemungkinan: M = 2x lebih sedikit dari F, atau IT = F+5||Coba: M=2F, IT=F−5, total=60: 2F+F+(F-5)=60 → 4F=65 ✗||Coba IT=F−5 dan M=2×IT: M=2(F-5), total: 2(F-5)+F+(F-5)=60 → 4F-15=60 → F=18,75 ✗||Kemungkinan: F=13: M=26, IT=8, total=47 ✗. Jika IT=13: M=36, F=11, total=60 ✓||**Jawaban: B. 13 orang**'},
-  {tipe:'Penalaran Analitis',soal:'Dari pernyataan berikut, manakah yang HARUS BENAR jika: "Semua kucing adalah hewan berbulu" dan "Ada hewan berbulu yang bisa terbang"? (1) Ada kucing yang bisa terbang (2) Semua hewan berbulu adalah kucing (3) Ada hewan berbulu yang bukan kucing',p:['Hanya (1)','Hanya (2)','Hanya (3)','(1) dan (3)','Ketiganya benar'],j:2,
-   pem:'Analisis tiap pernyataan:||Premis A: Semua kucing → hewan berbulu||Premis B: Ada hewan berbulu → bisa terbang||(1) Ada kucing bisa terbang: TIDAK HARUS benar (hewan berbulu yang terbang bisa bukan kucing)|||(2) Semua hewan berbulu adalah kucing: SALAH (terlalu luas, tidak didukung premis)|||(3) Ada hewan berbulu yang bukan kucing: HARUS BENAR karena ada hewan berbulu yang terbang, sementara tidak semua kucing terbang, maka pasti ada hewan berbulu di luar himpunan kucing||**Jawaban: C. Hanya (3)**'},
-  {tipe:'Penalaran Analitis',soal:'Tiga kardus A, B, C berisi kelereng merah (M), biru (B), hijau (H). Label tiap kardus SALAH semua. Label A: Merah. Label B: Biru. Label C: Hijau. Jika kamu membuka kardus berlabel Biru dan menemukan kelereng Hijau, isi kardus berlabel Merah adalah …',p:['Merah','Biru','Hijau','Merah atau Biru','Tidak dapat ditentukan'],j:1,
-   pem:'Analisis:||Semua label salah, jadi:||Kardus label Merah: bukan Merah (isi: Biru atau Hijau)||Kardus label Biru: bukan Biru (isi: Merah atau Hijau)||Kardus label Hijau: bukan Hijau (isi: Merah atau Biru)||Diketahui: kardus label Biru → isi Hijau||Sisa: kardus M dan C harus berisi Merah dan Biru||Kardus label Hijau (C): bukan Hijau → bisa Merah atau Biru||Kardus label Merah (A): bukan Merah → harus Biru (karena Hijau sudah di B)||**Jawaban: B. Biru**'},
+   pem:'Diketahui:|• Hujan (P) → Acara batal (Q)|• Fakta: ¬P (tidak hujan)||Penalaran:|Ini adalah "Denying the Antecedent" yang TIDAK VALID!|• ¬P tidak otomatis berarti ¬Q|• Acara bisa batal karena alasan lain (panitia sakit, tempat rusak, dll)||=¬P ≠ berarti ¬Q=||**Jawaban: E. Tidak dapat disimpulkan**'},
+
+  // ===== PENALARAN ANALITIS =====
+  {tipe:'Penalaran Analitis',soal:'Rudi, Sari, Tono, Udin, dan Vera duduk berjajar. Sari duduk di posisi ke-3. Rudi duduk tepat di sebelah kiri Sari. Vera duduk di ujung kanan. Tono tidak duduk di sebelah Vera. Siapa yang duduk di ujung kiri?',p:['Rudi','Sari','Tono','Udin','Vera'],j:2,
+   pem:'Diketahui:|• Sari di posisi 3|• Rudi di sebelah kiri Sari → posisi 2|• Vera di ujung kanan → posisi 5||Susun urutan:|Posisi: _, R(2), S(3), _, V(5)|Sisa: Tono dan Udin untuk posisi 1 dan 4||Kondisi:|• Tono tidak duduk di sebelah Vera (posisi 5)|• Jika Tono di posisi 4 → bersebelahan dengan Vera ✗|• Jadi Tono di posisi 1, Udin di posisi 4||Urutan final:|=Tono(1) — Rudi(2) — Sari(3) — Udin(4) — Vera(5)=||**Jawaban: C. Tono**'},
+
+  {tipe:'Penalaran Analitis',soal:'Di sebuah kota, tiap orang tepat memiliki satu dari tiga profesi: Dokter, Guru, atau Insinyur. Budi bukan Dokter dan bukan Guru. Ani bukan Guru. Candra bukan Insinyur. Siapakah yang berprofesi sebagai Dokter?',p:['Budi','Ani','Candra','Budi atau Ani','Tidak dapat ditentukan'],j:1,
+   pem:'Diketahui:|• Budi: bukan Dokter, bukan Guru → hanya bisa Insinyur|• Ani: bukan Guru → Dokter atau Insinyur|• Candra: bukan Insinyur → Dokter atau Guru||Penalaran:|Budi sudah pasti Insinyur (satu-satunya pilihan tersisa)||Susun tabel:|• Budi = Insinyur (pasti)|• Ani: bukan Guru, Insinyur sudah dipakai Budi → Dokter|• Candra: yang tersisa = Guru||Kesimpulan:|=Budi=Insinyur, Ani=Dokter, Candra=Guru=||**Jawaban: B. Ani**'},
+
+  {tipe:'Penalaran Analitis',soal:'Sebuah perusahaan memiliki 3 divisi: Marketing (M), Finance (F), dan IT, total 60 karyawan. M memiliki 2× karyawan IT. F memiliki 8 orang lebih banyak dari IT. Berapa karyawan di divisi IT?',p:['10 orang','13 orang','15 orang','18 orang','20 orang'],j:1,
+   pem:'Diketahui:|• Total karyawan = 60|• M = 2 × IT|• F = IT + 8||Bentuk Persamaan:|=M + F + IT = 60=|=2×IT + (IT + 8) + IT = 60=||Selesaikan:|• 4×IT + 8 = 60|• 4×IT = 52||=IT = 13 orang=|Cek: M=26, F=21, IT=13 → 26+21+13=60 ✓||**Jawaban: B. 13 orang**'},
+
+  {tipe:'Penalaran Analitis',soal:'Empat tim (P, Q, R, S) bermain turnamen. Setiap tim bertanding sekali dengan semua lainnya. P menang lawan Q dan R. Q menang lawan R dan S. S menang lawan P dan R. Urutan klasemen dari terbaik adalah …',p:['P, Q, S, R','Q, P, S, R','Q, S, P, R','S, Q, P, R','P, S, Q, R'],j:2,
+   pem:'Diketahui:|• P menang lawan: Q, R → 2 menang|• Q menang lawan: R, S → 2 menang|• S menang lawan: P, R → 2 menang|• R menang lawan: tidak ada → 0 menang||Hitung kemenangan:|• P = 2, Q = 2, S = 2, R = 0||Head-to-head P,Q,S:|• Q menang lawan S ✓|• S menang lawan P ✓|• P menang lawan Q ✓|Pola siklus, pembeda: total gol/set||Peringkat berdasarkan urutan konsistensi:|=Q > S > P > R=||**Jawaban: C. Q, S, P, R**'},
+
+  {tipe:'Penalaran Analitis',soal:'Dari pernyataan berikut, manakah yang HARUS BENAR jika "Semua kucing adalah hewan berbulu" dan "Ada hewan berbulu yang bisa terbang"? (1) Ada kucing yang bisa terbang (2) Semua hewan berbulu adalah kucing (3) Ada hewan berbulu yang bukan kucing',p:['Hanya (1)','Hanya (2)','Hanya (3)','(1) dan (3)','Ketiganya benar'],j:2,
+   pem:'Diketahui:|• Premis A: Semua kucing → hewan berbulu|• Premis B: Ada hewan berbulu → bisa terbang||Evaluasi tiap pernyataan:|• (1) Ada kucing bisa terbang → TIDAK HARUS BENAR (hewan berbulu yang terbang belum tentu kucing)|• (2) Semua hewan berbulu = kucing → SALAH (terlalu luas, tidak didukung premis)||Untuk (3): Ada hewan berbulu yang bukan kucing:|• Premis B: ada hewan berbulu yang terbang|• Kucing tidak bisa terbang → hewan berbulu yang terbang PASTI bukan kucing||=(3) HARUS BENAR=||**Jawaban: C. Hanya (3)**'},
+
+  {tipe:'Penalaran Analitis',soal:'Tiga kardus A, B, C masing-masing berisi kelereng merah, biru, atau hijau. Semua label SALAH. Label A: Merah. Label B: Biru. Label C: Hijau. Kamu membuka kardus berlabel Biru dan menemukan kelereng Hijau. Isi kardus berlabel Merah adalah …',p:['Merah','Biru','Hijau','Merah atau Biru','Tidak dapat ditentukan'],j:1,
+   pem:'Diketahui:|• Semua label SALAH|• Kardus label Merah: bukan Merah|• Kardus label Biru: bukan Biru|• Kardus label Hijau: bukan Hijau||Fakta baru:|• Kardus B (label Biru) → isi Hijau ✓ (bukan Biru)||Kesimpulan per kardus:|• B (label Biru) = Hijau (sudah diketahui)|• Sisa: Merah dan Biru untuk A dan C|• A (label Merah): bukan Merah → harus Biru|• C (label Hijau): bukan Hijau → harus Merah||=A(label Merah) = Biru=|=C(label Hijau) = Merah=||**Jawaban: B. Biru**'},
 ];
+
 
 
 
@@ -973,119 +981,44 @@ function saveProgress() {
 // ============================================================
 // RENDER PEMBAHASAN MULTI-LANGKAH
 // ============================================================
-// ============================================================
-// AI VISUAL PEMBAHASAN (menggunakan Claude API)
-// ============================================================
-
-async function generateAIPembahasan(soalData, container) {
-  // Tampilkan loading
-  container.innerHTML = `
-    <div class="ai-pem-loading">
-      <div class="ai-pem-spinner"></div>
-      <div class="ai-pem-loading-txt">✨ Membuat penjelasan visual...</div>
-    </div>`;
-
-  const soal = soalData.soal;
-  const pilihan = soalData.p;
-  const jawaban = pilihan[soalData.j];
-  const tipe = soalData.tipe;
-  const pemText = soalData.pem || '';
-
-  const prompt = `Kamu adalah tutor PAPS UGM yang membuat penjelasan visual dalam HTML.
-
-SOAL (${tipe}): ${soal}
-Pilihan: ${pilihan.map((p,i) => String.fromCharCode(65+i)+'. '+p).join(', ')}
-Jawaban benar: ${String.fromCharCode(65+soalData.j)}. ${jawaban}
-Catatan pembahasan: ${pemText.replace(/\|\|/g, ' | ')}
-
-Buat penjelasan visual dalam HTML menggunakan HANYA class CSS berikut yang sudah tersedia:
-- <h3>Judul Seksi</h3>  
-- <div class="sec"> ... </div>  untuk tiap seksi
-- <div class="bullet">teks bullet</div>  untuk poin-poin
-- <div class="eq">rumus/formula</div>  untuk rumus di kotak tengah
-- <div class="kontra">pernyataan</div>  untuk kontraposisi/modus
-- <div class="flow"><div class="flow-item">A</div><div class="flow-arrow">↓</div><div class="flow-item">B</div></div>  untuk diagram alur
-- <div class="ans-box"><div class="ans-label">🎯 Jawaban</div>Teks jawaban</div>  untuk jawaban akhir
-- <table><tr><th>...</th></tr><tr><td>...</td></tr></table>  untuk tabel perbandingan
-- <span class="tag tag-ok">✓ benar</span> atau <span class="tag tag-err">✗ salah</span>
-
-ATURAN KETAT:
-1. JANGAN gunakan <style>, <script>, atau CSS inline apapun
-2. JANGAN gunakan class selain yang disebutkan di atas
-3. Mulai langsung dengan <div class="ai-pem-content"> dan tutup dengan </div>
-4. Buat 3-4 seksi: Diketahui → Penalaran/Langkah → (opsional: Tabel/Diagram) → Jawaban
-5. Untuk soal logika: tampilkan alur logika dengan flow
-6. Untuk soal matematika: tampilkan rumus dengan eq dan langkah perhitungan
-7. Untuk soal analogi/sinonim: tampilkan pola hubungan kata dengan bullet dan eq
-8. Gunakan Bahasa Indonesia yang jelas dan singkat
-9. Jawab hanya dengan HTML, tanpa penjelasan lain`;
-
-  try {
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        messages: [{role: 'user', content: prompt}]
-      })
-    });
-    const data = await resp.json();
-    const html = data.content.map(b => b.text || '').join('');
-
-    // Pastikan hanya HTML yang ditampilkan
-    const clean = html.replace(/```html|```/g, '').trim();
-    container.innerHTML = clean;
-    triggerKaTeX();
-  } catch(err) {
-    // Fallback ke pembahasan teks biasa
-    container.innerHTML = renderPembahasanFallback(pemText);
-    triggerKaTeX();
-  }
-}
-
-function renderPembahasanFallback(pem) {
+function renderPembahasan(pem) {
   const seksi = pem.split('||').map(s => s.trim()).filter(s => s);
   let html = '<div class="ai-pem-content">';
+
   seksi.forEach((sec, si) => {
     const isLast = si === seksi.length - 1;
     const lines = sec.split('|').map(l => l.trim()).filter(l => l);
+
     if (isLast) {
       const txt = lines.join(' ').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      html += `<div class="ans-box"><div class="ans-label">🎯 Kesimpulan</div>${txt}</div>`;
+      html += `</div><div class="pem-kesimpulan"><div class="pem-kes-label">🎯 Kesimpulan</div><div class="pem-kes-val">${txt}</div></div>`;
       return;
     }
-    html += '<div class="sec">';
+
+    html += '<div class="pem-sec">';
     lines.forEach(line => {
       const isTitleLine = line.endsWith(':') && line.length < 40;
-      const isBullet = line.startsWith('•') || line.startsWith('-');
-      const isEq = line.startsWith('=') && line.endsWith('=');
+      const isBullet = line.startsWith('•') || line.startsWith('→') || line.startsWith('-');
+      const isEq = line.startsWith('=') && line.endsWith('=') && line.length > 2;
+
       if (isTitleLine) {
-        html += `<h3>${line.replace(/:$/, '')}</h3>`;
+        html += `<h3 class="pem-sec-title">${line.replace(/:$/, '')}</h3>`;
       } else if (isBullet) {
-        const t = line.replace(/^[•\-]\s*/, '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        html += `<div class="bullet">${t}</div>`;
+        const t = line.replace(/^[•→\-]\s*/, '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/→/g, '<span style="color:var(--lav-m)"> → </span>');
+        html += `<div class="pem-bullet"><span class="pem-bullet-dot">→</span><span>${t}</span></div>`;
       } else if (isEq) {
-        html += `<div class="eq">${line.replace(/^=|=$/g, '')}</div>`;
+        const f = line.replace(/^=|=$/g, '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        html += `<div class="pem-eq">${f}</div>`;
       } else {
-        const t = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        html += `<div style="font-size:13px;color:#374151;font-weight:600;margin-bottom:3px">${t}</div>`;
+        const t = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/→/g, '<span style="color:var(--lav-m)"> → </span>').replace(/✓/g, '<span style="color:var(--correct)">✓</span>');
+        html += `<div class="pem-txt">${t}</div>`;
       }
     });
     html += '</div>';
   });
-  html += '</div>';
+
+  if (!html.includes('pem-kesimpulan')) html += '</div>';
   return html;
-}
-
-// Wrapper - dipanggil dari jawabLatihan
-function renderPembahasan(pem) {
-  // Kembalikan placeholder dulu, AI akan isi async
-  return '<div class="ai-pem-wrap" data-pem="' + encodeURIComponent(pem) + '"><div class="ai-pem-loading"><div class="ai-pem-spinner"></div><div class="ai-pem-loading-txt">✨ Membuat penjelasan visual...</div></div></div>';
-}
-
-function renderPembahasanOld(pem) {
-  return renderPembahasanFallback(pem);
 }
 
 function triggerKaTeX() {
@@ -1299,12 +1232,6 @@ function jawabLatihan(pilihanIdx) {
     if(j === pilihanIdx && j !== soal.j) { btn.classList.add('wrong'); btn.querySelector('.p-huruf').textContent='✗'; }
   });
   document.getElementById('pem-box').classList.add('show');
-  // Trigger AI visual pembahasan
-  const aiWrap = document.querySelector('.ai-pem-wrap');
-  if (aiWrap) {
-    const pemData = decodeURIComponent(aiWrap.dataset.pem || '');
-    generateAIPembahasan(soal, aiWrap);
-  }
   triggerKaTeX();
   document.getElementById('lat-next-btn').disabled = false;
 }
@@ -1509,4 +1436,54 @@ function goHome() {
 cekSesiTersimpan();
 </script>
 </body>
-</html>
+</html// ============================================================
+// RENDER PEMBAHASAN VISUAL (statis, cepat)
+// ============================================================
+
+function renderPembahasan(pem) {
+  const seksi = pem.split('||').map(s => s.trim()).filter(s => s);
+  let html = '<div class="ai-pem-content">';
+
+  seksi.forEach((sec, si) => {
+    const isLast = si === seksi.length - 1;
+    const lines = sec.split('|').map(l => l.trim()).filter(l => l);
+
+    if (isLast) {
+      const txt = lines.join(' ')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/→/g, ' → ');
+      html += `</div><div class="ans-box"><div class="ans-label">🎯 Kesimpulan</div>${txt}</div>`;
+      return;
+    }
+
+    lines.forEach(line => {
+      const isTitle = line.endsWith(':') && line.length < 45 && !line.includes('=');
+      const isBullet = line.startsWith('•') || line.startsWith('-');
+      const isEq = line.startsWith('=') && line.endsWith('=') && line.length > 2;
+      const isFlow = line.includes('→') && line.length < 60 && !isTitle;
+
+      if (isTitle) {
+        html += `<h3>${line.replace(/:$/, '')}</h3>`;
+      } else if (isBullet) {
+        const t = line.replace(/^[•\-]\s*/, '')
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/→/g, ' → ').replace(/✓/g, '✓');
+        html += `<div class="bullet">${t}</div>`;
+      } else if (isEq) {
+        html += `<div class="eq">${line.slice(1,-1).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</div>`;
+      } else if (isFlow) {
+        html += `<div class="eq" style="background:#fff5e0;border:1.5px dashed #d4a800;color:#7a4500">${line.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/→/g,' → ')}</div>`;
+      } else {
+        const t = line
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/→/g, ' → ').replace(/✓/g, '✓');
+        html += `<div style="font-size:13px;color:#374151;font-weight:600;margin-bottom:4px;line-height:1.7">${t}</div>`;
+      }
+    });
+  });
+
+  if (!html.includes('ans-box')) html += '</div>';
+  return html;
+}
+
+>
